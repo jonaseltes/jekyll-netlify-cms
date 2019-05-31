@@ -7,8 +7,8 @@ publish_mode: editorial_workflow
 media_folder: "assets/media/uploads" # Folder where user uploaded files should go
 
 collections: # A list of collections the CMS should be able to edit
-  - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Post" # Used in the UI, ie.: "New Post"
+  - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Posts" # Used in the UI, ie.: "New Post"
     folder: "_posts" # The path to the folder where the documents are stored
     sort: "date:desc" # Default is title:asc
     create: true # Allow users to create new documents in this collection
@@ -40,9 +40,9 @@ collections: # A list of collections the CMS should be able to edit
         file: '_data/content.yml'
         fields:
           - label: 'Intro'
-            name: 'into'
+            name: 'intro'
             widget: 'object'
-            fileds:
+            fields:
               - label: 'Headline'
                 name: 'headline'
                 widget: 'string'
