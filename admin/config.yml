@@ -52,3 +52,39 @@ collections: # A list of collections the CMS should be able to edit
                 buttons:
                   - "italic"
                   - "link"
+      - label: 'Basic info'
+        name: 'info'
+        file: '_data/info.yml'
+        fields:
+          - label: 'Where'
+            name: 'location'
+            widget: 'object'
+            fields:
+              - label: 'Venue'
+                name: 'venue'
+                widget: 'object'
+                fields:
+                  - label: "Name"
+                    name: "name"
+                    widget: 'string'
+                  - label: "URL"
+                    name: "url"
+                    widget: 'string'
+              - label: 'Street address'
+                name: 'street_address'
+                widget: 'string'
+              - label: 'Postal code'
+                name: 'postal_code'
+                widget: 'string'
+              - label: "City"
+                name: "city"
+                widget: "string"
+              - label: "Country"
+                name: "country"
+                widget: "string"
+          - label: 'When'
+            name: 'time'
+            widget: "datetime"
+          - label: "Contact"
+            name: "contact"
+            widget: 'string'
