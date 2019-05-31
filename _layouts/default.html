@@ -29,7 +29,13 @@
       </div>
 
     </div>
-
+    <script>
+      {% if jekyll.environment == "production" %}
+        console.log = function() {}
+      {% endif %}
+      console.log("page scripts cdn:" ,{{layout.scripts.cdn| jsonify}});
+      console.log("page scripts local:" ,{{layout.scripts.assets | jsonify}});
+    </script>
     {%- include body-scripts.html -%}
     {%- include page-scripts.html -%}
 

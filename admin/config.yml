@@ -32,3 +32,23 @@ collections: # A list of collections the CMS should be able to edit
           - { label: 'Title', name: 'title', widget: 'hidden', default: 'about' }
           - { label: 'Layout', name: 'title', widget: 'hidden', default: 'about' }
           - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'content'
+    label: 'Content'
+    files:
+      - label: 'Content'
+        name: 'content'
+        file: '_data/content.yml'
+        fields:
+          - label: 'Intro'
+            name: 'into'
+            widget: 'object'
+            fileds:
+              - label: 'Headline'
+                name: 'headline'
+                widget: 'string'
+              - label: 'Abstract'
+                name: 'abstract'
+                widget: 'markdown'
+                buttons:
+                  - "italic"
+                  - "link"

@@ -1,9 +1,15 @@
 ---
 layout: default
 scripts:
-  cdn:
-  assets:
-    - main.js
+  body:
+    cdn:
+    assets:
+      - main.js
+      - netlify.js
+  head:
+    cdn:
+      - '//identity.netlify.com/v1/netlify-identity-widget.js'
+    assets:
 css:
     - assets/css/index.css
 menu: light

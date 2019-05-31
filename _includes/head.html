@@ -29,11 +29,23 @@
     {%- endfor -%}
   {%- endif -%}
 
+  {%- for script in layout.scripts.head.cdn -%}
+    <script src="{{script}}" type="text/javascript"></script>
+  {%- endfor -%}
+
+  {%- for script in layout.scripts.head.cdn -%}
+    <script src="{{script}}" type="text/javascript"></script>
+  {%- endfor -%}
+
+  {%- for script in layout.scripts.head.assets -%}
+    <script src="{{site.js_path}}/{{script}}" type="text/javascript"></script>
+  {%- endfor -%}
+
   <script>
     {% if jekyll.environment == "production" %}
       console.log = function() {}
     {% endif %}
     console.log("site head scripts: " ,{{site.head_scripts | jsonify}});
   </script>
-  
+
 </head>

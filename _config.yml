@@ -47,9 +47,13 @@ rss: rss
 #   instance: example.com
 
 
+# Site variables
+image_path: assets/media
+js_path: assets/js
+css_path: assets/css
+
 
 # Scripts
-
 body_scripts:
   - //code.jquery.com/jquery-3.2.1.min.js
   - //cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js
