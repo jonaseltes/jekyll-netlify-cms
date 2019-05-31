@@ -13,11 +13,10 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Jekyll Netlify CMS
+title: The Swedish Work Lab
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  This is the basic Jekyll starter site, with Netlify CMS integrated and using
-  Netlify Identity for authentication.
+  Will you help us shape the future of work?
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -46,6 +45,28 @@ rss: rss
 #   instance: example.com
 # - username: jekyll2
 #   instance: example.com
+
+
+
+# Scripts
+
+body_scripts:
+  - //code.jquery.com/jquery-3.2.1.min.js
+  - //cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js
+  - //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js
+  - /assets/js/barba.min.js
+
+animation_scripts:
+  - /assets/js/Tween.js
+  - /assets/js/three.min.js
+  - /assets/js/Projector.js
+  - /assets/js/CanvasRenderer.js
+  - /assets/js/OrbitControls.js
+  - /assets/js/TrackballControls.js
+  - /assets/js/OBJLoader.js
+  - /assets/js/perlin.js
+
+
 
 
 # Exclude from processing.
