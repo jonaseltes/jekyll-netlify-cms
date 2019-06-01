@@ -23,7 +23,7 @@ inputs:
       type: text
     - field-name: entry.38474988
       label: Image
-      type: text
+      type: file
     - field-name: entry.352770521
       label: Description
       type: textarea
