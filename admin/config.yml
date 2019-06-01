@@ -106,3 +106,24 @@ collections: # A list of collections the CMS should be able to edit
                   - label: "Google Forms field ID"
                     name: "field-id"
                     widget: "string"
+              - label: 'Short description'
+                name: 'description'
+                widget: 'object'
+                fields:
+                  - label: 'Label'
+                    name: 'label'
+                    widget: 'string'
+                    default: 'description'
+                  - label: 'Google Forms field ID'
+                    name: "field-id"
+                    widget: "string"
+              - label: 'Food'
+                name: 'food'
+                widget: 'object'
+                fields:
+                  - label: "Label"
+                    name: "label"
+                    widget: 'string'
+                  - label: 'Google Forms field ID'
+                    name: "field-id"
+                    widget: "string"
