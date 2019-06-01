@@ -149,4 +149,4 @@ collections: # A list of collections the CMS should be able to edit
                   - label: "Type"
                     name: "type"
                     widget: "string"
-                    default: "text"
+                    default: "other"
