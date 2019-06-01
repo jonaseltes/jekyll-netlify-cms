@@ -15,8 +15,6 @@ inputs:
       label: Phone
     - field-name: entry.38474988
       label: Image
-    - field-name: test
-      label: test
   food:
     field-name: entry.1064293053
     label: Food
