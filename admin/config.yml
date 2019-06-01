@@ -108,6 +108,14 @@ collections: # A list of collections the CMS should be able to edit
         name: 'inputs'
         file: '_data/application-form.yml'
         fields:
+          - label: "Description"
+            name: "description"
+            widget: "markdown"
+            buttons:
+              - "italic"
+              - "link"
+              - "bold"
+            hint: "An description of the form."
           - label: "Form id"
             name: "form-id"
             widget: "hidden"
