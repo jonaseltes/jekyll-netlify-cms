@@ -46,11 +46,15 @@ collections: # A list of collections the CMS should be able to edit
               - label: 'Title'
                 name: 'title'
                 widget: 'string'
-                hint: 'Main title used across the site and SEO.'
+                hint: 'Main title used across the site.'
               - label: 'Tag-line'
                 name: 'tagline'
-                widget: 'string'
-                hint: 'Main tag line used across the site and SEO.'
+                widget: 'markdown'
+                hint: 'Short description.'
+                buttons:
+                  - "italic"
+                  - "link"
+                  - "bold"
           - label: 'Intro'
             name: 'intro'
             widget: 'object'
