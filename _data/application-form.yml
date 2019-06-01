@@ -1,10 +1,6 @@
 url: >-
   https://docs.google.com/forms/d/e/1FAIpQLSd50bpVpuF_jxq0lo4-2G9ECP367AzDU18J5eTBA9s6eoj7WQ/formResponse
 inputs:
-  description:
-    field-name: entry.352770521
-    label: Short description
-    type: textarea
   details:
     - field-name: entry.1702488782
       label: Name
@@ -21,7 +17,9 @@ inputs:
     - field-name: entry.38474988
       label: Image
       type: text
-  food:
-    field-name: entry.1064293053
-    label: Food
-    type: text
+    - field-name: entry.352770521
+      label: Description
+      type: textarea
+    - field-name: entry.1064293053
+      label: Food
+      type: text
