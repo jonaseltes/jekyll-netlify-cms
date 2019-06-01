@@ -117,8 +117,11 @@ collections: # A list of collections the CMS should be able to edit
                     hint: "Found in original Google Form source code."
                   - label: "Type"
                     name: "type"
-                    widget: "hidden"
-                    default: "text"
+                    widget: "select"
+                    hint: "'text' for short text inputs and 'textarea' for longer"
+                    options:
+                      - { label: "Short text", value: "text" }
+                      - { label: "Long text", value: "textarea" }
               - label: 'Short description'
                 name: 'description'
                 widget: 'object'
@@ -133,8 +136,11 @@ collections: # A list of collections the CMS should be able to edit
                     hint: "Found in original Google Form source code."
                   - label: "Type"
                     name: "type"
-                    widget: "hidden"
-                    default: "textarea"
+                    widget: "select"
+                    hint: "'text' for short text inputs and 'textarea' for longer"
+                    options:
+                      - { label: "Short text", value: "text" }
+                      - { label: "Long text", value: "textarea" }
               - label: 'Food'
                 name: 'food'
                 widget: 'object'
@@ -148,5 +154,8 @@ collections: # A list of collections the CMS should be able to edit
                     hint: "Found in original Google Form source code."
                   - label: "Type"
                     name: "type"
-                    widget: "string"
-                    default: "other"
+                    widget: "select"
+                    hint: "'text' for short text inputs and 'textarea' for longer"
+                    options:
+                      - { label: "Short text", value: "text" }
+                      - { label: "Long text", value: "textarea" }
