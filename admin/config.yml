@@ -134,7 +134,7 @@ collections: # A list of collections the CMS should be able to edit
                   - label: "Type"
                     name: "type"
                     widget: "hidden"
-                    default: "text"
+                    default: "textarea"
               - label: 'Food'
                 name: 'food'
                 widget: 'object'
@@ -146,3 +146,7 @@ collections: # A list of collections the CMS should be able to edit
                     name: "field-name"
                     widget: "string"
                     hint: "Found in original Google Form source code."
+                  - label: "Type"
+                    name: "type"
+                    widget: "hidden"
+                    default: "text"
