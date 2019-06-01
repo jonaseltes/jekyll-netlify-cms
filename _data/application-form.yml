@@ -4,17 +4,24 @@ inputs:
   description:
     field-name: entry.352770521
     label: Short description
+    type: textarea
   details:
     - field-name: entry.1702488782
       label: Name
+      type: text
     - field-name: entry.725733046
       label: Role (at TRR)
+      type: text
     - field-name: entry.1229249418
       label: Email
+      type: text
     - field-name: entry.1478548788
       label: Phone
+      type: text
     - field-name: entry.38474988
       label: Image
+      type: text
   food:
     field-name: entry.1064293053
     label: Food
+    type: text
