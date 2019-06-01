@@ -142,7 +142,8 @@ collections: # A list of collections the CMS should be able to edit
                   - label: "Type"
                     name: "type"
                     widget: "select"
-                    hint: "'text' for short text inputs and 'textarea' for longer"
+                    hint: "'text' for short text inputs and 'textarea' for longer, File/Image for image."
                     options:
                       - { label: "Short text", value: "text" }
                       - { label: "Long text", value: "textarea" }
+                      - { label: "File/Image", value: "file" }
