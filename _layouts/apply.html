@@ -19,29 +19,29 @@ scripts:
 
   <div class="row flex-row align-items-start">
 
-    <div class="col-sm text-xl">
+    <div class="col-lg text-xl">
       {{site.data.application-form.description | markdownify}}
     </div>
 
-    <div class="col-sm">
+    <div class="col">
 
       <div class="row">
         <div class="col">
-          <div class="">
+          <div id="application-form-wrapper" class="">
 
             {% assign form = site.data.application-form %}
             <form id="{{form.form-id}}" action="{{form.url}}">
 
               {% assign inputs = site.data.application-form.inputs.details %}
                 {% for item in inputs %}
-                  <div class="form-input-wrapper">
+                  <div class="form-group">
                     <div>
                       {{item.label}}
                     </div>
                     {%- if item.type == 'text' -%}
-                      <input type="text" name="{{item.field-name}}" />
+                      <input class="form-control" type="text" value="" name="{{item.field-name}}" />
                     {%- else -%}
-                      <textarea name="{{item.field-name}}" rows="8" cols="80"></textarea>
+                      <textarea class="form-control" name="{{item.field-name}}" value="" rows="8" cols="" class="w-100"></textarea>
                     {%- endif -%}
                   </div>
                 {% endfor %}
