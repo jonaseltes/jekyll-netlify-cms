@@ -39,6 +39,18 @@ collections: # A list of collections the CMS should be able to edit
         name: 'content'
         file: '_data/content.yml'
         fields:
+          - label: 'Site'
+            name: 'site'
+            widget: 'object'
+            fields:
+              - label: 'Title'
+                name: 'title'
+                widget: 'string'
+                hint: 'Main title used across the site and SEO.'
+              - label: 'Tag-line'
+                name: 'tagline'
+                widget: 'string'
+                hint: 'Main tag line used across the site and SEO.'
           - label: 'Intro'
             name: 'intro'
             widget: 'object'
