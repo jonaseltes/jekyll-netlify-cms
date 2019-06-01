@@ -148,5 +148,5 @@ collections: # A list of collections the CMS should be able to edit
                     hint: "Found in original Google Form source code."
                   - label: "Type"
                     name: "type"
-                    widget: "hidden"
+                    widget: "string"
                     default: "text"
