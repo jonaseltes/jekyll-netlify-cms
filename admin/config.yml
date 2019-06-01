@@ -52,7 +52,7 @@ collections: # A list of collections the CMS should be able to edit
                 buttons:
                   - "italic"
                   - "link"
-      - label: 'Basic info'
+      - label: 'Event info'
         name: 'info'
         file: '_data/info.yml'
         fields:
@@ -88,3 +88,21 @@ collections: # A list of collections the CMS should be able to edit
           - label: "Contact"
             name: "contact"
             widget: 'string'
+      - label: 'Application form'
+        name: 'inputs'
+        file: '_data/application-form.yml'
+        fields:
+          - label: "Inputs"
+            name: "inputs"
+            widget: "object"
+            fields:
+              - label: 'Personal details'
+                name: 'details'
+                widget: 'list'
+                fields:
+                  - label: 'Label'
+                    name: 'label'
+                    widget: 'string'
+                  - label: "Google Forms field ID"
+                    name: "field-id"
+                    widget: "string"

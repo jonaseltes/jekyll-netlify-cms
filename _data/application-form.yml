@@ -1,0 +1,10 @@
+inputs:
+  details:
+    - label: "Name"
+      field-id: "3219371"
+  description:
+    label: "description"
+    field-id: "3219371"
+  food:
+    label: "Food"
+    field-id: "3219371"
