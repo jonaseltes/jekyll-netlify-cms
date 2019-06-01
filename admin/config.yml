@@ -92,6 +92,14 @@ collections: # A list of collections the CMS should be able to edit
         name: 'inputs'
         file: '_data/application-form.yml'
         fields:
+          - label: "Form id"
+            name: "form-id"
+            widget: "hidden"
+            default: "application_form"
+          - label: 'Form url'
+            name: "url"
+            widget: "string"
+            hint: 'Form action URL found in original Google Form source code.'
           - label: "Inputs"
             name: "inputs"
             widget: "object"
@@ -100,30 +108,41 @@ collections: # A list of collections the CMS should be able to edit
                 name: 'details'
                 widget: 'list'
                 fields:
-                  - label: 'Label'
+                  - label: 'Input Label'
                     name: 'label'
                     widget: 'string'
-                  - label: "Google Forms field ID"
-                    name: "field-id"
+                  - label: "Google Forms field name"
+                    name: "field-name"
                     widget: "string"
+                    hint: "Found in original Google Form source code."
+                  - label: "Type"
+                    name: "type"
+                    widget: "hidden"
+                    default: "text"
               - label: 'Short description'
                 name: 'description'
                 widget: 'object'
                 fields:
-                  - label: 'Label'
+                  - label: 'Input Label'
                     name: 'label'
                     widget: 'string'
                     default: 'description'
-                  - label: 'Google Forms field ID'
-                    name: "field-id"
+                  - label: 'Google Forms field name'
+                    name: "field-name"
                     widget: "string"
+                    hint: "Found in original Google Form source code."
+                  - label: "Type"
+                    name: "type"
+                    widget: "hidden"
+                    default: "text"
               - label: 'Food'
                 name: 'food'
                 widget: 'object'
                 fields:
-                  - label: "Label"
+                  - label: "Input Label"
                     name: "label"
                     widget: 'string'
-                  - label: 'Google Forms field ID'
-                    name: "field-id"
+                  - label: 'Google Forms field name'
+                    name: "field-name"
                     widget: "string"
+                    hint: "Found in original Google Form source code."
