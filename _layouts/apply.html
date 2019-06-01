@@ -1,5 +1,13 @@
 ---
 layout: default
+scripts:
+  body:
+    cdn:
+    assets:
+      - apply.js
+  head:
+    cdn:
+    assets:
 ---
 
 
@@ -21,8 +29,24 @@ layout: default
         <div class="col">
           <div class="">
 
-          
+            {% assign form = site.data.application-form %}
+            <form id="{{form.form-id}}" action="{{form.url}}">
 
+              {% assign inputs = site.data.application-form.inputs.details %}
+                {% for item in inputs %}
+                  <div class="form-input-wrapper">
+                    <div>
+                      {{item.label}}
+                    </div>
+                    {%- if item.type == 'text' -%}
+                      <input type="text" name="{{item.field-name}}" />
+                    {%- else -%}
+                      <textarea name="{{item.field-name}}" rows="8" cols="80"></textarea>
+                    {%- endif -%}
+                  </div>
+                {% endfor %}
+                <input type="submit" name="" value="Submit">
+            </form>
 
           </div>
         </div>

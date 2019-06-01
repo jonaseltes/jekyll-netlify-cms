@@ -9,5 +9,5 @@
 {% endif %}
 
 {%- for script in layout.scripts.body.assets -%}
-  <script src="{{site.js_path}}/{{script}}" type="text/javascript"></script>
+  <script src="{{site.url}}/{{site.js_path}}/{{script}}" type="text/javascript"></script>
 {%- endfor -%}
