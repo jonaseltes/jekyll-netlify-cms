@@ -32,11 +32,11 @@ footer: light
     <div class="h-100 w-100 position-relative text-center d-flex">
       <div class="d-inline-block m-auto front-title text-black">
         <div id="loading-text">
-          <span class="text-uppercase">Loading...</span>
+          <span class="text-uppercase d-none">Loading...</span>
         </div>
-        <div id="landing-text">
-          <div id="landing-title" class="text-uppercase">Swedish Work Lab</div>
-          <div id="landing-year" class="text-uppercase text-black-50">(1993, Sweden)</div>
+        <div id="landing-text" class="pointer-e-all">
+          <div id="landing-title" class="display-1">{{site.data.content.intro.headline}}</div>
+          <div id="landing-year" class="text-black-50 mt-8">{{site.data.content.site.tagline | markdownify}}</div>
         </div>
       </div>
     </div>

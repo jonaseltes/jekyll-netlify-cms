@@ -159,10 +159,6 @@ body {
 
 }
 
-#landing-text {
-  display: none;
-}
-
 
 //Navbar
 ‰bar {
@@ -364,6 +360,10 @@ p {
 }
 
 .poiner-e {
+  pointer-events: auto !important;
+}
+
+.pointer-e-all * {
   pointer-events: auto !important;
 }
 

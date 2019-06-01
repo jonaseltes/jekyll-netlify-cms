@@ -71,6 +71,8 @@ animation_scripts:
   - /assets/js/perlin.js
 
 
+plugins:
+  - jekyll-target-blank
 
 
 # Exclude from processing.
