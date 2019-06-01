@@ -2,13 +2,19 @@ url: >-
   https://docs.google.com/forms/d/e/1FAIpQLSd50bpVpuF_jxq0lo4-2G9ECP367AzDU18J5eTBA9s6eoj7WQ/formResponse
 inputs:
   description:
-    field-id: '213123'
+    field-name: entry.352770521
     label: Short description
   details:
-    - field-id: '3219371'
+    - field-name: entry.1702488782
       label: Name
-    - field-id: '2321321'
+    - field-name: entry.725733046
       label: Role (at TRR)
+    - field-name: entry.1229249418
+      label: Email
+    - field-name: entry.1478548788
+      label: Phone
+    - field-name: entry.38474988
+      label: Image
   food:
-    field-id: '234234'
+    field-name: entry.1064293053
     label: Food
