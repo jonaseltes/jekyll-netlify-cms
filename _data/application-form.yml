@@ -1,6 +1,14 @@
+url: >-
+  https://docs.google.com/forms/d/e/1FAIpQLSd50bpVpuF_jxq0lo4-2G9ECP367AzDU18J5eTBA9s6eoj7WQ/formResponse
 inputs:
+  description:
+    field-id: '213123'
+    label: Short description
   details:
     - field-id: '3219371'
       label: Name
     - field-id: '2321321'
       label: Role (at TRR)
+  food:
+    field-id: '234234'
+    label: Food
