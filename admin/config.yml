@@ -151,3 +151,4 @@ collections: # A list of collections the CMS should be able to edit
             name: "submission"
             widget: "text"
             default: "Thank you!"
+            hint: "Message showed when the user has submitted their form."
