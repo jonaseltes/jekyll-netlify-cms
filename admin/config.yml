@@ -8,7 +8,7 @@ media_folder: "assets/media/uploads" # Folder where user uploaded files should g
 
 collections: # A list of collections the CMS should be able to edit
   - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Posts" # Used in the UI, ie.: "New Post"
+    label: "Posts (Not in use)" # Used in the UI, ie.: "New Post"
     folder: "_posts" # The path to the folder where the documents are stored
     sort: "date:desc" # Default is title:asc
     create: true # Allow users to create new documents in this collection
@@ -22,7 +22,7 @@ collections: # A list of collections the CMS should be able to edit
     meta: # Meta data fields. Just like fields, but without any preview element
       - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD hh:mm:ss"}
   - name: 'pages'
-    label: 'Pages'
+    label: 'Pages (Not in use)'
     description: "Collection for the future possibility of having different pages (currently not used)"
     editor:
       preview: false
@@ -36,7 +36,7 @@ collections: # A list of collections the CMS should be able to edit
           - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'content'
     label: 'Content'
-    description: "Collection for editing generic content."
+    description: "Collection for editing different types of content."
     files:
       - label: 'Content'
         name: 'content'
