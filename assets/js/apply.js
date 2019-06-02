@@ -1,6 +1,13 @@
 ---
 ---
 
+var image = "";
+
+function parseImage(files) {
+  image = window.URL.createObjectURL(files[0]);
+  console.log("image: " ,image);
+}
+
 $(function() {
   // The Javascript
   var id = {{site.data.application-form.form-id | jsonify}};
