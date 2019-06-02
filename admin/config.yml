@@ -62,9 +62,10 @@ collections: # A list of collections the CMS should be able to edit
               - label: 'Headline'
                 name: 'headline'
                 widget: 'string'
-              - label: 'Abstract'
+              - label: 'Introduction'
                 name: 'abstract'
                 widget: 'markdown'
+                hint: 'A description for the landing page'
                 buttons:
                   - "italic"
                   - "link"
