@@ -6,7 +6,7 @@ description: >-
   fermentum.
 form-id: application_form
 url: >-
-  //docs.google.com/forms/d/e/1FAIpQLSd50bpVpuF_jxq0lo4-2G9ECP367AzDU18J5eTBA9s6eoj7WQ/formResponse
+  //script.google.com/macros/s/AKfycbwXvhNxU0PEUwSqfuyiWHFQYEO_gvjNIZELalBjkHtIYYa_zFuG/exec
 inputs:
   details:
     - field-name: entry.1702488782

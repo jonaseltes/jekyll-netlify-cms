@@ -30,7 +30,11 @@ $(function() {
   console.log("id: " ,id);
   var form = document.getElementById(id);
   console.log("form: " ,form);
+
+
   form.onsubmit = function() {
+
+
     var formData = new FormData(form);
     var object = {};
     formData.forEach(function(value, key){
@@ -44,9 +48,17 @@ $(function() {
     });
     console.log("object: " ,object)
     // formData.append('file', file);
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', form.getAttribute('action'), true);
-    xhr.send(formData);
+    var serializedData = $("form").serialize();
+    console.log("serializedData:" ,serializedData);
+    $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbzV--xTooSkBLufMs4AnrCTdwZxVNtycTE4JNtaCze2UijXAg8/exec",
+        type: "POST",
+        // crossDomain: true,
+        data: "serializedData"
+    });
+    // var xhr = new XMLHttpRequest();
+    // xhr.open('POST', form.getAttribute('action'), true);
+    // xhr.send(formData);
     // form.reset();
     // $('#application-form-wrapper').fadeOut(500, function(){
     //   $('#application-form-wrapper').html('<p class="text-xl">'+confirmation+'</p>').fadeIn(500);

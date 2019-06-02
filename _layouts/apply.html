@@ -31,7 +31,7 @@ scripts:
           <div id="application-form-wrapper" class="">
 
             {% assign form = site.data.application-form %}
-            <form id="{{form.form-id}}" action="{{form.url}}" enctype="multipart/form-data">
+            <form id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
 
               {% assign inputs = site.data.application-form.inputs.details %}
                 {% for item in inputs %}
@@ -40,15 +40,15 @@ scripts:
                       {{item.label}}
                     </div>
                     {%- if item.type == 'text' -%}
-                      <input class="form-control" type="text" value="" name="{{item.field-name}}" />
+                      <input class="form-control" type="text" value="" name="{{item.label}}" />
                     {%- endif -%}
                     {%- if item.type == 'file' -%}
-                      <input class="form-control" type="text" value="" name="{{item.field-name}}" />
+                      <input class="form-control" type="text" value="" name="{{item.label}}" />
                       <!-- <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.field-name}}" /> -->
                       <img id="upload-preview" class="" src="" height="200" alt="">
                     {%- endif -%}
                     {%- if item.type == 'textarea' -%}
-                      <textarea class="form-control" name="{{item.field-name}}" value="" rows="8" cols="" class="w-100"></textarea>
+                      <textarea class="form-control" name="{{item.label}}" value="" rows="8" cols="" class="w-100"></textarea>
                     {%- endif -%}
                   </div>
                 {% endfor %}
