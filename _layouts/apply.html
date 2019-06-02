@@ -3,6 +3,7 @@ layout: default
 scripts:
   body:
     cdn:
+      - //www.gstatic.com/firebasejs/6.1.0/firebase-app.js
     assets:
       - apply.js
   head:
@@ -30,7 +31,7 @@ scripts:
           <div id="application-form-wrapper" class="">
 
             {% assign form = site.data.application-form %}
-            <form id="{{form.form-id}}" action="{{form.url}}">
+            <form id="{{form.form-id}}" action="{{form.url}}" enctype="multipart/form-data">
 
               {% assign inputs = site.data.application-form.inputs.details %}
                 {% for item in inputs %}
@@ -42,7 +43,8 @@ scripts:
                       <input class="form-control" type="text" value="" name="{{item.field-name}}" />
                     {%- endif -%}
                     {%- if item.type == 'file' -%}
-                      <input class="form-control-file" type="file" value="" onchange="parseImage(this.files)" accept=".jpg, .jpeg, .png" name="{{item.field-name}}" />
+                      <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.field-name}}" />
+                      <img id="upload-preview" class="" src="" height="200" alt="">
                     {%- endif -%}
                     {%- if item.type == 'textarea' -%}
                       <textarea class="form-control" name="{{item.field-name}}" value="" rows="8" cols="" class="w-100"></textarea>

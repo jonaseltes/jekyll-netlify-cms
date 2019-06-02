@@ -2,16 +2,30 @@
 ---
 
 var image = "";
+var src;
+var reader;
 
-function parseImage(files) {
-  image = window.URL.createObjectURL(files[0]);
+function parseImage(input) {
+  image = window.URL.createObjectURL(input.files[0]);
   console.log("image: " ,image);
+
+  reader.addEventListener("load", function () {
+    src = reader.result;
+    $("#upload-preview").attr("src",src);
+    console.log("src: " ,src);
+    this.value = src;
+    console.log("this: " ,this);
+  }, false);
+
+  reader.readAsDataURL(input.files[0]);
+
 }
 
 $(function() {
   // The Javascript
   var id = {{site.data.application-form.form-id | jsonify}};
-
+  var confirmation = {{site.data.application-form.submission | jsonify}};
+  reader  = new FileReader();
 
   console.log("id: " ,id);
   var form = document.getElementById(id);
@@ -21,6 +35,11 @@ $(function() {
     var object = {};
     formData.forEach(function(value, key){
         object[key] = value;
+        if (typeof value === 'file' || value instanceof File ) {
+          console.log("Found image: " ,value);
+          value = src;
+        }
+        console.log("value: " ,value);
     });
     console.log("object: " ,object)
     // formData.append('file', file);
@@ -29,7 +48,7 @@ $(function() {
     xhr.send(formData);
     form.reset();
     $('#application-form-wrapper').fadeOut(500, function(){
-      $('#application-form-wrapper').html('<p class="text-xl">Thank you!</p>').fadeIn(500);
+      $('#application-form-wrapper').html('<p class="text-xl">'+confirmation+'</p>').fadeIn(500);
 
     });
     return false; // To avoid actual submission of the form
