@@ -34,11 +34,11 @@ $(function() {
     var formData = new FormData(form);
     var object = {};
     formData.forEach(function(value, key){
-        object[key] = value;
         if (typeof value === 'file' || value instanceof File ) {
           console.log("Found image: " ,value);
           value = src;
         }
+        object[key] = value;
         console.log("value: " ,value);
     });
     console.log("object: " ,object)
