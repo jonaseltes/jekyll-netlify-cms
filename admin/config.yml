@@ -36,6 +36,7 @@ collections: # A list of collections the CMS should be able to edit
           - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'content'
     label: 'Content'
+    description: "Collection for editing generic content."
     files:
       - label: 'Content'
         name: 'content'
