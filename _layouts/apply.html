@@ -43,7 +43,8 @@ scripts:
                       <input class="form-control" type="text" value="" name="{{item.field-name}}" />
                     {%- endif -%}
                     {%- if item.type == 'file' -%}
-                      <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.field-name}}" />
+                      <input class="form-control" type="text" value="" name="{{item.field-name}}" />
+                      <!-- <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.field-name}}" /> -->
                       <img id="upload-preview" class="" src="" height="200" alt="">
                     {%- endif -%}
                     {%- if item.type == 'textarea' -%}

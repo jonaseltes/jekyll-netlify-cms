@@ -36,7 +36,8 @@ $(function() {
     formData.forEach(function(value, key){
         if (typeof value === 'file' || value instanceof File ) {
           console.log("Found image: " ,value);
-          value = src;
+          formData.set(key, src);
+          // value = src;
         }
         object[key] = value;
         console.log("value: " ,value);
@@ -46,11 +47,11 @@ $(function() {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', form.getAttribute('action'), true);
     xhr.send(formData);
-    form.reset();
-    $('#application-form-wrapper').fadeOut(500, function(){
-      $('#application-form-wrapper').html('<p class="text-xl">'+confirmation+'</p>').fadeIn(500);
-
-    });
+    // form.reset();
+    // $('#application-form-wrapper').fadeOut(500, function(){
+    //   $('#application-form-wrapper').html('<p class="text-xl">'+confirmation+'</p>').fadeIn(500);
+    //
+    // });
     return false; // To avoid actual submission of the form
   }
 })
