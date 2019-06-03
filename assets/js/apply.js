@@ -1,15 +1,21 @@
 ---
 ---
 
-var image = "";
+var image;
 var src;
 var reader;
 
 function parseImage(input) {
-  image = window.URL.createObjectURL(input.files[0]);
+  // image = window.URL.createObjectURL(input.files[0]);
+  console.log("input: " ,input);
   console.log("image: " ,image);
 
-  reader.addEventListener("load", function () {
+  reader.addEventListener("load", function (e) {
+    console.log("FileReader e: ",e);
+    const data = e.target.result.split(",");
+    image = [data[0].match(/:(\w.+);/)[1], data[1]];
+    // const image = data;
+    console.log("image: " ,image)
     src = reader.result;
     $("#upload-preview").attr("src",src);
     console.log("src: " ,src);
@@ -43,14 +49,19 @@ $(function() {
         if (typeof value === 'file' || value instanceof File ) {
           console.log("Found image: " ,value);
           formData.set(key, src);
-          value = src;
+          value = image;
+          // value = src;
         }
         object[key] = value;
         console.log("value: " ,value);
     });
-    console.log("object: " ,object)
-    var serializedData = $("form").serialize();
-    console.log("serializedData:" ,serializedData);
+    console.log("object: " ,object);
+    var json = JSON.stringify(object)
+    console.log("json: " ,json);
+    //
+    // var serializedData = $("form").serialize();
+    // console.log("serializedData:" ,serializedData);
+
     var testData = {name:"John Doe", role: "ceo"}
 
 
@@ -58,6 +69,7 @@ $(function() {
     //   console.log("res" ,res);
     // });
     //
+
     $.ajax({
         url: url,
         type: "post",
@@ -65,13 +77,19 @@ $(function() {
         data: JSON.stringify(object),
         // contentType: "application/json",
         success: function (msg)
-                { console.log("succes: " ,msg) },
+                {
+                  console.log("succes: " ,msg)
+                  $('#application-form-wrapper').fadeOut(500, function(){
+                    $('#application-form-wrapper').html('<p class="text-xl">'+confirmation+'</p>').fadeIn(500);
+                  });
+                },
         error: function (err)
         { console.log(err.responseText)}
     }).done(function (data, textStatus, xhr) {
         console.log(xhr.getResponseHeader('Link'));
         console.log("xhr: " ,xhr);
     });
+
     // var xhr = new XMLHttpRequest();
     // xhr.open('POST', form.getAttribute('action'), true);
     // xhr.send(formData);
