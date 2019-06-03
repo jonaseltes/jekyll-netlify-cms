@@ -139,10 +139,10 @@ collections: # A list of collections the CMS should be able to edit
                   - label: 'Input Label'
                     name: 'label'
                     widget: 'string'
-                  - label: "Google Forms field name"
+                  - label: "Field name property"
                     name: "name"
                     widget: "string"
-                    hint: "Found in original Google Form source code."
+                    hint: "Used to identify the specific filed in the code."
                   - label: "Type"
                     name: "type"
                     widget: "select"
