@@ -65,6 +65,7 @@ collections: # A list of collections the CMS should be able to edit
                   - label: 'TRR Logos'
                     name: 'trr-logos'
                     widget: 'list'
+                    fields:
                       - label: 'Name'
                         name: 'name'
                         widget: 'string'
