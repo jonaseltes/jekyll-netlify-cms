@@ -64,13 +64,14 @@ collections: # A list of collections the CMS should be able to edit
                 fields:
                   - label: 'TRR Logos'
                     name: 'trr-logos'
-                    widget: 'list'
+                    widget: 'object'
                     fields:
-                      - label: 'Name'
-                        name: 'name'
-                        widget: 'string'
-                      - label: 'Image'
-                        name: 'url'
+                      - label: 'White'
+                        name: 'white'
+                        widget: 'image'
+                        allow_multiple: false
+                      - label: 'Black'
+                        name: 'black'
                         widget: 'image'
                         allow_multiple: false
           - label: 'Intro'
