@@ -4,3 +4,15 @@
 
 // @import "minima";
 @import 'custom';
+
+
+body * {
+  // font-family: "Scto-Grotesk" !important;
+}
+
+@font-face {
+  font-family: 'Scto-Grotesk';
+  src: url('{{site.url}}/{{site.fonts_path}}/Scto-Grotesk-B-Thin.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
