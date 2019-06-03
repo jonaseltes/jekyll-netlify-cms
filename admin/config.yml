@@ -61,17 +61,17 @@ collections: # A list of collections the CMS should be able to edit
               - label: 'Assets'
                 name: 'assets'
                 widget: 'object'
-                 - fields:
-                    - label: 'TRR Logos'
-                      name: 'trr-logos'
-                      widget: 'list'
-                        - label: 'Name'
-                          name: 'name'
-                          widget: 'string'
-                        - label: 'Image'
-                          name: 'url'
-                          widget: 'image'
-                          allow_multiple: false
+                - fields:
+                  - label: 'TRR Logos'
+                    name: 'trr-logos'
+                    widget: 'list'
+                      - label: 'Name'
+                        name: 'name'
+                        widget: 'string'
+                      - label: 'Image'
+                        name: 'url'
+                        widget: 'image'
+                        allow_multiple: false
           - label: 'Intro'
             name: 'intro'
             widget: 'object'
