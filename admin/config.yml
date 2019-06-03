@@ -70,10 +70,12 @@ collections: # A list of collections the CMS should be able to edit
                         name: 'white'
                         widget: 'image'
                         allow_multiple: false
+                        required: false
                       - label: 'Black'
                         name: 'black'
                         widget: 'image'
                         allow_multiple: false
+                        required: false
           - label: 'Intro'
             name: 'intro'
             widget: 'object'
