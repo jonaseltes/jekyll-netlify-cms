@@ -4,6 +4,8 @@
   console.log = function() {}
 {% endif %}
 
+//test
+
 console.log("main.js");
 
 $( document ).ready(function() {
@@ -33,5 +35,5 @@ $( document ).ready(function() {
       counter = (counter + 1) % phrases.length
     }
 
-    setTimeout(next, 2500)
+    setTimeout(next, 2000)
 });
