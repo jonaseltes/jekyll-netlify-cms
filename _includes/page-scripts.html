@@ -2,7 +2,7 @@
   <script src="{{script}}" type="text/javascript"></script>
 {%- endfor -%}
 
-{% if page.animation %}
+{% if layout.scripts.animation %}
   {%- for script in site.animation_scripts -%}
     <script src="{{script}}" type="text/javascript"></script>
   {%- endfor -%}
