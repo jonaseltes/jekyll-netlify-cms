@@ -46,23 +46,25 @@ function createMesh(){
   var material  = new THREE.MeshPhongMaterial({
     shininess: 100,
     specular: 0xffffff,
-    // transparent: true,
+    transparent: true,
     // shading: THREE.FlatShading,
     side: THREE.DoubleSide,
-    alpha: true,
+    // alpha: true,
     // opacity: 0.6,
     clearCoat: 0,
     reflectivity: 1,
-    metalness: 1,
-    roughness: 8,
-    // emissive: 0x222222,
-    color: 0xbbacf2
+    metalness: 0,
+    roughness: 0.3,
+    // emissive: 0xffffff,
+    // color: 0xffffff
     // color: 0x4e4279
     // color: 0x694dcb
-    // color: 0xffffff
+    color: 0xb3a4ed
   });
   window.earthMesh = new THREE.Mesh(geometry, material);
-  // material.map = textureLoader.load('{{site.image_path}}/gold.jpg');
+  // material.map = textureLoader.load('{{site.image_path}}/trr-environment.png');
+  // material.emissiveMap = textureLoader.load('{{site.image_path}}/trr-emissive.jpg');
+  material.needsUpdate = true;
   // material.bumpMap = textureLoader.load('{{site.image_path}}/gold_bump.jpg');
   material.bumpScale = 0.01;
   scene.add(earthMesh);

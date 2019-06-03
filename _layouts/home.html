@@ -5,9 +5,10 @@ scripts:
   body:
     cdn:
     assets:
-      - main.js
       - netlify.js
       - canvas.js
+      - scramble.js
+      - main.js
   head:
     cdn:
       - '//identity.netlify.com/v1/netlify-identity-widget.js'
@@ -37,8 +38,9 @@ footer: light
           <span class="text-uppercase d-none">Loading...</span>
         </div>
         <div id="landing-text" class="pointer-e-all">
-          <div id="landing-title" class="display-1">{{site.data.content.intro.headline}}</div>
-          <div id="landing-year" class="text-black-50 mt-8 d-none">{{site.data.content.site.tagline | markdownify}}</div>
+          <!-- <div id="landing-title" class="display-1">{{site.data.content.intro.headline}}</div> -->
+          <div id="landing-title" class="display-1">Will you help us shape the future of <br /><span id="work">work</span>?</div>
+          <!-- <div id="landing-year" class="text-black-50 mt-8 d-none">{{site.data.content.site.tagline | markdownify}}</div> -->
         </div>
       </div>
     </div>

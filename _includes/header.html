@@ -8,8 +8,13 @@
     {%- if page_paths -%}
 
       <nav class="navbar navbar-light navbar-expand-sm main-nav row align-items-center">
+            <div class="col text-center">
+              <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+              <div>
+                <!-- <img width="50" src="{{site.data.content.site.assets.trr-logos.white}}" /> -->
+              </div>
+            </div>
 
-            <a class="site-title col text-center" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
             <!-- <button class="navbar-toggler col text-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
