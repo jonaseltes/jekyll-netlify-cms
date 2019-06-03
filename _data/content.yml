@@ -1,4 +1,7 @@
 site:
+  assets:
+    trr-logos:
+      white: /assets/media/uploads/trr_logo_vit.svg
   tagline: >-
     An initiative to collectively shape the future of work by
     [**TRR**](https://www.trr.se/) & [**Another
@@ -6,9 +9,16 @@ site:
   title: The Swedish Work Lab
 intro:
   abstract: >-
-    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-    ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+    Our 21st century work lives are constantly evolving. They’re shaped by
+    technological breakthroughs, new economic models, and evolving educational
+    formats. Legislation catches up to ideas and re-frames how businesses can be
+    run. There’s an increased expectancy on companies’ moral compass, and
+    matters of ethics and sustainability may determine both where individuals
+    choose to work as well as where customers choose to engage.
 
 
-    Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui.
+    The Swedish Work Lab is a platform to explore what all these parameters mean
+    for employees and employers in both the near and distant future. What, and
+    who, is required to make an increasingly fluid and, to a degree,
+    unpredictable work life run/function smoothly?
   headline: Will you help us shape the future of work?
