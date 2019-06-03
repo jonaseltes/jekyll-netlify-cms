@@ -9,25 +9,25 @@ url: >-
   //script.google.com/macros/s/AKfycbwXvhNxU0PEUwSqfuyiWHFQYEO_gvjNIZELalBjkHtIYYa_zFuG/exec
 inputs:
   details:
-    - field-name: entry.1702488782
+    - name: entry.1702488782
       label: Name
       type: text
-    - field-name: entry.725733046
+    - name: entry.725733046
       label: Role (at TRR)
       type: text
-    - field-name: entry.1229249418
+    - name: entry.1229249418
       label: Email
       type: text
-    - field-name: entry.1478548788
+    - name: entry.1478548788
       label: Phone
       type: text
-    - field-name: entry.38474988
+    - name: entry.38474988
       label: Image
       type: file
-    - field-name: entry.352770521
+    - name: entry.352770521
       label: Description
       type: textarea
-    - field-name: entry.1064293053
+    - name: entry.1064293053
       label: Food
       type: text
 submission: 'Thank you, you will hear back from us as soon as possible!'
