@@ -46,15 +46,20 @@ function createMesh(){
   var material  = new THREE.MeshPhongMaterial({
     shininess: 100,
     specular: 0xffffff,
-    // side: THREE.DoubleSide,
+    // transparent: true,
+    // shading: THREE.FlatShading,
+    side: THREE.DoubleSide,
     alpha: true,
-    // opacity: 0.5,
+    // opacity: 0.6,
     clearCoat: 0,
     reflectivity: 1,
     metalness: 1,
     roughness: 8,
     // emissive: 0x222222,
-    color: 0xffffff
+    color: 0xbbacf2
+    // color: 0x4e4279
+    // color: 0x694dcb
+    // color: 0xffffff
   });
   window.earthMesh = new THREE.Mesh(geometry, material);
   // material.map = textureLoader.load('{{site.image_path}}/gold.jpg');
@@ -292,7 +297,7 @@ function animate() {
   var peak = 180;
 
   // k = (noise.perlin2(time/100, time)) * 2 + 2.2;
-  k = 1.3;
+  k = 1.2;
   // k += 0.001;
   // k = (mouse.x + 1) * 2;
   for (var i = 0; i < earthMesh.geometry.vertices.length; i++) {
@@ -303,6 +308,7 @@ function animate() {
   earthMesh.geometry.verticesNeedUpdate = true; //must be set or vertices will not update
   earthMesh.position.x = noise.perlin2(time, time/4000) * 0.5;
   earthMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
+  earthMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
 
 	requestAnimationFrame( animate );
   // console.log("time: " ,time);

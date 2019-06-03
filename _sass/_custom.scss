@@ -166,11 +166,11 @@ body {
   // text-transform: uppercase;
   // height: 5.5rem;
   @include media-breakpoint-down(md) {
-    font-size: $font-size-md;
+    font-size: $font-size-lg;
   }
 
   @include media-breakpoint-down(sm) {
-    font-size: $font-size-sm;
+    font-size: $font-size-md;
   }
   padding: $navbar-padding-y 0;
 }
@@ -372,7 +372,7 @@ p {
 
 .alpha-overlay-b {
   background: rgba($black, 0.4);
-  z-index: -1;
+  z-index: 1;
 }
 
 .alpha-overlay-w {
