@@ -94,7 +94,7 @@ collections: # A list of collections the CMS should be able to edit
             name: "trr"
             widget: "object"
             hint: "Content related to TRR"
-            field:
+            fields:
               - label: "About TRR"
                 name: "about"
                 widget: "markdown"
