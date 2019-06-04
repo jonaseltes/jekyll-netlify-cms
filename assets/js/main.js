@@ -23,17 +23,17 @@ $( document ).ready(function() {
   // console.log( "ready!" );
   const phrases = [
     'Work',
-    'Influencer',
     'Work',
     'Work',
-    'AI',
     'Work',
     'Work',
-    'Sustainability',
     'Work',
-    'Economy',
     'Work',
-    'Labour'
+    'Work',
+    'Work',
+    'Work',
+    'Work',
+    'Work'
   ]
 
   const el = document.querySelector('#work');

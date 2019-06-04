@@ -285,18 +285,17 @@ function checkRotation(){
 
 
 
-
+var time;
 
 function animate() {
 
 
-  var time = performance.now() * 0.0004;
+  time = performance.now() * 0.0004;
 
   // objectWrapper.rotation.x += .001;
   objectWrapper.rotation.y += .002;
   earthMesh.rotation.y = time * .1;
   earthMesh.rotation.z = time * .03;
-  var peak = 180;
 
   // k = (noise.perlin2(time/100, time)) * 2 + 2.2;
   k = 1.2;
