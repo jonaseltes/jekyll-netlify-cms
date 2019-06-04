@@ -21,14 +21,14 @@ html, body {
 }
 
 body {
-  font-size: $font-size-xl;
+  font-size: $font-size-lg;
   color: $black;
   @include media-breakpoint-down(md) {
-    font-size: $font-size-lg;
+    font-size: $font-size-xl;
   }
 
   @include media-breakpoint-down(sm) {
-    font-size: $font-size-md;
+    font-size: $font-size-sm;
   }
   // letter-spacing: .1rem;
 }
