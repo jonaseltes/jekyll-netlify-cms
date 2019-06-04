@@ -90,6 +90,21 @@ collections: # A list of collections the CMS should be able to edit
                 buttons:
                   - "italic"
                   - "link"
+          - label: 'TRR'
+            name: "trr"
+            widget: "object"
+            hint: "Content related to TRR"
+            field:
+              - label: "About TRR"
+                name: "about"
+                widget: "markdown"
+                buttons:
+                  - "italic"
+                  - "bold"
+                  - "link"
+              - label: "Website"
+                name: 'url'
+                widget: 'string'
       - label: 'Event info'
         name: 'info'
         file: '_data/info.yml'
