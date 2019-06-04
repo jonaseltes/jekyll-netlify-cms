@@ -130,6 +130,10 @@ collections: # A list of collections the CMS should be able to edit
         name: 'inputs'
         file: '_data/application-form.yml'
         fields:
+          - label: "Headline"
+            name: "headline"
+            widget: "text"
+            hint: "short text showed above the form"
           - label: "Description"
             name: "description"
             widget: "markdown"
