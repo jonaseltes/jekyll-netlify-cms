@@ -1,10 +1,15 @@
+text: |-
+  Practical information
+
+  When: September 5th, 2019
+  Where: Blique by Nobis
 location:
+  city: Stockholm
+  country: Sweden
+  postal_code: '12345'
+  street_address: Vestibulum Bibendum
   venue:
-    name: "Blique by Nobis"
-    url: "www.example.com"
-  street_address: "Vestibulum Bibendum"
-  postal_code: "12345"
-  city: "Stockholm"
-  country: "Sweden"
-time: "Thu Sep 5 2019 01:00:00 GMT+0100"
-contact: "contact@swedishworklab.com"
+    name: Blique by Nobis
+    url: www.example.com
+time: 'Thu Sep 5 2019 01:00:00 GMT+0100'
+contact: contact@swedishworklab.com
