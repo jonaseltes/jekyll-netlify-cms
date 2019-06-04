@@ -26,6 +26,12 @@ h6, .h6 { font-size: $h6-font-size; }
 }
 
 // Type display classes
+.display-0 {
+  font-size: $display0-size;
+  font-weight: $display0-weight;
+  line-height: $display-line-height;
+}
+
 .display-1 {
   font-size: $display1-size;
   font-weight: $display1-weight;
