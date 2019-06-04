@@ -80,7 +80,7 @@
                               {%- if item.type == 'file' -%}
                                 <!-- <input class="form-control" type="text" value="" name="{{item.field-name}}" /> -->
                                 <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.name}}" />
-                                <img id="upload-preview" class="" src="" height="200" alt="">
+                                <img id="upload-preview" class="mt-3" src="" height="200" alt="">
                               {%- endif -%}
                               {%- if item.type == 'textarea' -%}
                                 <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100"></textarea>

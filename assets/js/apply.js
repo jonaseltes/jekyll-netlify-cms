@@ -70,6 +70,10 @@ $(function() {
     // });
     //
 
+    $('#application-form-wrapper').fadeOut(500, function(){
+      $('#application-form-wrapper').removeClass("text-left").html('<p">Sending form data...</p>').fadeIn(500);
+    });
+
     $.ajax({
         url: url,
         type: "post",
@@ -80,7 +84,7 @@ $(function() {
                 {
                   console.log("succes: " ,msg)
                   $('#application-form-wrapper').fadeOut(500, function(){
-                    $('#application-form-wrapper').html('<p class="text-xl">'+confirmation+'</p>').fadeIn(500);
+                    $('#application-form-wrapper').html('<p">'+confirmation+'</p>').fadeIn(500);
                   });
                 },
         error: function (err)
