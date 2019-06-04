@@ -361,6 +361,49 @@ p {
 }
 
 
+//forms
+
+.form-control {
+  border-radius: 0 !important;
+  background: transparent;
+  padding: $nav-link-padding-y 1rem;
+  font-size: $font-size-lg;
+  border-width: 2px;
+}
+
+.form-control:focus {
+  background: transparent;
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+  border-color: $white;
+}
+
+button, html [type="button"], [type="reset"], [type="submit"] {
+  background: transparent;
+  padding: $nav-link-padding-y 1rem;
+  font-size: $font-size-xl;
+  color: $white;
+  border-color: $white;
+  border-width: 2px;
+}
+
+//borders
+
+.border-1 {
+    border-width:1px !important;
+}
+
+.border-2 {
+    border-width:2px !important;
+}
+
+.border-3 {
+    border-width:3px !important;
+}
+
+
+
 //interaction
 .no-pointer-e {
   pointer-events: none !important;
