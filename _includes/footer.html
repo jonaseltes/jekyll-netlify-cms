@@ -25,15 +25,19 @@
         </div>
       </div> -->
 
-      {%- assign default_paths = site.pages | map: "path" -%}
+      <div class="col-md-6 text-center">
+        <div class="mb-3">
+          <a href="https://www.trr.se/" target="_blank"><img width="100" src="{{site.data.content.site.assets.trr-logos.white}}" /></a>
+        </div>
+      </div>
+
+      <!-- {%- assign default_paths = site.pages | map: "path" -%}
       {%- assign page_paths = site.header_pages | default: default_paths -%}
-      <!-- <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a> -->
 
       {%- if page_paths -%}
 
         <nav class="navbar navbar-light navbar-expand-sm main-nav row align-items-center">
 
-              <!-- <a class="site-title col-6" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a> -->
               <button class="navbar-toggler col text-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -51,7 +55,7 @@
 
         </nav>
 
-      {%- endif -%}
+      {%- endif -%} -->
 
 
 

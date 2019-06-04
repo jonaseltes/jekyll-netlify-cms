@@ -21,14 +21,14 @@ html, body {
 }
 
 body {
-  font-size: $font-size-lg;
+  font-size: $font-size-xl;
   color: $black;
   @include media-breakpoint-down(md) {
-    font-size: $font-size-md;
+    font-size: $font-size-lg;
   }
 
   @include media-breakpoint-down(sm) {
-    font-size: $font-size-sm;
+    font-size: $font-size-md;
   }
   // letter-spacing: .1rem;
 }
@@ -53,10 +53,15 @@ body * {
   // overflow: hidden;
 }
 
+.overflow-auto {
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 .content-wrapper {
   position: absolute;
   // padding: 5.6rem !important;
-  overflow: scroll;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -143,22 +148,23 @@ body * {
 .site-title {
   color: $black;
   font-weight: $font-weight-normal;
+  text-decoration: underline;
   // text-transform: uppercase;
 }
 
 .front-title {
-  max-width: 45%;
+  max-width: 80% !important;
   top: -1rem;
   position: relative;
   color: $black;
   z-index: 3;
 
   @include media-breakpoint-down(lg) {
-    max-width: 50%;
+    // max-width: 50%;
   }
 
   @include media-breakpoint-down(sm) {
-    max-width: 60%;
+    // max-width: 60%;
   }
 
 }
@@ -245,7 +251,7 @@ footer > div {
 
 p {
   // font-size: $font-size-lg;
-  margin-bottom: 2rem;
+  // margin-bottom: 2rem;
   // @include media-breakpoint-down(md) {
   //   font-size: $font-size-md;
   // }

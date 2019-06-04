@@ -4,20 +4,56 @@
   {%- include head.html -%}
 
   <body>
-    <div class="wrapper">
+    <div class="wrapper position-fixed overflow-hidden">
 
       <div class="header-wrapper w-100 fixed-top">
         {%- include header.html -%}
       </div>
 
-      <div class="content-wrapper d-flex flex-column w-100 h-100">
+      <div class="content-wrapper d-flex flex-column w-100 h-100 overflow-hidden">
         <div class="header-wrapper w-100 invisible">
           {%- include header.html -%}
         </div>
         <!-- <main class="page-content" aria-label="Content"> -->
-        <div class="content-container flex-grow-1">
+        <div id="" class="content-container overflow-hidden flex-grow-1">
             {{ content }}
         </div>
+
+        <!-- scroll column -->
+        <div id="scroll-col" class="container-fluid w-50 h-100 position-absolute overflow-auto">
+          <div class="row h-100 ">
+            <div class="col-2 d-none">
+
+            </div>
+            <div class="col text-center overflow-auto px-5">
+
+              <div class="row py-10">
+                <div class="col">
+                  <div class="w-75 m-auto">
+                    {{site.data.content.intro.abstract | markdownify}}
+                    ↓
+                  </div>
+                </div>
+              </div>
+
+              <div class="row border-top border-white py-10">
+                <div class="col">
+                  <div class="w-75 m-auto">
+                    {{site.data.content.intro.abstract | markdownify}}
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+            <div class="col-2 d-none">
+
+            </div>
+          </div>
+        </div>
+
+
         <!-- </main> -->
         <div class="footer-wrapper w-100 invisible">
           {%- include footer.html -%}

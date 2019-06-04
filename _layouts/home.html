@@ -4,6 +4,7 @@ scripts:
   animation: true
   body:
     cdn:
+      - //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js
     assets:
       - netlify.js
       - canvas.js
@@ -15,9 +16,14 @@ scripts:
     assets:
 css:
     - assets/css/index.css
+    - //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css
+    - //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css
+
 menu: light
 footer: light
 ---
+
+
 
 <div class="container-fluid h-100 position-absolute">
   <div class="row h-100">
@@ -28,21 +34,29 @@ footer: light
   </div>
 </div>
 
-    <div class="alpha-overlay-b fixed-top w-100 h-100"></div>
+<div class="alpha-overlay-b fixed-top w-100 h-100"></div>
 
-<div class="container-fluid h-100 position-absolute no-pointer-e no-pointer-e-all">
-  <div class="row h-100 d-flex align-items-center">
-    <div class="h-100 w-100 position-relative text-center d-flex">
-      <div class="d-inline-block m-auto front-title text-black">
-        <div id="loading-text">
-          <span class="text-uppercase d-none">Loading...</span>
-        </div>
-        <div id="landing-text" class="pointer-e-all">
-          <!-- <div id="landing-title" class="display-1">{{site.data.content.intro.headline}}</div> -->
-          <div id="landing-title" class="display-1">Will you help us shape the future of <br /><span id="work">work</span>?</div>
-          <!-- <div id="landing-year" class="text-black-50 mt-8 d-none">{{site.data.content.site.tagline | markdownify}}</div> -->
+
+
+<div id="info-container" class="container-fluid h-100 position-absolute overflow-hidden">
+  <div class="row h-100 position-relative d-flex ">
+
+    <div class="col-6 h-100 border-right border-white text-center d-flex align-items-center  position-absolute overflow-hidden">
+      <div class="row h-100 d-flex align-items-center">
+        <div class="col">
+          <div class="d-inline-block m-auto front-title text-black">
+            <div id="loading-text">
+              <span class="text-uppercase d-none">Loading...</span>
+            </div>
+            <div id="landing-text" class="pointer-e-all">
+              <!-- <div id="landing-title" class="display-1">{{site.data.content.intro.headline}}</div> -->
+              <div id="landing-title" class="display-1">Will you help us shape the future of <br /><span id="work">work</span>?</div>
+              <!-- <div id="landing-year" class="text-black-50 mt-8 d-none">{{site.data.content.site.tagline | markdownify}}</div> -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
