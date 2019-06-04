@@ -139,6 +139,15 @@ collections: # A list of collections the CMS should be able to edit
               - label: "Country"
                 name: "country"
                 widget: "string"
+          - label: 'Images'
+            name: "images"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                required: false
           - label: 'When'
             name: 'time'
             widget: "datetime"
