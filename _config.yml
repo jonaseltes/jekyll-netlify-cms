@@ -70,10 +70,14 @@ animation_scripts:
   - /assets/js/TrackballControls.js
   - /assets/js/OBJLoader.js
   - /assets/js/perlin.js
+  - /assets/js/RectAreaLightUniformsLib.js
+  - /assets/js/CCapture.all.min.js
 
 
 plugins:
   - jekyll-target-blank
+
+# host: 0.0.0.0
 
 
 # Exclude from processing.
