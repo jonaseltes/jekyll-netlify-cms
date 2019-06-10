@@ -262,6 +262,10 @@ p {
   // }
 }
 
+p > img {
+  width: 100%;
+}
+
 .page-title {
   color: $black;
   position: relative;
