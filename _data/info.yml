@@ -1,15 +1,20 @@
-text: |-
-  Practical information
+text: >-
+  **When and Where?**
 
-  When: September 5th, 2019
-  Where: Blique by Nobis
+
+  September 5th, 2019, [Blique by
+  Nobis](https://www.bliquebynobis.se/event-konferens)
+
+
+  ![Blique By Nobis](/assets/media/uploads/bliquebynobissmall.jpg "Blique By
+  Nobis")
 location:
   city: Stockholm
   country: Sweden
-  postal_code: '12345'
-  street_address: Vestibulum Bibendum
+  postal_code: 113 30
+  street_address: Gävlegatan 18
   venue:
     name: Blique by Nobis
-    url: www.example.com
+    url: 'https://www.bliquebynobis.se/event-konferens'
 time: 'Thu Sep 5 2019 01:00:00 GMT+0100'
 contact: contact@swedishworklab.com
