@@ -39,10 +39,10 @@ footer: light
 
 
 
-<div id="info-container" class="container-fluid h-100 position-absolute overflow-hidden">
+<div id="info-container" class="container-fluid position-absolute h-100">
   <div class="row h-100 position-relative d-flex ">
 
-    <div class="col-6 h-100 border-right border-white text-center d-flex align-items-center  position-absolute overflow-hidden">
+    <div class="col-6 h-100 border-right border-white text-center d-flex align-items-center ">
       <div class="row h-100 d-flex m-auto text-center align-items-center">
         <div class="col">
           <div class="d-inline-block m-auto front-title text-black">
@@ -61,5 +61,112 @@ footer: light
       </div>
     </div>
 
+    <div class="col-6 h-100 text-center d-flex align-items-center">
+      <div class="w-75 m-auto">
+        <div id="" class="display-3 mb-8">Will you help us prototype the future of work?</div>
+        <div class="display-3 pb-5">
+          ↓
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
+
+  <!-- scroll column -->
+    <div class="row h-100 ">
+      <div class="col-2 d-none">
+
+      </div>
+
+
+      <div class="col text-center pt-10 overflow-auto px-5">
+
+
+
+        <div class="row border-top border-white py-10">
+          <div class="col">
+            <div class="w-75 m-auto text-xl">
+              {{site.data.content.intro.abstract | markdownify}}
+              ↓
+            </div>
+          </div>
+        </div>
+
+        <div class="row border-top border-white py-10">
+          <div class="col">
+            <div class="w-75 m-auto">
+              {{site.data.application-form.description | markdownify}}
+              ↓
+            </div>
+          </div>
+        </div>
+
+        <div class="row border-top border-white py-10">
+          <div class="col text-cent">
+            <div class="w-75 m-auto">
+              <div class="mb-8 text-center">
+                {{site.data.application-form.headline}}
+              </div>
+
+              <div id="application-form-wrapper" class="text-left pb-10">
+                {% assign form = site.data.application-form %}
+                <form id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
+
+                  {% assign inputs = site.data.application-form.inputs.details %}
+                    {% for item in inputs %}
+                      <div class="form-group mb-6">
+                        <div class="mb-2">
+                          {{item.label}}:
+                        </div>
+                        {%- if item.type == 'text' -%}
+                          <input class="form-control" type="text" value="" name="{{item.name}}" />
+                        {%- endif -%}
+                        {%- if item.type == 'file' -%}
+                          <!-- <input class="form-control" type="text" value="" name="{{item.field-name}}" /> -->
+                          <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.name}}" />
+                          <img id="upload-preview" class="mt-3" src="" height="200" alt="">
+                        {%- endif -%}
+                        {%- if item.type == 'textarea' -%}
+                          <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100"></textarea>
+                        {%- endif -%}
+                      </div>
+                    {% endfor %}
+                    <input type="submit" name="" value="Submit">
+                </form>
+              </div>
+              ↓
+            </div>
+          </div>
+        </div>
+
+        <div class="row border-top border-white py-10">
+          <div class="col">
+            <div class="w-75 m-auto">
+              {{site.data.info.text | markdownify}}
+              ↓
+            </div>
+          </div>
+        </div>
+
+        <div class="row border-top border-white py-10">
+          <div class="col">
+            <div class="w-75 m-auto">
+              {{site.data.content.trr.about | markdownify}}
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-2 d-none">
+
+      </div>
+    </div>
+
+
+
+
 </div>

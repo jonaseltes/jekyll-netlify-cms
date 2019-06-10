@@ -61,7 +61,8 @@ body * {
 .content-wrapper {
   position: absolute;
   // padding: 5.6rem !important;
-  overflow: hidden;
+  // overflow: hidden;
+  overflow: scroll;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -461,7 +462,7 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 //other
 
 .alpha-overlay-b {
-  background: rgba($black, 0.4);
+  background: rgba($black, 0.2);
   z-index: 1;
 }
 
