@@ -35,7 +35,7 @@ footer: light
   </div>
 </div>
 
-<div class="alpha-overlay-b fixed-top w-100 h-100"></div>
+<div class="alpha-overlay-b d-none fixed-top w-100 h-100"></div>
 
 
 
@@ -88,8 +88,8 @@ footer: light
       <div class="col pt-10 overflow-auto px-5">
 
         <div class="row border-white py-10">
-          <div class="col-md text-left">
-            <div class="w-75">
+          <div class="col-md text-center">
+            <div class="w-75 m-auto">
               <div id="" class="display-2 mb-8">Will you help us prototype the future of work?</div>
               <div class="d-none display-3 pb-5">
                 ↓
@@ -98,7 +98,7 @@ footer: light
             </div>
           </div>
           <div class="col d-flex text-left">
-            <div class="m-auto text-xl">
+            <div class="m-auto text-lg">
               {{site.data.content.intro.abstract | markdownify}}
             </div>
           </div>
@@ -112,18 +112,20 @@ footer: light
             <div class="border-top w-100 border-white mb-10"></div>
             <div class="row">
 
-              <div class="col-md text-left text-xl">
-                <div class="row">
-                  <div class="col">
-                    <div class="m-auto">
-                      {{site.data.application-form.description | markdownify}}
+              <div class="col-md text-left">
+                <div class="w-75">
+                  <div class="row">
+                    <div class="col">
+                      <div class="m-auto">
+                        {{site.data.application-form.description | markdownify}}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <div class="">
-                      {{site.data.info.text | markdownify}}
+                  <div class="row">
+                    <div class="col">
+                      <div class="">
+                        {{site.data.info.text | markdownify}}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -131,7 +133,7 @@ footer: light
 
               <div class="col text-left">
                 <div class="">
-                  <div class="mb-8 text-xl">
+                  <div class="mb-8">
                     <b>{{site.data.application-form.headline}}</b>
                   </div>
 

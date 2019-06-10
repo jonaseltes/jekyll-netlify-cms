@@ -43,7 +43,7 @@ function createMesh(){
 
   var textureLoader = new THREE.TextureLoader();
   var geometry   = new THREE.SphereGeometry(1, 200, 200);
-  var material  = new THREE.MeshPhongMaterial({
+  var material  = new THREE.MeshLambertMaterial({
     shininess: 100,
     specular: 0xffffff,
     transparent: true,
@@ -54,12 +54,12 @@ function createMesh(){
     clearCoat: 0,
     reflectivity: 1,
     metalness: 0,
-    roughness: 0.3,
+    roughness: 0.8,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
     // color: 0x694dcb
-    color: 0xb3a4ed
+    color: 0x6c5ba5
   });
   window.earthMesh = new THREE.Mesh(geometry, material);
   // material.map = textureLoader.load('{{site.image_path}}/trr-environment.png');
