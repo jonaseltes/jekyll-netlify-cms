@@ -1,19 +1,25 @@
-headline: 'Apply to take part in the hackathon:'
+headline: 'Join '
 description: >-
-  Our first step towards the future...
+  **Our first step towards the future...**
 
 
   On September 5th 2019 we will bring perspectives from multiple disciplines
   together for a one day hackathon, to explore and solve challenges facing the
   future workplace. We will bring together bright minds with first-hand
   experience of facilitating a smooth work life for others with experts from
-  industries and areas either affecting or being affected by the changes we see.
+  industries and areas either affecting or being affected by the changes we see
+  throughout society. 
+
+
+  The ideas and prototypes will be communicated and shared with the public after
+  the hackathon, and winning ideas will be awarded the opportunity to be part of
+  TRR Labs’ Pilot program.
 form-id: application_form
 url: >-
   //script.google.com/macros/s/AKfycbwXvhNxU0PEUwSqfuyiWHFQYEO_gvjNIZELalBjkHtIYYa_zFuG/exec
 inputs:
   details:
-    - label: Name
+    - label: Full Name
       name: name
       type: text
     - label: Job Title
@@ -28,13 +34,13 @@ inputs:
     - label: Phone
       name: phone
       type: text
-    - label: Image
+    - label: Image (min XXX pixels)
       name: image
       type: file
-    - label: Description
+    - label: Why would you like to be a part of the hackathon? (max 300 chars)
       name: description
       type: textarea
-    - label: Food
+    - label: 'Any food allergies/preferences:'
       name: food
       type: text
 submission: 'Thank you, you will hear back from us as soon as possible!'
