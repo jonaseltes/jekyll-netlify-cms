@@ -16,8 +16,11 @@ inputs:
     - label: Name
       name: name
       type: text
-    - label: Role (at TRR)
+    - label: Job Title
       name: role
+      type: text
+    - label: Company
+      name: company
       type: text
     - label: Email
       name: email
