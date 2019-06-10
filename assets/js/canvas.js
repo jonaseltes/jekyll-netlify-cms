@@ -96,29 +96,6 @@ function createMesh(){
 
 
 
-function load(){
-
-    var textureLoader = new THREE.TextureLoader();
-    var map = textureLoader.load(
-      {{site.image_path}}+image,
-      function(texture){
-        numberOfLoadedTextures++;
-        if (numberOfLoadedTextures == images.length) {
-          console.log("done loading images!");
-          $(canvas3D).delay(1000).fadeIn(500, function(){
-            $("#landing-title, #svg-container").fadeIn(500, function(){
-              $("#credits").delay(200).fadeIn(500);
-            });
-          });
-          // $('#loading-text').fadeOut(300, function(){
-          //   $('#landing-text').fadeIn(300);
-          // });
-        }
-        createMesh(texture);
-      }
-    );
-
-}
 
 $(document).ready(function(){
 	$('.middle').mousedown(function(e){
