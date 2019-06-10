@@ -42,7 +42,9 @@ $( document ).ready(function() {
   let counter = 0
   const next = () => {
     fx.setText(phrases[counter]).then(() => {
-      setTimeout(next, 1600);
+      var t = Math.floor(Math.random() * 1500) + 500;
+      console.log("t: " ,t);
+      setTimeout(next, t);
       // setTimeout(function(){
       //   window.location.href = "https://www.icplab.org/issue_01.html";
       // }, 1200);
