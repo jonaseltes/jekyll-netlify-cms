@@ -209,6 +209,13 @@ collections: # A list of collections the CMS should be able to edit
                       - { label: "Short text", value: "text" }
                       - { label: "Long text", value: "textarea" }
                       - { label: "File/Image", value: "file" }
+          - label: "Terms & Conditions"
+            name: 'terms'
+            widget: "markdown"
+            buttons:
+              - "italic"
+              - "link"
+              - "bold"
           - label: "Submission message"
             name: "submission"
             widget: "text"
