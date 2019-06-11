@@ -471,9 +471,28 @@ select:-webkit-autofill:focus {
 }
 
 
-button, html [type="button"], [type="reset"], [type="submit"], input:matches([type="button"], [type="submit"], [type="reset"]) {
+.button {
   -webkit-appearance: none !important;
-  background: transparent;
+  background: transparent !important;
+  background-color: none !important;
+  padding: $nav-link-padding-y 1rem;
+  // font-size: $font-size-xl;
+  color: $white;
+  outline: none !important;
+  border-image: none !important;
+  border-style: solid !important;
+  border-color: $white !important;
+  border-width: 2px !important;
+}
+
+button, html [type="button"], [type="reset"], [type="submit"], input:matches([type="button"], [type="submit"], [type="reset"]) {
+  @extend .button;
+}
+
+[type="submit"] {
+  -webkit-appearance: none !important;
+  background: transparent !important;
+  background-color: none !important;
   padding: $nav-link-padding-y 1rem;
   // font-size: $font-size-xl;
   color: $white;
@@ -506,6 +525,7 @@ button, html [type="button"], [type="reset"], [type="submit"], input:matches([ty
 // divider
 
 .divider-v {
+
   // margin-bottom: map-get($spacers, 9); //5rem
   //
   // @include media-breakpoint-down(lg) {
