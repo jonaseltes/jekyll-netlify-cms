@@ -40,10 +40,12 @@ inputs:
     - label: Phone
       name: phone
       type: text
-    - label: Image (min XXX pixels)
+    - label: Profile Picture (min XXX pixels)
       name: image
       type: file
-    - label: Why would you like to be a part of the hackathon? (max 300 chars)
+    - label: >-
+        Tell us a little about yourself and why you would like to be a part of
+        the hackathon? (max 300 chars)
       name: description
       type: textarea
     - label: Any food allergies/preferences
