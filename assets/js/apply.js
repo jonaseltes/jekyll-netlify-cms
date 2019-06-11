@@ -36,10 +36,8 @@ $(function() {
   console.log("id: " ,id);
   var form = document.getElementById(id);
   console.log("form: " ,form);
-  var url = "https://script.google.com/macros/s/AKfycbwXvhNxU0PEUwSqfuyiWHFQYEO_gvjNIZELalBjkHtIYYa_zFuG/exec"
-  var urlDev = "https://script.google.com/a/eltes.se/macros/s/AKfycby9LtcPXDd_OxgAhL-gREUYmCiDuIvs3OUNrgzDeS7P/dev"
+  var url = "https://script.google.com/macros/s/AKfycbxiwmQg7mCBecU2IKhaN3bDHs2PaD70-zP19hMZyqnhiWl3cw/exec"
   console.log("url: " ,url);
-  console.log("urlDev: " ,urlDev);
 
   form.onsubmit = function(e) {
     e.preventDefault();
@@ -52,6 +50,9 @@ $(function() {
           value = image;
           // value = src;
         }
+        if (typeof value === 'undefined' || value.length == 0) {
+          value = "Not specified";
+        }
         object[key] = value;
         console.log("value: " ,value);
     });
@@ -62,7 +63,7 @@ $(function() {
     // var serializedData = $("form").serialize();
     // console.log("serializedData:" ,serializedData);
 
-    var testData = {name:"John Doe", role: "ceo"}
+    // var testData = {name:"John Doe", role: "ceo"}
 
 
     // $.post(url, JSON.stringify(testData)).then(res => {
