@@ -58,6 +58,14 @@ collections: # A list of collections the CMS should be able to edit
                   - "italic"
                   - "link"
                   - "bold"
+              - label: 'Footer'
+                name: 'footer'
+                widget: 'markdown'
+                hint: ''
+                buttons:
+                  - "italic"
+                  - "link"
+                  - "bold"
               - label: 'Assets'
                 name: 'assets'
                 widget: 'object'
