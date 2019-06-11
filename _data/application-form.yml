@@ -51,4 +51,28 @@ inputs:
     - label: Any food allergies/preferences
       name: food
       type: text
+terms: >-
+  Your personal information will be handled by [TRR](http://www.trr.se) &
+  [Another Tomorrow](http://www.anothertomorrow.io) (facilitating partner for
+  the Swedish Work Lab). 
+
+
+  We will not share your contact information with any other parties. 
+
+
+  We will contact you only with information regarding the Swedish Work Lab and
+  the hackathon. 
+
+
+  By applying you consent to letting us use your name, your submitted image, and
+  the description of you and why you would like to participate in Swedish Work
+  Lab marketing material as well as participant presentations on this site. We
+  will only use it in this way if you are selected to take part in the
+  hackathon.
+
+
+  Beyond this, your personal information will be maintained in accordance with
+  GDPR and TRR’s standard practices. Read more
+  [here](https://www.trr.se/om-trr/behandling-av-personuppgifter/) about how TRR
+  handles personal information (in Swedish).
 submission: 'Thank you, you will hear back from us as soon as possible!'
