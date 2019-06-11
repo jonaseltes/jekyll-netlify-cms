@@ -17,7 +17,8 @@ function parseImage(input) {
     // const image = data;
     console.log("image: " ,image)
     src = reader.result;
-    $("#upload-preview").attr("src",src);
+    // $("#upload-preview").attr("src",src);
+    $("#upload-preview").html('<img id="" class="mt-3" src="'+src+'" height="200" alt="">');
     console.log("src: " ,src);
     this.value = src;
     console.log("this: " ,this);

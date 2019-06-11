@@ -471,13 +471,21 @@ select:-webkit-autofill:focus {
 }
 
 
-button, html [type="button"], [type="reset"], [type="submit"] {
+button, html [type="button"], [type="reset"], [type="submit"], input:matches([type="button"], [type="submit"], [type="reset"]) {
+  -webkit-appearance: none !important;
   background: transparent;
   padding: $nav-link-padding-y 1rem;
   // font-size: $font-size-xl;
   color: $white;
-  border-color: $white;
-  border-width: 2px;
+  outline: none !important;
+  border-image: none !important;
+  border-style: solid !important;
+  border-color: $white !important;
+  border-width: 2px !important;
+}
+
+[type="submit"], [type="file"] {
+  cursor: pointer;
 }
 
 //borders

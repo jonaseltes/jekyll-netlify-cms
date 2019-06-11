@@ -160,7 +160,8 @@ footer: light
                             {%- if item.type == 'file' -%}
                               <!-- <input class="form-control" type="text" value="" name="{{item.field-name}}" /> -->
                               <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.name}}" required/>
-                              <img id="upload-preview" class="mt-3" src="" height="200" alt="">
+                              <div id="upload-preview">
+                              </div>
                             {%- endif -%}
                             {%- if item.type == 'textarea' -%}
                               <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100" required maxlength="600"></textarea>
@@ -176,7 +177,7 @@ footer: light
                             {{site.data.application-form.terms | markdownify}}
                           </div>
                         </div>
-                        <input type="submit" name="" value="Submit">
+                        <input class="border-2" type="submit" name="" value="Submit">
                     </form>
                   </div>
                 </div>
