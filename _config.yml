@@ -26,26 +26,6 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #header_pages:
 # - about.html
 
-# social links
-twitter_username: jekyllrb
-github_username:  jekyll
-rss: rss
-# dribbble_username: jekyll
-# facebook_username: jekyll
-# flickr_username: jekyll
-# instagram_username: jekyll
-# linkedin_username: jekyll
-# pinterest_username: jekyll
-# youtube_username: jekyll
-# googleplus_username: +jekyll
-
-# Mastodon instances
-# mastodon:
-# - username: jekyll
-#   instance: example.com
-# - username: jekyll2
-#   instance: example.com
-
 
 # Site variables
 image_path: assets/media
@@ -74,6 +54,8 @@ animation_scripts:
 
 plugins:
   - jekyll-target-blank
+
+google_analytics: 'UA-141826971-1'
 
 
 # Exclude from processing.

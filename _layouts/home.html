@@ -163,10 +163,19 @@ footer: light
                               <img id="upload-preview" class="mt-3" src="" height="200" alt="">
                             {%- endif -%}
                             {%- if item.type == 'textarea' -%}
-                              <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100" required></textarea>
+                              <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100" required maxlength="600"></textarea>
                             {%- endif -%}
                           </div>
                         {% endfor %}
+                        <div class="text-md">
+                          <p>By submitting this application you agree to the <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <i>Terms & Conditions</i></a>.</p>
+                        </div>
+                        <div class="collapse" id="collapseExample">
+                          <div class="text-sm">
+                            {{site.data.application-form.terms | markdownify}}
+                          </div>
+                        </div>
                         <input type="submit" name="" value="Submit">
                     </form>
                   </div>
