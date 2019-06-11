@@ -45,7 +45,7 @@ inputs:
       type: file
     - label: >-
         Tell us a little about yourself and why you would like to be a part of
-        the hackathon (max 300 chars)
+        the hackathon (max 600 chars)
       name: description
       type: textarea
     - label: Any food allergies/preferences
@@ -75,4 +75,6 @@ terms: >-
   GDPR and TRR’s standard practices. Read more
   [here](https://www.trr.se/om-trr/behandling-av-personuppgifter/) about how TRR
   handles personal information (in Swedish).
-submission: 'Thank you, you will hear back from us as soon as possible!'
+submission: >-
+  Thank you for your application, you will hear back from us as soon as
+  possible!
