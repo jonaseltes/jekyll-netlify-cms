@@ -43,7 +43,7 @@ $( document ).ready(function() {
   const next = () => {
     fx.setText(phrases[counter]).then(() => {
       var t = Math.floor(Math.random() * 1500) + 500;
-      console.log("t: " ,t);
+      // console.log("t: " ,t);
       setTimeout(next, t);
       // setTimeout(function(){
       //   window.location.href = "https://www.icplab.org/issue_01.html";
