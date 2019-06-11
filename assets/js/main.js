@@ -8,6 +8,8 @@
 
 console.log("main.js");
 
+console.log("jekyll.environment:" ,{{jekyll.environment | jsonify}});
+
 $( document ).ready(function() {
   //
   // $('.slick').slick({
