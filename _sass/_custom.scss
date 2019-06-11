@@ -428,6 +428,11 @@ p > img {
   padding: $nav-link-padding-y 1rem;
   font-size: $font-size-lg;
   border-width: 2px;
+  border-color: $white !important;
+  // -webkit-transition: none !important;
+  // -moz-transition: none !important;
+  // -o-transition: none !important;
+  // transition: none !important;
 
   @include media-breakpoint-down(lg) {
     font-size: $font-size-md;
