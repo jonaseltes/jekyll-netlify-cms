@@ -40,7 +40,7 @@ inputs:
     - label: Phone
       name: phone
       type: text
-    - label: Profile Picture (min XXX pixels)
+    - label: Profile Picture (min 600 px)
       name: image
       type: file
     - label: >-
