@@ -22,6 +22,7 @@ group :jekyll_plugins do
   gem "jekyll-seo-tag", "~> 2.5"
   gem "jekyll-sitemap", "~> 1.2"
   gem 'jekyll-target-blank'
+  gem 'jekyll-minifier'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

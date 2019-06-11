@@ -54,6 +54,7 @@ animation_scripts:
 
 plugins:
   - jekyll-target-blank
+  - jekyll-minifier
 
 google_analytics: 'UA-141826971-1'
 
