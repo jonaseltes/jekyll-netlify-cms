@@ -164,7 +164,7 @@ footer: light
                               </div>
                             {%- endif -%}
                             {%- if item.type == 'textarea' -%}
-                              <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100" required maxlength="600"></textarea>
+                              <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100" maxlength="600" required></textarea>
                             {%- endif -%}
                           </div>
                         {% endfor %}

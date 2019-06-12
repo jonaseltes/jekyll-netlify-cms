@@ -209,6 +209,10 @@ collections: # A list of collections the CMS should be able to edit
                       - { label: "Short text", value: "text" }
                       - { label: "Long text", value: "textarea" }
                       - { label: "File/Image", value: "file" }
+                  - label: "Required"
+                    name: "required"
+                    widget: "boolean"
+                    default: true
           - label: "Terms & Conditions"
             name: 'terms'
             widget: "markdown"

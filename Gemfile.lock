@@ -86,7 +86,7 @@ DEPENDENCIES
   concurrent-ruby (~> 1.1.1)
   jekyll (~> 3.8)
   jekyll-feed (~> 0.11)
-  jekyll-minifier (~> 0.1.9)
+  jekyll-minifier (~> 0.1.10)
   jekyll-seo-tag (~> 2.5)
   jekyll-sitemap (~> 1.2)
   jekyll-target-blank

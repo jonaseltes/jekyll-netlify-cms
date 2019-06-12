@@ -6,9 +6,9 @@ var src;
 var reader;
 
 function parseImage(input) {
-  // image = window.URL.createObjectURL(input.files[0]);
-  console.log("input: " ,input);
-  console.log("image: " ,image);
+  var imageObject = window.URL.createObjectURL(input.files[0]);
+  console.log("input: " ,input.files[0]);
+  console.log("image: " ,imageObject);
 
   reader.addEventListener("load", function (e) {
     console.log("FileReader e: ",e);
