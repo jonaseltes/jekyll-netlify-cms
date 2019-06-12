@@ -27,29 +27,37 @@ inputs:
   details:
     - label: Full Name
       name: name
+      required: true
       type: text
     - label: Job Title
       name: role
+      required: true
       type: text
     - label: Company
       name: company
+      required: true
       type: text
     - label: Email
       name: email
+      required: true
       type: text
     - label: Phone
       name: phone
+      required: true
       type: text
     - label: Profile Picture (min 600 px)
       name: image
+      required: true
       type: file
     - label: >-
         Tell us a little about yourself and why you would like to be a part of
         the hackathon (max 600 chars)
       name: description
+      required: true
       type: textarea
     - label: Any food allergies/preferences
       name: food
+      required: false
       type: text
 terms: >-
   Your personal information will be handled by [TRR](http://www.trr.se) &
