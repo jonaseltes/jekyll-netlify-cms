@@ -155,16 +155,16 @@ footer: light
                               {{item.label}}:
                             </div>
                             {%- if item.type == 'text' -%}
-                              <input class="form-control" type="text" value="" name="{{item.name}}" required/>
+                              <input class="form-control" type="text" value="" name="{{item.name}}" {%- if item.required -%}required{%- endif -%}/>
                             {%- endif -%}
                             {%- if item.type == 'file' -%}
                               <!-- <input class="form-control" type="text" value="" name="{{item.field-name}}" /> -->
-                              <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.name}}" required/>
+                              <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.name}}" {%- if item.required -%}required{%- endif -%}/>
                               <div id="upload-preview">
                               </div>
                             {%- endif -%}
                             {%- if item.type == 'textarea' -%}
-                              <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100" maxlength="600" required></textarea>
+                              <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100" maxlength="600" {%- if item.required -%}required{%- endif -%}></textarea>
                             {%- endif -%}
                           </div>
                         {% endfor %}
