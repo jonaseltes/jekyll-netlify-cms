@@ -4,11 +4,11 @@
 var image;
 var src;
 var reader;
+var OK = true;
+var errormsg = "";
 
 function parseImage(input) {
-  var imageObject = window.URL.createObjectURL(input.files[0]);
   console.log("input: " ,input.files[0]);
-  console.log("image: " ,imageObject);
 
   reader.addEventListener("load", function (e) {
     console.log("FileReader e: ",e);
@@ -17,11 +17,25 @@ function parseImage(input) {
     // const image = data;
     console.log("image: " ,image)
     src = reader.result;
-    // $("#upload-preview").attr("src",src);
-    $("#upload-preview").html('<img id="" class="mt-3" src="'+src+'" height="200" alt="">');
-    console.log("src: " ,src);
-    this.value = src;
+    var imageObject = new Image();
+    imageObject.onload = function () {
+        console.log("image dimensions: "+this.width + " " + this.height);
+        if (this.width >= 600) {
+          $("#upload-preview").html('<img id="" class="mt-3" src="'+src+'" height="200" alt="">');
+          console.log("src: " ,src);
+          this.value = src;
+          OK = true;
+        }
+        else {
+          OK = false;
+          $("#upload-preview").html('Image is too small ('+this.width+'px wide), needs to be at least 600px wide.');
+          errormsg = "Form could not be submitted. Please check your Profile Picture.";
+        }
+    };
     console.log("this: " ,this);
+    imageObject.src = src;
+    // $("#upload-preview").attr("src",src);
+
   }, false);
 
   reader.readAsDataURL(input.files[0]);
@@ -37,74 +51,63 @@ $(function() {
   console.log("id: " ,id);
   var form = document.getElementById(id);
   console.log("form: " ,form);
-  var url = "https://script.google.com/macros/s/AKfycbxiwmQg7mCBecU2IKhaN3bDHs2PaD70-zP19hMZyqnhiWl3cw/exec"
+  var url = "https://script.google.com/macros/s/AKfycbxiwmQg7mCBecU2IKhaN3bDHs2PaD70-zP19hMZyqnhiWl3cw/exec";
+  {% if jekyll.environment == "development" %}
+    url = "https://script.google.com/macros/s/AKfycbwXvhNxU0PEUwSqfuyiWHFQYEO_gvjNIZELalBjkHtIYYa_zFuG/exec";
+  {% endif %}
   console.log("url: " ,url);
 
   form.onsubmit = function(e) {
     e.preventDefault();
-    var formData = new FormData(form);
-    var object = {};
-    formData.forEach(function(value, key){
-        if (typeof value === 'file' || value instanceof File ) {
-          console.log("Found image: " ,value);
-          formData.set(key, src);
-          value = image;
-          // value = src;
-        }
-        if (typeof value === 'undefined' || value.length == 0) {
-          value = "Not specified";
-        }
-        object[key] = value;
-        console.log("value: " ,value);
-    });
-    console.log("object: " ,object);
-    var json = JSON.stringify(object)
-    console.log("json: " ,json);
-    //
-    // var serializedData = $("form").serialize();
-    // console.log("serializedData:" ,serializedData);
+    if (OK) {
+      var formData = new FormData(form);
+      var object = {};
+      formData.forEach(function(value, key){
+          if (typeof value === 'file' || value instanceof File ) {
+            console.log("Found image: " ,value);
+            formData.set(key, src);
+            value = image;
+            // value = src;
+          }
+          if (typeof value === 'undefined' || value.length == 0) {
+            value = "Not specified";
+          }
+          object[key] = value;
+          console.log("value: " ,value);
+      });
+      console.log("object: " ,object);
+      var json = JSON.stringify(object)
+      console.log("json: " ,json);
 
-    // var testData = {name:"John Doe", role: "ceo"}
+      $('#application-form-wrapper').fadeOut(500, function(){
+        $('#application-form-wrapper').removeClass("text-left").html('<p">Sending form data...</p>').fadeIn(500);
+      });
 
+      $.ajax({
+          url: url,
+          type: "post",
+          // crossDomain: true,
+          data: JSON.stringify(object),
+          // contentType: "application/json",
+          success: function (msg)
+                  {
+                    console.log("succes: " ,msg)
+                    $('#application-form-wrapper').fadeOut(500, function(){
+                      $('#application-form-wrapper').html('<p">'+confirmation+'</p>').fadeIn(500);
+                    });
+                  },
+          error: function (err)
+          { console.log(err.responseText)}
+      }).done(function (data, textStatus, xhr) {
+          console.log(xhr.getResponseHeader('Link'));
+          console.log("xhr: " ,xhr);
+      });
+    }
 
-    // $.post(url, JSON.stringify(testData)).then(res => {
-    //   console.log("res" ,res);
-    // });
-    //
+    else {
+      $("#form-error").html("<p>"+errormsg+"</p>");
+    }
 
-    $('#application-form-wrapper').fadeOut(500, function(){
-      $('#application-form-wrapper').removeClass("text-left").html('<p">Sending form data...</p>').fadeIn(500);
-    });
-
-    $.ajax({
-        url: url,
-        type: "post",
-        // crossDomain: true,
-        data: JSON.stringify(object),
-        // contentType: "application/json",
-        success: function (msg)
-                {
-                  console.log("succes: " ,msg)
-                  $('#application-form-wrapper').fadeOut(500, function(){
-                    $('#application-form-wrapper').html('<p">'+confirmation+'</p>').fadeIn(500);
-                  });
-                },
-        error: function (err)
-        { console.log(err.responseText)}
-    }).done(function (data, textStatus, xhr) {
-        console.log(xhr.getResponseHeader('Link'));
-        console.log("xhr: " ,xhr);
-    });
-
-    // var xhr = new XMLHttpRequest();
-    // xhr.open('POST', form.getAttribute('action'), true);
-    // xhr.send(formData);
-    // form.reset();
-    // $('#application-form-wrapper').fadeOut(500, function(){
-    //   $('#application-form-wrapper').html('<p class="text-xl">'+confirmation+'</p>').fadeIn(500);
-    //
-    // });
-    // return false; // To avoid actual submission of the form
   }
 
 
