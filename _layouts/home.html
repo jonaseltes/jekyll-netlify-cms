@@ -10,7 +10,7 @@ scripts:
       - canvas.js
       - scramble.js
       - main.js
-      - apply.js
+      - form.js
   head:
     cdn:
       - '//identity.netlify.com/v1/netlify-identity-widget.js'
@@ -29,8 +29,8 @@ footer: light
 <div class="container-fluid h-100 position-absolute">
   <div class="row h-100">
     <div class="col h-100 mh-100">
-      <canvas id="canvas2D" width="500" height="500"></canvas>
-      <canvas id="canvas3D" class="poiner-e" width="500" height="500"></canvas>
+      <!-- <canvas id="canvas2D" width="500" height="500"></canvas> -->
+      <canvas id="canvas3D" class="no-pointer-e" width="500" height="500"></canvas>
     </div>
   </div>
 </div>
@@ -178,7 +178,7 @@ footer: light
                           </div>
                         </div>
                         <div class"" id="form-error">
-                          
+
                         </div>
                         <input class="border-2 button" type="submit" name="" value="Submit">
                     </form>
