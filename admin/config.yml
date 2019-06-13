@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: staging # Branch to update (master by default)
 
-publish_mode: editorial_workflow
+# publish_mode: editorial_workflow
 
 media_folder: "assets/media/uploads" # Folder where user uploaded files should go
 
