@@ -19,7 +19,7 @@
             {%- if item.type == 'file' -%}
               <!-- <input class="form-control" type="text" value="" name="{{item.field-name}}" /> -->
               <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.name}}" {%- if item.required -%}required{%- endif -%}/>
-              <div id="upload-preview">
+              <div class="mt-2" id="upload-preview">
               </div>
             {%- endif -%}
             {%- if item.type == 'textarea' -%}
@@ -36,7 +36,7 @@
             {{site.data.application-form.terms | markdownify}}
           </div>
         </div>
-        <div class"" id="form-error">
+        <div class"error" id="form-error">
 
         </div>
         <input class="border-2 button" type="submit" name="" value="Submit">

@@ -28,8 +28,8 @@ function parseImage(input) {
         }
         else {
           OK = false;
-          $("#upload-preview").html('Image is too small ('+this.width+'px wide), needs to be at least 600px wide.');
-          errormsg = "Form could not be submitted. Please check your Profile Picture.";
+          $("#upload-preview").html('<p class="error">Image is too small ('+this.width+'px wide), needs to be at least 600px wide.');
+          errormsg = "Form could not be submitted. Please check your Profile Picture.</p>";
         }
     };
     console.log("this: " ,this);
