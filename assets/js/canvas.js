@@ -42,7 +42,7 @@ function map_range(value, low1, high1, low2, high2) {
 function createMesh(){
 
   var textureLoader = new THREE.TextureLoader();
-  var geometry   = new THREE.SphereGeometry(1, 200, 200);
+  var blobGeometry   = new THREE.SphereGeometry(1, 100, 100);
   var material  = new THREE.MeshLambertMaterial({
     shininess: 100,
     specular: 0xffffff,
@@ -61,26 +61,17 @@ function createMesh(){
     // color: 0x694dcb
     color: 0x6c5ba5
   });
-  window.earthMesh = new THREE.Mesh(geometry, material);
+  window.blobMesh = new THREE.Mesh(blobGeometry, material);
   // material.map = textureLoader.load('{{site.image_path}}/trr-environment.png');
   // material.emissiveMap = textureLoader.load('{{site.image_path}}/trr-emissive.jpg');
   material.needsUpdate = true;
   // material.bumpMap = textureLoader.load('{{site.image_path}}/gold_bump.jpg');
   material.bumpScale = 0.01;
-  scene.add(earthMesh);
+  scene.add(blobMesh);
   console.log("scene: " ,scene.children);
 	// texture.minFilter = THREE.NearestFilter;
 	// texture.magFilter = THREE.NearestFilter;
 
-
-	// var mat = new THREE.MeshBasicMaterial({
-	// 	map: texture,
-	// 	fog: true,
-	// 	side: THREE.DoubleSide,
-  //   transparent: true,
-  //   opacity: 0.9
-	// 	// color: 0x000000
-	// });
 
 
   // console.log("mesh: " ,mesh);
@@ -104,11 +95,7 @@ $(document).ready(function(){
 		e.stopImmediatePropagation();
 	});
 
-	// $('.project').mousedown(function(e){
-	// 	console.log("click on middle!");
-	// 	e.stopPropagation();
-	// 	e.stopImmediatePropagation();
-	// });
+
 });
 
 
@@ -154,10 +141,10 @@ function init() {
 	//camera.position.y = cameraOffsetY;
 	//camera.lookAt(0, 0, 0);
 
-	controls = new THREE.TrackballControls(camera, renderer3D.domElement);
-	controls.enableDamping = true;
-	controls.dampingFactor = 1.0;
-	controls.enableZoom = true;
+	// controls = new THREE.TrackballControls(camera, renderer3D.domElement);
+	// controls.enableDamping = true;
+	// controls.dampingFactor = 1.0;
+	// controls.enableZoom = true;
   // scene.fog = new THREE.Fog( 0x000000, 400, 1500);
 	var isoRadius = 140;
 
@@ -271,29 +258,29 @@ function animate() {
 
   // objectWrapper.rotation.x += .001;
   objectWrapper.rotation.y += .002;
-  earthMesh.rotation.y = time * .1;
-  earthMesh.rotation.z = time * .03;
+  blobMesh.rotation.y = time * .1;
+  blobMesh.rotation.z = time * .03;
 
   // k = (noise.perlin2(time/100, time)) * 2 + 2.2;
   k = 1.2;
   // k += 0.001;
   // k = (mouse.x + 1) * 2;
-  for (var i = 0; i < earthMesh.geometry.vertices.length; i++) {
-      var p = earthMesh.geometry.vertices[i];
+  for (var i = 0; i < blobMesh.geometry.vertices.length; i++) {
+      var p = blobMesh.geometry.vertices[i];
       p.normalize().multiplyScalar(1 + 0.3 * noise.perlin3(p.x * k + time, p.y * k, p.z * k));
   }
-  earthMesh.geometry.computeVertexNormals();
-  earthMesh.geometry.verticesNeedUpdate = true; //must be set or vertices will not update
-  earthMesh.position.x = noise.perlin2(time, time/4000) * 0.5;
-  earthMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
-  earthMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
+  blobMesh.geometry.computeVertexNormals();
+  blobMesh.geometry.verticesNeedUpdate = true; //must be set or vertices will not update
+  blobMesh.position.x = noise.perlin2(time, time/4000) * 0.5;
+  blobMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
+  blobMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
 
 	requestAnimationFrame( animate );
   // console.log("time: " ,time);
 
 	//camera.lookAt( scene.position );
 	//TWEEN.update();
-	controls.update();
+	// controls.update();
   renderer3D.clear();
 	//renderer3D.render( bgScene, camera );
 	renderer3D.render( scene, camera );
