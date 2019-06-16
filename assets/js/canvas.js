@@ -42,7 +42,7 @@ function map_range(value, low1, high1, low2, high2) {
 function createMesh(){
 
   var textureLoader = new THREE.TextureLoader();
-  var blobGeometry   = new THREE.SphereGeometry(1, 100, 100);
+  var blobGeometry   = new THREE.SphereGeometry(1, 80, 80);
   var material  = new THREE.MeshLambertMaterial({
     shininess: 100,
     specular: 0xffffff,
@@ -161,22 +161,23 @@ function init() {
 
   var ambLight = new THREE.AmbientLight( 0xffffff, 0.1 ); // soft white light
   // ambLight.layers.set( 1 );
-  scene.add( ambLight );
+  // scene.add( ambLight );
 
-  var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
-  directionalLight.position.set( 0, 1, 0 );
+  var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
+  directionalLight.position.set( 0.5, 1, 0 );
+  scene.add(directionalLight);
   // objectWrapper.add( directionalLight );
 
-  var light = new THREE.PointLight( 0xffffff, 1, 800 );
-  var light2 = new THREE.PointLight( 0xffffff, 1, 800 );
-  var light3 = new THREE.PointLight( 0xffffff, 1, 800 );
+  var light = new THREE.PointLight( 0xffffff, 1, 900 );
+  var light2 = new THREE.PointLight( 0xffffff, 1, 900 );
+  var light3 = new THREE.PointLight( 0xffffff, 1, 900 );
   light.position.set( 250, 0, 150 );
   light2.position.set( -250, 0, 150 );
   light3.position.set( 0, 0, -150 );
   // light.layers.set( 1 );
-  objectWrapper.add( light );
-  objectWrapper.add( light2 );
-  objectWrapper.add( light3 );
+  scene.add( light );
+  scene.add( light2 );
+  // objectWrapper.add( light3 );
 
   $(canvas3D).hide();
 

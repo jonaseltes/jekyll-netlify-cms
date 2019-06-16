@@ -32,6 +32,7 @@ image_path: assets/media
 js_path: assets/js
 css_path: assets/css
 fonts_path: assets/fonts
+icons_path: assets/icons
 
 
 # Scripts
