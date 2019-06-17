@@ -55,7 +55,7 @@ inputs:
       name: description
       required: true
       type: textarea
-    - label: Any food allergies/preferences
+    - label: Any food allergies/preferences (if applicable)
       name: food
       required: false
       type: text
