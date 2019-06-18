@@ -5,8 +5,10 @@ console.log("Loading canvas js!");
 
 var camera, scene, renderer, controls;
 var raycaster;
-var k = 0.1;
+var peak = 0.1, gravity = 0.3;
 var mouse;
+var time;
+
 
 
 {% if jekyll.environment == "production" %}
@@ -36,22 +38,85 @@ function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
+function animate_vertices(mesh, pk, grav){
+  // k = (noise.perlin2(time/100, time)) * 2 + 2.2;
+  time = performance.now() * 0.0004;
+
+  // k += 0.001;
+  // k = (mouse.x + 1) * 2;
+  for (var i = 0; i < mesh.geometry.vertices.length; i++) {
+      var p = mesh.geometry.vertices[i];
+      p.normalize().multiplyScalar(1 + grav * noise.perlin3(p.x * peak + time, p.y * pk, p.z * pk));
+  }
+  mesh.geometry.computeVertexNormals();
+  mesh.geometry.verticesNeedUpdate = true; //must be set or vertices will not update
+}
 
 
-
-function createMesh(){
-
-  var textureLoader = new THREE.TextureLoader();
-  var blobGeometry   = new THREE.SphereGeometry(1, 80, 80);
-  var material  = new THREE.MeshLambertMaterial({
+function createBlob() {
+  var geo = new THREE.SphereGeometry(.3, 50, 50);
+  var mat  = new THREE.MeshStandardMaterial({
     shininess: 100,
     specular: 0xffffff,
     transparent: true,
     // shading: THREE.FlatShading,
-    side: THREE.DoubleSide,
+    // side: THREE.DoubleSide,
     // alpha: true,
     // opacity: 0.6,
-    clearCoat: 0,
+    clearCoat: 0.2,
+    reflectivity: 1,
+    metalness: 0,
+    roughness: 0.8,
+    // emissive: 0xffffff,
+    // color: 0xffffff
+    // color: 0x4e4279
+    // color: 0x694dcb
+    color: 0x6c5ba5
+  });
+
+  var bmesh = new THREE.Mesh(geo, mat);
+  animate_vertices(bmesh, 0.9, 0.3);
+  var s = Math.random() * .3 + .1;
+  bmesh.scale.set(s, s, s);
+  var distance = .3 + s;
+  var range = 1;
+
+  var x = Math.random() * range + distance;
+  var y = Math.random() * range + distance;
+  var z = Math.random() * range + distance;
+  bmesh.position.set(x,y,z);
+
+  var meshParent = new THREE.Object3D();
+  meshParent.add(bmesh);
+  meshParent.rotation.x = Math.random() * 20;
+  meshParent.rotation.y = Math.random() * 20;
+  meshParent.rotation.z = Math.random() * 20;
+  objectWrapper.add(meshParent);
+}
+
+
+function createMesh(){
+
+  var cubeLoader = new THREE.CubeTextureLoader();
+    cubeLoader.setPath('assets/media/cube/');
+    var textureCube = cubeLoader.load([
+      'px.png', 'nx.png',
+    	'py.png', 'ny.png',
+    	'pz.png', 'nz.png'
+    ]);
+
+  var textureLoader = new THREE.TextureLoader();
+  var blobGeometry   = new THREE.SphereGeometry(1, 50, 50);
+  var material = new THREE.MeshPhysicalMaterial({
+    shininess: 100,
+    specular: 0xffffff,
+    // transparent: true,
+    // envMap: textureCube,
+    // shading: THREE.FlatShading,
+    // side: THREE.DoubleSide,
+    clearCoat: 0.4,
+    // alpha: true,
+    // opacity: 0.6,
     reflectivity: 1,
     metalness: 0,
     roughness: 0.8,
@@ -72,7 +137,9 @@ function createMesh(){
 	// texture.minFilter = THREE.NearestFilter;
 	// texture.magFilter = THREE.NearestFilter;
 
-
+  for (var i = 0; i < 3; i++) {
+    createBlob();
+  }
 
   // console.log("mesh: " ,mesh);
   // projects.push(project);
@@ -145,7 +212,7 @@ function init() {
 	// controls.enableDamping = true;
 	// controls.dampingFactor = 1.0;
 	// controls.enableZoom = true;
-  // scene.fog = new THREE.Fog( 0x000000, 400, 1500);
+  scene.fog = new THREE.Fog( 0x999999, 4, 7);
 	var isoRadius = 140;
 
 	verticies = [];
@@ -164,9 +231,17 @@ function init() {
   // scene.add( ambLight );
 
   var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
-  directionalLight.position.set( 0.5, 1, 0 );
-  scene.add(directionalLight);
-  // objectWrapper.add( directionalLight );
+  directionalLight.position.set( .7, .8, .8 );
+  // scene.add(directionalLight);
+
+  var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.9 );
+  directionalLight2.position.set( -15, 0, -5 );
+  scene.add(directionalLight2);
+
+  var rectLight = new THREE.RectAreaLight( 0xffffff, 2.5,  20, 20 );
+  rectLight.position.set( 15, 0, 5 );
+  rectLight.lookAt( 0, 0, 0 );
+  scene.add( rectLight );
 
   var light = new THREE.PointLight( 0xffffff, 1, 900 );
   var light2 = new THREE.PointLight( 0xffffff, 1, 900 );
@@ -175,8 +250,8 @@ function init() {
   light2.position.set( -250, 0, 150 );
   light3.position.set( 0, 0, -150 );
   // light.layers.set( 1 );
-  scene.add( light );
-  scene.add( light2 );
+  // scene.add( light );
+  // scene.add( light2 );
   // objectWrapper.add( light3 );
 
   $(canvas3D).hide();
@@ -250,28 +325,27 @@ function checkRotation(){
 
 
 
-var time;
+
+
+
 
 function animate() {
 
+  animate_vertices(blobMesh, 1, 0.4);
 
-  time = performance.now() * 0.0004;
 
-  // objectWrapper.rotation.x += .001;
-  objectWrapper.rotation.y += .002;
+  objectWrapper.rotation.x += .002;
+  objectWrapper.rotation.y += .0009;
+  for (var i = 0; i < objectWrapper.children.length; i++) {
+		var thisObject = objectWrapper.children[i].children[0];
+		thisObject.rotation.y += 0.01;
+		thisObject.rotation.x += 0.009;
+	}
+
   blobMesh.rotation.y = time * .1;
   blobMesh.rotation.z = time * .03;
 
-  // k = (noise.perlin2(time/100, time)) * 2 + 2.2;
-  k = 1.2;
-  // k += 0.001;
-  // k = (mouse.x + 1) * 2;
-  for (var i = 0; i < blobMesh.geometry.vertices.length; i++) {
-      var p = blobMesh.geometry.vertices[i];
-      p.normalize().multiplyScalar(1 + 0.3 * noise.perlin3(p.x * k + time, p.y * k, p.z * k));
-  }
-  blobMesh.geometry.computeVertexNormals();
-  blobMesh.geometry.verticesNeedUpdate = true; //must be set or vertices will not update
+
   blobMesh.position.x = noise.perlin2(time, time/4000) * 0.5;
   blobMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
   blobMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;

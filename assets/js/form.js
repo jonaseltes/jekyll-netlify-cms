@@ -86,6 +86,7 @@ $(function() {
       $.ajax({
           url: url,
           type: "post",
+          cache: false,
           // crossDomain: true,
           data: JSON.stringify(object),
           // contentType: "application/json",
