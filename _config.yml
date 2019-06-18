@@ -37,7 +37,7 @@ icons_path: assets/icons
 
 # Scripts
 body_scripts:
-  - //code.jquery.com/jquery-3.2.1.min.js
+  - /assets/js/jquery.min.js
   - //cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js
   - //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js
   - /assets/js/barba.min.js
@@ -51,6 +51,7 @@ animation_scripts:
   - /assets/js/TrackballControls.js
   - /assets/js/OBJLoader.js
   - /assets/js/perlin.js
+  - /assets/js/ammo.js
 
 
 plugins:
