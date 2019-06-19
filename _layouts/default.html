@@ -4,18 +4,18 @@
   {%- include head.html -%}
 
   <body>
-    <div class="wrapper">
+    <div id="page-wrapper" class="wrapper">
 
       <div class="header-wrapper w-100 d-none fixed-top">
         {%- include header.html -%}
       </div>
 
-      <div class="content-wrapper d-flex flex-column w-100 h-100">
+      <div id="content-wrapper" class="content-wrapper d-flex flex-column w-100 h-100">
         <div class="header-wrapper w-100 d-none invisible">
           {%- include header.html -%}
         </div>
         <!-- <main class="page-content" aria-label="Content"> -->
-        <div id="" class="content-container flex-grow-1">
+        <div id="content-container" class="content-container flex-grow-1">
             {{ content }}
         </div>
 

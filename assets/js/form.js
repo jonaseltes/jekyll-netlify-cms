@@ -97,6 +97,9 @@ $(function() {
       console.log("json: " ,json);
 
       $('#application-form-wrapper').fadeOut(500, function(){
+        $('#content-wrapper').animate({
+            scrollTop: $("#content-wrapper").scrollTop() + $("#form-section").offset().top
+        }, 800);
         $('#application-form-wrapper').removeClass("text-left").html('<p">Sending form data...</p>').fadeIn(500);
       });
 
@@ -114,8 +117,10 @@ $(function() {
                       $('#application-form-wrapper').html('<p">'+confirmation+'</p>').fadeIn(500);
                     });
                   },
-          error: function (err)
-          { console.log(err.responseText)}
+          error: function (err) {
+            console.log(err.responseText);
+            $("#form-error").html("<p>Oops, something went wrong. Please try submitting the form again and if the message does not dissapear please try another web browser (preferably Google Chrome) or send us an email.</p>");
+          }
       }).done(function (data, textStatus, xhr) {
           console.log(xhr.getResponseHeader('Link'));
           console.log("xhr: " ,xhr);
