@@ -20,17 +20,23 @@ function parseImage(input) {
     var imageObject = new Image();
     imageObject.onload = function () {
         console.log("image dimensions: "+this.width + " " + this.height);
-        if (this.width >= 600) {
-          $("#upload-preview").html('<img id="" class="mt-3" src="'+src+'" height="200" alt="">');
-          console.log("src: " ,src);
-          this.value = src;
-          OK = true;
-        }
-        else {
-          OK = false;
-          $("#upload-preview").html('<p class="error">Image is too small ('+this.width+'px wide), needs to be at least 600px wide.');
-          errormsg = "Form could not be submitted. Please check your Profile Picture.</p>";
-        }
+
+        $("#upload-preview").html('<img id="" class="mt-3" src="'+src+'" height="200" alt="">');
+        console.log("src: " ,src);
+        this.value = src;
+
+
+        // if (this.width >= 600) {
+        //   $("#upload-preview").html('<img id="" class="mt-3" src="'+src+'" height="200" alt="">');
+        //   console.log("src: " ,src);
+        //   this.value = src;
+        //   OK = true;
+        // }
+        // else {
+        //   OK = true;
+        //   $("#upload-preview").html('<p class="error">Image is too small ('+this.width+'px wide), needs to be at least 600px wide.');
+        //   errormsg = "Form could not be submitted. Please check your Profile Picture.</p>";
+        // }
     };
     console.log("this: " ,this);
     imageObject.src = src;
@@ -46,7 +52,7 @@ $(function() {
   // The Javascript
   var id = {{site.data.application-form.form-id | jsonify}};
   var confirmation = {{site.data.application-form.submission | jsonify}};
-  reader  = new FileReader();
+  reader = new FileReader();
 
   console.log("id: " ,id);
   var form = document.getElementById(id);
@@ -89,7 +95,7 @@ $(function() {
           cache: false,
           // crossDomain: true,
           data: JSON.stringify(object),
-          // contentType: "application/json",
+          // contentType: "application/json; charset=utf-8",
           success: function (msg)
                   {
                     console.log("succes: " ,msg)
