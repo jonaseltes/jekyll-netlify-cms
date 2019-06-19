@@ -78,7 +78,7 @@ $(function() {
     e.preventDefault();
     if (OK) {
       var formData = new FormData(form);
-      var object = {};
+      window.object = {};
       formData.forEach(function(value, key){
           if (typeof value === 'file' || value instanceof File ) {
             console.log("Found image: " ,value);
@@ -93,7 +93,7 @@ $(function() {
           console.log("value: " ,value);
       });
       console.log("object: " ,object);
-      var json = JSON.stringify(object)
+      window.json = JSON.stringify(object)
       console.log("json: " ,json);
 
       $('#application-form-wrapper').fadeOut(500, function(){
