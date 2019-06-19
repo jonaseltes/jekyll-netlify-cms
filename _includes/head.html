@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
-    {%- include google-analytics.html -%}
+    L {%- include google-analytics.html -%}
   {%- endif -%}
   <!-- {% include og.html %} -->
 
@@ -40,7 +40,7 @@
 
   <script>
     {% if jekyll.environment == "production" %}
-      console.log = function() {}
+      // console.log = function() {}
     {% endif %}
     console.log("site head scripts: " ,{{site.head_scripts | jsonify}});
   </script>
