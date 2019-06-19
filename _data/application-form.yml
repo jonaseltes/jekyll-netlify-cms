@@ -1,9 +1,4 @@
 headline: 'I want to take part in the hackathon:'
-disclaimer: >-
-  (There are currently some technical difficulties when applying using the
-  Microsoft Edge browser on PC. We're working very hard to fix it, but if you
-  have any trouble submitting your application, please try using another browser
-  such as Google Chrome)
 description: >-
   **Our first step towards the future...**
 
@@ -50,7 +45,7 @@ inputs:
       name: phone
       required: true
       type: text
-    - label: Profile Picture (min 600 px)
+    - label: Profile Picture
       name: image
       required: true
       type: file
