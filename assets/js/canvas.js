@@ -12,7 +12,7 @@ var time;
 
 
 {% if jekyll.environment == "production" %}
-  console.log = function() {}
+  // console.log = function() {}
 {% endif %}
 
 init();
