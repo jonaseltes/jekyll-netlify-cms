@@ -80,7 +80,7 @@ $(function() {
       window.formData = new FormData(form);
       window.object = {};
       formData.forEach(function(value, key){
-          if (key === ‘image’ ) {
+          if (key === "image") {
             console.log("Found image: " ,value);
             formData.set(key, src);
             value = image;
