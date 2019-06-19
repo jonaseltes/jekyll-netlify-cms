@@ -22,6 +22,13 @@
   {%- endif -%}
   <!-- {% include og.html %} -->
 
+  <script>
+    {% if jekyll.environment == "production" %}
+      console.log = function() {}
+    {% endif %}
+  </script>
+
+
   <!-- Load script libs -->
   {% if site.head_scripts %}
     {%- for script in site.head_scripts -%}
@@ -39,9 +46,6 @@
   {%- endfor -%}
 
   <script>
-    {% if jekyll.environment == "production" %}
-      console.log = function() {}
-    {% endif %}
     console.log("site head scripts: " ,{{site.head_scripts | jsonify}});
   </script>
 

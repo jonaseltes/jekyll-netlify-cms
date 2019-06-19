@@ -1,7 +1,7 @@
 <script>
-  {% if jekyll.environment == "production" %}
-    // console.log = function() {}
-  {% endif %}
+  // {% if jekyll.environment == "development" %}
+  //   console.log = function() {}
+  // {% endif %}
   console.log("body scripts:" ,{{site.body_scripts | jsonify}});
 </script>
 

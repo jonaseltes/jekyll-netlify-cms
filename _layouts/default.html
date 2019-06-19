@@ -32,7 +32,7 @@
 
     </div>
     <script>
-      {% if jekyll.environment == "production" %}
+      {% if jekyll.environment == "development" %}
         // console.log = function() {}
       {% endif %}
       console.log("page scripts cdn:" ,{{layout.scripts.cdn| jsonify}});
