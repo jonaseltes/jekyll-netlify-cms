@@ -46,7 +46,7 @@ $(function() {
   // The Javascript
   var id = {{site.data.application-form.form-id | jsonify}};
   var confirmation = {{site.data.application-form.submission | jsonify}};
-  reader  = new FileReader();
+  reader = new FileReader();
 
   console.log("id: " ,id);
   var form = document.getElementById(id);
@@ -89,7 +89,7 @@ $(function() {
           cache: false,
           // crossDomain: true,
           data: JSON.stringify(object),
-          // contentType: "application/json",
+          // contentType: "application/json; charset=utf-8",
           success: function (msg)
                   {
                     console.log("succes: " ,msg)

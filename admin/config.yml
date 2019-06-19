@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: staging # Branch to update (master by default)
+  branch: master # Branch to update (master by default)
 
 # publish_mode: editorial_workflow
 
@@ -170,6 +170,13 @@ collections: # A list of collections the CMS should be able to edit
             name: "headline"
             widget: "text"
             hint: "short text showed above the form"
+          - label: "Disclaimer"
+            name: "disclaimer"
+            widget: "markdown"
+            buttons:
+              - "italic"
+              - "link"
+              - "bold"
           - label: "Description"
             name: "description"
             widget: "markdown"
