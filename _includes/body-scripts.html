@@ -1,6 +1,6 @@
 <script>
   {% if jekyll.environment == "production" %}
-    console.log = function() {}
+    // console.log = function() {}
   {% endif %}
   console.log("body scripts:" ,{{site.body_scripts | jsonify}});
 </script>
@@ -10,7 +10,7 @@
 {%- endfor -%}
 <script>
   {% if jekyll.environment == "production" %}
-    console.log = function() {}
+    // console.log = function() {}
   {% endif %}
   function init (){
     console.log("init!");

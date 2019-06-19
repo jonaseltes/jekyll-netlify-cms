@@ -54,6 +54,17 @@ $(function() {
   var confirmation = {{site.data.application-form.submission | jsonify}};
   reader = new FileReader();
 
+  if (window.NodeList && !NodeList.prototype.forEach) {
+      NodeList.prototype.forEach = function (callback, thisArg) {
+          thisArg = thisArg || window;
+          for (var i = 0; i < this.length; i++) {
+              callback.call(thisArg, this[i], i, this);
+          }
+      };
+  }
+
+
+
   console.log("id: " ,id);
   var form = document.getElementById(id);
   console.log("form: " ,form);
@@ -66,10 +77,10 @@ $(function() {
   form.onsubmit = function(e) {
     e.preventDefault();
     if (OK) {
-      var formData = new FormData(form);
-      var object = {};
+      window.formData = new FormData(form);
+      window.object = {};
       formData.forEach(function(value, key){
-          if (typeof value === 'file' || value instanceof File ) {
+          if (key === "image") {
             console.log("Found image: " ,value);
             formData.set(key, src);
             value = image;
@@ -82,7 +93,7 @@ $(function() {
           console.log("value: " ,value);
       });
       console.log("object: " ,object);
-      var json = JSON.stringify(object)
+      window.json = JSON.stringify(object)
       console.log("json: " ,json);
 
       $('#application-form-wrapper').fadeOut(500, function(){

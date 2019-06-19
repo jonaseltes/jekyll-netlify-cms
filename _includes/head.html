@@ -40,7 +40,7 @@
 
   <script>
     {% if jekyll.environment == "production" %}
-      console.log = function() {}
+      // console.log = function() {}
     {% endif %}
     console.log("site head scripts: " ,{{site.head_scripts | jsonify}});
   </script>
