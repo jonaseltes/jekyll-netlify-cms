@@ -77,7 +77,7 @@ $(function() {
   form.onsubmit = function(e) {
     e.preventDefault();
     if (OK) {
-      var formData = new FormData(form);
+      window.formData = new FormData(form);
       window.object = {};
       formData.forEach(function(value, key){
           if (typeof value === 'file' || value instanceof File ) {
