@@ -94,6 +94,25 @@ function createBlob() {
   objectWrapper.add(meshParent);
 }
 
+function createCanvasMaterial(size) {
+  var matCanvas = document.createElement('canvas');
+  matCanvas.width = matCanvas.height = size;
+  var matContext = matCanvas.getContext('2d');
+  // create exture object from canvas.
+  var texture = new THREE.Texture(matCanvas);
+  // Draw a circle
+  var center = size / 2;
+  matContext.beginPath();
+  matContext.arc(center, center, size/2, 0, 2 * Math.PI, false);
+  matContext.closePath();
+  matContext.fillStyle = "#ffffff";
+  matContext.fill();
+  // need to set needsUpdate
+  texture.needsUpdate = true;
+  // return a texture made from the canvas
+  return texture;
+}
+
 
 function createMesh(){
 
@@ -108,8 +127,8 @@ function createMesh(){
   var textureLoader = new THREE.TextureLoader();
   var blobGeometry   = new THREE.SphereGeometry(1, 50, 50);
   var material = new THREE.MeshPhysicalMaterial({
-    shininess: 100,
-    specular: 0xffffff,
+    // shininess: 100,
+    // specular: 0xffffff,
     // transparent: true,
     // envMap: textureCube,
     // shading: THREE.FlatShading,
@@ -126,16 +145,35 @@ function createMesh(){
     // color: 0x694dcb
     color: 0x6c5ba5
   });
+
+  var pmat = new THREE.PointsMaterial( {
+    size: .05,
+    map: createCanvasMaterial(256),
+    // transparent: true,
+    color: 0xffffff,
+    linecap: 'round', //ignored by WebGLRenderer
+  	linejoin:  'round' //ignored by WebGLRenderer
+  } );
+
+  var lineMat = new THREE.MeshBasicMaterial( {
+  	color: 0xffffff,
+    wireframe: true,
+  	wireframeLinewidth: .01,
+  	linecap: 'round', //ignored by WebGLRenderer
+  	linejoin:  'round' //ignored by WebGLRenderer
+  } );
+  // window.blobMesh = new THREE.Mesh(blobGeometry, lineMat);
   window.blobMesh = new THREE.Mesh(blobGeometry, material);
+  window.pointsMesh = new THREE.Points(blobGeometry, pmat);
   // material.map = textureLoader.load('{{site.image_path}}/trr-environment.png');
   // material.emissiveMap = textureLoader.load('{{site.image_path}}/trr-emissive.jpg');
   material.needsUpdate = true;
   // material.bumpMap = textureLoader.load('{{site.image_path}}/gold_bump.jpg');
-  material.bumpScale = 0.01;
   scene.add(blobMesh);
+  // scene.add(pointsMesh);
+
   console.log("scene: " ,scene.children);
-	// texture.minFilter = THREE.NearestFilter;
-	// texture.magFilter = THREE.NearestFilter;
+	textureCube.minFilter = THREE.LinearFilter;
 
   for (var i = 0; i < 3; i++) {
     createBlob();
@@ -203,7 +241,7 @@ function init() {
 	worldVector = new THREE.Vector3();
 
 	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
-	camera.position.z = 5;
+	camera.position.z = 4;
   // camera.layers.set( 1 );
 	//camera.position.y = cameraOffsetY;
 	//camera.lookAt(0, 0, 0);
@@ -212,7 +250,7 @@ function init() {
 	// controls.enableDamping = true;
 	// controls.dampingFactor = 1.0;
 	// controls.enableZoom = true;
-  scene.fog = new THREE.Fog( 0x999999, 4, 7);
+  scene.fog = new THREE.Fog( 0x999999, 3, 5.5);
 	var isoRadius = 140;
 
 	verticies = [];
@@ -238,7 +276,7 @@ function init() {
   directionalLight2.position.set( -15, 0, -5 );
   scene.add(directionalLight2);
 
-  var rectLight = new THREE.RectAreaLight( 0xffffff, 2.5,  20, 20 );
+  var rectLight = new THREE.RectAreaLight( 0xffffff, 3,  20, 20 );
   rectLight.position.set( 15, 0, 5 );
   rectLight.lookAt( 0, 0, 0 );
   scene.add( rectLight );
@@ -331,7 +369,7 @@ function checkRotation(){
 
 function animate() {
 
-  animate_vertices(blobMesh, 1, 0.4);
+  animate_vertices(blobMesh, 1, 0.3);
 
 
   objectWrapper.rotation.x += .002;

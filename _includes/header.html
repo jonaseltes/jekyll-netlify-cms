@@ -1,6 +1,6 @@
 <!-- <header class="site-header" role="banner"> -->
 
-  <div class="container-fluid invisible">
+  <div class="container-fluid">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     <!-- <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a> -->
@@ -9,19 +9,28 @@
 
       <nav class="navbar navbar-light navbar-expand-sm main-nav row align-items-start">
 
-          <div class="col-md-6 text-left">
-            <div class="">
+          <div class="col-3 text-left">
+            <a href="{{ "/" | relative_url }}"><img height="70" src="{{site.logo.three.white}}" alt=""></a>
+            <!-- <div class="">
               <a href="https://www.trr.se/" target="_blank"><img width="100" src="{{site.data.content.site.assets.trr-logos.white}}" /></a>
+            </div> -->
+          </div>
+          <div class="col-3">
+            <div class="TRR">
+              <div class="mb-2 text-sm">
+                An initiative by:
+              </div>
+                <a href="https://www.trr.se/" target="_blank"><img width="70" src="{{site.data.content.site.assets.trr-logos.white}}" /></a>
             </div>
           </div>
+          <!-- <div class="col">
+          </div>
           <div class="col">
-          </div>
-          <div class="col-md-3">
             A project to collectively shape the future of work, facilitated by TRR in collaboration with Another Tomorrow.
-          </div>
+          </div> -->
 
 
-            <!-- <button class="navbar-toggler col text-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler col text-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -34,7 +43,7 @@
                   {%- endif -%}
                 {% endfor -%}
               </div>
-            </div> -->
+            </div>
 
       </nav>
 

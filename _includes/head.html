@@ -14,6 +14,12 @@
   {% endif %}
   <meta name="author" content="TRR">
 
+  {% if site.fonts %}
+    {%- for font in site.fonts -%}
+      <link src="{{font}}" rel="stylesheet"">
+    {%- endfor -%}
+  {%- endif -%}
+
   {%- include page-css.html -%}
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
   {%- feed_meta -%}

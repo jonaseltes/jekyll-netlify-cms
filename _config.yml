@@ -34,6 +34,13 @@ css_path: assets/css
 fonts_path: assets/fonts
 icons_path: assets/icons
 
+logo:
+  two:
+    white: /assets/media/SWL-LOGO-LOWER-WHITE.svg
+    black: /assets/media/SWL-LOGO-LOWER-BLACK.svg
+  three:
+    white: /assets/media/SWL-LOGO-3-LOWER-WHITE.svg
+    black: /assets/media/SWL-LOGO-3-LOWER-BLACK.svg
 
 # Scripts
 body_scripts:
@@ -52,6 +59,11 @@ animation_scripts:
   - /assets/js/OBJLoader.js
   - /assets/js/perlin.js
   - /assets/js/ammo.js
+
+
+fonts:
+  - //fonts.googleapis.com/css?family=Open+Sans&display=swap
+
 
 
 plugins:
