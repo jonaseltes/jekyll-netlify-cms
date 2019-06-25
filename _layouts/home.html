@@ -10,7 +10,7 @@ scripts:
       - netlify.js
       - canvas.js
       - scramble.js
-      - main.js
+      - index.js
       - form.js
   head:
     cdn:
@@ -40,59 +40,45 @@ footer: light
 
 
 
-<div id="info-container" class="container-fluid position-absolute h-100">
+<div id="info-container" class="container-fluid h-100 page-content-container">
   <div class="row h-100 position-relative d-flex ">
 
-    <div class="col h-100 text-center d-flex flex-column align-items-center py-3">
-            <div class="d-none row w-100">
-              <div class="col">
-                <div class="row text-center text-md-left">
-                  <div class="position-relative">
-                    <a href="https://www.trr.se/" target="_blank"><img width="100" src="{{site.data.content.site.assets.trr-logos.white}}" /></a>
+    <div class="col h-100 d-flex flex-column align-items-center py-3">
+
+            <div class="row flex-grow-1">
+                <div class="col-4 d-flex">
+                  <div class="display-1 text-capitalize">
+                    The Swedish <span class="work">work</span> Lab
                   </div>
                 </div>
-              </div>
-              <div class="col-md-4">
-              </div>
-              <div class="col-md-2 text-left ">
-                <div class="row">
-                  <p class="text-md font-weight-normal d-none d-md-block">An initiative to collectively shape the future of work.</p>
-                </div>
-              </div>
-            </div>
-            <div class="row flex-grow-1 align-items-center">
-
                 <div class="col">
-                  <div class="d-inline align-self-center">
-                    <div id="loading-text">
+
+                </div>
+                <div class="col-6 d-flex flex-column justify-content-between">
+
+                    <div id="loading-text" class="d-none">
                       <span class="text-uppercase d-none">Loading...</span>
                     </div>
 
-                    <div id="landing-text" class="pointer-e-all">
-                      <!-- <div id="landing-title" class="display-1">{{site.data.content.intro.headline}}</div> -->
+                    <div id="landing-text" class="pointer-e-all mb-8 align-self-start">
+                      <div id="landing-title" class="display-4 w-75">
+                          Will you help us shape the future of <span class="work">work</span>?
+                      </div>
+                    </div>
 
-                      <div id="landing-title" class="display-0 m-auto text-uppercase">
-                        <div>
-                          Swedish<br /><span id="work">Work</span><br />Lab
-                        </div>
+                    <div class="text-xl align-self-end">
+                      <p>The Swedish Work Lab is a platform to explore what all these parameters mean for employees and employers in both the near and distant future. What does tomorrow’s work life actually look like? What previously unknown challenges may we be facing? And what or who is required for our work lives to thrive?</p>
+
+                      <div class="display-3 mb-8 bounce helvetica align-self-end">
+                        ↓
                       </div>
 
-                      <!-- <div id="landing-title" class="display-1">Will you help us shape the future of <br /><span id="work">work</span>?</div> -->
-                      <!-- <div id="landing-year" class="text-black-50 mt-8 d-none">{{site.data.content.site.tagline | markdownify}}</div> -->
                     </div>
-                  </div>
+
                 </div>
 
 
             </div>
-
-            <div class="display-3 bounce d-none">
-              ↓
-            </div>
-
-
-
-
 
     </div>
 
@@ -101,17 +87,10 @@ footer: light
 
   <!-- scroll column -->
 
-  <div class="d-none">
-    <div class="row border-white section-wrapper">
-      <div class="col-md text-center">
-        <div class="w-75 m-auto">
-          <div id="" class="display-2 mb-8">{{site.data.content.intro.headline | markdownify}}</div>
-          <div class="d-none display-3 pb-5">
-            ↓
-          </div>
+  <div class="">
 
-        </div>
-      </div>
+    <div class="row h-100 border-white section-wrapper d-none">
+
       <div class="col d-flex text-left">
         <div class="m-auto">
           {{site.data.content.intro.abstract | markdownify}}
@@ -124,7 +103,7 @@ footer: light
     <!-- FORM -->
     <div class="row border-white">
       <div class="col">
-        <div class="divider-v border-top w-100 border-white"></div>
+        <!-- <div class="divider-v border-top w-100 border-white"></div> -->
         <div class="row section-wrapper">
 
           <div class="col-md text-left">
@@ -157,28 +136,33 @@ footer: light
 
 
           <div class="col text-left">
+            <div class="d-none">
               {%- include form.html -%}
             </div>
           </div>
+        </div>
 
+      </div>
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col">
+        <div class="border-top w-100 border-white divider-v">
+        </div>
+        <div class="row section-wrapper">
+          <div class="col-md-6">
+            <div class="">
+              {{site.data.content.trr.about | markdownify}}
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col">
-        <div class="border-top w-100 border-white divider-v"></div>
-          <div class="row section-wrapper">
-            <div class="col-md-6">
-              <div class="">
-                {{site.data.content.trr.about | markdownify}}
-              </div>
-            </div>
-          </div>
-      </div>
 
-
-    </div>
   </div>
 
 

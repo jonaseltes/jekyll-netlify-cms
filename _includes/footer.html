@@ -1,72 +1,28 @@
-<!-- <footer class="site-footer h-card"> -->
-  <!-- <data class="u-url" href="{{ "/" | relative_url }}"></data> -->
+<div class='row mb-2'>
+  <div class='col d-flex justify-content-between'>
 
-
-  <div class="container-fluid">
-
-    <!-- <h2 class="footer-heading">{{ site.title | escape }}</h2> -->
-    <!-- <div class="w-100 border-top mt-4"></div> -->
-
-    <!-- <footer class="row align-items-center"> -->
-      <!-- <div class="col-md-6"></div> -->
-      <!-- <div class="col-md d-flex justify-content-between">
-
-        <div class="">
-          <a href="{% link about.md %}">About</a>
+      <div class='text-md'>
+        <div class=''>
+          About TRR
         </div>
-
-        <div class="">
-          <a href="https://twitter.com/{{ site.twitter_username}}" target="_blank">Twitter</a>
-        </div>
-
-        <div class="">
-          {%- if site.email -%}
-          <a class="u-email" href="mailto:{{ site.email }}">Contact</a>
-          {%- endif -%}
-        </div>
-      </div> -->
-      <div class="row mb-5 invisible">
-        <div class="col-md-6 text-left">
-          <div class="">
-            <a href="https://www.trr.se/" target="_blank"><img width="100" src="{{site.data.content.site.assets.trr-logos.white}}" /></a>
-          </div>
-        </div>
-        <div class="col">
-        </div>
-        <div class="col-md-3">
-          Maecenas sed diam eget risus varius blandit sit amet non magna.
+        <div class=''>
+          Press Kit
         </div>
       </div>
 
-      <!-- {%- assign default_paths = site.pages | map: "path" -%}
-      {%- assign page_paths = site.header_pages | default: default_paths -%}
-
-      {%- if page_paths -%}
-
-        <nav class="navbar navbar-light navbar-expand-sm main-nav row align-items-center">
-
-              <button class="navbar-toggler col text-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-              <div class="collapse navbar-collapse col text-right" id="navbarNavDropdown">
-                <div class="navbar-nav d-flex justify-content-between w-100">
-                  {%- for path in page_paths -%}
-                    {%- assign my_page = site.pages | where: "path", path | first -%}
-                    {%- if my_page.title -%}
-                      <a class="nav-item nav-link {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
-                    {%- endif -%}
-                  {% endfor -%}
-                </div>
-              </div>
-
-        </nav>
-
-      {%- endif -%} -->
+      <div class='contact text-md'>
+        Unsatiated curiosity or unanswered questions?
+        <p>Drop us a line at contact@swedishworklab.com and we will come to the rescue!</p>
+      </div>
 
 
+      <div class='TRR'>
+        <div class='mb-2 text-sm'>
+          An initiative by:
+        </div>
+          <a href='https://www.trr.se/' target='_blank'><img width='70' src='{{site.data.content.site.assets.trr-logos.white}}' /></a>
+      </div>
 
-    <!-- </div> -->
+
   </div>
-
-<!-- </footer> -->
+</div>

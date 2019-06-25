@@ -48,6 +48,7 @@ body_scripts:
   - //cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js
   - //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js
   - /assets/js/barba.min.js
+  - /assets/js/main.js
 
 animation_scripts:
   - /assets/js/Tween.js
@@ -63,7 +64,6 @@ animation_scripts:
 
 fonts:
   - //fonts.googleapis.com/css?family=Open+Sans&display=swap
-
 
 
 plugins:

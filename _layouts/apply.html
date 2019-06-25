@@ -9,6 +9,8 @@ scripts:
   head:
     cdn:
     assets:
+menu: light
+footer: light
 ---
 
 
@@ -16,7 +18,7 @@ scripts:
   <h1 class="post-title">{{ page.title | escape }}</h1>
 </header>-->
 
-<div class="about container-fluid">
+<div class="about container-fluid page-content-container">
 
   <div class="row flex-row align-items-start">
 
@@ -26,38 +28,7 @@ scripts:
 
     <div class="col">
 
-      <div class="row">
-        <div class="col">
-          <div id="application-form-wrapper" class="">
-
-            {% assign form = site.data.application-form %}
-            <form id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
-
-              {% assign inputs = site.data.application-form.inputs.details %}
-                {% for item in inputs %}
-                  <div class="form-group">
-                    <div>
-                      {{item.label}}
-                    </div>
-                    {%- if item.type == 'text' -%}
-                      <input class="form-control" type="text" value="" name="{{item.name}}" />
-                    {%- endif -%}
-                    {%- if item.type == 'file' -%}
-                      <!-- <input class="form-control" type="text" value="" name="{{item.field-name}}" /> -->
-                      <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.name}}" />
-                      <img id="upload-preview" class="" src="" height="200" alt="">
-                    {%- endif -%}
-                    {%- if item.type == 'textarea' -%}
-                      <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100"></textarea>
-                    {%- endif -%}
-                  </div>
-                {% endfor %}
-                <input type="submit" name="" value="Submit">
-            </form>
-
-          </div>
-        </div>
-      </div>
+      {%- include form.html -%}
 
 
     </div>

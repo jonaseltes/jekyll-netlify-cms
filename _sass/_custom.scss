@@ -17,13 +17,15 @@ html {
 
 html, body {
   height: 100%;
-  overflow: hidden;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  // overflow: hidden;
+  // font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
   font-size: $font-size-lg;
-  color: $black;
+
+  background-color: #999999 !important; /*dark purple */
   @include media-breakpoint-down(md) {
     font-size: $font-size-md;
   }
@@ -34,8 +36,15 @@ body {
   // letter-spacing: .1rem;
 }
 
-body * {
+//FONTS
 
+.helvetica {
+  font-family: "Helvetica", "Arial", sans-serif !important;
+}
+
+body * {
+  color: $white !important;
+  letter-spacing: -0.5px !important;
 }
 
 // Links
@@ -68,10 +77,10 @@ p > a {
 }
 
 .content-wrapper {
-  position: absolute;
+  // position: absolute;
   // padding: 5.6rem !important;
   // overflow: hidden;
-  overflow: scroll;
+  // overflow: scroll;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -150,7 +159,7 @@ p > a {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: -1;
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -289,6 +298,10 @@ p > img {
   width: 100%;
 }
 
+strong {
+  font-weight: normal !important;
+}
+
 .page-title {
   color: $black;
   position: relative;
@@ -296,33 +309,44 @@ p > img {
 }
 
 
+.display-4 {
+  letter-spacing: -1px !important;
+}
+
 @include media-breakpoint-down(lg) {
   .display-0 {
     font-size: 8.4rem;
     // font-weight: 300;
     line-height: 1.3;
-    letter-spacing: 2;
+    letter-spacing: 0;
   }
 
   .display-1 {
     font-size: 5.8rem;
     font-weight: 400;
     line-height: 1.3;
-    letter-spacing: 2;
+    letter-spacing: 0;
   }
 
   .display-2 {
     font-size: 4.6rem;
     font-weight: 400;
     line-height: 1.3;
-    letter-spacing: 2;
+    letter-spacing: 0;
   }
 
   .display-3 {
     font-size: 3.2rem;
     font-weight: 400;
     line-height: 1.3;
-    letter-spacing: 2;
+    letter-spacing: 0;
+  }
+
+  .display-4 {
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -2px !important;
   }
 }
 

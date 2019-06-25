@@ -1,7 +1,7 @@
 ---
 layout: apply
-title: Apply
-permalink: /apply/
+title: The Hackathon
+permalink: /hackathon/
 ---
 
 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.

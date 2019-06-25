@@ -4,14 +4,14 @@
   {%- include head.html -%}
 
   <body>
-    <div id="page-wrapper" class="wrapper">
+    <div id="page-wrapper" class="wrapper h-100">
 
       <div class="header-wrapper w-100 fixed-top">
         {%- include header.html -%}
       </div>
 
       <div id="content-wrapper" class="content-wrapper d-flex flex-column w-100 h-100">
-        <div class="header-wrapper w-100 invisible">
+        <div class="header-wrapper w-100 invisible mb-8">
           {%- include header.html -%}
         </div>
         <!-- <main class="page-content" aria-label="Content"> -->
@@ -19,14 +19,9 @@
             {{ content }}
         </div>
 
-
-        <!-- </main> -->
-        <div class="footer-wrapper w-100 d-none invisible">
-          {%- include footer.html -%}
-        </div>
       </div>
 
-      <div class="footer-wrapper w-100 d-none fixed-bottom">
+      <div id="footer" class="footer-wrapper">
         {%- include footer.html -%}
       </div>
 
