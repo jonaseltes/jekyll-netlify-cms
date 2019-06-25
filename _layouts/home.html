@@ -11,7 +11,6 @@ scripts:
       - canvas.js
       - scramble.js
       - index.js
-      - form.js
   head:
     cdn:
       - '//identity.netlify.com/v1/netlify-identity-widget.js'
@@ -134,10 +133,17 @@ footer: light
           </div>
 
 
-          <div class="col-6 text-left text-lg">
-            <div class="">
+          <div class="col-6 text-left text-xl">
+            <div class="collapse-paragraphs collapse" id="hackathonCollapse">
               {{site.data.application-form.introduction.description | markdownify}}
             </div>
+
+            <div class="">
+              <a class="" data-toggle="collapse" href="#hackathonCollapse" role="button" aria-expanded="false" aria-controls="hackathonCollapse">
+                <span id="hackathonCollapseButton" class="text-lg">Read more +</span>
+              </a>
+            </div>
+
 
             <div class="text-xl mt-10">
               <div class="mb-2">

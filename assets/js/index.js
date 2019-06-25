@@ -19,6 +19,9 @@ $( document ).ready(function() {
     $("#about-intro").toggleClass("display-4");
   });
 
+  var par = $(".collapse-paragraphs").parent();
+  $(".collapse-paragraphs").children(":first").detach().prependTo(par);
+
   // console.log( "ready!" );
   const phrases = [
     'work',
