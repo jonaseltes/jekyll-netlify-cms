@@ -8,16 +8,16 @@ console.log("index.js");
 
 
 $( document ).ready(function() {
-  //
-  // $('.slick').slick({
-  //   accessibility: false,
-  //   centerMode: true,
-  //   dots: true,
-  //   infinite: false,
-  //   vertical: true,
-  //   variableWidth: true
-  // });
 
+  $("#aboutCollapse").on("hide.bs.collapse", function(){
+    $("#aboutCollapseButton").html('Read more +');
+    // $("#aboutCollapseButton").hide();
+    $("#about-intro").toggleClass("display-4");
+  });
+  $("#aboutCollapse").on("show.bs.collapse", function(){
+    $("#aboutCollapseButton").html('Read more –');
+    $("#about-intro").toggleClass("display-4");
+  });
 
   // console.log( "ready!" );
   const phrases = [

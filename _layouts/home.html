@@ -49,33 +49,44 @@ footer: light
       <div class="col h-100 d-flex flex-column align-items-center py-3">
 
         <div class="row flex-grow-1">
-            <div class="col-4 flex-column align-items-end">
+            <div class="col-5 flex-column align-items-end">
               <!-- <div class="display-1 text-capitalize position-fixed">
                 The Swedish<br /><span class="work">work</span> Lab
               </div> -->
+              <div id="landing-text" class="pointer-e-all mb-8 align-self-start">
+                <div id="landing-title" class="display-3 w-75">
+                    Will you help us shape the future of <span class="work">work</span>?
+                </div>
+              </div>
             </div>
             <div class="col">
 
             </div>
             <div class="col-6 d-flex flex-column justify-content-between">
 
-                <div id="loading-text" class="d-none">
+                <!-- <div id="loading-text" class="d-none">
                   <span class="text-uppercase d-none">Loading...</span>
-                </div>
+                </div> -->
 
-                <div id="landing-text" class="pointer-e-all mb-8 align-self-start">
-                  <div id="landing-title" class="display-4 w-75">
-                      Will you help us shape the future of <span class="work">work</span>?
+
+
+                <div id="about-container" class="text-lg align-self-start">
+                  <p class="display-4" id="about-intro">The Swedish Work Lab is a platform to explore what all these parameters mean for employees and employers in both the near and distant future. What does tomorrow’s work life actually look like? What previously unknown challenges may we be facing? And what or who is required for our work lives to thrive?</p>
+                  <div class="collapse" id="aboutCollapse">
+                    <div class="">
+                      <p class="">
+                        Our 21st century work lives are constantly evolving. They’re shaped by technological breakthroughs, new economic models, and evolving educational formats. Legislation catches up to ideas and re-frames how businesses can be run. There’s an increased expectancy on companies’ moral compass, and matters of ethics and sustainability may determine both where individuals choose to work as well as where customers choose to take their business.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="">
+                    <a class="" data-toggle="collapse" href="#aboutCollapse" role="button" aria-expanded="false" aria-controls="aboutCollapse">
+                      <span id="aboutCollapseButton" class="text-lg">Read more +</span>
+                    </a>
                   </div>
                 </div>
-
-                <div class="text-xl align-self-end">
-                  <p>The Swedish Work Lab is a platform to explore what all these parameters mean for employees and employers in both the near and distant future. What does tomorrow’s work life actually look like? What previously unknown challenges may we be facing? And what or who is required for our work lives to thrive?</p>
-
-                  <div class="display-3 mb-8 bounce helvetica align-self-end">
-                    ↓
-                  </div>
-
+                <div class="display-3 mb-8 bounce helvetica">
+                  ↓
                 </div>
             </div>
         </div>
@@ -113,7 +124,7 @@ footer: light
                 <div class="col-md">
                   <div class="row mb-4">
                     <div class="col-5">
-                      <div class="display-5 font-weight-semi-bold">
+                      <div class="display-5 ">
                         {{site.data.application-form.introduction.headline | markdownify}}
                       </div>
                     </div>
