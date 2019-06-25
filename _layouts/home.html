@@ -46,10 +46,10 @@ footer: light
     <div class="col h-100 d-flex flex-column align-items-center py-3">
 
             <div class="row flex-grow-1">
-                <div class="col-4 d-flex">
-                  <div class="display-1 text-capitalize">
-                    The Swedish <span class="work">work</span> Lab
-                  </div>
+                <div class="col-4 flex-column align-items-end">
+                  <!-- <div class="display-1 text-capitalize position-fixed">
+                    The Swedish<br /><span class="work">work</span> Lab
+                  </div> -->
                 </div>
                 <div class="col">
 
@@ -109,37 +109,32 @@ footer: light
           <div class="col-md text-left">
               <div class="row">
 
-                <div class="col">
-
+                <div class="col-md">
                   <div class="row mb-4">
                     <div class="col">
-                      <div class="m-auto">
-                        {{site.data.application-form.description | markdownify}}
+                      <div class="display-5">
+                        {{site.data.application-form.introduction.headline | markdownify}}
                       </div>
                     </div>
                   </div>
-
-                  <div class="row">
-                    <div class="col">
-                      <div class="">
-                        {{site.data.info.text | markdownify}}
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
-                <div class="col-md-2">
-                </div>
-
               </div>
           </div>
 
 
-          <div class="col text-left">
-            <div class="d-none">
-              {%- include form.html -%}
+          <div class="col-6 text-left text-xl">
+            <div class="">
+              {{site.data.application-form.introduction.description | markdownify}}
+            </div>
+
+          </div>
+
+          <div class="col d-none">
+            <div class="">
+              {{site.data.info.text | markdownify}}
             </div>
           </div>
+
         </div>
 
       </div>
@@ -148,7 +143,7 @@ footer: light
 
 
 
-    <div class="row">
+    <div class="row d-none">
       <div class="col">
         <div class="border-top w-100 border-white divider-v">
         </div>

@@ -85,7 +85,9 @@ p > a {
 }
 
 .header-wrapper {
-
+  // background-color: #716595 !important;
+  // border-bottom: solid $white 1px;  
+  // background-color: #999999;
 }
 
 .footer-wrapper {
@@ -308,6 +310,9 @@ strong {
   // top: -1rem;
 }
 
+.display-1 {
+  letter-spacing: -1px !important;
+}
 
 .display-4 {
   letter-spacing: -1px !important;
