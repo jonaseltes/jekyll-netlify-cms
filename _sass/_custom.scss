@@ -18,8 +18,8 @@ html {
 html, body {
   height: 100%;
   // overflow: hidden;
-  // font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  // font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -86,12 +86,13 @@ p > a {
 
 .header-wrapper {
   // background-color: #716595 !important;
-  // border-bottom: solid $white 1px;  
+  // border-bottom: solid $white 1px;
   // background-color: #999999;
 }
 
 .footer-wrapper {
-
+  // background-color: #999999;
+  // background-color: $black; 
 }
 
 .section-wrapper {

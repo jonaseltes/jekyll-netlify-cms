@@ -18,21 +18,19 @@ footer: light
   <h1 class="post-title">{{ page.title | escape }}</h1>
 </header>-->
 
-<div class="about container-fluid page-content-container">
+<div class="about page-content-container">
+  <div class="container-fluid">
+    <div class="row flex-row align-items-start">
 
-  <div class="row flex-row align-items-start">
+      <div class="col">
+        {%- include form.html -%}
+      </div>
 
-    <div class="col-lg text-xl">
-      {{site.data.application-form.description | markdownify}}
+      <div class="col-lg text-xl">
+        {{site.data.info.text | markdownify}}
+      </div>
+
     </div>
-
-    <div class="col">
-
-      {%- include form.html -%}
-
-
-    </div>
-
   </div>
 
 
