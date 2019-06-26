@@ -29,6 +29,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Site variables
 image_path: assets/media
+uploads_path: assets/media/uploads
 js_path: assets/js
 css_path: assets/css
 fonts_path: assets/fonts

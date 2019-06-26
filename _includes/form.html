@@ -1,5 +1,5 @@
-<div id="form-section" class="">
-  <div class="mb-6 text-xl">
+<div id="form-section" class="col px-0 text-lg">
+  <div class="mb-6 d-none">
     {{site.data.application-form.headline}}
   </div>
   <div class="text-sm d-none mb-4">
@@ -8,13 +8,15 @@
 
   <div id="application-form-wrapper" class="text-left container-fluid px-0">
     {% assign form = site.data.application-form %}
-    <form class="row" id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
+    <form class="row px-0" id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
 
       {% assign inputs = site.data.application-form.inputs.details %}
         {% for item in inputs %}
-
+          {% if forloop.index < 7 %}
             <div class="form-group col-6 mb-6">
-
+          {% else %}
+            <div class="form-group col-12 mb-6">
+          {% endif %}
             <div class="mb-2">
               {{item.label}}:
             </div>
@@ -34,7 +36,7 @@
             {% if forloop.last == true %}
               <div class="row">
                 <div class="col">
-                  <div class="mt-8">
+                  <div class="mt-6">
                     <div class="text-md">
                       <p>By submitting this application you agree to the <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <u>Terms & Conditions</u></a>.</p>

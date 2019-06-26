@@ -230,11 +230,16 @@ p > a {
 }
 
 .navbar-nav > :first-child {
-  padding-left: 0px !important;
+  // padding-left: 0px !important;
 }
 
 .navbar-nav > :last-child {
-  padding-right: 0px !important;
+  // padding-right: 0px !important;
+}
+
+.nav-link {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 
 .navbar-toggler {
@@ -245,6 +250,13 @@ p > a {
 .navbar-collapse {
   // background: $white;
   // padding-bottom: map-get($spacers, 3);
+}
+
+.navbar-collapse {
+    // stylelint-disable-line declaration-no-important
+  @include media-breakpoint-up(sm) {
+    display: block !important;
+  }
 }
 
 //footer
@@ -543,7 +555,7 @@ button, html [type="button"], [type="reset"], [type="submit"], input:matches([ty
   background: transparent !important;
   background-color: none !important;
   padding: $nav-link-padding-y 1.5rem;
-  width: 100%;
+  // width: 100%;
   // font-size: $font-size-xl;
   color: $white;
   outline: none !important;
@@ -581,7 +593,7 @@ button, html [type="button"], [type="reset"], [type="submit"], input:matches([ty
 // divider
 
 .divider-v {
-
+  border-width: 2px !important;
   // margin-bottom: map-get($spacers, 9); //5rem
   //
   // @include media-breakpoint-down(lg) {

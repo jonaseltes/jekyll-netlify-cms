@@ -11,24 +11,15 @@
 
           <div class="col-8 text-left">
             <a href="{{ "/" | relative_url }}"><img height="70" src="{{site.logo.three.white}}" alt=""></a>
-            <!-- <div class="">
-              <a href="https://www.trr.se/" target="_blank"><img width="100" src="{{site.data.content.site.assets.trr-logos.white}}" /></a>
-            </div> -->
           </div>
-
-          <!-- <div class="col">
-          </div>
-          <div class="col">
-            A project to collectively shape the future of work, facilitated by TRR in collaboration with Another Tomorrow.
-          </div> -->
 
 
             <button class="navbar-toggler col text-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse col text-right" id="navbarNavDropdown">
-              <div class="navbar-nav w-100 row">
+            <div class="collapse navbar-collapse col" id="navbarNavDropdown">
+              <div class="navbar-nav row">
                 {%- for path in page_paths -%}
                   {%- assign my_page = site.pages | where: "path", path | first -%}
                   {%- if my_page.title -%}

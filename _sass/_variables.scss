@@ -87,11 +87,12 @@ $navbar-light-active-color:         inherit;
 
 
 //grid
-// $grid-gutter-width: 56px;
+// $grid-columns:                12 !default;
+$grid-gutter-width:           30px;
 
 // @include media-breakpoint-down(md) {
 //
 // }
 
 //border
-$border-color: inherit;
+// $border-color: inherit;

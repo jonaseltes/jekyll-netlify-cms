@@ -55,12 +55,12 @@ function animate_vertices(mesh, pk, grav){
 
 function createBlob(c) {
   var geo = new THREE.SphereGeometry(.3, 50, 50);
-  var mat  = new THREE.MeshBasicMaterial({
+  var mat  = new THREE.MeshStandardMaterial({
     shininess: 100,
     specular: 0xffffff,
     transparent: true,
     // shading: THREE.FlatShading,
-    side: THREE.DoubleSide,
+    // side: THREE.DoubleSide,
     // alpha: true,
     opacity: 0.8,
     clearCoat: 0.7,
