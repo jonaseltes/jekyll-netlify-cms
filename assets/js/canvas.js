@@ -390,9 +390,7 @@ function animate() {
   blobMesh.position.x = noise.perlin2(time, time/4000) * 0.5;
   blobMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
   blobMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
-  {% if jekyll.environment == "production" %}
-    requestAnimationFrame( animate );
-  {% endif %}
+
   requestAnimationFrame( animate );
 
   // console.log("time: " ,time);
