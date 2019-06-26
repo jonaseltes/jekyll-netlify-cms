@@ -20,15 +20,29 @@ footer: light
 
 <div class="about page-content-container">
   <div class="container-fluid">
-    <div class="row flex-row align-items-start">
+    <div class="row">
 
       <div class="col">
+        <div class="row">
+          <div class="col text-xl">
+            {{site.data.info.text | markdownify}}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-5">
         {%- include form.html -%}
       </div>
 
-      <div class="col-lg text-xl">
-        {{site.data.info.text | markdownify}}
+      <div class="col text-md">
+        <div class="mb-3">
+          Unsatiated curiosity or unanswered questions?
+        </div>
+        <div class="">
+          <p class="">Drop us a line at contact@swedishworklab.com and we will come to the rescue!</p>
+        </div>
       </div>
+
 
     </div>
   </div>
