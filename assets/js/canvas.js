@@ -53,7 +53,7 @@ function animate_vertices(mesh, pk, grav){
 }
 
 
-function createBlob() {
+function createBlob(c) {
   var geo = new THREE.SphereGeometry(.3, 50, 50);
   var mat  = new THREE.MeshStandardMaterial({
     shininess: 100,
@@ -71,7 +71,7 @@ function createBlob() {
     // color: 0xffffff
     // color: 0x4e4279
     // color: 0x694dcb
-    color: 0x6c5ba5
+    color: c
   });
 
   var bmesh = new THREE.Mesh(geo, mat);
@@ -175,8 +175,11 @@ function createMesh(){
   console.log("scene: " ,scene.children);
 	textureCube.minFilter = THREE.LinearFilter;
 
+  var colors = [0x15958c, 0xf3d500, 0xeff0f9]
+  var c;
   for (var i = 0; i < 3; i++) {
-    createBlob();
+    c = colors[i];
+    createBlob(c);
   }
 
   // console.log("mesh: " ,mesh);
@@ -390,6 +393,7 @@ function animate() {
   {% if jekyll.environment == "production" %}
     requestAnimationFrame( animate );
   {% endif %}
+  requestAnimationFrame( animate );
 
   // console.log("time: " ,time);
 

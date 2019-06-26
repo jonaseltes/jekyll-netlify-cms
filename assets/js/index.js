@@ -19,8 +19,31 @@ $( document ).ready(function() {
     $("#about-intro").toggleClass("display-4");
   });
 
+  $("#hackathonCollapse").on("hide.bs.collapse", function(){
+    $("#hackathonCollapseButton").html('Read more +');
+    // $("#aboutCollapseButton").hide();
+  });
+  $("#hackathonCollapse").on("show.bs.collapse", function(){
+    $("#hackathonCollapseButton").html('Read more –');
+  });
+
   var par = $(".collapse-paragraphs").parent();
   $(".collapse-paragraphs").children(":first").detach().prependTo(par);
+
+
+  // var c = 0;
+  // setInterval(function () {
+  //     var colors = ['blue', 'green', 'red', 'olive', 'yellow']
+  //     if (c > colors.length - 1) c = 0;
+  //     $("body").animate({
+  //         backgroundColor: colors[c++]
+  //     },
+  //     {
+  //         duration: 2000,
+  //         easing: "linear"
+  //     });
+  // }, 2000);
+
 
   // console.log( "ready!" );
   const phrases = [

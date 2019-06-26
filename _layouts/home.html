@@ -16,11 +16,10 @@ scripts:
       - '//identity.netlify.com/v1/netlify-identity-widget.js'
     assets:
 css:
-    - assets/css/index.css
     - //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css
     - //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css
 
-menu: light
+menu: dark
 footer: light
 ---
 
@@ -80,7 +79,7 @@ footer: light
                   </div>
                   <div class="">
                     <a class="" data-toggle="collapse" href="#aboutCollapse" role="button" aria-expanded="false" aria-controls="aboutCollapse">
-                      <span id="aboutCollapseButton" class="text-lg">Read more +</span>
+                      <span id="aboutCollapseButton" class="text-lg font-weight-medium roboto-mono">Read more +</span>
                     </a>
                   </div>
                 </div>
@@ -110,7 +109,7 @@ footer: light
   </div>
 
 
-  <div class="container-fluid min-h-100">
+  <div class="container-fluid min-h-100 bg-secondary">
     <!-- FORM -->
     <div class="row min-h-100">
       <div class="col min-h-100">
@@ -118,42 +117,37 @@ footer: light
         <div class="row section-wrapper">
 
           <div class="col-md text-left">
-              <div class="row">
-
-                <div class="col-md">
-                  <div class="row mb-4">
-                    <div class="col-5">
-                      <div class="display-5 ">
-                        {{site.data.application-form.introduction.headline | markdownify}}
-                      </div>
-                    </div>
+              <div class="row mb-4">
+                <div class="col-8">
+                  <div class="display-5">
+                    {{site.data.application-form.introduction.headline | markdownify}}
                   </div>
                 </div>
               </div>
           </div>
 
 
-          <div class="col-6 text-left text-xl">
+          <div class="col-4 text-left text-xl">
             <div class="collapse-paragraphs collapse" id="hackathonCollapse">
               {{site.data.application-form.introduction.description | markdownify}}
             </div>
-
             <div class="">
               <a class="" data-toggle="collapse" href="#hackathonCollapse" role="button" aria-expanded="false" aria-controls="hackathonCollapse">
-                <span id="hackathonCollapseButton" class="text-lg">Read more +</span>
+                <span id="hackathonCollapseButton" class="text-lg font-weight-semi-bold">Read more +</span>
               </a>
             </div>
+          </div>
 
+          <div class="col">
 
-            <div class="text-xl mt-10">
+            <div class="text-xl">
               <div class="mb-2">
-                <a href="#" class=""><u>I want to join the hackthon</u></a> →
+                <a href="#" class="">I want to join the hackthon</a> →
               </div>
               <div class="">
-                <a href="#" class=""><u>What will my future work journey look like?</u></a> →
+                <a href="#" class="">What will my future work journey look like?</a> →
               </div>
             </div>
-
           </div>
 
           <div class="col d-none">
@@ -175,8 +169,8 @@ footer: light
 
 
 
-  <div class="container-fluid">
-    <div class="row d-none">
+  <div class="container-fluid d-none">
+    <div class="row">
       <div class="col">
         <div class="border-top w-100 border-white divider-v">
         </div>
@@ -190,16 +184,8 @@ footer: light
         </div>
       </div>
     </div>
-    </div>
+  </div>
 
-    <div class="container-fluid">
-      <!-- FORM -->
-      <div class="row ">
-        <div class="col ">
-
-        </div>
-      </div>
-    </div>
 
 
 

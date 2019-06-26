@@ -24,8 +24,10 @@ html, body {
 
 body {
   font-size: $font-size-lg;
+  color: $white;
+  letter-spacing: -0.5px;
 
-  background-color: #999999 !important; /*dark purple */
+  background-color: $body-color; /*dark purple */
   @include media-breakpoint-down(md) {
     font-size: $font-size-md;
   }
@@ -43,8 +45,7 @@ body {
 }
 
 body * {
-  color: $white !important;
-  letter-spacing: -0.5px !important;
+  // color: $white;
 }
 
 // Links
@@ -92,7 +93,7 @@ p > a {
 
 .footer-wrapper {
   // background-color: #999999;
-  // background-color: $black; 
+  // background-color: $black;
 }
 
 .section-wrapper {
@@ -272,14 +273,17 @@ footer > div {
 
 .text-xs {
   font-size: $font-size-xs !important;
+  letter-spacing: 0px !important;
 }
 
 .text-sm {
   font-size: $font-size-sm !important;
+  letter-spacing: 0px !important;
 }
 
 .text-md {
   font-size: $font-size-md !important;
+  letter-spacing: 0px !important;
 }
 
 .text-lg {

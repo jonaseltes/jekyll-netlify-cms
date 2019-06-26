@@ -5,6 +5,31 @@ $primary: $black;
 $link-color: rgba($primary, 1);
 $error-color: #ff0000;
 
+$light-beige: #c1c1bb;
+$medium-beige: #afafaa;
+
+$bg-secondary: $medium-beige !important;
+$secondary: $medium-beige !important;
+
+$body-color:                $light-beige;
+
+.bg-body-color {
+  background-color: $body-color;
+}
+
+$theme-colors: (
+  secondary: $medium-beige
+);
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:                inherit;
+$link-decoration:           none !default;
+$link-hover-color:          inherit;
+$link-hover-decoration:     underline !default;
+
 
 //type
 $font-size-xl:                ($font-size-base * 2.8);
@@ -40,9 +65,12 @@ $font-weight-semi-bold:       600;
 $font-weight-bold:            700;
 
 .font-weight-medium { font-weight: $font-weight-medium !important; }
-
 .font-weight-semi-bold { font-weight: $font-weight-semi-bold !important; }
 
+
+.roboto-mono {
+  font-family: 'Roboto Mono', monospace;
+}
 
 //navbar
 $navbar-brand-height: 6rem !important;
@@ -52,7 +80,7 @@ $navbar-padding-edge: 1.5rem;
 
 $navbar-light-color:                $link-color;
 $navbar-light-hover-color:          rgba($black, 1);
-$navbar-light-active-color:         rgba($black, 1);
+$navbar-light-active-color:         inherit;
 // $navbar-light-disabled-color:       rgba($black, .3) !default;
 // $navbar-light-toggler-icon-bg:      str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
 // $navbar-light-toggler-border-color: rgba($black, .1) !default;
@@ -66,4 +94,4 @@ $navbar-light-active-color:         rgba($black, 1);
 // }
 
 //border
-$border-color: $black
+$border-color: inherit;
