@@ -393,7 +393,7 @@ function animate() {
   {% if jekyll.environment == "production" %}
     requestAnimationFrame( animate );
   {% endif %}
-  requestAnimationFrame( animate );
+  // requestAnimationFrame( animate );
 
   // console.log("time: " ,time);
 
