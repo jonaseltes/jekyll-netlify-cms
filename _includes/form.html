@@ -6,13 +6,15 @@
     {{site.data.application-form.disclaimer}}
   </div>
 
-  <div id="application-form-wrapper" class="text-left">
+  <div id="application-form-wrapper" class="text-left container-fluid px-0">
     {% assign form = site.data.application-form %}
-    <form id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
+    <form class="row" id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
 
       {% assign inputs = site.data.application-form.inputs.details %}
         {% for item in inputs %}
-          <div class="form-group mb-6">
+
+            <div class="form-group col-6 mb-6">
+
             <div class="mb-2">
               {{item.label}}:
             </div>
@@ -28,21 +30,35 @@
             {%- if item.type == 'textarea' -%}
               <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100" maxlength="600" {%- if item.required -%}required{%- endif -%}></textarea>
             {%- endif -%}
+
+            {% if forloop.last == true %}
+              <div class="row">
+                <div class="col">
+                  <div class="mt-8">
+                    <div class="text-md">
+                      <p>By submitting this application you agree to the <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <u>Terms & Conditions</u></a>.</p>
+                    </div>
+                    <div class="collapse" id="collapseExample">
+                      <div class="text-sm">
+                        {{site.data.application-form.terms | markdownify}}
+                      </div>
+                    </div>
+                    <div class="error text-sm" id="form-error">
+
+                    </div>
+                    <input class="border-2 button" type="submit" name="" value="Submit">
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
           </div>
         {% endfor %}
-        <div class="text-md">
-          <p>By submitting this application you agree to the <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <u>Terms & Conditions</u></a>.</p>
-        </div>
-        <div class="collapse" id="collapseExample">
-          <div class="text-sm">
-            {{site.data.application-form.terms | markdownify}}
-          </div>
-        </div>
-        <div class="error text-sm" id="form-error">
+        <div class="col-6">
 
         </div>
-        <input class="border-2 button" type="submit" name="" value="Submit">
+
     </form>
   </div>
 </div>
