@@ -24,7 +24,7 @@
                   {%- assign my_page = site.pages | where: "path", path | first -%}
                   {%- if my_page.title -%}
                   <div class="col text-left">
-                    <a class="nav-item nav-link {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+                    <a class="nav-item nav-link {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }} →</a>
                   </div>
                   {%- endif -%}
                 {% endfor -%}

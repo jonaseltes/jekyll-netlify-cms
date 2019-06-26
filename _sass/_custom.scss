@@ -210,7 +210,7 @@ p > a {
 
 //Navbar
 ‰bar {
-  font-size: $font-size-xl;
+  font-size: $font-size-lg;
   // text-transform: uppercase;
   // height: 5.5rem;
   @include media-breakpoint-down(md) {
@@ -299,11 +299,20 @@ footer > div {
 }
 
 .text-lg {
-  font-size: $font-size-lg !important;
+
+  @include media-breakpoint-up(lg) {
+    font-size: $font-size-md !important;
+  }
+  @include media-breakpoint-up(xl) {
+    font-size: $font-size-lg !important;
+  }
 }
 
 .text-xl {
   font-size: $font-size-xl !important;
+  @include media-breakpoint-down(xl) {
+    font-size: $font-size-lg !important;
+  }
 }
 
 p {
