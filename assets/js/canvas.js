@@ -58,7 +58,7 @@ function createBlob(c) {
   var mat  = new THREE.MeshStandardMaterial({
     shininess: 100,
     specular: 0xffffff,
-    transparent: true,
+    // transparent: true,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
     // alpha: true,
@@ -129,7 +129,7 @@ function createMesh(){
   var material = new THREE.MeshPhysicalMaterial({
     // shininess: 100,
     // specular: 0xffffff,
-    transparent: true,
+    // transparent: true,
     // envMap: textureCube,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
