@@ -7,29 +7,34 @@
 
     {%- if page_paths -%}
 
-      <nav class="navbar navbar-light navbar-expand-sm main-nav row align-items-start">
+      <nav class="navbar navbar-dark navbar-expand-sm main-nav row align-items-start">
 
-          <div class="col-lg-6 col-xl-8 text-left">
+          <div class="col-6 col-sm-6 col-xl-8 text-left">
             <a href="{{ "/" | relative_url }}"><img height="70" src="{{site.logo.three.white}}" alt=""></a>
           </div>
 
 
-            <button class="navbar-toggler col text-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler text-right col-6" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse col" id="navbarNavDropdown">
-              <div class="navbar-nav row">
+            <!-- <div class="collapse navbar-collapse col text-right" id="navbarNavDropdown">
+              <div class="navbar-nav d-flex justify-content-between w-100"> -->
+
+            <div class="collapse navbar-collapse col-12 col-sm-6 col-md-6 col-xl-4 text-left text-sm-left" id="navbarNavDropdown">
+              <div class="navbar-nav row flex-row">
                 {%- for path in page_paths -%}
                   {%- assign my_page = site.pages | where: "path", path | first -%}
                   {%- if my_page.title -%}
-                  <div class="col text-left">
+                  <div class="col text-left text-sm-left">
                     <a class="nav-item nav-link {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }} →</a>
                   </div>
                   {%- endif -%}
                 {% endfor -%}
               </div>
             </div>
+
+
 
       </nav>
 

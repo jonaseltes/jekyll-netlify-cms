@@ -257,6 +257,9 @@ p > a {
 
 .navbar-collapse {
     // stylelint-disable-line declaration-no-important
+  @include media-breakpoint-down(sm) {
+    flex-basis: 0;
+  }
   @include media-breakpoint-up(sm) {
     display: block !important;
   }
