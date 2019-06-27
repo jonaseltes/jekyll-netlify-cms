@@ -19,44 +19,57 @@ footer: light
 </header>-->
 
 <div class="about page-content-container">
-  <div class="container-fluid">
+  <div class="container-fluid pb-9">
     <div class="row">
 
       <div class="col-2 text-lg">
         Take part in the hackathon
       </div>
-      <div class="col">
+      <div class="col-1">
 
       </div>
 
-      <div class="col-9">
+      <div class="col">
         <div class="row">
-          <div class="col-6 text-lg">
+          <div class="col text-lg">
             {{site.data.application-form.introduction.description | markdownify}}
           </div>
+        </div>
+      </div>
 
-          <div class="col-6">
-            <img class="mb-4" src="{{site.baseurl}}/{{site.uploads_path}}/bliquebynobissmall.jpg" width="100%" class=""/>
-            <div class="row">
-              <div class="col">
-                {{site.data.info.text | markdownify}}
+      <div class="col-4 text-sm">
+        <img class="mb-4" src="{{site.baseurl}}/{{site.uploads_path}}/bliquebynobissmall.jpg" width="100%" class=""/>
+        <div class="row">
+          <div class="col">
+            {{site.data.info.text | markdownify}}
+          </div>
+          <div class="col">
+            <div class="">
+              <div class="mb-3">
+                Unsatiated curiosity or unanswered questions?
               </div>
-              <div class="col">
-                <div class="">
-                  <div class="mb-3">
-                    Unsatiated curiosity or unanswered questions?
-                  </div>
-                  <div class="">
-                    <p class="">Drop us a line at contact@swedishworklab.com and we will come to the rescue!</p>
-                  </div>
-                </div>
+              <div class="">
+                <p class="">Drop us a line at contact@swedishworklab.com and we will come to the rescue!</p>
               </div>
             </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-12">
+        <div class="row mt-8">
+          <div class="col-3">
 
           </div>
-
-          <div class="col-12">
+          <div class="col-5 text-md">
+            <div class="text-lg mb-8">
+              Apply to join the hackathon:
+            </div>
             {%- include form.html -%}
+          </div>
+          <div class="col">
+
           </div>
         </div>
       </div>

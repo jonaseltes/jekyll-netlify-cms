@@ -11,7 +11,7 @@ $medium-beige: #afafaa;
 $bg-secondary: $medium-beige !important;
 $secondary: $medium-beige !important;
 
-$body-color:                $light-beige;
+$body-color:                $medium-beige;
 
 .bg-body-color {
   background-color: $body-color;
@@ -89,6 +89,27 @@ $navbar-light-active-color:         inherit;
 //grid
 // $grid-columns:                12 !default;
 $grid-gutter-width:           30px;
+// $grid-breakpoints: (
+//   // Extra small screen / phone
+//   xs: 0,
+//   // Small screen / phone
+//   sm: 576px,
+//   // Medium screen / tablet
+//   md: 768px,
+//   // Large screen / desktop
+//   lg: 992px,
+//   // Extra large screen / wide desktop
+//   xl: 1200px
+// );
+//
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 720px,
+//   lg: 960px,
+//   xl: 1140px
+// );
+
+
 
 // @include media-breakpoint-down(md) {
 //
