@@ -12,11 +12,11 @@ $( document ).ready(function() {
   $("#aboutCollapse").on("hide.bs.collapse", function(){
     $("#aboutCollapseButton").html('Read more +');
     // $("#aboutCollapseButton").hide();
-    $("#about-intro").toggleClass("text-lg");
+    $("#about-intro").toggleClass("text-md");
   });
   $("#aboutCollapse").on("show.bs.collapse", function(){
     $("#aboutCollapseButton").html('Read more –');
-    $("#about-intro").toggleClass("text-lg");
+    $("#about-intro").toggleClass("text-md");
   });
 
   $("#hackathonCollapse").on("hide.bs.collapse", function(){

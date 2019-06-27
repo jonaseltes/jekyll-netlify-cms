@@ -40,31 +40,28 @@ footer: light
 
   <div class="container-fluid d-table h-inherit">
 
-      <div class="row h-100">
+      <div class="row h-100 flex-column flex-sm-row">
 
+              <div class="col-sm-4 align-self-start flex-shrink-1">
 
-              <div class="col-sm-5 flex-column align-items-end">
-                <!-- <div class="display-1 text-capitalize position-fixed">
-                  The Swedish<br /><span class="work">work</span> Lab
-                </div> -->
-                <div id="landing-text" class="pointer-e-all mb-8 align-self-start">
-                  <div id="landing-title" class="display-3 w-lg-75">
-                      Will you help us shape the future of <span class="work">work</span>?
-                  </div>
-                </div>
               </div>
-              <div class="d-none d-md-block col-md">
+              <div class="d-none d-sm-block col-sm">
 
               </div>
 
-              <div class="col-sm-6 col-xl-4 d-flex flex-column justify-content-between">
+              <div class="d-flex flex-column flex-grow-1 col-sm-6 col-xl-4 align-items-start">
 
                   <!-- <div id="loading-text" class="d-none">
                     <span class="text-uppercase d-none">Loading...</span>
                   </div> -->
 
-                  <div id="about-container" class="text-md align-self-start">
-                    <p class="text-lg" id="about-intro">The Swedish Work Lab is a platform to explore what all these parameters mean for employees and employers in both the near and distant future. What does tomorrow’s work life actually look like? What previously unknown challenges may we be facing? And what or who is required for our work lives to thrive?</p>
+                  <div id="about-container" class="text-sm align-self-start">
+                    <div id="landing-text" class="pointer-e-all w-100 mb-8">
+                      <div id="landing-title" class="text-lg w-75">
+                          Will you help us shape the future of <span class="work">work</span>?
+                      </div>
+                    </div>
+                    <p class="text-md" id="about-intro">The Swedish Work Lab is a platform to explore what all these parameters mean for employees and employers in both the near and distant future. What does tomorrow’s work life actually look like? What previously unknown challenges may we be facing? And what or who is required for our work lives to thrive?</p>
                     <div class="collapse" id="aboutCollapse">
                       <div class="">
                         <p class="">
@@ -74,11 +71,11 @@ footer: light
                     </div>
                     <div class="">
                       <a class="" data-toggle="collapse" href="#aboutCollapse" role="button" aria-expanded="false" aria-controls="aboutCollapse">
-                        <span id="aboutCollapseButton" class="text-md font-weight-medium roboto-mono">Read more +</span>
+                        <span id="aboutCollapseButton" class="text-sm font-weight-medium roboto-mono">Read more +</span>
                       </a>
                     </div>
                   </div>
-                  <div class="display-3 mb-8 bounce helvetica">
+                  <div class="display-3 mb-8 mt-auto bounce  helvetica">
                     ↓
                   </div>
               </div>
@@ -107,14 +104,13 @@ footer: light
 
 
   <div class="container-fluid min-h-100 bg-secondary">
-    <!-- FORM -->
-    <div class="row min-h-100 py-9">
+    <div class="row min-h-100 py-8">
 
 
-          <div class="col-md text-left">
+          <div class="col-lg-4 col-xl text-left">
               <div class="row mb-4">
-                <div class="col-8">
-                  <div class="display-5">
+                <div class="col col-xl-12">
+                  <div class="text-lg">
                     {{site.data.application-form.introduction.headline | markdownify}}
                   </div>
                 </div>
@@ -122,25 +118,31 @@ footer: light
           </div>
 
 
-          <div class="col-4 text-left text-lg">
+          <div class="col-lg col-xl-6 text-left text-lg mb-8">
             <div class="collapse-paragraphs collapse" id="hackathonCollapse">
               {{site.data.application-form.introduction.description | markdownify}}
             </div>
             <div class="">
               <a class="" data-toggle="collapse" href="#hackathonCollapse" role="button" aria-expanded="false" aria-controls="hackathonCollapse">
-                <span id="hackathonCollapseButton" class="text-md font-weight-semi-bold">Read more +</span>
+                <span id="hackathonCollapseButton" class="text-sm font-weight-semi-bold roboto-mono">Read more +</span>
               </a>
             </div>
           </div>
 
-          <div class="col">
+          <div class="col-xl-4">
+            <div class="row">
+              <div class="col-lg-4 d-lg-block d-xl-none">
 
-            <div class="text-lg">
-              <div class="mb-2">
-                <a href="#" class="">I want to join the hackthon</a> →
               </div>
-              <div class="">
-                <a href="#" class="">What will my future work journey look like?</a> →
+              <div class="col">
+                <div class="text-lg">
+                  <div class="mb-2">
+                    <a href="#" class="">I want to join the hackthon</a> →
+                  </div>
+                  <div class="">
+                    <a href="#" class="">What will my future work journey look like?</a> →
+                  </div>
+                </div>
               </div>
             </div>
           </div>

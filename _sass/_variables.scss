@@ -7,6 +7,7 @@ $error-color: #ff0000;
 
 $light-beige: #c1c1bb;
 $medium-beige: #afafaa;
+$light-blue: #eff0f9;
 
 $bg-secondary: $medium-beige !important;
 $secondary: $medium-beige !important;
@@ -39,7 +40,7 @@ $font-size-sm:                ($font-size-base * 1.8);
 $font-size-xs:                ($font-size-base * 1.4);
 
 
-$line-height-base: 1.4;
+$line-height-base: 1.35;
 
 $display-line-height: 1.4;
 
@@ -89,18 +90,18 @@ $navbar-light-active-color:         inherit;
 //grid
 // $grid-columns:                12 !default;
 $grid-gutter-width:           30px;
-// $grid-breakpoints: (
-//   // Extra small screen / phone
-//   xs: 0,
-//   // Small screen / phone
-//   sm: 576px,
-//   // Medium screen / tablet
-//   md: 768px,
-//   // Large screen / desktop
-//   lg: 992px,
-//   // Extra large screen / wide desktop
-//   xl: 1200px
-// );
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1280px
+);
 //
 // $container-max-widths: (
 //   sm: 540px,
