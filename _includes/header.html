@@ -23,7 +23,7 @@
 
 
           <div class="collapse navbar-collapse col col-sm-6 col-md-6 col-xl-4 text-left text-sm-left" id="navbarNavDropdown">
-            <div class="navbar-nav row flex-column">
+            <div class="navbar-nav row flex-column flex-sm-row">
               {%- for path in page_paths -%}
                 {%- assign my_page = site.pages | where: "path", path | first -%}
                 {%- if my_page.title -%}
