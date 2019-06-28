@@ -62,6 +62,7 @@ animation_scripts:
   - /assets/js/OBJLoader.js
   - /assets/js/perlin.js
   - /assets/js/ammo.js
+  - /assets/js/canvas.js
 
 
 fonts:

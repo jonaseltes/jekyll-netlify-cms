@@ -16,6 +16,9 @@
         </div>
         <!-- <main class="page-content" aria-label="Content"> -->
         <div id="content-container" class="content-container flex-grow-1">
+            {% if layout.scripts.animation %}
+              {%- include canvas.html -%}
+            {% endif %}
             {{ content }}
         </div>
 
