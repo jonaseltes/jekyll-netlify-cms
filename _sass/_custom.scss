@@ -152,6 +152,11 @@ p > a {
   z-index: 1;
 }
 
+.typoeform-container * {
+  z-index: 2040 !important;
+  // background-color: transparent !important;
+}
+
 
 
 //canvas

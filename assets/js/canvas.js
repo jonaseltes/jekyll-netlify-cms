@@ -119,7 +119,7 @@ function createCanvasMaterial(size) {
 function createMesh(){
 
   var cubeLoader = new THREE.CubeTextureLoader();
-    cubeLoader.setPath('assets/media/cube/');
+    cubeLoader.setPath('/assets/media/cube/');
     var textureCube = cubeLoader.load([
       'px.png', 'nx.png',
     	'py.png', 'ny.png',
@@ -393,7 +393,7 @@ function animate() {
   blobMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
   blobMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
 
-  requestAnimationFrame( animate );
+  // requestAnimationFrame( animate );
 
   // console.log("time: " ,time);
 

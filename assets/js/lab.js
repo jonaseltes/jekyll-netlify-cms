@@ -8,7 +8,7 @@ console.log("lab.js");
 var typeform_url = "//anothertomorrow.typeform.com/to/O8tDRQ";
 
 $( document ).ready(function() {
-  const embedElement = document.querySelector('.typoeform-container');
+  var embedElement = document.querySelector('.typoeform-container');
 
   // var popup2 = window.typeformEmbed.makePopup(typeform_url, {
   //   autoClose: 3000,
@@ -30,11 +30,18 @@ $( document ).ready(function() {
       hideFooter: true,
       opacity: 0,
       buttonText: "Take the survey!",
-      onSubmit: function () {
+      onSubmit: function (e) {
+        console.log("e: " ,e);
         console.log('Typeform successfully submitted')
       }
     }
   )
+
+  //
+  // setTimeout(function(){
+  //   embedElement.close()
+  //  }, 10000) // NOTE: In this code, the typeform will automatically open, then automatically close 10 seconds later
+
 
 
 
