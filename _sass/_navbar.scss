@@ -1,3 +1,9 @@
+.header-wrapper {
+  @include media-breakpoint-down(xs) {
+    background-color: $bg-secondary;
+  }
+}
+
 //Navbar
 ‰bar {
   font-size: $font-size-md;
@@ -10,6 +16,11 @@
   @include media-breakpoint-down(sm) {
     font-size: $font-size-sm;
   }
+
+  @include media-breakpoint-down(xs) {
+    font-size: $font-size-sm;
+  }
+
   padding: $navbar-padding-y 0;
 }
 
@@ -17,6 +28,12 @@
   @extend ‰bar;
   padding-top: $navbar-padding-edge !important;
   // display: none;
+}
+
+.navbar-nav {
+  @include media-breakpoint-down(xs) {
+    // margin-left: auto;
+  }
 }
 
 .navbar-nav > :first-child {
@@ -28,8 +45,15 @@
 }
 
 .nav-link {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
+  // padding-right: 0 !important;
+  // padding-left: 0 !important;
+  padding: map-get($spacers, 0) 0 !important; //5rem
+}
+
+.active {
+  // color: $gray-400;
+  // text-decoration: underline;
+  font-weight: $font-weight-semi-bold;
 }
 
 .navbar-toggler {
