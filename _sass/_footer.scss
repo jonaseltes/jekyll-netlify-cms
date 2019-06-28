@@ -1,0 +1,10 @@
+//footer
+footer {
+  @extend ‰bar;
+  padding-bottom: $navbar-padding-edge !important;
+}
+
+footer > div {
+  padding-top: $nav-link-padding-y;
+  padding-bottom: $nav-link-padding-y;
+}
