@@ -7,8 +7,29 @@
 console.log("lab.js");
 var typeform_url = "//anothertomorrow.typeform.com/to/O8tDRQ";
 
+function newTypeform(){
+  window.embedElement = document.querySelector('.typoeform-container');
+  typeformEmbed.makeWidget(
+    embedElement,
+    typeform_url, // NOTE: Replace with your typeform URL
+    {
+      hideHeaders: true,
+      hideFooter: true,
+      opacity: 0,
+      buttonText: "Take the survey!",
+      onSubmit: function (e) {
+        console.log('Typeform successfully submitted');
+        setTimeout(function(){
+          $(embedElement).children().fadeOut();
+        },1000)
+      }
+    }
+  )
+}
+
+
 $( document ).ready(function() {
-  var embedElement = document.querySelector('.typoeform-container');
+  newTypeform();
 
   // var popup2 = window.typeformEmbed.makePopup(typeform_url, {
   //   autoClose: 3000,
@@ -20,22 +41,6 @@ $( document ).ready(function() {
   // });
   // popup2.open()
 
-
-
-  typeformEmbed.makeWidget(
-    embedElement,
-    typeform_url, // NOTE: Replace with your typeform URL
-    {
-      hideHeaders: true,
-      hideFooter: true,
-      opacity: 0,
-      buttonText: "Take the survey!",
-      onSubmit: function (e) {
-        console.log("e: " ,e);
-        console.log('Typeform successfully submitted')
-      }
-    }
-  )
 
   //
   // setTimeout(function(){

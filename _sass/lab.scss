@@ -2,7 +2,8 @@ div[data-qa="mobile-modal"] {
   position: absolute !important;
 }
 
-.typoeform-container * {
+.typoeform-container {
+  min-height: 300px;
   // z-index: 2040 !important;
   // background-color: transparent !important;
 }

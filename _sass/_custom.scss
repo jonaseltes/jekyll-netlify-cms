@@ -612,7 +612,7 @@ select:-webkit-autofill:focus {
   border-width: 2px !important;
 }
 
-button, html [type="button"], [type="reset"], [type="submit"], input:matches([type="button"], [type="submit"], [type="reset"]) {
+[type="reset"], [type="submit"], input:matches([type="submit"], [type="reset"]) {
   @extend .button;
 }
 
