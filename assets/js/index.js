@@ -51,21 +51,27 @@ $( document ).ready(function() {
     'work'
   ]
 
-  const el = document.querySelector('.work');
-  const fx = new TextScramble(el)
+  const els = document.querySelectorAll('.work');
+  console.log("els: ",els);
+  for (var i = 0; i < els.length; i++) {
+    const el = els[i];
+    const fx = new TextScramble(el);
 
-  let counter = 0
-  const next = () => {
-    fx.setText(phrases[counter]).then(() => {
-      var t = Math.floor(Math.random() * 1500) + 500;
-      // console.log("t: " ,t);
-      setTimeout(next, t);
-      // setTimeout(function(){
-      //   window.location.href = "https://www.icplab.org/issue_01.html";
-      // }, 1200);
-    })
-    counter = (counter + 1) % phrases.length;
+    let counter = 0
+    const next = () => {
+      fx.setText(phrases[counter]).then(() => {
+        var t = Math.floor(Math.random() * 1500) + 500;
+        // console.log("t: " ,t);
+        setTimeout(next, t);
+        // setTimeout(function(){
+        //   window.location.href = "https://www.icplab.org/issue_01.html";
+        // }, 1200);
+      })
+      counter = (counter + 1) % phrases.length;
+    }
+    setTimeout(next, 2000);
   }
 
-  setTimeout(next, 2000);
+  // const el = document.querySelector('.work');
+
 });
