@@ -410,7 +410,7 @@ function onWindowResize() {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 
-	renderer3D.setSize( window.innerWidth, window.innerHeight );
+	renderer3D.setSize( window.innerWidth/4, window.innerHeight/4, false );
 
 
 		console.log("window width: " ,window.innerWidth);
