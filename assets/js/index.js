@@ -15,7 +15,7 @@ $( document ).ready(function() {
     $("#about-intro").toggleClass("text-md");
   });
   $("#aboutCollapse").on("show.bs.collapse", function(){
-    $("#aboutCollapseButton").html('Read more –');
+    $("#aboutCollapseButton").html('Read less –');
     $("#about-intro").toggleClass("text-md");
   });
 
@@ -24,7 +24,7 @@ $( document ).ready(function() {
     // $("#aboutCollapseButton").hide();
   });
   $("#hackathonCollapse").on("show.bs.collapse", function(){
-    $("#hackathonCollapseButton").html('Read more –');
+    $("#hackathonCollapseButton").html('Read less –');
   });
 
   var par = $(".collapse-paragraphs").parent();
