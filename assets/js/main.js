@@ -13,6 +13,7 @@ function init() {
 
 $( document ).ready(function() {
   console.log("main.js ready!");
+  $('.page-content-container').fadeIn();
 });
 
 init();

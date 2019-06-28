@@ -6,6 +6,12 @@
 
 console.log("lab.js");
 var typeform_url = "//anothertomorrow.typeform.com/to/O8tDRQ";
+var typeform_test_url = "//anothertomorrow.typeform.com/to/p4X1am";
+var url = typeform_url;
+
+{% if jekyll.environment == "development" %}
+  url = typeform_test_url;
+{% endif %}
 
 function newTypeform(){
   window.embedElement = document.querySelector('.typoeform-container');
