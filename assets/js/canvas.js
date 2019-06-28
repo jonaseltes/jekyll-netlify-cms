@@ -9,6 +9,8 @@ var peak = 0.1, gravity = 0.3;
 var mouse;
 var time;
 
+var canvasRes = window.devicePixelRatio;
+
 
 
 {% if jekyll.environment == "production" %}
@@ -229,7 +231,7 @@ function init() {
 	renderer3D = new THREE.WebGLRenderer( { canvas: canvas3D, antialias: true, clearColor: 0x000000, clearAlpha: 0, alpha: true, preserveDrawingBuffer: false, autoClear: true });
   // scene.background = new THREE.Color( 0xefefef );
 	renderer3D.setPixelRatio(window.devicePixelRatio);
-	renderer3D.setSize(window.innerWidth, window.innerHeight);
+	renderer3D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 	//renderer2D.setSize(window.innerWidth, window.innerHeight);
 
 
@@ -410,7 +412,7 @@ function onWindowResize() {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 
-	renderer3D.setSize( window.innerWidth/4, window.innerHeight/4, false );
+	renderer3D.setSize( window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 
 
 		console.log("window width: " ,window.innerWidth);
