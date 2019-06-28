@@ -70,6 +70,7 @@ fonts:
   - //fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap
   - //fonts.googleapis.com/css?family=Lato&display=swap
   - //fonts.googleapis.com/css?family=Roboto&display=swap
+  - //fonts.googleapis.com/css?family=Work+Sans&display=swap
 
 
 plugins:
