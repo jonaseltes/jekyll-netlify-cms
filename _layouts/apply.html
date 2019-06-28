@@ -18,58 +18,49 @@ footer: light
   <h1 class="post-title">{{ page.title | escape }}</h1>
 </header>-->
 
-<div class="about page-content-container">
-  <div class="container-fluid pb-9">
+<div class="about page-content-container h-100 position-absolute">
+  <div class="container-fluid pb-9 d-table h-inherit">
+
+    <div class="row pb-sm-10">
+      <div class="col offset-lg-0 d-flex flex-row align-items-center">
+        <div class="w-75 display-1 mb-6">
+          Take part in the Hackathon
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <img class="mb-4" src="{{site.baseurl}}/{{site.uploads_path}}/bliquebynobissmall.jpg" width="100%" class=""/>
+      </div>
+    </div>
+
     <div class="row">
 
-      <div class="col-2 text-lg">
-        Take part in the hackathon
-      </div>
-      <div class="col-1">
-
-      </div>
-
-      <div class="col">
+      <div class="col col-md-8 offset-md col-xl-6">
         <div class="row">
-          <div class="col text-lg">
+          <div class="col text-md">
             {{site.data.application-form.introduction.description | markdownify}}
           </div>
         </div>
       </div>
 
-      <div class="col-4 text-sm">
-        <img class="mb-4" src="{{site.baseurl}}/{{site.uploads_path}}/bliquebynobissmall.jpg" width="100%" class=""/>
+      <div class="col-md-4 offset-xl-2 col-xl-4">
         <div class="row">
           <div class="col">
-            {{site.data.info.text | markdownify}}
-          </div>
-          <div class="col">
-            <div class="">
-              <div class="mb-3">
-                Unsatiated curiosity or unanswered questions?
-              </div>
-              <div class="">
-                <p class="">Drop us a line at contact@swedishworklab.com and we will come to the rescue!</p>
-              </div>
+            <div class="text-md">
+              <p>{{ site.data.info.time | date: '%B %-dth, %Y' }} <br>
+                <a href="{{site.data.info.location.venue.url}}">{{site.data.info.location.venue.name}}</a>, {{site.data.info.location.city}}</p>
             </div>
           </div>
         </div>
 
       </div>
 
-      <div class="col-12">
+      <div class="col-lg-8 col-xl-6 offset-md">
         <div class="row mt-8">
-          <div class="col-3">
-
-          </div>
-          <div class="col-5 text-md">
-            <div class="text-lg mb-8">
+          <div class="col-12 text-md">
+            <div class="text-md mb-8">
               Apply to join the hackathon:
             </div>
             {%- include form.html -%}
-          </div>
-          <div class="col">
-
           </div>
         </div>
       </div>

@@ -67,6 +67,9 @@ animation_scripts:
 fonts:
   - //fonts.googleapis.com/css?family=Open+Sans&display=swap
   - //fonts.googleapis.com/css?family=Roboto+Mono&display=swap
+  - //fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap
+  - //fonts.googleapis.com/css?family=Lato&display=swap
+  - //fonts.googleapis.com/css?family=Roboto&display=swap
 
 
 plugins:

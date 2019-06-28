@@ -10,6 +10,9 @@
       <nav class="navbar navbar-dark navbar-expand-sm main-nav row align-items-start">
 
           <div class="col-6 col-sm-6 col-xl-8 text-left">
+            {% if page.url != "/" %}
+
+            {% endif %}
             <a href="{{ "/" | relative_url }}"><img height="70" src="{{site.logo.three.white}}" alt=""></a>
           </div>
 
