@@ -367,7 +367,6 @@ function makeTimeLine(dataArray){
   }
 
   const boundingBox = new THREE.Box3();
-
   // get bounding box of object - this will be used to setup controls and camera
   boundingBox.setFromObject( labWrapper );
   console.log("boundingBox: " ,boundingBox);
@@ -401,16 +400,27 @@ function makeAbstractTimeLine(dataArray) {
   for (var i = 0; i < meshArray.length; i++) {
     var mesh = meshArray[i];
     if (i > 0) {
-      totalWidth += (meshArray[i-1].scale.x * 2) + 0.4;
-      mesh.position.x = totalWidth + (mesh.scale.x);
+      totalWidth += (meshArray[i-1].scale.x) + 0.6 + mesh.scale.x;
+      mesh.position.x = totalWidth;
     }
     labWrapper.add(mesh);
   }
+
+  const boundingBox = new THREE.Box3();
+  // get bounding box of object - this will be used to setup controls and camera
+  boundingBox.setFromObject( labWrapper );
+  console.log("boundingBox: " ,boundingBox);
+  const size = boundingBox.getSize(new THREE.Vector3());
+  console.log("bounding box size: " ,size)
+  // get the max side of the bounding box (fits to width OR height as needed )
+  const maxDim = Math.max( size.x, size.y, size.z );
+  console.log("maxDim: " ,maxDim);
 
   for (var i = 0; i < meshArray.length; i++) {
     var mesh = meshArray[i];
     mesh.position.x -= totalWidth/2;
   }
+
   fitView();
 
 }
