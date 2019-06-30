@@ -200,7 +200,7 @@ function loadBlobs(callback){
 
 
 function createBlobSlot(c, s, p, name){
-  var geo = new THREE.SphereGeometry(.3, 150, 150);
+  var geo = new THREE.SphereGeometry(.3, s*3, s*3);
   var mat  = new THREE.MeshStandardMaterial({
     // shininess: 100,
     // specular: 0xffffff,
@@ -540,7 +540,7 @@ function init() {
 
   if (animation_mode == "blobs") {
       console.log("starting blobs mode!");
-      loadBlobs(animate);
+      loadBlobs(startRender);
   }
 
   if (animation_mode == "lab") {
@@ -699,7 +699,10 @@ function onWindowResize() {
 
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
-  fitView();
+  if (animation_mode = "lab") {
+    fitView();
+  }
+
   // fitCameraToObject(camera, objectWrapper, 0);
 	renderer3D.setSize( window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 
