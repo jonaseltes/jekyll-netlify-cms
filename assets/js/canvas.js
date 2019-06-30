@@ -200,7 +200,7 @@ function loadBlobs(callback){
 
 
 function createBlobSlot(c, s, p, name){
-  var geo = new THREE.SphereGeometry(.3, 100, 100);
+  var geo = new THREE.SphereGeometry(.3, 150, 150);
   var mat  = new THREE.MeshStandardMaterial({
     // shininess: 100,
     // specular: 0xffffff,
