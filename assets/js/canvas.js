@@ -202,7 +202,7 @@ function loadBlobs(callback){
 
 
 function createBlobSlot(c, s, p, name){
-  var geo = new THREE.SphereGeometry(.3, s*5, s*5);
+  var geo = new THREE.SphereGeometry(.3, s*4, s*4);
   var mat  = new THREE.MeshStandardMaterial({
     // shininess: 100,
     // specular: 0xffffff,
@@ -699,8 +699,8 @@ function animate() {
 
 
   {% if jekyll.environment == "production" %}
+    requestAnimationFrame( animate );
   {% endif %}
-  requestAnimationFrame( animate );
 
   // console.log("time: " ,time);
 
