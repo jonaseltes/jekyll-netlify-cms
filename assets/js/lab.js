@@ -289,7 +289,8 @@ function getResults(){
           results.push(result);
         }
         var latestResult = results[results.length - 1];
-        loadLabVisuals(latestResult, startRender);
+        // loadLabVisuals(latestResult, startRender);
+        initiLabMode("lab", latestResult, loadLabVisuals);
         getAvarage(results);
         console.log("results: " ,results);
       },
@@ -303,6 +304,7 @@ function getResults(){
 $( document ).ready(function() {
   // newTypeform();
   getResults();
+  console.log("animation_mode: " ,animation_mode);
   // var popup2 = window.typeformEmbed.makePopup(typeform_url, {
   //   autoClose: 3000,
   //   hideHeaders: true,

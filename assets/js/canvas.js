@@ -8,7 +8,7 @@ var raycaster;
 var peak = 0.1, gravity = 0.3;
 var mouse;
 var time;
-
+var renderOn = false;
 var canvasRes = 1;
 
 
@@ -92,7 +92,7 @@ function createBlob(c) {
   meshParent.rotation.x = Math.random() * 20;
   meshParent.rotation.y = Math.random() * 20;
   meshParent.rotation.z = Math.random() * 20;
-  objectWrapper.add(meshParent);
+  blobsWrapper.add(meshParent);
 }
 
 function createCanvasMaterial(size) {
@@ -116,6 +116,7 @@ function createCanvasMaterial(size) {
 
 
 function startRender(){
+  renderOn = true;
   animate();
   $(canvas3D).delay(1000).fadeIn(500, function(){
     $("#landing-title, #svg-container").fadeIn(500, function(){
@@ -195,12 +196,13 @@ function loadBlobs(callback){
   // console.log("mesh: " ,mesh);
   // projects.push(project);
 
+  console.log("scene: " ,scene);
   callback();
 }
 
 
 function createBlobSlot(c, s, p, name){
-  var geo = new THREE.SphereGeometry(.3, s*3, s*3);
+  var geo = new THREE.SphereGeometry(.3, s*5, s*5);
   var mat  = new THREE.MeshStandardMaterial({
     // shininess: 100,
     // specular: 0xffffff,
@@ -255,7 +257,7 @@ function createBlobSlot(c, s, p, name){
   meshParent.rotation.x = Math.random() * 20;
   meshParent.rotation.y = Math.random() * 20;
   meshParent.rotation.z = Math.random() * 20;
-  objectWrapper.add(meshParent);
+  labWrapper.add(meshParent);
 
   return bmesh;
 }
@@ -291,7 +293,7 @@ function createSlot (c, s) {
 
 function fitView() {
   var fov = camera.fov * ( Math.PI / 180 );
-  camera.position.z = Math.abs( (totalWidth/2 + 0.5) / Math.sin( fov / 2 ) / camera.aspect );
+  camera.position.z = Math.abs( (totalWidth/2 + 1.0) / Math.sin( fov / 2 ) / camera.aspect );
 }
 
 function fitCameraToObject( camera, object, offset ) {
@@ -356,7 +358,7 @@ function makeTimeLine(dataArray){
       totalWidth += meshArray[i-1].scale.x + 0.2;
       mesh.position.x = totalWidth + (mesh.scale.x/2);
     }
-    objectWrapper.add(mesh);
+    labWrapper.add(mesh);
   }
 
   for (var i = 0; i < meshArray.length; i++) {
@@ -367,7 +369,7 @@ function makeTimeLine(dataArray){
   const boundingBox = new THREE.Box3();
 
   // get bounding box of object - this will be used to setup controls and camera
-  boundingBox.setFromObject( objectWrapper );
+  boundingBox.setFromObject( labWrapper );
   console.log("boundingBox: " ,boundingBox);
   const size = boundingBox.getSize(new THREE.Vector3());
   console.log("bounding box size: " ,size)
@@ -402,7 +404,7 @@ function makeAbstractTimeLine(dataArray) {
       totalWidth += (meshArray[i-1].scale.x * 2) + 0.4;
       mesh.position.x = totalWidth + (mesh.scale.x);
     }
-    objectWrapper.add(mesh);
+    labWrapper.add(mesh);
   }
 
   for (var i = 0; i < meshArray.length; i++) {
@@ -414,6 +416,18 @@ function makeAbstractTimeLine(dataArray) {
 }
 
 
+
+function initiLabMode(mode, result, callback) {
+  renderOn = false;
+  $(canvas3D).fadeOut(function(){
+    blobMesh.visible = false;
+    blobsWrapper.visible = false;
+    animation_mode = mode;
+    callback(result, startRender);
+  });
+}
+
+
 function loadLabVisuals(results, callback){
   var total = results.total;
   console.log("Parsing result for visuals: " ,results);
@@ -421,7 +435,9 @@ function loadLabVisuals(results, callback){
   var dataArray = [];
   Object.keys(results.data).map(function(value, key) {
     console.log(value, key);
-    dataArray.push(results.data[value]);
+    if (value != "base" && value != "default") {
+      dataArray.push(results.data[value]);
+    }
   });
   console.log("dataArray: " ,dataArray);
 
@@ -442,6 +458,65 @@ $(document).ready(function(){
 
 });
 
+
+function loadScene() {
+  console.log("renderer3D.domElement: " ,renderer3D.domElement);
+
+	mouse = new THREE.Vector2();
+	raycaster = new THREE.Raycaster();
+	worldVector = new THREE.Vector3();
+
+	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+	camera.position.z = 4;
+  // camera.layers.set( 1 );
+	//camera.position.y = cameraOffsetY;
+	//camera.lookAt(0, 0, 0);
+
+	// controls = new THREE.TrackballControls(camera, renderer3D.domElement);
+	// controls.enableDamping = true;
+	// controls.dampingFactor = 1.0;
+	// controls.enableZoom = true;
+  // scene.fog = new THREE.Fog( 0x999999, 3, 5.5);
+	var isoRadius = 140;
+
+	verticies = [];
+
+	center = new THREE.Vector3(0,0,0);
+
+  labWrapper = new THREE.Object3D();
+	blobsWrapper = new THREE.Object3D();
+	scene.add(blobsWrapper);
+  scene.add(labWrapper);
+
+
+  var ambLight = new THREE.AmbientLight( 0xffffff, 0.1 ); // soft white light
+  // ambLight.layers.set( 1 );
+  // scene.add( ambLight );
+
+  var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
+  directionalLight.position.set( .7, .8, .8 );
+  // scene.add(directionalLight);
+
+  var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.9 );
+  directionalLight2.position.set( -15, 0, -5 );
+  scene.add(directionalLight2);
+
+  var rectLight = new THREE.RectAreaLight( 0xffffff, 3,  20, 20 );
+  rectLight.position.set( 15, 0, 5 );
+  rectLight.lookAt( 0, 0, 0 );
+  scene.add( rectLight );
+
+  var light = new THREE.PointLight( 0xffffff, 1, 900 );
+  var light2 = new THREE.PointLight( 0xffffff, 1, 900 );
+  var light3 = new THREE.PointLight( 0xffffff, 1, 900 );
+  light.position.set( 250, 0, 150 );
+  light2.position.set( -250, 0, 150 );
+  light3.position.set( 0, 0, -150 );
+  // light.layers.set( 1 );
+  // scene.add( light );
+  // scene.add( light2 );
+  // objectWrapper.add( light3 );
+}
 
 
 function init() {
@@ -473,64 +548,7 @@ function init() {
 	// var container = document.getElementById('container');
 	// container.appendChild( renderer3D.domElement);
 
-	console.log("renderer3D.domElement: " ,renderer3D.domElement);
-
-
-	mouse = new THREE.Vector2();
-	raycaster = new THREE.Raycaster();
-	worldVector = new THREE.Vector3();
-
-	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
-	camera.position.z = 4;
-  // camera.layers.set( 1 );
-	//camera.position.y = cameraOffsetY;
-	//camera.lookAt(0, 0, 0);
-
-	// controls = new THREE.TrackballControls(camera, renderer3D.domElement);
-	// controls.enableDamping = true;
-	// controls.dampingFactor = 1.0;
-	// controls.enableZoom = true;
-  // scene.fog = new THREE.Fog( 0x999999, 3, 5.5);
-	var isoRadius = 140;
-
-	verticies = [];
-
-	center = new THREE.Vector3(0,0,0);
-
-
-	objectWrapper = new THREE.Object3D();
-	scene.add(objectWrapper);
-
-
-
-
-  var ambLight = new THREE.AmbientLight( 0xffffff, 0.1 ); // soft white light
-  // ambLight.layers.set( 1 );
-  // scene.add( ambLight );
-
-  var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
-  directionalLight.position.set( .7, .8, .8 );
-  // scene.add(directionalLight);
-
-  var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.9 );
-  directionalLight2.position.set( -15, 0, -5 );
-  scene.add(directionalLight2);
-
-  var rectLight = new THREE.RectAreaLight( 0xffffff, 3,  20, 20 );
-  rectLight.position.set( 15, 0, 5 );
-  rectLight.lookAt( 0, 0, 0 );
-  scene.add( rectLight );
-
-  var light = new THREE.PointLight( 0xffffff, 1, 900 );
-  var light2 = new THREE.PointLight( 0xffffff, 1, 900 );
-  var light3 = new THREE.PointLight( 0xffffff, 1, 900 );
-  light.position.set( 250, 0, 150 );
-  light2.position.set( -250, 0, 150 );
-  light3.position.set( 0, 0, -150 );
-  // light.layers.set( 1 );
-  // scene.add( light );
-  // scene.add( light2 );
-  // objectWrapper.add( light3 );
+  loadScene();
 
   $(canvas3D).hide();
 
@@ -636,14 +654,15 @@ const visibleWidthAtZDepth = ( depth, camera ) => {
 
 
 function animate() {
+  if (!renderOn) return;
 
   if (animation_mode == "blobs") {
     animate_vertices(blobMesh, 1, 0.3);
 
-    objectWrapper.rotation.x += .002;
-    objectWrapper.rotation.y += .0009;
-    for (var i = 0; i < objectWrapper.children.length; i++) {
-      var thisObject = objectWrapper.children[i].children[0];
+    blobsWrapper.rotation.x += .002;
+    blobsWrapper.rotation.y += .0009;
+    for (var i = 0; i < blobsWrapper.children.length; i++) {
+      var thisObject = blobsWrapper.children[i].children[0];
       thisObject.rotation.y += 0.01;
       thisObject.rotation.x += 0.009;
     }
@@ -665,10 +684,10 @@ function animate() {
     }
 
 
-    // objectWrapper.rotation.x += .002;
-    // objectWrapper.rotation.y += .0009;
-    for (var i = 0; i < objectWrapper.children.length; i++) {
-      var thisObject = objectWrapper.children[i];
+    // labWrapper.rotation.x += .002;
+    // labWrapper.rotation.y += .0009;
+    for (var i = 0; i < labWrapper.children.length; i++) {
+      var thisObject = labWrapper.children[i];
       thisObject.rotation.y += 0.005;
       thisObject.rotation.x += 0.009;
     }
@@ -704,7 +723,6 @@ function onWindowResize() {
     fitView();
   }
 
-  // fitCameraToObject(camera, objectWrapper, 0);
 	renderer3D.setSize( window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 	// console.log("window width: " ,window.innerWidth);
 	// console.log("window height: " ,window.innerHeight);
