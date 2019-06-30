@@ -224,10 +224,44 @@ function createSlot (c, s) {
 
   var bmesh = new THREE.Mesh(geo, mat);
   animate_vertices(bmesh, 0.9, 0.3);
-  var scale = s*0.01;
+  var scale = 0.03 + (s*0.01);
   bmesh.scale.set(scale, scale, scale);
   return bmesh;
 }
+
+
+function fitView() {
+  var fov = camera.fov * ( Math.PI / 180 );
+  camera.position.z = Math.abs( (totalWidth/2 + 0.5) / Math.sin( fov / 2 ) / camera.aspect );
+}
+
+function fitCameraToObject( camera, object, offset ) {
+
+  offset = offset || 1.5;
+
+  const boundingBox = new THREE.Box3();
+
+  boundingBox.setFromObject( object );
+
+  const center = boundingBox.getCenter( new THREE.Vector3() );
+  const size = boundingBox.getSize( new THREE.Vector3() );
+
+  const startDistance = center.distanceTo(camera.position);
+  // here we must check if the screen is horizontal or vertical, because camera.fov is
+  // based on the vertical direction.
+  const endDistance = camera.aspect > 1 ?
+  					((size.y/2)+offset) / Math.abs(Math.tan(camera.fov/2)) :
+  					((size.y/2)+offset) / Math.abs(Math.tan(camera.fov/2)) / camera.aspect ;
+
+  camera.position.z = camera.position.y * endDistance / startDistance;
+  // camera.position.set(
+  // 	camera.position.x * endDistance / startDistance,
+  // 	camera.position.y * endDistance / startDistance,
+  // 	camera.position.z * endDistance / startDistance,
+  // 	);
+  // camera.lookAt(center);
+}
+
 
 
 function loadLabVisuals(results, callback){
@@ -239,7 +273,7 @@ function loadLabVisuals(results, callback){
     dataArray.push(results.data[value]);
   });
   console.log("dataArray: " ,dataArray);
-  var totalWidth = 0;
+  window.totalWidth = 0;
   var meshArray = [];
   for (var i = 0; i < dataArray.length; i++) {
     //Create random color for dataType
@@ -268,7 +302,30 @@ function loadLabVisuals(results, callback){
     mesh.position.x -= totalWidth/2;
   }
 
-  console.log("totalWidth: " ,totalWidth);
+  const boundingBox = new THREE.Box3();
+
+  // get bounding box of object - this will be used to setup controls and camera
+  boundingBox.setFromObject( objectWrapper );
+  console.log("boundingBox: " ,boundingBox);
+  const size = boundingBox.getSize(new THREE.Vector3());
+  console.log("bounding box size: " ,size)
+  // get the max side of the bounding box (fits to width OR height as needed )
+  const maxDim = Math.max( size.x, size.y, size.z );
+  console.log("maxDim: " ,maxDim);
+
+  // let dz = maxDim/(2 * Math.tan(camera.fov/2) * camera.aspect);
+  // console.log("dz: " ,dz);
+  // camera.position.set(0, 0, 1 + dz);
+
+  console.log("totalWidth: " ,totalWidth/2);
+  // console.log("camera: " ,camera);
+
+  // fitCameraToObject(camera, objectWrapper, 0);
+  fitView();
+  console.log("camera.position.z: " ,camera.position.z);
+
+  // console.log("meshOffset: " ,meshOffset);
+
   console.log("meshArray: " ,meshArray);
 
   console.log("callback: " ,callback);
@@ -413,13 +470,22 @@ function onDocumentMouseDown(event) {
 
 }
 
+function to3Dcoord (x, y) {
+  x = ( x / window.innerWidth ) * 2 - 1;
+	y = - ( y / window.innerHeight ) * 2 + 1;
+  return {
+    x: x,
+    y: y
+  }
+}
+
 function onMouseMove( event ) {
 
 	// calculate mouse position in normalized device coordinates
 	// (-1 to +1) for both components
 	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
+  // console.log("mouse: " ,mouse);
 }
 
 
@@ -435,6 +501,36 @@ function toScreenXY(position, camera, canvas) {
       y: (( - pos.y + 1) * canvas.height / 2 + canvas.offsetTop) };
 }
 
+
+function toScreenCoords (v){
+  console.log("v before projection: ",v);
+  v.project(camera);
+  console.log("v after projection: ",v);
+  let widthHalf = renderer3D.width / 2;
+  let heightHalf = renderer3D.height / 2;
+  v.x = (v.x * widthHalf) + widthHalf;
+  v.y = - (v.y * heightHalf) + heightHalf;
+  v.z = 0;
+  return v;
+}
+
+const visibleHeightAtZDepth = ( depth, camera ) => {
+  // compensate for cameras not positioned at z=0
+  const cameraOffset = camera.position.z;
+  if ( depth < cameraOffset ) depth -= cameraOffset;
+  else depth += cameraOffset;
+
+  // vertical fov in radians
+  const vFOV = camera.fov * Math.PI / 180;
+
+  // Math.abs to ensure the result is always positive
+  return 2 * Math.tan( vFOV / 2 ) * Math.abs( depth );
+};
+
+const visibleWidthAtZDepth = ( depth, camera ) => {
+  const height = visibleHeightAtZDepth( depth, camera );
+  return height * camera.aspect;
+};
 
 
 
@@ -464,13 +560,13 @@ function animate() {
   }
 
   else if (animation_mode == "lab") {
-    console.log("objectWrapper: " ,objectWrapper);
+    // console.log("objectWrapper: " ,objectWrapper);
   }
 
 
   {% if jekyll.environment == "production" %}
-    requestAnimationFrame( animate );
   {% endif %}
+  requestAnimationFrame( animate );
 
   // console.log("time: " ,time);
 
@@ -488,7 +584,8 @@ function onWindowResize() {
 
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
-
+  fitView();
+  // fitCameraToObject(camera, objectWrapper, 0);
 	renderer3D.setSize( window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 
 

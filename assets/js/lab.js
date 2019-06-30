@@ -85,7 +85,7 @@ function getAvarage (results) {
 
   console.log("avarge: " ,avarage);
 
-  loadLabVisuals(avarage, startRender);
+  // loadLabVisuals(avarage, startRender);
 }
 
 
@@ -289,6 +289,7 @@ function getResults(){
           results.push(result);
         }
         var latestResult = results[results.length - 1];
+        loadLabVisuals(latestResult, startRender);
         getAvarage(results);
         console.log("results: " ,results);
       },
