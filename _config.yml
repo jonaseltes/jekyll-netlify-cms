@@ -81,7 +81,7 @@ plugins:
 google_analytics: 'UA-141826971-1'
 
 sass:
-    # style: compressed
+    style: compressed
 
 jekyll-minifier:
     preserve_php: false
