@@ -699,17 +699,14 @@ function onWindowResize() {
 
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
-  console.log("animation_mode: " ,animation_mode);
+  // console.log("animation_mode: " ,animation_mode);
   if (animation_mode == "lab") {
     fitView();
   }
 
   // fitCameraToObject(camera, objectWrapper, 0);
 	renderer3D.setSize( window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
-
-
-		console.log("window width: " ,window.innerWidth);
-		console.log("window height: " ,window.innerHeight);
-
+	// console.log("window width: " ,window.innerWidth);
+	// console.log("window height: " ,window.innerHeight);
 
 }
