@@ -699,7 +699,8 @@ function onWindowResize() {
 
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
-  if (animation_mode = "lab") {
+  console.log("animation_mode: " ,animation_mode);
+  if (animation_mode == "lab") {
     fitView();
   }
 
