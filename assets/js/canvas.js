@@ -257,7 +257,7 @@ function createBlobSlot(c, s, p, name){
   meshParent.rotation.x = Math.random() * 20;
   meshParent.rotation.y = Math.random() * 20;
   meshParent.rotation.z = Math.random() * 20;
-  labWrapper.add(meshParent);
+  // labWrapper.add(meshParent);
 
   return bmesh;
 }
@@ -547,12 +547,16 @@ function init() {
 
 	scene = new THREE.Scene();
 
+  canvas2D = document.getElementById('canvas2D');
+  renderer2D = new THREE.CanvasRenderer({canvas: canvas2D, antialias: true, clearColor: 0x000000, clearAlpha: 0, alpha: true, autoClear: true});
+
 	canvas3D = document.getElementById('canvas3D');
 	renderer3D = new THREE.WebGLRenderer( { canvas: canvas3D, antialias: true, clearColor: 0x000000, clearAlpha: 0, alpha: true, preserveDrawingBuffer: false, autoClear: true });
   // scene.background = new THREE.Color( 0xefefef );
 	renderer3D.setPixelRatio(window.devicePixelRatio);
 	renderer3D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
-	//renderer2D.setSize(window.innerWidth, window.innerHeight);
+  renderer2D.setPixelRatio(window.devicePixelRatio);
+	renderer2D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 
 
 	// var container = document.getElementById('container');
@@ -623,7 +627,7 @@ function toScreenXY(position, camera, canvas) {
   var projScreenMat = new THREE.Matrix4();
   projScreenMat.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
  // projScreenMat.multiplyVector3( pos );
-	pos.applyProjection(projScreenMat);
+	pos.applyMatrix4(projScreenMat);
   return { x: (( pos.x + 1 ) * canvas.width / 2  + canvas.offsetLeft),
       y: (( - pos.y + 1) * canvas.height / 2 + canvas.offsetTop) };
 }
@@ -660,7 +664,9 @@ const visibleWidthAtZDepth = ( depth, camera ) => {
 };
 
 
-
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 
 function animate() {
@@ -694,24 +700,44 @@ function animate() {
     }
 
 
+    ctx2d = renderer2D.domElement.getContext('2d');
+    ctx2d.clearRect (0, 0, window.innerWidth*window.devicePixelRatio, window.innerHeight*devicePixelRatio);
+    ctx2d.fillStyle = "#ffffff";
+    var fontSize = 16 * window.devicePixelRatio;
+    ctx2d.font = +fontSize+ 'pt Open Sans';
+    ctx2d.textAlign = 'center';
+
+
     // labWrapper.rotation.x += .002;
     // labWrapper.rotation.y += .0009;
     for (var i = 0; i < labWrapper.children.length; i++) {
       var thisObject = labWrapper.children[i];
       thisObject.rotation.y += 0.005;
       thisObject.rotation.x += 0.009;
+
+      var v =  new THREE.Vector3();
+      v.setFromMatrixPosition( thisObject.matrixWorld );
+      // var r = dataVertices[i].radius;
+      var c =  toScreenXY(v, camera, renderer3D.domElement);
+      if (thisObject.name !== null){
+        ctx2d.beginPath();
+        ctx2d.moveTo(c.x, c.y + (20 * window.devicePixelRatio));
+        ctx2d.lineTo(c.x, canvas2D.height-(100 * window.devicePixelRatio));
+        ctx2d.strokeStyle = "white";
+        ctx2d.stroke();
+        var text = (thisObject.name);
+        ctx2d.fillText(capitalizeFirstLetter(text), c.x, canvas2D.height-(80 * window.devicePixelRatio));
+        // ctx2d.fillText(projects[i].description, c.x + (10 * window.devicePixelRatio), c.y + (10*devicePixelRatio));
+      }
     }
 
-    // blobMesh.position.x = noise.perlin2(time, time/4000) * 0.5;
-    // blobMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
-    // blobMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
   }
 
 
   {% if jekyll.environment == "production" %}
-    requestAnimationFrame( animate );
-  {% endif %}
 
+  {% endif %}
+  requestAnimationFrame( animate );
   // console.log("time: " ,time);
 
   //camera.lookAt( scene.position );
@@ -734,6 +760,7 @@ function onWindowResize() {
   }
 
 	renderer3D.setSize( window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
+  renderer2D.setSize( window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 	// console.log("window width: " ,window.innerWidth);
 	// console.log("window height: " ,window.innerHeight);
 

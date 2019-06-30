@@ -275,10 +275,12 @@ function parseResult (result) {
 }
 
 function getResults(){
+    $("#lab-info-container").html("Loading...");
    $.ajax({
       url: results_url,
       // dataType: 'jsonp',
       success: function(data) {
+        $("#lab-info-container").html("<p>Thank you for contributing to our research!</p><p>Click one of the blobs to explore how your ideal future of work compares to the rest of the results:</p><div><a href=''>Share to your network →</a><br /><a href='/hackathon'>Join the Hackthon →</a></div>");
         var jsonData = JSON.parse(data);
         jsonData.shift(); // Remove header row form results
         console.log("results length: " ,jsonData.length);
@@ -291,7 +293,7 @@ function getResults(){
         var latestResult = results[results.length - 1];
         // loadLabVisuals(latestResult, startRender);
         initiLabMode("lab", latestResult, loadLabVisuals);
-        getAvarage(results);
+        // getAvarage(results);
         console.log("results: " ,results);
       },
       error: function (err) {
@@ -303,16 +305,17 @@ function getResults(){
 
 $( document ).ready(function() {
   // newTypeform();
-  getResults();
+
   console.log("animation_mode: " ,animation_mode);
-  // var popup2 = window.typeformEmbed.makePopup(typeform_url, {
-  //   autoClose: 3000,
-  //   hideHeaders: true,
-  //   hideFooter: true,
-  //   onSubmit: function () {
-  //     console.log('Typeform successfully submitted');
-  //   }
-  // });
+  var popup2 = window.typeformEmbed.makePopup(typeform_url, {
+    hideHeaders: true,
+    hideFooter: true,
+    onSubmit: function () {
+      console.log('Typeform successfully submitted');
+      getResults();
+      popup2.close();
+    }
+  });
   // popup2.open()
 
 
@@ -322,9 +325,10 @@ $( document ).ready(function() {
   //  }, 10000) // NOTE: In this code, the typeform will automatically open, then automatically close 10 seconds later
 
 
-  // $("#bt-popup").click(function(){
-  //   popup2.open();
-  // });
+  $("#bt-popup").click(function(){
+    // popup2.open();
+    getResults();
+  });
 
 
 });

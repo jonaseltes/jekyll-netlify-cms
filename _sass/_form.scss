@@ -56,6 +56,8 @@ select:-webkit-autofill:focus {
 }
 
 
+
+
 .button {
   -webkit-appearance: none !important;
   background: transparent !important;
@@ -80,7 +82,7 @@ input[type=text], textarea {
   @extend .button;
 }
 
-[type="submit"] {
+[type="submit"], .test {
   -webkit-appearance: none !important;
   background: transparent !important;
   background-color: none !important;
@@ -100,16 +102,16 @@ input[type=file]::-webkit-file-upload-button, [type="file"], [type="image"] {
   -webkit-appearance: none !important;
   background: transparent !important;
   background-color: none !important;
-  color: $white;
+  color: $white !important;
   outline: none !important;
   border-color: $white !important;
 }
 
-[type="submit"], [type="file"] {
-  cursor: pointer;
+[type="submit"], [type="file"], .button {
+  cursor: pointer !important;
 }
 
-[type="submit"]:hover {
+[type="submit"]:hover, button:hover {
   background-color: $white !important;
   color: $black !important;
 }
