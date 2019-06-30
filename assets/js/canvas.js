@@ -196,10 +196,69 @@ function loadBlobs(callback){
   // projects.push(project);
 
   callback();
-
-
 }
 
+
+function createBlobSlot(c, s, p, name){
+  var geo = new THREE.SphereGeometry(.3, 100, 100);
+  var mat  = new THREE.MeshStandardMaterial({
+    // shininess: 100,
+    // specular: 0xffffff,
+    transparent: true,
+    // shading: THREE.FlatShading,
+    // side: THREE.DoubleSide,
+    // alpha: true,
+    // opacity: 0.8,
+    // clearCoat: 0.7,
+    // reflectivity: 1,
+    metalness: 0,
+    roughness: 0.8,
+    // emissive: 0xffffff,
+    // color: 0xffffff
+    // color: 0x4e4279
+    // color: 0x694dcb
+    color: c
+  });
+
+  var bmesh = new THREE.Mesh(geo, mat);
+
+  var gravity = 0.3;
+  gravity = gravity + (p*0.01);
+  p = 0.8 + (p*0.09);
+  animate_vertices(bmesh, p, gravity);
+  var scale = 0.04 + (s*0.02);
+  bmesh.scale.set(scale, scale, scale);
+
+  var distance = 0;
+  var range = 1;
+
+  // var x = Math.random() * range + distance;
+  // var y = Math.random() * range + distance;
+  // var z = Math.random() * range + distance;
+  // bmesh.position.set(x,y,z);
+
+  bmesh.name = name;
+  bmesh.userData.scale = scale;
+  bmesh.userData.peak = p;
+  bmesh.userData.gravity = gravity;
+
+  if (name != "base" && name != "default") {
+    bmesh.userData.animate = true;
+  }
+
+  else {
+    bmesh.userData.animate = false;
+  }
+
+  var meshParent = new THREE.Object3D();
+  meshParent.add(bmesh);
+  meshParent.rotation.x = Math.random() * 20;
+  meshParent.rotation.y = Math.random() * 20;
+  meshParent.rotation.z = Math.random() * 20;
+  objectWrapper.add(meshParent);
+
+  return bmesh;
+}
 
 function createSlot (c, s) {
   var geo = new THREE.SphereGeometry(.3, 50, 50);
@@ -263,16 +322,19 @@ function fitCameraToObject( camera, object, offset ) {
 }
 
 
+function array_move(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
+};
 
-function loadLabVisuals(results, callback){
-  var total = results.total;
-  console.log("Parsing result for visuals: " ,results);
-  var dataArray = [];
-  Object.keys(results.data).map(function(value, key) {
-    console.log(value, key);
-    dataArray.push(results.data[value]);
-  });
-  console.log("dataArray: " ,dataArray);
+
+function makeTimeLine(dataArray){
   window.totalWidth = 0;
   var meshArray = [];
   for (var i = 0; i < dataArray.length; i++) {
@@ -313,22 +375,59 @@ function loadLabVisuals(results, callback){
   const maxDim = Math.max( size.x, size.y, size.z );
   console.log("maxDim: " ,maxDim);
 
-  // let dz = maxDim/(2 * Math.tan(camera.fov/2) * camera.aspect);
-  // console.log("dz: " ,dz);
-  // camera.position.set(0, 0, 1 + dz);
-
-  console.log("totalWidth: " ,totalWidth/2);
-  // console.log("camera: " ,camera);
-
-  // fitCameraToObject(camera, objectWrapper, 0);
   fitView();
   console.log("camera.position.z: " ,camera.position.z);
+}
 
-  // console.log("meshOffset: " ,meshOffset);
+
+function makeAbstractTimeLine(dataArray) {
+  window.meshArray = [];
+  window.totalWidth = 0;
+  for (var i = 0; i < dataArray.length; i++) {
+    //Create random color for dataType
+    var c = new THREE.Color( 0xffffff );
+    c.setHex( Math.random() * 0xffffff );
+    var dataType = dataArray[i];
+    console.log("dataType: " ,dataType);
+    var mesh = createBlobSlot(c, dataType.years, dataType.slots, dataType.label);
+    console.log("mesh: " ,mesh);
+    meshArray.push(mesh);
+  }
 
   console.log("meshArray: " ,meshArray);
 
-  console.log("callback: " ,callback);
+  for (var i = 0; i < meshArray.length; i++) {
+    var mesh = meshArray[i];
+    if (i > 0) {
+      totalWidth += (meshArray[i-1].scale.x * 2) + 0.4;
+      mesh.position.x = totalWidth + (mesh.scale.x);
+    }
+    objectWrapper.add(mesh);
+  }
+
+  for (var i = 0; i < meshArray.length; i++) {
+    var mesh = meshArray[i];
+    mesh.position.x -= totalWidth/2;
+  }
+  fitView();
+
+}
+
+
+function loadLabVisuals(results, callback){
+  var total = results.total;
+  console.log("Parsing result for visuals: " ,results);
+
+  var dataArray = [];
+  Object.keys(results.data).map(function(value, key) {
+    console.log(value, key);
+    dataArray.push(results.data[value]);
+  });
+  console.log("dataArray: " ,dataArray);
+
+  // makeTimeLine(dataArray);
+  makeAbstractTimeLine(dataArray);
+
   callback();
 }
 
@@ -541,7 +640,6 @@ function animate() {
   if (animation_mode == "blobs") {
     animate_vertices(blobMesh, 1, 0.3);
 
-
     objectWrapper.rotation.x += .002;
     objectWrapper.rotation.y += .0009;
     for (var i = 0; i < objectWrapper.children.length; i++) {
@@ -560,7 +658,24 @@ function animate() {
   }
 
   else if (animation_mode == "lab") {
-    // console.log("objectWrapper: " ,objectWrapper);
+    for (var i = 0; i < meshArray.length; i++) {
+      if (meshArray[i].userData.animate) {
+        animate_vertices(meshArray[i], meshArray[i].userData.peak, meshArray[i].userData.gravity);
+      }
+    }
+
+
+    // objectWrapper.rotation.x += .002;
+    // objectWrapper.rotation.y += .0009;
+    for (var i = 0; i < objectWrapper.children.length; i++) {
+      var thisObject = objectWrapper.children[i];
+      thisObject.rotation.y += 0.005;
+      thisObject.rotation.x += 0.009;
+    }
+
+    // blobMesh.position.x = noise.perlin2(time, time/4000) * 0.5;
+    // blobMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
+    // blobMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
   }
 
 
