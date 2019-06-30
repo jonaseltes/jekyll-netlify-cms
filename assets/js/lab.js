@@ -15,6 +15,9 @@ var results_url = "//script.google.com/macros/s/AKfycbxlBl7BgohEt_v90BbBnfXgJtyo
   url = typeform_test_url;
 {% endif %}
 
+
+
+
 function newTypeform(){
   window.embedElement = document.querySelector('.typoeform-container');
   typeformEmbed.makeWidget(
@@ -53,34 +56,36 @@ function getAvarage (results) {
   for (var i = 0; i < results.length; i++) {
     var result = results[i];
     avarage.total += result.total;
-    avarage.base.years += result.base.years;
-    avarage.base.slots += result.base.slots;
-    avarage.default.years += result.default.years;
-    avarage.default.slots += result.default.slots;
-    avarage.learn.years += result.learn.years;
-    avarage.learn.slots += result.learn.slots;
-    avarage.work.years += result.work.years;
-    avarage.work.slots += result.work.slots;
-    avarage.rest.years += result.rest.years;
-    avarage.rest.slots += result.rest.slots;
+    avarage.data.base.years += result.data.base.years;
+    avarage.data.base.slots += result.data.base.slots;
+    avarage.data.default.years += result.data.default.years;
+    avarage.data.default.slots += result.data.default.slots;
+    avarage.data.learn.years += result.data.learn.years;
+    avarage.data.learn.slots += result.data.learn.slots;
+    avarage.data.work.years += result.data.work.years;
+    avarage.data.work.slots += result.data.work.slots;
+    avarage.data.rest.years += result.data.rest.years;
+    avarage.data.rest.slots += result.data.rest.slots;
   }
 
   console.log("avarage before dividing: " ,avarage);
 
   avarage.total = avarage.total / results.length;
-  avarage.base.slots = avarage.base.slots / results.length;
-  avarage.base.years = avarage.base.years / results.length;
-  avarage.default.slots = avarage.default.slots / results.length;
-  avarage.default.years = avarage.default.years / results.length;
+  avarage.data.base.slots = avarage.data.base.slots / results.length;
+  avarage.data.base.years = avarage.data.base.years / results.length;
+  avarage.data.default.slots = avarage.data.default.slots / results.length;
+  avarage.data.default.years = avarage.data.default.years / results.length;
 
-  avarage.learn.years = avarage.learn.years / results.length;
-  avarage.learn.slots = avarage.learn.slots / results.length;
-  avarage.work.years = avarage.work.years / results.length;
-  avarage.work.slots = avarage.work.slots / results.length;
-  avarage.rest.years = avarage.rest.years / results.length;
-  avarage.rest.slots = avarage.rest.slots / results.length;
+  avarage.data.learn.years = avarage.data.learn.years / results.length;
+  avarage.data.learn.slots = avarage.data.learn.slots / results.length;
+  avarage.data.work.years = avarage.data.work.years / results.length;
+  avarage.data.work.slots = avarage.data.work.slots / results.length;
+  avarage.data.rest.years = avarage.data.rest.years / results.length;
+  avarage.data.rest.slots = avarage.data.rest.slots / results.length;
 
   console.log("avarge: " ,avarage);
+
+  loadLabVisuals(avarage, startRender);
 }
 
 
@@ -112,25 +117,32 @@ function newJourney(options){
   if (options.prefilled) {
     defaultJourney = {
       total: 82,
-      base: {
-        years: 6,
-        slots: 1
-      },
-      default: {
-        years: 15,
-        slots: 1
-      },
-      learn: {
-        years: 0,
-        slots: 0
-      },
-      work: {
-        years: 45,
-        slots: 1
-      },
-      rest: {
-        years: 16,
-        slots: 1
+      data: {
+        base: {
+          label: "base",
+          years: 6,
+          slots: 1
+        },
+        default: {
+          label: "default",
+          years: 15,
+          slots: 1
+        },
+        learn: {
+          label: "learn",
+          years: 0,
+          slots: 0
+        },
+        work: {
+          label: "work",
+          years: 45,
+          slots: 1
+        },
+        rest: {
+          label: "rest",
+          years: 16,
+          slots: 1
+        }
       }
     };
   }
@@ -138,25 +150,32 @@ function newJourney(options){
   else {
     defaultJourney = {
       total: 0,
-      base: {
-        years: 0,
-        slots: 0
-      },
-      default: {
-        years: 0,
-        slots: 0
-      },
-      learn: {
-        years: 0,
-        slots: 0
-      },
-      work: {
-        years: 0,
-        slots: 0
-      },
-      rest: {
-        years: 0,
-        slots: 0
+      data: {
+        base: {
+          label: "base",
+          years: 0,
+          slots: 0
+        },
+        default: {
+          label: "default",
+          years: 0,
+          slots: 0
+        },
+        learn: {
+          label: "learn",
+          years: 0,
+          slots: 0
+        },
+        work: {
+          label: "work",
+          years: 0,
+          slots: 0
+        },
+        rest: {
+          label: "rest",
+          years: 0,
+          slots: 0
+        }
       }
     }
   }
@@ -187,10 +206,10 @@ function parseResult (result) {
             slots = 9;
             break;
         }
-        journey.learn.years += slots * slot_years;
-        journey.learn.slots += slots;
-        journey.work.years -= (slots * slot_years) / 2;
-        journey.rest.years -= (slots * slot_years) / 2;
+        journey.data.learn.years += slots * slot_years;
+        journey.data.learn.slots += slots;
+        journey.data.work.years -= (slots * slot_years) / 2;
+        journey.data.rest.years -= (slots * slot_years) / 2;
         break;
       case 2:
         var divisor;
@@ -220,13 +239,13 @@ function parseResult (result) {
             divisor = 15;
             break;
           case "I'd stay more than 15 years in one place":
-            divisor = journey.work.years/2;
+            divisor = journey.data.work.years/2;
             break;
           case "I'd stay at one workplace as long as possible":
-            divisor = journey.work.years;
+            divisor = journey.data.work.years;
             break;
         }
-        journey.work.slots = journey.work.years / divisor;
+        journey.data.work.slots = journey.data.work.years / divisor;
         break;
       case 4:
         switch (string) {
@@ -236,21 +255,22 @@ function parseResult (result) {
             // SOME FUNCTIONALLY TO SHOW BLEND OF WORK AND RETIREMNT
             break;
           case "I take my share of retirement years and spread them out, taking breaks at regular intervals through life, even if it means I continue working late into life":
-            journey.rest.slots += 4;
+            journey.data.rest.slots += 4;
             break;
           case "I split my share of retirement years in two and have a significant break in the middle of life, even if it means I continue working until a later age":
-            journey.rest.slots += 2;
+            journey.data.rest.slots += 2;
             break;
           case "I want to work forever. Can I donate my retirement years to someone else?":
-            journey.rest.slots = 0;
-            journey.work.years += journey.rest.years;
-            journey.rest.years = 0;
+            journey.data.rest.slots = 0;
+            journey.data.work.years += journey.data.rest.years;
+            journey.data.rest.years = 0;
             break;
         }
         break;
     }
   }
   // console.log("journey: " ,journey);
+
   return journey;
 }
 
@@ -267,8 +287,9 @@ function getResults(){
         for (var i = 0; i < jsonData.length; i++) {
           var result = parseResult(jsonData[i]);
           results.push(result);
-          getAvarage(results);
         }
+        var latestResult = results[results.length - 1];
+        getAvarage(results);
         console.log("results: " ,results);
       },
       error: function (err) {
@@ -279,8 +300,8 @@ function getResults(){
 
 
 $( document ).ready(function() {
-  newTypeform();
-
+  // newTypeform();
+  getResults();
   // var popup2 = window.typeformEmbed.makePopup(typeform_url, {
   //   autoClose: 3000,
   //   hideHeaders: true,

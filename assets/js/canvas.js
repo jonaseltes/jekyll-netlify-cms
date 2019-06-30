@@ -9,7 +9,7 @@ var peak = 0.1, gravity = 0.3;
 var mouse;
 var time;
 
-var canvasRes = window.devicePixelRatio;
+var canvasRes = 1;
 
 
 
@@ -18,7 +18,6 @@ var canvasRes = window.devicePixelRatio;
 {% endif %}
 
 init();
-
 
 
 
@@ -116,7 +115,16 @@ function createCanvasMaterial(size) {
 }
 
 
-function createMesh(){
+function startRender(){
+  animate();
+  $(canvas3D).delay(1000).fadeIn(500, function(){
+    $("#landing-title, #svg-container").fadeIn(500, function(){
+      $("#credits").delay(200).fadeIn(500);
+    });
+  });
+}
+
+function loadBlobs(callback){
 
   var cubeLoader = new THREE.CubeTextureLoader();
     cubeLoader.setPath('/assets/media/cube/');
@@ -187,15 +195,85 @@ function createMesh(){
   // console.log("mesh: " ,mesh);
   // projects.push(project);
 
-  $(canvas3D).delay(1000).fadeIn(500, function(){
-    $("#landing-title, #svg-container").fadeIn(500, function(){
-      $("#credits").delay(200).fadeIn(500);
-    });
-  });
+  callback();
+
+
 }
 
 
+function createSlot (c, s) {
+  var geo = new THREE.SphereGeometry(.3, 50, 50);
+  var mat  = new THREE.MeshStandardMaterial({
+    // shininess: 100,
+    // specular: 0xffffff,
+    transparent: true,
+    // shading: THREE.FlatShading,
+    // side: THREE.DoubleSide,
+    // alpha: true,
+    opacity: 0.8,
+    // clearCoat: 0.7,
+    // reflectivity: 1,
+    metalness: 0,
+    roughness: 0.8,
+    // emissive: 0xffffff,
+    // color: 0xffffff
+    // color: 0x4e4279
+    // color: 0x694dcb
+    color: c
+  });
 
+  var bmesh = new THREE.Mesh(geo, mat);
+  animate_vertices(bmesh, 0.9, 0.3);
+  var scale = s*0.01;
+  bmesh.scale.set(scale, scale, scale);
+  return bmesh;
+}
+
+
+function loadLabVisuals(results, callback){
+  var total = results.total;
+  console.log("Parsing result for visuals: " ,results);
+  var dataArray = [];
+  Object.keys(results.data).map(function(value, key) {
+    console.log(value, key);
+    dataArray.push(results.data[value]);
+  });
+  console.log("dataArray: " ,dataArray);
+  var totalWidth = 0;
+  var meshArray = [];
+  for (var i = 0; i < dataArray.length; i++) {
+    //Create random color for dataType
+    var c = new THREE.Color( 0xffffff );
+    c.setHex( Math.random() * 0xffffff );
+    var dataType = dataArray[i];
+    console.log("dataType: " ,dataType);
+    for (var j = 0; j < dataType.slots; j++) {
+      var s = dataType.years / dataType.slots;
+      var mesh = createSlot(c, s);
+      meshArray.push(mesh);
+    }
+  }
+
+  for (var i = 0; i < meshArray.length; i++) {
+    var mesh = meshArray[i];
+    if (i > 0) {
+      totalWidth += meshArray[i-1].scale.x + 0.2;
+      mesh.position.x = totalWidth + (mesh.scale.x/2);
+    }
+    objectWrapper.add(mesh);
+  }
+
+  for (var i = 0; i < meshArray.length; i++) {
+    var mesh = meshArray[i];
+    mesh.position.x -= totalWidth/2;
+  }
+
+  console.log("totalWidth: " ,totalWidth);
+  console.log("meshArray: " ,meshArray);
+
+  console.log("callback: " ,callback);
+  callback();
+}
 
 
 $(document).ready(function(){
@@ -207,6 +285,7 @@ $(document).ready(function(){
 
 
 });
+
 
 
 function init() {
@@ -299,18 +378,29 @@ function init() {
 
   $(canvas3D).hide();
 
-  createMesh();
+  console.log("animation_mode: " ,animation_mode);
+
+  console.log("lauyout: " ,{{layout | jsonify}});
+
+  if (animation_mode == "blobs") {
+      console.log("starting blobs mode!");
+      loadBlobs(animate);
+  }
+
+  if (animation_mode == "lab") {
+    console.log("starting lab mode!");
+    // console.log("latest result: " ,latestResult);
+  }
+
+
 	// load();
-  animate();
+  // animate();
 
 
 
 	var PI2 = Math.PI * 2;
 
 	clock = new THREE.Clock();
-
-
-
 
   window.addEventListener( 'resize', onWindowResize, false );
   document.addEventListener('mousedown', onDocumentMouseDown, false);
@@ -346,52 +436,36 @@ function toScreenXY(position, camera, canvas) {
 }
 
 
-function checkRotation(){
-
-    var x = camera.position.x,
-        y = camera.position.y,
-        z = camera.position.z;
-
-    // if (keyboard.pressed("left")){
-    //     camera.position.x = x * Math.cos(rotSpeed) + z * Math.sin(rotSpeed);
-    //     camera.position.z = z * Math.cos(rotSpeed) - x * Math.sin(rotSpeed);
-    // } else if (keyboard.pressed("right")){
-        camera.position.y = y * Math.cos(rotSpeed) - x * Math.sin(rotSpeed);
-        camera.position.x = x * Math.cos(rotSpeed) + y * Math.sin(rotSpeed);
-    //}
-
-    //camera.lookAt(scene.position);
-    //camera.lookAt(0, 50, 50);
-    //camera.lookAt(scene.position.x, scene.position.y, scene.position.z);
-
-}
-
-
-
 
 
 
 
 function animate() {
 
-  animate_vertices(blobMesh, 1, 0.3);
+  if (animation_mode == "blobs") {
+    animate_vertices(blobMesh, 1, 0.3);
 
 
-  objectWrapper.rotation.x += .002;
-  objectWrapper.rotation.y += .0009;
-  for (var i = 0; i < objectWrapper.children.length; i++) {
-		var thisObject = objectWrapper.children[i].children[0];
-		thisObject.rotation.y += 0.01;
-		thisObject.rotation.x += 0.009;
-	}
+    objectWrapper.rotation.x += .002;
+    objectWrapper.rotation.y += .0009;
+    for (var i = 0; i < objectWrapper.children.length; i++) {
+      var thisObject = objectWrapper.children[i].children[0];
+      thisObject.rotation.y += 0.01;
+      thisObject.rotation.x += 0.009;
+    }
 
-  blobMesh.rotation.y = time * .1;
-  blobMesh.rotation.z = time * .03;
+    blobMesh.rotation.y = time * .1;
+    blobMesh.rotation.z = time * .03;
 
 
-  blobMesh.position.x = noise.perlin2(time, time/4000) * 0.5;
-  blobMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
-  blobMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
+    blobMesh.position.x = noise.perlin2(time, time/4000) * 0.5;
+    blobMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
+    blobMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
+  }
+
+  else if (animation_mode == "lab") {
+    console.log("objectWrapper: " ,objectWrapper);
+  }
 
 
   {% if jekyll.environment == "production" %}
@@ -400,12 +474,12 @@ function animate() {
 
   // console.log("time: " ,time);
 
-	//camera.lookAt( scene.position );
-	//TWEEN.update();
-	// controls.update();
+  //camera.lookAt( scene.position );
+  //TWEEN.update();
+  // controls.update();
   renderer3D.clear();
-	//renderer3D.render( bgScene, camera );
-	renderer3D.render( scene, camera );
+  //renderer3D.render( bgScene, camera );
+  renderer3D.render( scene, camera );
 
 }
 
