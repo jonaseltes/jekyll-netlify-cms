@@ -61,6 +61,10 @@
   border-color: $black;
 }
 
+.navbar-toggler:hover {
+  background-color: transparent !important;
+}
+
 .navbar-collapse {
   // background: $white;
   // padding-bottom: map-get($spacers, 3);
