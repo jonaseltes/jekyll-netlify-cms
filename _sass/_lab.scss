@@ -1,5 +1,6 @@
 div[data-qa="mobile-modal"] {
-  position: absolute !important;
+  position: fixed !important;
+  z-index: 2000;
 }
 
 .typoeform-container {
