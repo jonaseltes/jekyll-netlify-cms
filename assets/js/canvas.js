@@ -142,6 +142,7 @@ function startRender(){
   renderOn = true;
   animate();
   $(canvas3D).delay(1000).fadeIn(500, function(){
+    $(canvas2D).fadeIn();
     $("#landing-title, #svg-container").fadeIn(500, function(){
       $("#credits").delay(200).fadeIn(500);
     });
@@ -494,6 +495,7 @@ function makeAbstractTimeLine(dataArray) {
 function initiLabMode(mode, result, callback) {
   renderOn = false;
   $(canvas3D).fadeOut(function(){
+    $(canvas2D).fadeOut();
     blobMesh.visible = false;
     blobsWrapper.visible = false;
     animation_mode = mode;
@@ -638,6 +640,7 @@ function init() {
   onWindowResize();
 
   $(canvas3D).hide();
+  $(canvas2D).hide();
 
   console.log("animation_mode: " ,animation_mode);
 

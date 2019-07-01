@@ -496,8 +496,11 @@ $( document ).ready(function() {
 
 
   $("#bt-popup").click(function(){
-    // popup2.open();
-    getResults(false);
+    {% if jekyll.environment == "development" %}
+      getResults(false);
+    {% else %}
+      popup2.open();
+    {% endif %}
   });
 
 
