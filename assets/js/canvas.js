@@ -654,13 +654,13 @@ function clickedBlob (intersects){
     $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
     $('#results-info-second').text("[Interesting data goes here]");
     if (blob.name == "work") {
-        $('#results-info-first').text(+amount+"% ("+data_highlights.data[blob.name].quantity+" poeple) said they would switch workplace every "+data_highlights.data[blob.name].change+" years.");
+        $('#results-info-first').html("<div class='work-color'>"+amount+"% said they would switch workplace every "+data_highlights.data[blob.name].change+" years.</div>");
     }
     if (blob.name == "learn") {
-        $('#results-info-first').html("<p>"+amount+"% ("+data_highlights.data[blob.name].quantity+" poeple) said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+data_highlights.data[blob.name].answer+"</span></p>");
+        $('#results-info-first').html("<div class='learn-color'>"+amount+"% said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+data_highlights.data[blob.name].answer+"</span></div>");
     }
     if (blob.name == "rest") {
-        $('#results-info-first').html('<p>'+amount+'% ('+data_highlights.data[blob.name].quantity+' poeple) answered:</p><p>"'+data_highlights.data[blob.name].answer+'."</p>');
+        $('#results-info-first').html('<div class="rest-color">'+amount+'% answered:</p><p>"'+data_highlights.data[blob.name].answer+'."</div>');
     }
     $('#results-info-second').html("<p>How does that change the future of work? Join the <a href='/hackathon'>hackathon</a> find out.</p>");
   }
