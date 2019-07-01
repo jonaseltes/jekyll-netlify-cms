@@ -452,7 +452,7 @@ function getResults(all){
           var avarage = getAvarage(results);
           initiLabMode("lab", avarage, loadLabVisuals);
           // $("#results-info-first").text("Showing avarage data based on " +results.length+ " results.");
-          $("#results-info-second").text("Click one of the blobs to explore insights and trends within each category:");
+          $("#results-info-first").text("Click one of the blobs to explore insights and trends within each category:");
 
         }
 
@@ -496,9 +496,8 @@ $( document ).ready(function() {
 
 
   $("#bt-popup").click(function(){
-    popup2.open();
-    // getResults(false);
-    // getResults(false);
+    // popup2.open();
+    getResults(false);
   });
 
 
