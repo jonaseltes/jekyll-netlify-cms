@@ -21,7 +21,9 @@ footer: light
 ---
 
 
-
+{% if layout.scripts.animation %}
+  {%- include canvas.html -%}
+{% endif %}
 
 
 <div class="alpha-overlay-b d-none fixed-top w-100 h-100"></div>

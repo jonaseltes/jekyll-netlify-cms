@@ -450,9 +450,12 @@ function makeAbstractTimeLine(dataArray) {
   const maxDim = Math.max( size.x, size.y, size.z );
   console.log("maxDim: " ,maxDim);
 
+  // var yPos = to3Dcoord(0, window.innerHeight - (window.innerHeight/4));
+  // console.log("yPos: " ,yPos);
   for (var i = 0; i < meshArray.length; i++) {
     var mesh = meshArray[i];
     mesh.position.x -= totalWidth/2;
+    // mesh.position.y = yPos.y;
   }
 
   fitView();
@@ -662,7 +665,7 @@ function clickedBlob (intersects){
     if (blob.name == "rest") {
         $('#results-info-first').html('<div class="rest-color">'+amount+'% answered:</p><p>"'+data_highlights.data[blob.name].answer+'."</div>');
     }
-    $('#results-info-second').html("<p>How does that change the future of work? Join the <a href='/hackathon'>hackathon</a> find out.</p>");
+    $('#results-info-second').html("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
   }
   else {
     for (var i = 0; i < meshArray.length; i++) {
@@ -857,6 +860,13 @@ function animate() {
 
 
 function onWindowResize() {
+
+  // var yPos = to3Dcoord(0, window.innerHeight - (window.innerHeight/4));
+  // console.log("yPos: " ,yPos);
+  // for (var i = 0; i < meshArray.length; i++) {
+  //   var mesh = meshArray[i];
+  //   mesh.position.y = yPos.y;
+  // }
 
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();

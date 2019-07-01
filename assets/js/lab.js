@@ -449,7 +449,7 @@ function getResults(all){
         if (all) {
           var avarage = getAvarage(results);
           initiLabMode("lab", avarage, loadLabVisuals);
-          $("#results-info-first").text("Showing avarage data based on " +results.length+ " results.");
+          // $("#results-info-first").text("Showing avarage data based on " +results.length+ " results.");
           $("#results-info-second").text("Click one of the blobs to explore insights and trends within each category:");
 
         }
