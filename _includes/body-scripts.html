@@ -8,10 +8,7 @@
 {%- for script in site.body_scripts -%}
   <script src="{{script}}" type="text/javascript"></script>
 {%- endfor -%}
-<script>
-  {% if jekyll.environment == "production" %}
-    // console.log = function() {}
-  {% endif %}
+<!-- <script>
   function init (){
     console.log("init!");
   }
@@ -22,4 +19,4 @@
     // Barba.Pjax.start();
     console.log("Barba: " ,Barba);
   });
-</script>
+</script> -->

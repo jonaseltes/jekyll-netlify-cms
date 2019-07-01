@@ -1,0 +1,114 @@
+---
+layout: default
+scripts:
+  animation: true
+  body:
+    cdn:
+    assets:
+      - lab.js
+  head:
+    cdn:
+      - https://embed.typeform.com/embed.js
+    assets:
+---
+
+
+<!--<header class="post-header">
+  <h1 class="post-title">{{ page.title | escape }}</h1>
+</header>-->
+
+{% if layout.scripts.animation %}
+  {%- include canvas.html -%}
+{% endif %}
+
+<div class="lab page-content-container h-100 w-100 position-absolute no-pointer-e no-pointer-e-all">
+
+  <div class="container-fluid d-none h-inherit mb-sm-10 mb-lg-0">
+    <div class="row min-h-100 mb-10">
+      <div class="col min-h-100">
+        <div class="typoeform-container h-100 w-100 pt-5 pb-7">
+        </div>
+        <!-- <button id="bt-popup" class="my-button">Start</button> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid d-table h-inherit">
+
+      <div class="row min-h-100">
+        <div class="d-flex flex-column flex-grow-1 align-items-start min-h-100 col-11 col-sm-6 offset-sm-0 col-lg-4 offset-xl-0 mb-4 mb-sm-8">
+
+            <div id="lab-introduction" class="text-md pt-3 pt-sm-5 pointer-e-all align-self-start">
+              <div class="" id="lab-info-container">
+                <div class="text roboto-mono">
+                  <p>These blobs represent the three core components of your work-life journey:</p>
+                  <p class="text-md text-center roboto-mono">
+                      <span class="learn-color px-2">LEARN</span> <span class="work-color px-2">WORK</span> <span class="rest-color px-2">REST</span>
+                  </p>
+                  <p>Traditionally, these components are taken one after the other: First you educate yourself, then you get a job and work, then you retire.</p>
+                  <p>But what if there was a different way?</p>
+                  <p>Take the survey to find out what your ideal work journey might look like.</p>
+                </div>
+                <button class="mt-5 text-md test" id="bt-popup" type="button" name="button">Take the survey →</button>
+                <button class='mt-5 text-md test d-block' id='results' value="Results" type='button' name='button' onClick="getResults(true)">See the results →</button>
+              </div>
+            </div>
+            <div id='results-info-container' class="text-sm pt-3 pt-sm-5 pointer-e-all align-self-start mb-100 position-fixed pr-4 pr-sm-0 position-sm-relative">
+              <div id="results-info" class="results-info">
+                <p id="results-info-first" class="results-info-first"></p>
+                <p id="results-info-second" class="results-info-second"></p>
+              </div>
+              <!-- <a href=''>Share to your network →</a><br /> -->
+              <!-- <a href='/hackathon'>Join the Hackthon →</a> -->
+              <!-- <button class='mt-5 text-md test d-block' id='refresh' value="Refresh Page" type='button' name='button' onClick="window.location.reload();">Start over</button> -->
+            </div>
+            <div class="d-none text-md ml-auto mt-8 bounce helvetica">
+              ↓
+            </div>
+
+        </div>
+        <!-- <div class="d-none d-sm-block col-sm">
+
+        </div> -->
+
+        <div class="d-none d-sm-block col-10 col-sm-6 col-lg-3 offset-lg-5 offset-xl-4 align-items-start">
+
+            <!-- <div id="loading-text" class="d-none">
+              <span class="text-uppercase d-none">Loading...</span>
+            </div> -->
+              <div class="d-none d-sm-block pointer-e-all">
+                <div id="results-info-container-second" class="results-info-container-second text-sm mt-5 mb-5">
+                  <p class="d-none" id="results-info-third"></p>
+                  <a href='' class="d-none">Share to your network →</a>
+                  <button class='text-md test d-block' id='refresh' value="Refresh Page" type='button' name='button' onClick="window.location.reload();">Start over</button>
+                </div>
+              </div>
+
+
+              <!-- <div class="collapse" id="aboutCollapse">
+                <div class="">
+                  <p class="">
+                    Our 21st century work lives are constantly evolving. They’re shaped by technological breakthroughs, new economic models, and evolving educational formats. Legislation catches up to ideas and re-frames how businesses can be run. There’s an increased expectancy on companies’ moral compass, and matters of ethics and sustainability may determine both where individuals choose to work as well as where customers choose to take their business. It’s up to us to shape the future we want to work in.
+                  </p>
+                </div>
+              </div> -->
+
+              <!-- <div class="">
+                <a class="" data-toggle="collapse" href="#aboutCollapse" role="button" aria-expanded="false" aria-controls="aboutCollapse">
+                  <span id="aboutCollapseButton" class="text-sm font-weight-semi-bold roboto-mono">Read more +</span>
+                </a>
+              </div> -->
+        </div>
+
+      </div>
+
+  </div>
+  <div class="container-fluid d-sm-none">
+    <div id="results-info-container-second" class="results-info-container-second text-sm mb-5 pointer-e-all pt-10">
+      <p class="d-none" id="results-info-third"></p>
+      <a href='' class="d-none">Share to your network →</a>
+      <button class='text-md test d-block' id='refresh' value="Refresh Page" type='button' name='button' onClick="window.location.reload();">Start over</button>
+    </div>
+  </div>
+
+</div>

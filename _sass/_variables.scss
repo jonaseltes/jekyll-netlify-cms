@@ -5,16 +5,51 @@ $primary: $black;
 $link-color: rgba($primary, 1);
 $error-color: #ff0000;
 
+$light-beige: #babaab; // c1c1bb
+$medium-beige: #abab96; // afafaa
+$light-blue: #eff0f9;
+
+$bg-secondary: $medium-beige;
+$secondary: $medium-beige !important;
+
+$body-color:                $medium-beige;
+
+.bg-body-color {
+  background-color: $body-color;
+}
+
+.bg-none {
+  background-color: transparent !important;
+  background: none !important;
+}
+
+$theme-colors: (
+  secondary: $medium-beige
+);
+
+$learn-color: #70FF6B;
+$work-color: #6c5ba5;
+$rest-color: #FF5757;
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:                inherit;
+$link-decoration:           none !default;
+$link-hover-color:          inherit;
+$link-hover-decoration:     underline !default;
+
 
 //type
-$font-size-xl:                ($font-size-base * 2.8);
-$font-size-lg:                ($font-size-base * 2.2);
-$font-size-md:                ($font-size-base * 1.8);
-$font-size-sm:                ($font-size-base * 1.4);
-$font-size-xs:                ($font-size-base);
+$font-size-xl:                ($font-size-base * 3.6);
+$font-size-lg:                ($font-size-base * 2.8);
+$font-size-md:                ($font-size-base * 2.2);
+$font-size-sm:                ($font-size-base * 1.8);
+$font-size-xs:                ($font-size-base * 1.4);
 
 
-$line-height-base: 1.4;
+$line-height-base: 1.35;
 
 $display-line-height: 1.4;
 
@@ -26,33 +61,86 @@ $display4-size:               3.6rem !default;
 $display5-size:               3rem !default;
 
 $display0-weight:             500;
-$display1-weight:             300;
-$display2-weight:             300;
-// $display3-weight:             300 !default;
-// $display4-weight:             300 !default;
-// $display5-weight:             300 !default;
+$display1-weight:             400;
+$display2-weight:             400;
+$display3-weight:             400;
+$display4-weight:             400;
+$display5-weight:             400;
 
+
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-medium:          500;
+$font-weight-semi-bold:       600;
+$font-weight-bold:            700;
+
+.font-weight-medium { font-weight: $font-weight-medium !important; }
+.font-weight-semi-bold { font-weight: $font-weight-semi-bold !important; }
+
+
+.roboto-mono {
+  font-family: 'Roboto Mono', monospace;
+}
 
 //navbar
 $navbar-brand-height: 6rem !important;
 $navbar-nav-link-padding-x: 1.5rem;
 $navbar-padding-y: .8rem;
-$navbar-padding-edge: 1.2rem;
+$navbar-padding-edge: 1.5rem;
 
-$navbar-light-color:                $link-color;
+$navbar-light-color:                rgba($black, 1);
 $navbar-light-hover-color:          rgba($black, 1);
-$navbar-light-active-color:         rgba($black, 1);
+$navbar-light-active-color:         inherit;
 // $navbar-light-disabled-color:       rgba($black, .3) !default;
-// $navbar-light-toggler-icon-bg:      str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
-// $navbar-light-toggler-border-color: rgba($black, .1) !default;
+$navbar-light-toggler-icon-bg:      url("/assets/media/hamburger-b.svg");
+$navbar-light-toggler-border-color: rgba($black, .1) !default;
+
+// $navbar-toggler-padding-y:          .25rem !default;
+// $navbar-toggler-padding-x:          .75rem !default;
+// $navbar-toggler-font-size:          $font-size-lg !default;
+// $navbar-toggler-border-radius:      $btn-border-radius !default;
+
+$navbar-dark-color:                 rgba($white, 1) !important;
+// $navbar-dark-hover-color:           rgba($white, 1) !important;
+$navbar-dark-active-color:          rgba($white, 1) !important;
+// $navbar-dark-disabled-color:        rgba($white, .25) !default;
+$navbar-dark-toggler-icon-bg:       url("/assets/media/hamburger-w.svg");
+$navbar-dark-toggler-border-color:  rgba($white, 1) !important;
 
 
 //grid
-// $grid-gutter-width: 56px;
+// $grid-columns:                12 !default;
+$grid-gutter-width:           30px;
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1280px
+);
+//
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 720px,
+//   lg: 960px,
+//   xl: 1140px
+// );
+
+
 
 // @include media-breakpoint-down(md) {
 //
 // }
 
 //border
-$border-color: $black
+// $border-color: inherit;
+
+// Height & width
+.h-inherit {
+  height: inherit;
+}

@@ -1,20 +1,24 @@
-<div id="form-section" class="">
-  <div class="mb-6">
-    <b>{{site.data.application-form.headline}}</b>
+<div id="form-section" class="col px-0">
+  <div class="mb-6 d-none">
+    {{site.data.application-form.headline}}
   </div>
   <div class="text-sm d-none mb-4">
     {{site.data.application-form.disclaimer}}
   </div>
 
-  <div id="application-form-wrapper" class="text-left">
+  <div id="application-form-wrapper" class="text-left container-fluid px-0">
     {% assign form = site.data.application-form %}
-    <form id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
+    <form class="row px-0" id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
 
       {% assign inputs = site.data.application-form.inputs.details %}
         {% for item in inputs %}
-          <div class="form-group mb-6">
+          {% if forloop.index < 7 %}
+            <div class="form-group col-6 mb-6">
+          {% else %}
+            <div class="form-group col-12 mb-6">
+          {% endif %}
             <div class="mb-2">
-              {{item.label}}:
+              {{item.label}}{%- if item.required -%}*{%- endif -%}:
             </div>
             {%- if item.type == 'text' -%}
               <input class="form-control" type="text" value="" name="{{item.name}}" {%- if item.required -%}required{%- endif -%}/>
@@ -28,20 +32,37 @@
             {%- if item.type == 'textarea' -%}
               <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100" maxlength="600" {%- if item.required -%}required{%- endif -%}></textarea>
             {%- endif -%}
+
+            {% if forloop.last == true %}
+              <div class="row">
+                <div class="col-12">
+                  <div class="mt-6 mb-2">
+                    <div class="text-sm">
+                      <p>By submitting this application you agree to the <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <u>Terms & Conditions</u></a>.</p>
+                    </div>
+                    <div class="collapse" id="collapseExample">
+                      <div class="text-sm py-3">
+                        {{site.data.application-form.terms | markdownify}}
+                      </div>
+                    </div>
+                    <div class="error text-sm col" id="form-error">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <input class="border-2 button" type="submit" name="" value="Submit">
+                </div>
+              </div>
+            {% endif %}
+
           </div>
         {% endfor %}
-        <div class="text-md">
-          <p>By submitting this application you agree to the <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <u>Terms & Conditions</u></a>.</p>
-        </div>
-        <div class="collapse" id="collapseExample">
-          <div class="text-sm">
-            {{site.data.application-form.terms | markdownify}}
-          </div>
-        </div>
-        <div class="error text-sm" id="form-error">
+        <div class="col-6">
 
         </div>
-        <input class="border-2 button" type="submit" name="" value="Submit">
+
     </form>
   </div>
+</div>

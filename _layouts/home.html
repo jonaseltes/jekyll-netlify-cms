@@ -4,95 +4,149 @@ scripts:
   animation: true
   body:
     cdn:
-      - //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js
       - //unpkg.com/weakmap-polyfill/weakmap-polyfill.min.js
       - //unpkg.com/formdata-polyfill
     assets:
       - netlify.js
-      - canvas.js
       - scramble.js
-      - main.js
-      - form.js
+      - index.js
   head:
     cdn:
       - '//identity.netlify.com/v1/netlify-identity-widget.js'
     assets:
 css:
-    - assets/css/index.css
-    - //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css
-    - //cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css
 
-menu: light
+menu: dark
 footer: light
 ---
 
 
+{% if layout.scripts.animation %}
+  {%- include canvas.html -%}
+{% endif %}
 
-<div class="container-fluid h-100 position-absolute">
-  <div class="row h-100">
-    <div class="col h-100 mh-100">
-      <!-- <canvas id="canvas2D" width="500" height="500"></canvas> -->
-      <canvas id="canvas3D" class="no-pointer-e" width="500" height="500"></canvas>
-    </div>
-  </div>
-</div>
 
 <div class="alpha-overlay-b d-none fixed-top w-100 h-100"></div>
 
 
 
-<div id="info-container" class="container-fluid position-absolute h-100">
-  <div class="row h-100 position-relative d-flex ">
+<div id="info-container" class="h-100 page-content-container position-absolute">
 
-    <div class="col h-100 text-center d-flex flex-column align-items-center py-3">
-            <div class="row w-100">
-              <div class="col">
-                <div class="row text-center text-md-left">
-                  <div class="position-relative">
-                    <a href="https://www.trr.se/" target="_blank"><img width="100" src="{{site.data.content.site.assets.trr-logos.white}}" /></a>
-                  </div>
+  <div class="container-fluid d-table h-inherit">
+
+      <div class="row min-h-100 flex-column flex-sm-row">
+
+        <div class="d-none d-sm-block col-sm-4 offset-sm-1 offset-xl-2 align-self-start flex-shrink-1 mb-4 mb-sm-8">
+          <div class="display-0 text-capitalize font-weight-semi-bold d-none">
+            Swedish<br /><span class="work">work</span><br />lab
+          </div>
+          <img width="100%" src="{{site.logo.three.white}}" alt="">
+        </div>
+        <div class="d-none d-sm-block col-sm">
+
+        </div>
+
+        <div class="d-flex flex-column flex-grow-1 col-10 col-sm-6 col-xl-4 align-items-start">
+
+            <!-- <div id="loading-text" class="d-none">
+              <span class="text-uppercase d-none">Loading...</span>
+            </div> -->
+
+            <div id="about-container" class="text-sm align-self-start">
+              <div id="landing-text" class="pointer-e-all w-100 mb-8">
+                <div id="landing-title" class="text-md w-75">
+                    Will you help us shape the future of <span class="work">work</span>?
                 </div>
               </div>
-              <div class="col-md-4">
-              </div>
-              <div class="col-md-2 text-left ">
-                <div class="row">
-                  <p class="text-md font-weight-normal d-none d-md-block">An initiative to collectively shape the future of work.</p>
+              <p class="text-md" id="about-intro">The Swedish Work Lab is a platform to explore what the rapid pace of change in society mean for employees and employers in both the near and distant future. What does tomorrow’s work life actually look like? What previously unknown challenges may we be facing? What or who is required for our work lives to thrive?</p>
+              <div class="collapse" id="aboutCollapse">
+                <div class="">
+                  <p class="">
+                    Our 21st century work lives are constantly evolving. They’re shaped by technological breakthroughs, new economic models, and evolving educational formats. Legislation catches up to ideas and re-frames how businesses can be run. There’s an increased expectancy on companies’ moral compass, and matters of ethics and sustainability may determine both where individuals choose to work as well as where customers choose to take their business. It’s up to us to shape the future we want to work in.
+                  </p>
                 </div>
+              </div>
+              <div class="">
+                <a class="" data-toggle="collapse" href="#aboutCollapse" role="button" aria-expanded="false" aria-controls="aboutCollapse">
+                  <span id="aboutCollapseButton" class="text-sm font-weight-semi-bold roboto-mono">Read more +</span>
+                </a>
               </div>
             </div>
-            <div class="row flex-grow-1 align-items-center">
-
-                <div class="col">
-                  <div class="d-inline align-self-center">
-                    <div id="loading-text">
-                      <span class="text-uppercase d-none">Loading...</span>
-                    </div>
-
-                    <div id="landing-text" class="pointer-e-all">
-                      <!-- <div id="landing-title" class="display-1">{{site.data.content.intro.headline}}</div> -->
-
-                      <div id="landing-title" class="display-0 m-auto text-uppercase">
-                        <div>
-                          Swedish<br /><span id="work">Work</span><br />Lab
-                        </div>
-                      </div>
-
-                      <!-- <div id="landing-title" class="display-1">Will you help us shape the future of <br /><span id="work">work</span>?</div> -->
-                      <!-- <div id="landing-year" class="text-black-50 mt-8 d-none">{{site.data.content.site.tagline | markdownify}}</div> -->
-                    </div>
-                  </div>
-                </div>
-
-
-            </div>
-
-            <div class="display-3 bounce">
+            <div class="display-3 mb-8 mt-auto bounce  helvetica">
               ↓
             </div>
+        </div>
+
+      </div>
+
+  </div>
 
 
 
+    <!-- scroll column -->
+  <div class="container-fluid">
+
+      <div class="row h-100 border-white section-wrapper d-none">
+
+        <div class="col d-flex text-left">
+          <div class="m-auto">
+            {{site.data.content.intro.abstract | markdownify}}
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+
+  <div class="container-fluid min-h-100 bg-secondary">
+    <div class="row min-h-100 py-8">
+
+
+          <div class="col-lg-0 d-xl-none text-left">
+              <div class="row mb-4">
+                <div class="col col-xl-12">
+                  <div class="text-lg">
+
+                  </div>
+                </div>
+              </div>
+          </div>
+
+
+          <div class="col-lg-8 col-xl-6 text-left text-lg mb-8">
+            {{site.data.application-form.introduction.headline | markdownify}}
+            <div class="">
+              <div class="collapse-paragraphs collapse" id="hackathonCollapse">
+                {{site.data.application-form.introduction.description | markdownify}}
+              </div>
+              <div class="">
+                <a class="" data-toggle="collapse" href="#hackathonCollapse" role="button" aria-expanded="false" aria-controls="hackathonCollapse">
+                  <span id="hackathonCollapseButton" class="text-sm font-weight-semi-bold roboto-mono">Read more +</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 offset-lg-0  col-xl-4 offset-xl-2">
+            <div class="row">
+              <div class="col">
+                <div class="text-lg">
+                  <div class="mb-2">
+                    <a href="/hackathon" class="">I want to join the hackthon</a> →
+                  </div>
+                  <div class="">
+                    <a href="/lab" class="">Design your own future work journey</a> →
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col d-none">
+            <div class="">
+              {{site.data.info.text | markdownify}}
+            </div>
+          </div>
 
 
     </div>
@@ -100,89 +154,27 @@ footer: light
   </div>
 
 
-  <!-- scroll column -->
 
 
 
-        <div class="row border-white section-wrapper">
-          <div class="col-md text-center">
-            <div class="w-75 m-auto">
-              <div id="" class="display-2 mb-8">{{site.data.content.intro.headline | markdownify}}</div>
-              <div class="d-none display-3 pb-5">
-                ↓
-              </div>
 
+
+  <div class="container-fluid d-none">
+    <div class="row">
+      <div class="col">
+        <div class="border-top w-100 border-white divider-v">
+        </div>
+        <div class="row section-wrapper">
+          <div class="col-md-6 mb-5">
+            <div class="">
+              {{site.data.content.trr.about | markdownify}}
             </div>
-          </div>
-          <div class="col d-flex text-left">
-            <div class="m-auto">
-              {{site.data.content.intro.abstract | markdownify}}
-            </div>
+
           </div>
         </div>
-
-
-
-        <!-- FORM -->
-        <div class="row border-white">
-          <div class="col">
-            <div class="divider-v border-top w-100 border-white"></div>
-            <div class="row section-wrapper">
-
-              <div class="col-md text-left">
-                  <div class="row">
-
-                    <div class="col">
-
-                      <div class="row mb-4">
-                        <div class="col">
-                          <div class="m-auto">
-                            {{site.data.application-form.description | markdownify}}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col">
-                          <div class="">
-                            {{site.data.info.text | markdownify}}
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                    <div class="col-md-2">
-                    </div>
-
-                  </div>
-              </div>
-
-
-              <div class="col text-left">
-                  {%- include form.html -%}
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <div class="border-top w-100 border-white divider-v"></div>
-              <div class="row section-wrapper">
-                <div class="col-md-6">
-                  <div class="">
-                    {{site.data.content.trr.about | markdownify}}
-                  </div>
-                </div>
-              </div>
-          </div>
-
-
-        </div>
-
-
+      </div>
+    </div>
+  </div>
 
 
 

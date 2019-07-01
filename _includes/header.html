@@ -1,40 +1,55 @@
 <!-- <header class="site-header" role="banner"> -->
 
-  <div class="container-fluid invisible">
+  <div class="container-fluid pointer-e-all">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     <!-- <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a> -->
 
     {%- if page_paths -%}
 
-      <nav class="navbar navbar-light navbar-expand-sm main-nav row align-items-start">
+      <nav class="navbar navbar-dark navbar-expand-sm main-nav row align-items-start">
 
-          <div class="col-md-6 text-left">
-            <div class="">
-              <a href="https://www.trr.se/" target="_blank"><img width="100" src="{{site.data.content.site.assets.trr-logos.white}}" /></a>
-            </div>
-          </div>
-          <div class="col">
-          </div>
-          <div class="col-md-3">
-            A project to collectively shape the future of work, facilitated by TRR in collaboration with Another Tomorrow.
+          <div class="col-4 col-sm-6 col-xl-8 text-left">
+            {% if page.url != "/" %}
+              <a href="{{ "/" | relative_url }}"><img height="70" src="{{site.logo.three.white}}" alt=""></a>
+            {% else %}
+              <div class="d-block d-sm-none text-md text-capitalize font-weight-semi-bold">
+                <!-- Swedish<br /><span class="work">work</span><br />lab -->
+                <a href="{{ "/" | relative_url }}"><img height="70" src="{{site.logo.three.white}}" alt=""></a>
+              </div>
+            {% endif %}
+
+
           </div>
 
 
-            <!-- <button class="navbar-toggler col text-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+
+
+            <button class="navbar-toggler collapsed flex-column align-items-end text-right col-8" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <!-- <span class="navbar-toggler-icon"></span> -->
+              <span class="icon-bar top-bar"></span>
+            	<span class="icon-bar middle-bar"></span>
+            	<span class="icon-bar bottom-bar"></span>
             </button>
 
-            <div class="collapse navbar-collapse col text-right" id="navbarNavDropdown">
-              <div class="navbar-nav d-flex justify-content-between w-100">
-                {%- for path in page_paths -%}
-                  {%- assign my_page = site.pages | where: "path", path | first -%}
-                  {%- if my_page.title -%}
-                    <a class="nav-item nav-link {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
-                  {%- endif -%}
-                {% endfor -%}
+            <!-- <div class="collapse navbar-collapse col text-right" id="navbarNavDropdown">
+              <div class="navbar-nav d-flex justify-content-between w-100"> -->
+
+              <div class="collapse navbar-collapse col col-sm-6 col-md-6 col-xl-4 text-right text-sm-left" id="navbarNavDropdown">
+                <div class="navbar-nav row flex-column flex-sm-row pt-3 pt-sm-0">
+                  {%- for path in page_paths -%}
+                    {%- assign my_page = site.pages | where: "path", path | first -%}
+                    {%- if my_page.title -%}
+                    <div class="col-sm offset-0 offset-sm-0 text-left text-sm-left">
+                      <a class="nav-item nav-link {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }} {% if my_page.url == page.url %}←{% else %}→{% endif%}</a>
+                    </div>
+                    {%- endif -%}
+                  {% endfor -%}
+                </div>
               </div>
-            </div> -->
+
+
+
 
       </nav>
 

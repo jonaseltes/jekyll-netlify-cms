@@ -4,24 +4,13 @@ text: >-
 
   September 5th, 2019 at [Blique by
   Nobis](https://www.bliquebynobis.se/event-konferens), Stockholm
-
-
-  ![Blique By Nobis](/assets/media/uploads/bliquebynobissmall.jpg "Blique By
-  Nobis")
-
-
-  **Unsatiated curiosity or unanswered questions?** 
-
-
-  Drop us a line at <mailto:contact@swedishworklab.com> and we will come to the
-  rescue!
 location:
   city: Stockholm
   country: Sweden
   postal_code: 113 30
   street_address: Gävlegatan 18
   venue:
-    name: Blique by Nobis
+    name: "Blique by Nobis"
     url: 'https://www.bliquebynobis.se/event-konferens'
 time: 'Thu Sep 5 2019 01:00:00 GMT+0100'
 contact: contact@swedishworklab.com

@@ -3,12 +3,14 @@ layout: default
 scripts:
   body:
     cdn:
-      - //www.gstatic.com/firebasejs/6.1.0/firebase-app.js
     assets:
-      - apply.js
+      - form.js
+      - hackathon.js
   head:
     cdn:
     assets:
+menu: light
+footer: light
 ---
 
 
@@ -16,57 +18,57 @@ scripts:
   <h1 class="post-title">{{ page.title | escape }}</h1>
 </header>-->
 
-<div class="about container-fluid">
+<div class="about page-content-container h-100">
+  <div class="container-fluid pb-sm-9 d-table">
 
-  <div class="row flex-row align-items-start">
-
-    <div class="col-lg text-xl">
-      {{site.data.application-form.description | markdownify}}
+    <div class="row pb-sm-5 min-h-100">
+      <div class="col offset-lg-0 d-flex flex-row align-items-center">
+        <div class="w-75 display-1 mb-6">
+          Take part in the Hackathon
+        </div>
+      </div>
+      <div class="col-sm-6 col-xl-4 offset-xl-2 flex-row align-items-center d-flex">
+        <img class="" src="{{site.baseurl}}/{{site.uploads_path}}/bliquebynobissmall.jpg" width="100%" class=""/>
+      </div>
     </div>
 
-    <div class="col">
+  </div>
+  <div class="container-fluid bg-secondary">
 
-      <div class="row">
-        <div class="col">
-          <div id="application-form-wrapper" class="">
+    <div class="row py-8">
 
-            {% assign form = site.data.application-form %}
-            <form id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
-
-              {% assign inputs = site.data.application-form.inputs.details %}
-                {% for item in inputs %}
-                  <div class="form-group">
-                    <div>
-                      {{item.label}}
-                    </div>
-                    {%- if item.type == 'text' -%}
-                      <input class="form-control" type="text" value="" name="{{item.name}}" />
-                    {%- endif -%}
-                    {%- if item.type == 'file' -%}
-                      <!-- <input class="form-control" type="text" value="" name="{{item.field-name}}" /> -->
-                      <input class="form-control-file" type="file" value="" onchange="parseImage(this)" accept=".jpg, .jpeg, .png" name="{{item.name}}" />
-                      <img id="upload-preview" class="" src="" height="200" alt="">
-                    {%- endif -%}
-                    {%- if item.type == 'textarea' -%}
-                      <textarea class="form-control" name="{{item.name}}" value="" rows="8" cols="" class="w-100"></textarea>
-                    {%- endif -%}
-                  </div>
-                {% endfor %}
-                <input type="submit" name="" value="Submit">
-            </form>
-
+      <div class="col col-md-8 offset-md col-xl-8">
+        <div class="row">
+          <div class="col text-md">
+            {{site.data.application-form.introduction.description | markdownify}}
           </div>
         </div>
       </div>
 
+      <div class="col-md-4 offset-xl-0 col-xl-4">
+        <div class="row">
+          <div class="col">
+            <div class="text-md">
+              <p>{{ site.data.info.time | date: '%B %-dth, %Y' }} <br>
+                <a href="{{site.data.info.location.venue.url}}">{{site.data.info.location.venue.name}}</a>, {{site.data.info.location.city}}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-8 col-xl-8 offset-md">
+        <div class="row mt-8">
+          <div class="col-12 text-md">
+            <div class="text-md mb-8">
+              Apply to join the hackathon:
+            </div>
+            {%- include form.html -%}
+          </div>
+        </div>
+      </div>
 
     </div>
-
-  </div>
-
-
-  <div class="footer-wrapper w-100 invisible">
-    {%- include footer.html -%}
   </div>
 
 </div>

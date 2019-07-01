@@ -1,0 +1,27 @@
+div[data-qa="mobile-modal"] {
+  position: fixed !important;
+  z-index: 2000;
+}
+
+[data-qa="close-button-mobile"] {
+  z-index: 2000;
+}
+
+.typoeform-container {
+  min-height: 300px !important;
+  // z-index: 2040 !important;
+  // background-color: transparent !important;
+}
+
+
+.learn-color {
+  color: $learn-color !important;
+}
+
+.work-color {
+    color: $work-color !important;
+}
+
+.rest-color {
+  color: $rest-color;
+}

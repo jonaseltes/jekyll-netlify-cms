@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   {%- include icons.html -%}
 
   <title>{{ site.title }}{% if page.title %} | {{ page.title }}{% endif %}</title>
@@ -13,6 +13,12 @@
     <meta name="description" content="{{ site.description }}">
   {% endif %}
   <meta name="author" content="TRR">
+
+  {% if site.fonts %}
+    {%- for font in site.fonts -%}
+      <link rel="stylesheet" href="{{font}}">
+    {%- endfor -%}
+  {%- endif -%}
 
   {%- include page-css.html -%}
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
