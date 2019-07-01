@@ -687,13 +687,13 @@ function clickedBlob (intersects){
     $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
     $('#results-info-second').text("[Interesting data goes here]");
     if (blob.name == "work") {
-        $('#results-info-first').html("<div class='work-color'>"+amount+"% said they would switch workplace every "+data_highlights.data[blob.name].change+" years.</div>");
+        $('#results-info-first').html("<div class='work-color'>"+amount+"% of those surveyed said they would switch workplace every "+data_highlights.data[blob.name].change+" years.</div>");
     }
     if (blob.name == "learn") {
-        $('#results-info-first').html("<div class='learn-color'>"+amount+"% said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+data_highlights.data[blob.name].answer+"</span></div>");
+        $('#results-info-first').html("<div class='learn-color'>"+amount+"% of those surveyed said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+data_highlights.data[blob.name].answer+".</span></div>");
     }
     if (blob.name == "rest") {
-        $('#results-info-first').html('<div class="rest-color">Most common answer ('+amount+'%):</p><p>"'+data_highlights.data[blob.name].answer+'."</div>');
+        $('#results-info-first').html('<div class="rest-color">('+amount+'%) of those surveyed said:</p><p>"'+data_highlights.data[blob.name].answer+'."</div>');
     }
     $('#results-info-second').html("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
   }
@@ -855,28 +855,32 @@ function animate() {
         var slots = (Math.round(thisObject.userData.slots * 10) / 10).toString();
         // Math.round( number * 10 ) / 10
         if (thisObject.name == "learn") {
-          slots += " times"
+          name = "educations"
+          name = slots + " " + capitalizeFirstLetter(name);
         }
 
         if (thisObject.name == "work") {
-          slots += " places"
+          name = "workplaces"
+          name = slots + " " + capitalizeFirstLetter(name);
         }
 
         if (thisObject.name == "rest") {
-          slots += " times"
+          name = "retirements"
+          name = slots + " " + capitalizeFirstLetter(name);
         }
 
         // console.log("thisObject.userData.years: " ,years);
 
+
         if (window.innerWidth < 700) {
           ctx2d.fillText(capitalizeFirstLetter(name), c.x, canvas2D.height-(90 * window.devicePixelRatio));
-          ctx2d.fillText(capitalizeFirstLetter(years), c.x, canvas2D.height-(75 * window.devicePixelRatio));
-          ctx2d.fillText(capitalizeFirstLetter(slots), c.x, canvas2D.height-(60 * window.devicePixelRatio));
+          // ctx2d.fillText(capitalizeFirstLetter(years), c.x, canvas2D.height-(75 * window.devicePixelRatio));
+          // ctx2d.fillText(capitalizeFirstLetter(slots), c.x, canvas2D.height-(60 * window.devicePixelRatio));
         }
         else {
           ctx2d.fillText(capitalizeFirstLetter(name), c.x, canvas2D.height-(100 * window.devicePixelRatio));
-          ctx2d.fillText(capitalizeFirstLetter(years), c.x, canvas2D.height-(75 * window.devicePixelRatio));
-          ctx2d.fillText(capitalizeFirstLetter(slots), c.x, canvas2D.height-(50 * window.devicePixelRatio));
+          // ctx2d.fillText(capitalizeFirstLetter(years), c.x, canvas2D.height-(75 * window.devicePixelRatio));
+          // ctx2d.fillText(capitalizeFirstLetter(slots), c.x, canvas2D.height-(50 * window.devicePixelRatio));
         }
         // ctx2d.fillText(projects[i].description, c.x + (10 * window.devicePixelRatio), c.y + (10*devicePixelRatio));
       }
