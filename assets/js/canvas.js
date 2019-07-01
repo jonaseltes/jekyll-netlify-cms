@@ -654,7 +654,7 @@ function clickedBlob (intersects){
     $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
     $('#results-info-second').text("[Interesting data goes here]");
     if (blob.name == "work") {
-        $('#results-info-second').text(+amount+"% said they would switch workplace every "+data_highlights.data[blob.name].change+" years.");
+        $('#results-info-second').text(+amount+"% ("+data_highlights.data[blob.name].quantity+" poeple) said they would switch workplace every "+data_highlights.data[blob.name].change+" years.");
     }
   }
   else {
