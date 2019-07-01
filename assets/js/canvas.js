@@ -654,11 +654,15 @@ function clickedBlob (intersects){
     $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
     $('#results-info-second').text("[Interesting data goes here]");
     if (blob.name == "work") {
-        $('#results-info-second').text(+amount+"% ("+data_highlights.data[blob.name].quantity+" poeple) said they would switch workplace every "+data_highlights.data[blob.name].change+" years.");
+        $('#results-info-first').text(+amount+"% ("+data_highlights.data[blob.name].quantity+" poeple) said they would switch workplace every "+data_highlights.data[blob.name].change+" years.");
+    }
+    if (blob.name == "learn") {
+        $('#results-info-first').html("<p>"+amount+"% ("+data_highlights.data[blob.name].quantity+" poeple) said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+data_highlights.data[blob.name].answer+"</span></p>");
     }
     if (blob.name == "rest") {
-        $('#results-info-second').html('<p>'+amount+'% ('+data_highlights.data[blob.name].quantity+' poeple) answered:</p><p>"'+data_highlights.data[blob.name].answer+'."</p>');
+        $('#results-info-first').html('<p>'+amount+'% ('+data_highlights.data[blob.name].quantity+' poeple) answered:</p><p>"'+data_highlights.data[blob.name].answer+'."</p>');
     }
+    $('#results-info-second').html("<p>How does that change the future of work? Join the <a href='/hackathon'>hackathon</a> find out.</p>");
   }
   else {
     for (var i = 0; i < meshArray.length; i++) {
@@ -813,7 +817,7 @@ function animate() {
         var years = (Math.round(thisObject.userData.years  * 10) / 10).toString() + " years";
         var slots = (Math.round(thisObject.userData.slots * 10) / 10).toString();
         // Math.round( number * 10 ) / 10
-        if (thisObject.name == "education") {
+        if (thisObject.name == "learn") {
           slots += " times"
         }
 

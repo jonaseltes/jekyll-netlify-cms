@@ -274,7 +274,7 @@ function newJourney(options){
           slots: 1
         },
         learn: {
-          label: "education",
+          label: "learn",
           years: 0,
           slots: 0
         },
@@ -307,7 +307,7 @@ function newJourney(options){
           slots: 0
         },
         learn: {
-          label: "education",
+          label: "learn",
           years: 0,
           slots: 0
         },
