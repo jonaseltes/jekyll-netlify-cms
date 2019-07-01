@@ -17,7 +17,7 @@ if (animation_mode == "lab") {
 var blobColors = {
   learn: 0x70FF6B,
   work: 0x6c5ba5,
-  rest: 0xFF98E1
+  rest: 0xFF5757
 }
 
 
