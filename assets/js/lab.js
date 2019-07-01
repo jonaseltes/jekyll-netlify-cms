@@ -12,9 +12,9 @@ var results_url = "//script.google.com/macros/s/AKfycbxlBl7BgohEt_v90BbBnfXgJtyo
 // var results_url = "//script.google.com/macros/s/AKfycbw5FNVzbGUgSHOM6rIral3Y6xJnIvU9pyy5o14ld3f_liRdFOs/exec?jsonp=?";
 
 {% if jekyll.environment == "development" %}
-  url = typeform_test_url;
-{% endif %}
 
+{% endif %}
+url = typeform_test_url;
 
 
 
@@ -84,7 +84,7 @@ function getAvarage (results) {
   avarage.data.rest.slots = avarage.data.rest.slots / results.length;
 
   console.log("avarge: " ,avarage);
-
+  return avarage;
   // loadLabVisuals(avarage, startRender);
 }
 
@@ -274,7 +274,7 @@ function parseResult (result) {
   return journey;
 }
 
-function getResults(){
+function getResults(all){
     $("#lab-info-container").html("Loading...");
    $.ajax({
       url: results_url,
@@ -294,8 +294,17 @@ function getResults(){
         }
         var latestResult = results[results.length - 1];
         // loadLabVisuals(latestResult, startRender);
-        initiLabMode("lab", latestResult, loadLabVisuals);
-        // getAvarage(results);
+        if (all) {
+          var avarage = getAvarage(results);
+          initiLabMode("lab", avarage, loadLabVisuals);
+          $("#results-info-first").text("Showing avarage data based on " +results.length+ " results.");
+        }
+
+        else {
+          initiLabMode("lab", latestResult, loadLabVisuals);
+          $("#results-info-first").text("Thank you for contributing to our research!");
+        }
+
         console.log("results: " ,results);
       },
       error: function (err) {
@@ -314,7 +323,7 @@ $( document ).ready(function() {
     hideFooter: true,
     onSubmit: function () {
       console.log('Typeform successfully submitted');
-      getResults();
+      getResults(single);
       popup2.close();
     }
   });
@@ -329,7 +338,7 @@ $( document ).ready(function() {
 
   $("#bt-popup").click(function(){
     // popup2.open();
-    getResults();
+    getResults(false);
   });
 
 
