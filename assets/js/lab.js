@@ -6,7 +6,7 @@
 
 console.log("lab.js");
 var typeform_url = "//anothertomorrow.typeform.com/to/O8tDRQ";
-var typeform_test_url = "//anothertomorrow.typeform.com/to/p4X1am";
+var typeform_test_url = "//anothertomorrow.typeform.com/to/z0csjE";
 var typeform_backup_url = "//anothertomorrow.typeform.com/to/KZdKRX";
 var url = typeform_url;
 var results_url = "//script.google.com/macros/s/AKfycbxlBl7BgohEt_v90BbBnfXgJtyoo87RtHQMj2XRJ2SiTeelad49/exec"
@@ -492,8 +492,8 @@ $( document ).ready(function() {
 
 
   $("#bt-popup").click(function(){
-    // popup2.open();
-    getResults(false);
+    popup2.open();
+    // getResults(false);
     // getResults(false);
   });
 
