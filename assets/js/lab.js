@@ -478,8 +478,10 @@ $( document ).ready(function() {
     hideFooter: true,
     onSubmit: function () {
       console.log('Typeform successfully submitted');
-      getResults(false);
       popup2.close();
+      setTimeout(function(){
+        getResults(false);
+      }, 2000);
     }
   });
   // popup2.open()
