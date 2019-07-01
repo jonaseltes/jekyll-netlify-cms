@@ -3,6 +3,10 @@ div[data-qa="mobile-modal"] {
   z-index: 2000;
 }
 
+[data-qa="close-button-mobile"] {
+  z-index: 2000;
+}
+
 .typoeform-container {
   min-height: 300px !important;
   // z-index: 2040 !important;

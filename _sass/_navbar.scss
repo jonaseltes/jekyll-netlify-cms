@@ -2,6 +2,9 @@
   @include media-breakpoint-down(xs) {
     background-color: $bg-secondary;
   }
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
 }
 
 //Navbar

@@ -18,6 +18,11 @@ $body-color:                $medium-beige;
   background-color: $body-color;
 }
 
+.bg-none {
+  background-color: transparent;
+  background: none;
+}
+
 $theme-colors: (
   secondary: $medium-beige
 );
