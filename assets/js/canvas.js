@@ -656,6 +656,9 @@ function clickedBlob (intersects){
     if (blob.name == "work") {
         $('#results-info-second').text(+amount+"% ("+data_highlights.data[blob.name].quantity+" poeple) said they would switch workplace every "+data_highlights.data[blob.name].change+" years.");
     }
+    if (blob.name == "rest") {
+        $('#results-info-second').html('<p>'+amount+'% ('+data_highlights.data[blob.name].quantity+' poeple) answered:</p><p>"'+data_highlights.data[blob.name].answer+'."</p>');
+    }
   }
   else {
     for (var i = 0; i < meshArray.length; i++) {
