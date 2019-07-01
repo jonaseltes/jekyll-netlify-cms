@@ -129,7 +129,7 @@ function newJourney(options){
           slots: 1
         },
         learn: {
-          label: "learn",
+          label: "education",
           years: 0,
           slots: 0
         },
@@ -162,7 +162,7 @@ function newJourney(options){
           slots: 0
         },
         learn: {
-          label: "learn",
+          label: "education",
           years: 0,
           slots: 0
         },
@@ -280,7 +280,9 @@ function getResults(){
       url: results_url,
       // dataType: 'jsonp',
       success: function(data) {
-        $("#lab-info-container").html("<p>Thank you for contributing to our research!</p><p>Click one of the blobs to explore how your ideal future of work compares to the rest of the results:</p><div><a href=''>Share to your network →</a><br /><a href='/hackathon'>Join the Hackthon →</a></div>");
+        $("#lab-info-container").fadeOut(function(){
+          $("#results-info-container").fadeIn();
+        });
         var jsonData = JSON.parse(data);
         jsonData.shift(); // Remove header row form results
         console.log("results length: " ,jsonData.length);
@@ -305,7 +307,7 @@ function getResults(){
 
 $( document ).ready(function() {
   // newTypeform();
-
+  $("#results-info-container").hide();
   console.log("animation_mode: " ,animation_mode);
   var popup2 = window.typeformEmbed.makePopup(typeform_url, {
     hideHeaders: true,
@@ -326,8 +328,8 @@ $( document ).ready(function() {
 
 
   $("#bt-popup").click(function(){
-    // popup2.open();
-    getResults();
+    popup2.open();
+    // getResults();
   });
 
 

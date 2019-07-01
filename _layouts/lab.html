@@ -17,7 +17,7 @@ scripts:
   <h1 class="post-title">{{ page.title | escape }}</h1>
 </header>-->
 
-<div class="lab page-content-container h-100 w-100 position-absolute">
+<div class="lab page-content-container h-100 w-100 position-absolute no-pointer-e no-pointer-e-all">
 
   <div class="container-fluid d-none h-inherit mb-sm-10 mb-lg-0">
     <div class="row min-h-100 mb-10">
@@ -34,11 +34,25 @@ scripts:
       <div class="row min-h-100 flex-column flex-sm-row">
 
         <div class="d-sm-block col-sm-6 offset-sm-0 col-lg-4 offset-xl-0 align-self-start flex-shrink-1 mb-4 mb-sm-8">
-          <div class="text-sm mt-5" id="lab-info-container">
-            <div class="text roboto-mono">
-              The lab is... The data is used as a base for upcoming... Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
+          <div class="text-sm mt-5 pointer-e-all">
+            <div class="" id="lab-info-container">
+              <div class="text roboto-mono">
+                The lab is... The data is used as a base for upcoming... Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
+              </div>
+              <button class="mt-5 text-md test" id="bt-popup" type="button" name="button">See the results →</button>
             </div>
-            <button class="mt-5 text-md test" id="bt-popup" type="button" name="button">See the results →</button>
+            <div id='results-info-container'>
+              <div id="results-info">
+                <p id="">Thank you for contributing to our research!</p>
+                <p id="">Click one of the blobs to explore how your ideal future of work compares to the rest of the results:</p>
+              </div>
+              <a href=''>Share to your network →</a><br />
+              <a href='/hackathon'>Join the Hackthon →</a>
+              <button class='mt-5 text-md test d-block' id='refresh' value="Refresh Page" type='button' name='button' onClick="window.location.reload();">Start over</button>
+            </div>
+            <div>
+
+            </div>
           </div>
         </div>
         <div class="d-none d-sm-block col-sm">

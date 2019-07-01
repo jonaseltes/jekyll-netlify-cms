@@ -226,7 +226,7 @@ function loadBlobs(callback){
 }
 
 
-function createBlobSlot(c, s, p, name){
+function createBlobSlot(c, s, p, name, data){
   var geo = new THREE.SphereGeometry(.3, s*4, s*4);
   var mat  = new THREE.MeshStandardMaterial({
     // shininess: 100,
@@ -268,6 +268,8 @@ function createBlobSlot(c, s, p, name){
   bmesh.userData.scale = scale;
   bmesh.userData.peak = p;
   bmesh.userData.gravity = gravity;
+  bmesh.userData.years = data.years;
+  bmesh.userData.slots = data.slots;
 
   if (name != "base" && name != "default") {
     bmesh.userData.animate = true;
@@ -416,7 +418,7 @@ function makeAbstractTimeLine(dataArray) {
     console.log("color: " ,c.getHexString());
     var dataType = dataArray[i];
     console.log("dataType: " ,dataType);
-    var mesh = createBlobSlot(dataType.color, dataType.years, dataType.slots, dataType.label);
+    var mesh = createBlobSlot(dataType.color, dataType.years, dataType.slots, dataType.label, dataType);
     console.log("mesh: " ,mesh);
     meshArray.push(mesh);
   }
@@ -459,6 +461,7 @@ function initiLabMode(mode, result, callback) {
     blobMesh.visible = false;
     blobsWrapper.visible = false;
     animation_mode = mode;
+    $(canvas3D).toggleClass("no-pointer-e");
     callback(result, startRender);
   });
 }
@@ -622,13 +625,47 @@ function init() {
 	clock = new THREE.Clock();
 
   window.addEventListener( 'resize', onWindowResize, false );
-  document.addEventListener('mousedown', onDocumentMouseDown, false);
+  // document.addEventListener('mousedown', onDocumentMouseDown, false);
   document.addEventListener( 'mousemove', onMouseMove, false );
+  renderer3D.domElement.addEventListener("mousedown", onDocumentMouseDown, true);
+}
+
+
+function clickedBlob (intersects){
+  if (intersects.length > 0) {
+    var blob = intersects[0].object;
+    console.log("clicked blob: " ,blob);
+    for (var i = 0; i < meshArray.length; i++) {
+      if (meshArray[i].name != blob.name) {
+        meshArray[i].material.opacity = 0.5;
+      }
+      else {
+        meshArray[i].material.opacity = 1.0;
+      }
+    }
+    $('#results-info').html("<p>Clicked on " +capitalizeFirstLetter(blob.name)+".</p>");
+  }
+  else {
+    for (var i = 0; i < meshArray.length; i++) {
+        meshArray[i].material.opacity = 1.0;
+    }
+    $('#results-info').html("<p id=''>Click one of the blobs to explore how your ideal future of work compares to the rest of the results:</p>");
+  }
+
 
 }
 
 
 function onDocumentMouseDown(event) {
+  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+  console.log("clicked: " ,mouse);
+
+  raycaster.setFromCamera( mouse, camera );
+  // calculate objects intersecting the picking ray
+  var intersects = raycaster.intersectObjects( labWrapper.children, true );
+  clickedBlob(intersects);
 
 }
 
@@ -645,8 +682,8 @@ function onMouseMove( event ) {
 
 	// calculate mouse position in normalized device coordinates
 	// (-1 to +1) for both components
-	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+	// mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	// mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
   // console.log("mouse: " ,mouse);
 }
 
@@ -734,7 +771,7 @@ function animate() {
     ctx2d = renderer2D.domElement.getContext('2d');
     ctx2d.clearRect (0, 0, window.innerWidth*window.devicePixelRatio, window.innerHeight*devicePixelRatio);
     ctx2d.fillStyle = "#ffffff";
-    var fontSize = 16 * window.devicePixelRatio;
+    var fontSize = 14 * window.devicePixelRatio;
     ctx2d.font = +fontSize+ 'pt Open Sans';
     ctx2d.textAlign = 'center';
 
@@ -756,8 +793,25 @@ function animate() {
         ctx2d.lineTo(c.x, canvas2D.height-(120 * window.devicePixelRatio));
         ctx2d.strokeStyle = "white";
         ctx2d.stroke();
-        var text = (thisObject.name);
-        ctx2d.fillText(capitalizeFirstLetter(text), c.x, canvas2D.height-(80 * window.devicePixelRatio));
+        var name = thisObject.name;
+        var years = thisObject.userData.years.toString() + " years";
+        var slots = thisObject.userData.slots.toString();
+        if (thisObject.name == "education") {
+          slots += " times"
+        }
+
+        if (thisObject.name == "work") {
+          slots += " places"
+        }
+
+        if (thisObject.name == "rest") {
+          slots += " times"
+        }
+
+        // console.log("thisObject.userData.years: " ,years);
+        ctx2d.fillText(capitalizeFirstLetter(name), c.x, canvas2D.height-(100 * window.devicePixelRatio));
+        ctx2d.fillText(capitalizeFirstLetter(years), c.x, canvas2D.height-(75 * window.devicePixelRatio));
+        ctx2d.fillText(capitalizeFirstLetter(slots), c.x, canvas2D.height-(50 * window.devicePixelRatio));
         // ctx2d.fillText(projects[i].description, c.x + (10 * window.devicePixelRatio), c.y + (10*devicePixelRatio));
       }
     }
