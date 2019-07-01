@@ -337,8 +337,8 @@ $( document ).ready(function() {
 
 
   $("#bt-popup").click(function(){
-    // popup2.open();
-    getResults(false);
+    popup2.open();
+    // getResults(false);
   });
 
 
