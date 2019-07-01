@@ -14,7 +14,7 @@ var results_url = "//script.google.com/macros/s/AKfycbxlBl7BgohEt_v90BbBnfXgJtyo
 
 url = typeform_test_url;
 {% if jekyll.environment == "development" %}
-  url = typeform_backup_url;
+  url = typeform_test_url;
 {% endif %}
 
 
@@ -473,7 +473,7 @@ $( document ).ready(function() {
   // newTypeform();
   $("#results-info-container").hide();
   console.log("animation_mode: " ,animation_mode);
-  var popup2 = window.typeformEmbed.makePopup(typeform_url, {
+  var popup2 = window.typeformEmbed.makePopup(url, {
     hideHeaders: true,
     hideFooter: true,
     onSubmit: function () {
