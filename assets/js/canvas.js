@@ -65,17 +65,13 @@ function animate_vertices(mesh, pk, grav){
 function createBlob(c) {
   var geo = new THREE.SphereGeometry(.3, 60, 60);
   var mat  = new THREE.MeshStandardMaterial({
-    shininess: 100,
-    specular: 0xffffff,
     transparent: true,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
     // alpha: true,
     opacity: 0.8,
-    clearCoat: 0.7,
-    reflectivity: 1,
     metalness: 0,
-    roughness: 0.4,
+    roughness: 0.1,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -91,7 +87,6 @@ function createBlob(c) {
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
     clearCoat: 0.4,
-    alpha: true,
     opacity: 0.9,
     reflectivity: 1,
     metalness: 0,
@@ -157,27 +152,26 @@ function loadBlobs(callback){
 
   var cubeLoader = new THREE.CubeTextureLoader();
     cubeLoader.setPath('/assets/media/cube/');
-    var textureCube = cubeLoader.load([
+    window.textureCube = cubeLoader.load([
       'px.png', 'nx.png',
     	'py.png', 'ny.png',
     	'pz.png', 'nz.png'
     ]);
 
-  var textureLoader = new THREE.TextureLoader();
   var blobGeometry   = new THREE.SphereGeometry(1, 50, 50);
-  var material = new THREE.MeshPhysicalMaterial({
+  var material = new THREE.MeshBasicMaterial({
     // shininess: 100,
     // specular: 0xffffff,
-    transparent: true,
-    // envMap: textureCube,
+    // transparent: true,
+    envMap: textureCube,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
     clearCoat: 0.4,
-    alpha: true,
+    // alpha: true,
     opacity: 0.9,
     reflectivity: 1,
     metalness: 0,
-    roughness: 0.8,
+    roughness: 0.9,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -185,13 +179,33 @@ function loadBlobs(callback){
     color: 0x6c5ba5
   });
 
+  var bmaterial = new THREE.MeshPhysicalMaterial({
+    // shininess: 100,
+    // specular: 0xffffff,
+    // transparent: true,
+    // envMap: textureCube,
+    // shading: THREE.FlatShading,
+    // side: THREE.DoubleSide,
+    clearCoat: 0.4,
+    // alpha: true,
+    opacity: 0.9,
+    reflectivity: 1,
+    metalness: 0,
+    roughness: 0.9,
+    // emissive: 0xffffff,
+    // color: 0xffffff
+    // color: 0x4e4279
+    // color: 0x694dcb
+    color: 0x6c5ba5
+  });
+
+  // material.envMap = textureCube;
+
   var pmat = new THREE.PointsMaterial( {
     size: .05,
     map: createCanvasMaterial(256),
     // transparent: true,
-    color: 0xffffff,
-    linecap: 'round', //ignored by WebGLRenderer
-  	linejoin:  'round' //ignored by WebGLRenderer
+    color: 0xffffff
   } );
 
   var lineMat = new THREE.MeshBasicMaterial( {
@@ -202,14 +216,13 @@ function loadBlobs(callback){
   	linejoin:  'round' //ignored by WebGLRenderer
   } );
   // window.blobMesh = new THREE.Mesh(blobGeometry, lineMat);
-  window.blobMesh = new THREE.Mesh(blobGeometry, material);
-  window.pointsMesh = new THREE.Points(blobGeometry, pmat);
-  // material.map = textureLoader.load('{{site.image_path}}/trr-environment.png');
+  window.blobMesh = new THREE.Mesh(blobGeometry, bmaterial);
+  // window.pointsMesh = new THREE.Points(blobGeometry, pmat);
   // material.emissiveMap = textureLoader.load('{{site.image_path}}/trr-emissive.jpg');
   var s = 0.8;
   blobMesh.scale.set(s, s, s);
   material.needsUpdate = true;
-  // material.bumpMap = textureLoader.load('{{site.image_path}}/gold_bump.jpg');
+
   scene.add(blobMesh);
   // blobMesh.visible = false;
   // scene.add(pointsMesh);
@@ -565,7 +578,7 @@ function loadScene() {
   directionalLight2.position.set( -15, 0, -5 );
   scene.add(directionalLight2);
 
-  var rectLight = new THREE.RectAreaLight( 0xffffff, 3,  20, 20 );
+  var rectLight = new THREE.RectAreaLight( 0xffffff, 3.5,  20, 20 );
   rectLight.position.set( 15, 0, 5 );
   rectLight.lookAt( 0, 0, 0 );
   scene.add( rectLight );
