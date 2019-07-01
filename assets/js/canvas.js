@@ -649,13 +649,20 @@ function clickedBlob (intersects){
         meshArray[i].material.opacity = 1.0;
       }
     }
-    $('#results-info').html("<p>Clicked on " +capitalizeFirstLetter(blob.name)+".</p>");
+
+    var amount = Math.round(((data_highlights.data[blob.name].quantity / data_highlights.total)*100) * 10) / 10;
+    $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
+    $('#results-info-second').text("[Interesting data goes here]");
+    if (blob.name == "work") {
+        $('#results-info-second').text(+amount+"% said they would switch workplace every "+data_highlights.data[blob.name].change+" years.");
+    }
   }
   else {
     for (var i = 0; i < meshArray.length; i++) {
         meshArray[i].material.opacity = 1.0;
     }
-    $('#results-info').html("<p id=''>Click one of the blobs to explore how your ideal future of work compares to the rest of the results:</p>");
+    $('#results-info-first').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
+    $('#results-info-second').text("");
   }
 
 
@@ -800,8 +807,9 @@ function animate() {
         ctx2d.strokeStyle = "white";
         ctx2d.stroke();
         var name = thisObject.name;
-        var years = thisObject.userData.years.toString() + " years";
-        var slots = thisObject.userData.slots.toString();
+        var years = (Math.round(thisObject.userData.years  * 10) / 10).toString() + " years";
+        var slots = (Math.round(thisObject.userData.slots * 10) / 10).toString();
+        // Math.round( number * 10 ) / 10
         if (thisObject.name == "education") {
           slots += " times"
         }

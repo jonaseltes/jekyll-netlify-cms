@@ -7,14 +7,16 @@
 console.log("lab.js");
 var typeform_url = "//anothertomorrow.typeform.com/to/O8tDRQ";
 var typeform_test_url = "//anothertomorrow.typeform.com/to/p4X1am";
+var typeform_backup_url = "//anothertomorrow.typeform.com/to/KZdKRX";
 var url = typeform_url;
 var results_url = "//script.google.com/macros/s/AKfycbxlBl7BgohEt_v90BbBnfXgJtyoo87RtHQMj2XRJ2SiTeelad49/exec"
 // var results_url = "//script.google.com/macros/s/AKfycbw5FNVzbGUgSHOM6rIral3Y6xJnIvU9pyy5o14ld3f_liRdFOs/exec?jsonp=?";
 
-{% if jekyll.environment == "development" %}
-
-{% endif %}
 url = typeform_test_url;
+{% if jekyll.environment == "development" %}
+  url = typeform_backup_url;
+{% endif %}
+
 
 
 
@@ -47,6 +49,149 @@ var total_years = 82,
     retiremnt_years = 16;
 
 
+
+function getHighlights(results){
+  console.log("getHighlights from results: " ,results);
+  var arrayContainer = [];
+  for (var i = 0; i < results[0].length; i++) {
+    arrayContainer[i] = [];
+  }
+
+  data_highlights = {
+    total: results.length,
+    data: {
+      work: {
+
+      },
+      learn: {
+
+      },
+      rest: {
+
+      }
+    }
+  }
+
+  for (var i = 0; i < results.length; i++) {
+    var result = results[i]
+    for (var j = 0; j < result.length; j++) {
+      arrayContainer[j].push(result[j]);
+    }
+    for (var j = 0; j < arrayContainer.length; j++) {
+
+      var arr1 = arrayContainer[j];
+      var mf = 1;
+      var m = 0;
+      var item;
+      //LOOP TO EXTRACT MOST COMMON DATA
+      for (var k=0; k<arr1.length; k++){
+        for (var l=k; l<arr1.length; l++)
+        {
+                if (arr1[k] == arr1[l])
+                 m++;
+                if (mf<m)
+                {
+                  mf=m;
+                  item = arr1[k];
+                }
+        }
+        m=0;
+      }
+
+      switch (j) {
+        case 0:
+          var slots = 0;
+          switch (item) {
+            case "Never":
+              break;
+            case "A few times":
+              slots = 3;
+              break;
+            case "On a regular basis":
+              slots = 6;
+              break;
+            case "As often as possible":
+              slots = 9;
+              break;
+          }
+          data_highlights.data.learn.answer = item;
+          data_highlights.data.learn.change = slots;
+          data_highlights.data.learn.quantity = mf;
+          break;
+        case 2:
+          var slots = 1;
+          switch (item) {
+            case "Every year":
+              slots = 1;
+              break;
+            case "Every 2 years":
+              slots = 2;
+              break;
+            case "Every 3 years":
+              slots = 3;
+              break;
+            case "Every 4 years":
+              slots = 4;
+              break;
+            case "Every 5 years":
+              slots = 5;
+              break;
+            case "Every 7 years":
+              slots = 7;
+              break;
+            case "Every 10 years":
+              slots = 10;
+              break;
+            case "Every 15 years":
+              slots = 15;
+              break;
+            case "I'd stay more than 15 years in one place":
+              slots = 20;
+              break;
+            case "I'd stay at one workplace as long as possible":
+              slots = 0;
+              break;
+          }
+          data_highlights.data.work.answer = item;
+          data_highlights.data.work.change = slots;
+          data_highlights.data.work.quantity = mf;
+          break;
+        case 4:
+          switch (item) {
+            case "After reaching a certain age I leave my job/stop working, and remain retired":
+              break;
+            case "After reaching a certain age I leave my formal employment, but continue working in other ways at my own pace (monetizing hobbies, gig jobs, start something new etc)":
+              // SOME FUNCTIONALLY TO SHOW BLEND OF WORK AND RETIREMNT
+              break;
+            case "I take my share of retirement years and spread them out, taking breaks at regular intervals through life, even if it means I continue working late into life":
+              break;
+            case "I split my share of retirement years in two and have a significant break in the middle of life, even if it means I continue working until a later age":
+              break;
+            case "I want to work forever. Can I donate my retirement years to someone else?":
+              break;
+          }
+          data_highlights.data.rest.answer = item;
+          data_highlights.data.rest.quantity = mf;
+          break;
+      }
+
+      // EXTRACT DATA INTO GLOBAL HIGHLIGHTS OBJECT
+      if (j == 0) {
+
+      }
+      if (j == 2) {
+
+      }
+      if (j == 4) {
+
+      }
+      // console.log(item+" ( " +mf +" times ) ") ;
+    }
+
+  }
+  console.log("data_highlights: " ,data_highlights);
+  console.log("arrayContainer: " ,arrayContainer);
+}
 
 
 function getAvarage (results) {
@@ -285,24 +430,34 @@ function getResults(all){
         });
         var jsonData = JSON.parse(data);
         jsonData.shift(); // Remove header row form results
-        console.log("results length: " ,jsonData.length);
-        console.log("results: " ,jsonData);
+        console.log("results before filtering: " ,jsonData);
+        console.log("results length before filtering: " ,jsonData.length);
+        var filtered = jsonData.filter(function (el) {
+          return el[0] != "";
+        });
+        getHighlights(filtered);
+        console.log("filtered: ",filtered);
         var results = [];
-        for (var i = 0; i < jsonData.length; i++) {
-          var result = parseResult(jsonData[i]);
+        for (var i = 0; i < filtered.length; i++) {
+          var result = parseResult(filtered[i]);
           results.push(result);
         }
+        console.log("results after filtering: " ,results);
+        console.log("results length after filtering: " ,results.length);
         var latestResult = results[results.length - 1];
         // loadLabVisuals(latestResult, startRender);
         if (all) {
           var avarage = getAvarage(results);
           initiLabMode("lab", avarage, loadLabVisuals);
           $("#results-info-first").text("Showing avarage data based on " +results.length+ " results.");
+          $("#results-info-second").text("Click one of the blobs to explore insights and trends within each category:");
+
         }
 
         else {
           initiLabMode("lab", latestResult, loadLabVisuals);
           $("#results-info-first").text("Thank you for contributing to our research!");
+          $("#results-info-second").text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
         }
 
         console.log("results: " ,results);
@@ -323,7 +478,7 @@ $( document ).ready(function() {
     hideFooter: true,
     onSubmit: function () {
       console.log('Typeform successfully submitted');
-      getResults(single);
+      getResults(false);
       popup2.close();
     }
   });
@@ -337,7 +492,8 @@ $( document ).ready(function() {
 
 
   $("#bt-popup").click(function(){
-    popup2.open();
+    // popup2.open();
+    getResults(false);
     // getResults(false);
   });
 
