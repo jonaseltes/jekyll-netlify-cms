@@ -107,7 +107,7 @@ function createBlob(c) {
   animate_vertices(bmesh, 0.9, 0.5);
   var s = Math.random() * .5 + .3;
   bmesh.scale.set(s, s, s);
-  var distance = .4 + (s/2);
+  var distance = .3 + (s/2);
   var range = 1;
 
   var x = Math.random() * range + distance;
@@ -206,6 +206,8 @@ function loadBlobs(callback){
   window.pointsMesh = new THREE.Points(blobGeometry, pmat);
   // material.map = textureLoader.load('{{site.image_path}}/trr-environment.png');
   // material.emissiveMap = textureLoader.load('{{site.image_path}}/trr-emissive.jpg');
+  var s = 0.8;
+  blobMesh.scale.set(s, s, s);
   material.needsUpdate = true;
   // material.bumpMap = textureLoader.load('{{site.image_path}}/gold_bump.jpg');
   scene.add(blobMesh);
