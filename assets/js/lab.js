@@ -328,8 +328,8 @@ $( document ).ready(function() {
 
 
   $("#bt-popup").click(function(){
-    popup2.open();
-    // getResults();
+    // popup2.open();
+    getResults();
   });
 
 

@@ -8,3 +8,7 @@ footer > div {
   padding-top: $nav-link-padding-y;
   padding-bottom: $nav-link-padding-y;
 }
+
+.footer-wrapper {
+  z-index: 3;
+}
