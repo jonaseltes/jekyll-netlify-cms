@@ -10,6 +10,10 @@ var mouse;
 var time;
 var renderOn = false;
 var canvasRes = 1;
+if (animation_mode == "lab") {
+  canvasRes = window.devicePixelRatio;
+}
+
 var blobColors = {
   learn: 0x57a5ff,
   work: 0x6c5ba5,
