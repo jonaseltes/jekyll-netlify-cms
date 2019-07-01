@@ -414,7 +414,10 @@ function makeTimeLine(dataArray){
 }
 
 function updateVerticalPosition(){
-  var yPos = to3Dcoord(0, window.innerHeight - 1);
+  var yPos = to3Dcoord(0, window.innerHeight - 100);
+  if (!mobile_view) {
+    yPos = to3Dcoord(0, window.innerHeight - (window.innerHeight/4));
+  }
   yPos.y = yPos.y/camera.aspect;
   console.log("yPos: " ,yPos);
   console.log("camera.aspect: " ,camera.aspect);
@@ -528,8 +531,7 @@ function loadScene() {
 	raycaster = new THREE.Raycaster();
 	worldVector = new THREE.Vector3();
 
-	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
-	camera.position.z = 4;
+
   // camera.layers.set( 1 );
 	//camera.position.y = cameraOffsetY;
 	//camera.lookAt(0, 0, 0);
@@ -611,12 +613,16 @@ function init() {
 	renderer3D.setPixelRatio(window.devicePixelRatio);
 	renderer3D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 
+  camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+	camera.position.z = 4;
 
 
 	// var container = document.getElementById('container');
 	// container.appendChild( renderer3D.domElement);
 
   loadScene();
+
+  onWindowResize();
 
   $(canvas3D).hide();
 
@@ -886,6 +892,14 @@ function onWindowResize() {
 
   if (typeof meshArray !== "undefined") {
     updateVerticalPosition();
+  }
+
+  if (window.innerWidth < 576) {
+    window.mobile_view = true;
+  }
+
+  else {
+    window.mobile_view = false;
   }
 
 	camera.aspect = window.innerWidth / window.innerHeight;
