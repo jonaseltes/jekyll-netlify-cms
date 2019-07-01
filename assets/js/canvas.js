@@ -10,7 +10,11 @@ var mouse;
 var time;
 var renderOn = false;
 var canvasRes = 1;
-
+var blobColors = {
+  learn: 0x57a5ff,
+  work: 0x6c5ba5,
+  rest: 0x20a7bc
+}
 
 
 {% if jekyll.environment == "production" %}
@@ -55,7 +59,7 @@ function animate_vertices(mesh, pk, grav){
 
 
 function createBlob(c) {
-  var geo = new THREE.SphereGeometry(.3, 50, 50);
+  var geo = new THREE.SphereGeometry(.3, 60, 60);
   var mat  = new THREE.MeshStandardMaterial({
     shininess: 100,
     specular: 0xffffff,
@@ -67,6 +71,26 @@ function createBlob(c) {
     clearCoat: 0.7,
     reflectivity: 1,
     metalness: 0,
+    roughness: 0.4,
+    // emissive: 0xffffff,
+    // color: 0xffffff
+    // color: 0x4e4279
+    // color: 0x694dcb
+    color: c
+  });
+
+  var material = new THREE.MeshPhysicalMaterial({
+    // shininess: 100,
+    // specular: 0xffffff,
+    transparent: true,
+    // envMap: textureCube,
+    // shading: THREE.FlatShading,
+    // side: THREE.DoubleSide,
+    clearCoat: 0.4,
+    alpha: true,
+    opacity: 0.9,
+    reflectivity: 1,
+    metalness: 0,
     roughness: 0.8,
     // emissive: 0xffffff,
     // color: 0xffffff
@@ -76,10 +100,10 @@ function createBlob(c) {
   });
 
   var bmesh = new THREE.Mesh(geo, mat);
-  animate_vertices(bmesh, 0.9, 0.3);
-  var s = Math.random() * .3 + .1;
+  animate_vertices(bmesh, 0.9, 0.5);
+  var s = Math.random() * .5 + .3;
   bmesh.scale.set(s, s, s);
-  var distance = .4 + s;
+  var distance = .4 + (s/2);
   var range = 1;
 
   var x = Math.random() * range + distance;
@@ -181,14 +205,15 @@ function loadBlobs(callback){
   material.needsUpdate = true;
   // material.bumpMap = textureLoader.load('{{site.image_path}}/gold_bump.jpg');
   scene.add(blobMesh);
+  // blobMesh.visible = false;
   // scene.add(pointsMesh);
 
   console.log("scene: " ,scene.children);
 	textureCube.minFilter = THREE.LinearFilter;
 
-  var colors = [0x15958c, 0xf3d500, 0xeff0f9]
+  var colors = [blobColors.learn, blobColors.rest, blobColors.work];
   var c;
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < 2; i++) {
     c = colors[i];
     createBlob(c);
   }
@@ -388,9 +413,10 @@ function makeAbstractTimeLine(dataArray) {
     //Create random color for dataType
     var c = new THREE.Color( 0xffffff );
     c.setHex( Math.random() * 0xffffff );
+    console.log("color: " ,c.getHexString());
     var dataType = dataArray[i];
     console.log("dataType: " ,dataType);
-    var mesh = createBlobSlot(c, dataType.years, dataType.slots, dataType.label);
+    var mesh = createBlobSlot(dataType.color, dataType.years, dataType.slots, dataType.label);
     console.log("mesh: " ,mesh);
     meshArray.push(mesh);
   }
@@ -440,6 +466,9 @@ function initiLabMode(mode, result, callback) {
 
 function loadLabVisuals(results, callback){
   var total = results.total;
+  results.data.learn.color = blobColors.learn;
+  results.data.work.color = blobColors.work;
+  results.data.rest.color = blobColors.rest;
   console.log("Parsing result for visuals: " ,results);
 
   var dataArray = [];
@@ -549,14 +578,16 @@ function init() {
 
   canvas2D = document.getElementById('canvas2D');
   renderer2D = new THREE.CanvasRenderer({canvas: canvas2D, antialias: true, clearColor: 0x000000, clearAlpha: 0, alpha: true, autoClear: true});
+  renderer2D.setPixelRatio(window.devicePixelRatio);
+  renderer2D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
+
 
 	canvas3D = document.getElementById('canvas3D');
 	renderer3D = new THREE.WebGLRenderer( { canvas: canvas3D, antialias: true, clearColor: 0x000000, clearAlpha: 0, alpha: true, preserveDrawingBuffer: false, autoClear: true });
   // scene.background = new THREE.Color( 0xefefef );
 	renderer3D.setPixelRatio(window.devicePixelRatio);
 	renderer3D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
-  renderer2D.setPixelRatio(window.devicePixelRatio);
-	renderer2D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
+
 
 
 	// var container = document.getElementById('container');
@@ -722,7 +753,7 @@ function animate() {
       if (thisObject.name !== null){
         ctx2d.beginPath();
         ctx2d.moveTo(c.x, c.y + (20 * window.devicePixelRatio));
-        ctx2d.lineTo(c.x, canvas2D.height-(100 * window.devicePixelRatio));
+        ctx2d.lineTo(c.x, canvas2D.height-(120 * window.devicePixelRatio));
         ctx2d.strokeStyle = "white";
         ctx2d.stroke();
         var text = (thisObject.name);
