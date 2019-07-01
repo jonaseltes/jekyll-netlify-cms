@@ -9,7 +9,7 @@ $light-beige: #babab3; // c1c1bb
 $medium-beige: #afafaa; // afafaa
 $light-blue: #eff0f9;
 
-$bg-secondary: $medium-beige !important;
+$bg-secondary: $medium-beige;
 $secondary: $medium-beige !important;
 
 $body-color:                $medium-beige;
@@ -19,8 +19,8 @@ $body-color:                $medium-beige;
 }
 
 .bg-none {
-  background-color: transparent;
-  background: none;
+  background-color: transparent !important;
+  background: none !important;
 }
 
 $theme-colors: (
