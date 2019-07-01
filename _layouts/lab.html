@@ -35,75 +35,80 @@ scripts:
 
   <div class="container-fluid d-table h-inherit">
 
-      <div class="row min-h-100 flex-column flex-sm-row">
+      <div class="row min-h-100">
+        <div class="d-flex flex-column flex-grow-1 align-items-start min-h-100 col-sm-6 offset-sm-0 col-lg-4 offset-xl-0 mb-4 mb-sm-8">
 
-        <div class="d-sm-block col-sm-6 offset-sm-0 col-lg-4 offset-xl-0 align-self-start flex-shrink-1 mb-4 mb-sm-8">
-          <div class="text-sm mt-5 pointer-e-all">
-            <div class="" id="lab-info-container">
-              <div class="text roboto-mono">
-                <p>These blobs represent the three core components of your work-life journey:</p>
-                <p class="text-md text-center">
-                    <span class="learn-color px-2">LEARN</span> <span class="work-color px-2">WORK</span> <span class="rest-color px-2">REST</span>
-                </p>
-                <p>Traditionally, these components are taken one after the other: First you educate yourself, then you get a job and work, then you retire.</p>
-                <p>But what if there was a different way?</p>
-                <p>Take the survey to find out what your ideal work journey might look like.</p>
-
+            <div id="lab-introduction" class="text-sm pt-3 pt-sm-5 pointer-e-all align-self-start">
+              <div class="" id="lab-info-container">
+                <div class="text roboto-mono">
+                  <p>These blobs represent the three core components of your work-life journey:</p>
+                  <p class="text-md text-center">
+                      <span class="learn-color px-2">LEARN</span> <span class="work-color px-2">WORK</span> <span class="rest-color px-2">REST</span>
+                  </p>
+                  <p>Traditionally, these components are taken one after the other: First you educate yourself, then you get a job and work, then you retire.</p>
+                  <p>But what if there was a different way?</p>
+                  <p>Take the survey to find out what your ideal work journey might look like.</p>
+                </div>
+                <button class="mt-5 text-md test" id="bt-popup" type="button" name="button">Take the survey →</button>
+                <button class='mt-5 text-md test d-block' id='results' value="Results" type='button' name='button' onClick="getResults(true)">See the results →</button>
               </div>
-              <button class="mt-5 text-md test" id="bt-popup" type="button" name="button">Take the survey →</button>
-              <button class='mt-5 text-md test d-block' id='results' value="Results" type='button' name='button' onClick="getResults(true)">See the results →</button>
             </div>
-            <div id='results-info-container'>
-              <div id="results-info">
-                <p id="results-info-first"></p>
-                <p id="results-info-second"></p>
+            <div id='results-info-container' class="text-sm pt-3 pt-sm-5 pointer-e-all align-self-start mb-100 position-fixed position-sm-relative">
+              <div id="results-info" class="results-info">
+                <p id="results-info-first" class="results-info-first"></p>
+                <p id="results-info-second" class="results-info-second"></p>
               </div>
-              <a href=''>Share to your network →</a><br />
+              <!-- <a href=''>Share to your network →</a><br /> -->
               <!-- <a href='/hackathon'>Join the Hackthon →</a> -->
-              <button class='mt-5 text-md test d-block' id='refresh' value="Refresh Page" type='button' name='button' onClick="window.location.reload();">Start over</button>
+              <!-- <button class='mt-5 text-md test d-block' id='refresh' value="Refresh Page" type='button' name='button' onClick="window.location.reload();">Start over</button> -->
             </div>
-            <div>
-
+            <div class="d-none text-md ml-auto mt-8 bounce helvetica">
+              ↓
             </div>
-          </div>
-        </div>
-        <div class="d-none d-sm-block col-sm">
 
         </div>
+        <!-- <div class="d-none d-sm-block col-sm">
 
-        <div class="d-none flex-column flex-grow-1 col-10 col-sm-6 col-xl-4 align-items-start">
+        </div> -->
+
+        <div class="d-none d-sm-block col-10 col-sm-6 col-xl-4 align-items-start">
 
             <!-- <div id="loading-text" class="d-none">
               <span class="text-uppercase d-none">Loading...</span>
             </div> -->
-
-            <div id="about-container" class="text-sm align-self-start">
-              <div id="landing-text" class="pointer-e-all w-100 mb-8">
-                <div id="landing-title" class="text-md w-75">
-                    Will you help us shape the future of <span class="work">work</span>?
+              <div class="d-none d-sm-block">
+                <div id="results-info-container-second" class="results-info-container-second text-sm mt-5 mb-5">
+                  <p id="results-info-third"></p>
+                  <a href=''>Share to your network →</a><br />
+                  <button class='mt-5 text-md test d-block' id='refresh' value="Refresh Page" type='button' name='button' onClick="window.location.reload();">Start over</button>
                 </div>
               </div>
-              <p class="text-md" id="about-intro">The Swedish Work Lab is a platform to explore what the rapid pace of change in society mean for employees and employers in both the near and distant future. What does tomorrow’s work life actually look like? What previously unknown challenges may we be facing? What or who is required for our work lives to thrive?</p>
-              <div class="collapse" id="aboutCollapse">
+
+
+              <!-- <div class="collapse" id="aboutCollapse">
                 <div class="">
                   <p class="">
                     Our 21st century work lives are constantly evolving. They’re shaped by technological breakthroughs, new economic models, and evolving educational formats. Legislation catches up to ideas and re-frames how businesses can be run. There’s an increased expectancy on companies’ moral compass, and matters of ethics and sustainability may determine both where individuals choose to work as well as where customers choose to take their business. It’s up to us to shape the future we want to work in.
                   </p>
                 </div>
-              </div>
-              <div class="">
+              </div> -->
+
+              <!-- <div class="">
                 <a class="" data-toggle="collapse" href="#aboutCollapse" role="button" aria-expanded="false" aria-controls="aboutCollapse">
                   <span id="aboutCollapseButton" class="text-sm font-weight-semi-bold roboto-mono">Read more +</span>
                 </a>
-              </div>
-            </div>
-            <div class="display-3 mb-8 mt-auto bounce  helvetica">
-              ↓
-            </div>
+              </div> -->
         </div>
 
       </div>
 
+  </div>
+  <div class="container-fluid d-sm-none">
+    <div id="results-info-container-second" class="results-info-container-second text-sm mt-5 mb-5">
+      <p id="results-info-third"></p>
+      <a href=''>Share to your network →</a><br />
+      <button class='mt-5 text-md test d-block' id='refresh' value="Refresh Page" type='button' name='button' onClick="window.location.reload();">Start over</button>
+    </div>
   </div>
 
 </div>

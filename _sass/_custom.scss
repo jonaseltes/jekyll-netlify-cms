@@ -386,6 +386,18 @@ strong {
   left: 0;
 }
 
+.position-sm-relative {
+  @include media-breakpoint-up(sm) {
+    position: relative !important;
+  }
+}
+
+// SIZING
+
+.mb-100 {
+  margin-bottom: 100% !important;
+}
+
 //images
 .grayscale {
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */

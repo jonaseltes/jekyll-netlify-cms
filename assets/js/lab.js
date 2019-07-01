@@ -420,6 +420,7 @@ function parseResult (result) {
 }
 
 function getResults(all){
+    $("#lab-introduction").hide();
     $("#lab-info-container").html("Loading...");
    $.ajax({
       url: results_url,
@@ -427,6 +428,7 @@ function getResults(all){
       success: function(data) {
         $("#lab-info-container").fadeOut(function(){
           $("#results-info-container").fadeIn();
+          $(".results-info-container-second").fadeIn();
         });
         var jsonData = JSON.parse(data);
         jsonData.shift(); // Remove header row form results
@@ -472,6 +474,7 @@ function getResults(all){
 $( document ).ready(function() {
   // newTypeform();
   $("#results-info-container").hide();
+  $(".results-info-container-second").hide();
   console.log("animation_mode: " ,animation_mode);
   var popup2 = window.typeformEmbed.makePopup(url, {
     hideHeaders: true,
@@ -485,8 +488,7 @@ $( document ).ready(function() {
     }
   });
   // popup2.open()
-
-
+  $("iframe").attr("scrolling","yes");
   //
   // setTimeout(function(){
   //   embedElement.close()
