@@ -259,7 +259,7 @@ function createBlobSlot(c, s, p, name, data){
   gravity = gravity + (p*0.01);
   p = 0.8 + (p*0.09);
   animate_vertices(bmesh, p, gravity);
-  var scale = 0.04 + (s*0.02);
+  var scale = 0.1 + (s*0.01);
   bmesh.scale.set(scale, scale, scale);
 
   var distance = 0;
@@ -326,7 +326,7 @@ function createSlot (c, s) {
 
 function fitView() {
   var fov = camera.fov * ( Math.PI / 180 );
-  camera.position.z = Math.abs( (totalWidth/2 + 1.0) / Math.sin( fov / 2 ) / camera.aspect );
+  camera.position.z = Math.abs( (totalWidth/2 + .6) / Math.sin( fov / 2 ) / camera.aspect );
 }
 
 function fitCameraToObject( camera, object, offset ) {
