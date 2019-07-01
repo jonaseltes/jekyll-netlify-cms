@@ -7,3 +7,16 @@ div[data-qa="mobile-modal"] {
   // z-index: 2040 !important;
   // background-color: transparent !important;
 }
+
+
+.learn-color {
+  color: $learn-color !important;
+}
+
+.work-color {
+    color: $work-color !important;
+}
+
+.rest-color {
+  color: $rest-color;
+}
