@@ -706,7 +706,7 @@ function clickedBlob (intersects){
           $('#results-info-second').html("<div class='learn-color'><p>"+amount+"% of those surveyed said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+groupObject.highlights[blob.name].answer+".</span></p></div>");
       }
       if (blob.name == "rest") {
-          $('#results-info-second').html('<div class="rest-color"><p class="">('+amount+'%) of those surveyed said:</p><p>"'+groupObject.highlights[blob.name].answer+'."</p></div>');
+          $('#results-info-second').html('<div class="rest-color"><p class="">'+amount+'% of those surveyed said:</p><p>"'+groupObject.highlights[blob.name].answer+'."</p></div>');
       }
       $('#results-info-second').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     // }
@@ -769,11 +769,6 @@ function to3Dcoord (x, y) {
 
 function onMouseMove( event ) {
 
-	// calculate mouse position in normalized device coordinates
-	// (-1 to +1) for both components
-	// mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	// mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-  // console.log("mouse: " ,mouse);
 }
 
 
