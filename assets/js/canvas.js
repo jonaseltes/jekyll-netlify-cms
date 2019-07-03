@@ -728,7 +728,6 @@ function clickedBlob (intersects){
     }
   }
   else {
-    clickedBlob = null;
     for (var i = 0; i < meshArray.length; i++) {
         meshArray[i].material.opacity = 1.0;
     }
