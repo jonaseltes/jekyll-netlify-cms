@@ -690,6 +690,7 @@ function clickedBlob (intersects){
         meshArray[i].material.opacity = 1.0;
       }
     }
+
     if (filter) {
       var active_filter = $('#filter-select').val().toLowerCase();
       var groupObject = data_highlights[active_filter];
@@ -706,17 +707,18 @@ function clickedBlob (intersects){
       $('#results-info-second').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
     else {
-      var amount = Math.round(((data_highlights.data[blob.name].quantity / data_highlights.total)*100) * 10) / 10;
+      var groupObject = data_highlights.all;
+      var amount = Math.round(((groupObject.highlights[blob.name].quantity / groupObject.entries)*100) * 10) / 10;
       // $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
       $('#results-info-second').text("[Interesting data goes here]");
       if (blob.name == "work") {
-          $('#results-info-first').html("<div class='work-color'>"+amount+"% of those surveyed said they would switch workplace every "+data_highlights.data[blob.name].change+" years.</div>");
+          $('#results-info-first').html("<div class='work-color'>"+amount+"% of those surveyed said they would switch workplace every "+groupObject.highlights[blob.name].change+" years.</div>");
       }
       if (blob.name == "learn") {
-          $('#results-info-first').html("<div class='learn-color'>"+amount+"% of those surveyed said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+data_highlights.data[blob.name].answer+".</span></div>");
+          $('#results-info-first').html("<div class='learn-color'>"+amount+"% of those surveyed said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+groupObject.highlights[blob.name].answer+".</span></div>");
       }
       if (blob.name == "rest") {
-          $('#results-info-first').html('<div class="rest-color">('+amount+'%) of those surveyed said:</p><p>"'+data_highlights.data[blob.name].answer+'."</div>');
+          $('#results-info-first').html('<div class="rest-color">('+amount+'%) of those surveyed said:</p><p>"'+groupObject.highlights[blob.name].answer+'."</div>');
       }
       $('#results-info-second').html("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
