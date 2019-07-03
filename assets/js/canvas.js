@@ -348,33 +348,6 @@ function fitView() {
   camera.position.z = Math.abs( (totalWidth/2 + .6) / Math.sin( fov / 2 ) / camera.aspect );
 }
 
-function fitCameraToObject( camera, object, offset ) {
-
-  offset = offset || 1.5;
-
-  const boundingBox = new THREE.Box3();
-
-  boundingBox.setFromObject( object );
-
-  const center = boundingBox.getCenter( new THREE.Vector3() );
-  const size = boundingBox.getSize( new THREE.Vector3() );
-
-  const startDistance = center.distanceTo(camera.position);
-  // here we must check if the screen is horizontal or vertical, because camera.fov is
-  // based on the vertical direction.
-  const endDistance = camera.aspect > 1 ?
-  					((size.y/2)+offset) / Math.abs(Math.tan(camera.fov/2)) :
-  					((size.y/2)+offset) / Math.abs(Math.tan(camera.fov/2)) / camera.aspect ;
-
-  camera.position.z = camera.position.y * endDistance / startDistance;
-  // camera.position.set(
-  // 	camera.position.x * endDistance / startDistance,
-  // 	camera.position.y * endDistance / startDistance,
-  // 	camera.position.z * endDistance / startDistance,
-  // 	);
-  // camera.lookAt(center);
-}
-
 
 function array_move(arr, old_index, new_index) {
     if (new_index >= arr.length) {
@@ -550,11 +523,6 @@ function loadScene() {
 	raycaster = new THREE.Raycaster();
 	worldVector = new THREE.Vector3();
 
-
-  // camera.layers.set( 1 );
-	//camera.position.y = cameraOffsetY;
-	//camera.lookAt(0, 0, 0);
-
 	// controls = new THREE.TrackballControls(camera, renderer3D.domElement);
 	// controls.enableDamping = true;
 	// controls.dampingFactor = 1.0;
@@ -612,12 +580,6 @@ function init() {
 	});
 
 
-	// $('body').click(function(){
-	// 	console.log("clicked body!");
-	// });
-
-
-
 	scene = new THREE.Scene();
 
   canvas2D = document.getElementById('canvas2D');
@@ -635,9 +597,6 @@ function init() {
   camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
 	camera.position.z = 4;
 
-
-	// var container = document.getElementById('container');
-	// container.appendChild( renderer3D.domElement);
 
   loadScene();
 
@@ -657,16 +616,12 @@ function init() {
 
   if (animation_mode == "lab") {
     console.log("starting lab mode!");
-    // console.log("latest result: " ,latestResult);
   }
 
 
 	// load();
   // animate();
 
-
-
-	var PI2 = Math.PI * 2;
 
 	clock = new THREE.Clock();
 
