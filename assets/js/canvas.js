@@ -695,7 +695,7 @@ function clickedBlob (intersects){
       }
     }
 
-    if (filter) {
+    // if (filter) {
       var active_filter = $('#filter-select').val().toLowerCase();
       var groupObject = data_highlights[active_filter];
       var amount = Math.round(((groupObject.highlights[blob.name].quantity / groupObject.entries)*100) * 10) / 10;
@@ -709,8 +709,8 @@ function clickedBlob (intersects){
           $('#results-info-second').html('<div class="rest-color"><p class="">('+amount+'%) of those surveyed said:</p><p>"'+groupObject.highlights[blob.name].answer+'."</p></div>');
       }
       $('#results-info-second').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
-    }
-    else {
+    // }
+    /*else {
       var groupObject = data_highlights.all;
       var amount = Math.round(((groupObject.highlights[blob.name].quantity / groupObject.entries)*100) * 10) / 10;
       // $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
@@ -725,7 +725,7 @@ function clickedBlob (intersects){
           $('#results-info-first').html('<div class="rest-color">('+amount+'%) of those surveyed said:</p><p>"'+groupObject.highlights[blob.name].answer+'."</div>');
       }
       $('#results-info-second').html("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
-    }
+    }*/
   }
   else {
     for (var i = 0; i < meshArray.length; i++) {
@@ -736,8 +736,8 @@ function clickedBlob (intersects){
     }
 
     else {
-      $('#results-info-first').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
-      $('#results-info-second').text("");
+      $('#results-info-second').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
+      // $('#results-info-second').text("");
     }
   }
 

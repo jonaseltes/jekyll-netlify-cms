@@ -647,6 +647,46 @@ function getResults(all){
         console.log("results after filtering: " ,results);
         console.log("results length after filtering: " ,results.length);
 
+        {% capture my_include %}{% include /lab/filter.html %}{% endcapture %}
+        $("#results-info-first").html('{{ my_include | strip_newlines }}');
+        var ageArray = [];
+        for (var item in data_highlights){
+          if (item != "all") {
+            ageArray.push(item)
+          }
+          data_highlights[item].data.parsed = [];
+          for (var i = 0; i < data_highlights[item].data.raw.length; i++) {
+            var result = parseResult(data_highlights[item].data.raw[i]);
+            data_highlights[item].data.parsed.push(result);
+          }
+          data_highlights[item].data.avarage = getAvarage(data_highlights[item].data.parsed);
+        }
+        ageArray.sort();
+        console.log("ageArray: " ,ageArray);
+        $("#filter-select").append('<option class="text-uppercase">'+ capitalizeFirstLetter("all")+'</option>');
+        for (var i = 0; i < ageArray.length; i++) {
+          $("#filter-select").append('<option class="text-uppercase">'+ capitalizeFirstLetter(ageArray[i])+'</option>');
+        }
+        // $("filter-select")
+
+
+        $('#filter-select').change(function(){
+          console.log("labWrapper.children: " ,labWrapper.children);
+          var group = $(this).val().toLowerCase();
+          console.log("Changed group: " ,group);
+          for (var i = 0; i < labWrapper.children.length; i++) {
+            var avarage = data_highlights[group].data.avarage.data[labWrapper.children[i].name];
+            var s = avarage.years;
+            var p = avarage.slots;
+            setBlobProprties(labWrapper.children[i], s, p);
+            labWrapper.children[i].userData.years = avarage.years;
+            labWrapper.children[i].userData.slots = avarage.slots;
+            labWrapper.children[i].material.opacity = 1.0;
+          }
+          if (typeof intersects !== "undefined") {
+            clickedBlob(intersects);
+          }
+        });
 
         if (all) {
           filter = true;
@@ -656,55 +696,16 @@ function getResults(all){
           //   }
           // }
 
-          {% capture my_include %}{% include /lab/filter.html %}{% endcapture %}
-          $("#results-info-first").html('{{ my_include | strip_newlines }}');
-          var ageArray = [];
-          for (var item in data_highlights){
-            if (item != "all") {
-              ageArray.push(item)
-            }
-            data_highlights[item].data.parsed = [];
-            for (var i = 0; i < data_highlights[item].data.raw.length; i++) {
-              var result = parseResult(data_highlights[item].data.raw[i]);
-              data_highlights[item].data.parsed.push(result);
-            }
-            data_highlights[item].data.avarage = getAvarage(data_highlights[item].data.parsed);
-          }
-          ageArray.sort();
-          console.log("ageArray: " ,ageArray);
-          $("#filter-select").append('<option class="text-uppercase">'+ capitalizeFirstLetter("all")+'</option>');
-          for (var i = 0; i < ageArray.length; i++) {
-            $("#filter-select").append('<option class="text-uppercase">'+ capitalizeFirstLetter(ageArray[i])+'</option>');
-          }
-          // $("filter-select")
           $("#results-info-second").text("Click one of the blobs to explore insights and trends within each category:");
           initiLabMode("lab", data_highlights.all.data.avarage, loadLabVisuals);
-
-          $('#filter-select').change(function(){
-            console.log("labWrapper.children: " ,labWrapper.children);
-            var group = $(this).val().toLowerCase();
-            console.log("Changed group: " ,group);
-            for (var i = 0; i < labWrapper.children.length; i++) {
-              var avarage = data_highlights[group].data.avarage.data[labWrapper.children[i].name];
-              var s = avarage.years;
-              var p = avarage.slots;
-              setBlobProprties(labWrapper.children[i], s, p);
-              labWrapper.children[i].userData.years = avarage.years;
-              labWrapper.children[i].userData.slots = avarage.slots;
-              labWrapper.children[i].material.opacity = 1.0;
-            }
-            if (typeof intersects !== "undefined") {
-              clickedBlob(intersects);
-            }
-          });
         }
 
         else {
           filter = false;
           var latestResult = results[results.length - 1];
           initiLabMode("lab", latestResult, loadLabVisuals);
-          $("#results-info-first").text("Thank you for contributing to our research!");
-          $("#results-info-second").text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
+          // $("#results-info-first").text("");
+          $("#results-info-second").html("<div><p>Thank you for contributing to our research!</p><p>Click one of the blobs to explore how your ideal future of work compares to the rest of the results:</p>");
         }
 
       },
