@@ -47,6 +47,7 @@ logo:
 body_scripts:
   - /assets/js/jquery.min.js
   - /assets/js/jquery-color.min.js
+  - /assets/js/utils.js
   - //cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js
   - //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js
   - /assets/js/barba.min.js

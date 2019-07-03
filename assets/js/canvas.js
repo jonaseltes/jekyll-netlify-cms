@@ -64,7 +64,7 @@ function animate_vertices(mesh, pk, grav){
 
 function createBlob(c) {
   var geo = new THREE.SphereGeometry(.3, 60, 60);
-  var mat  = new THREE.MeshStandardMaterial({
+  var mat  = new THREE.MeshBasicMaterial({
     transparent: true,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
@@ -245,13 +245,31 @@ function loadBlobs(callback){
   callback();
 }
 
+function setBlobProprties(mesh, s, p){
+  var scale = 0.1 + (s*0.01);
+  mesh.scale.set(scale, scale, scale);
+  var gravity = 0.3;
+  gravity = gravity + (p*0.01);
+  p = 0.8 + (p*0.09);
+  mesh.userData.scale = scale;
+  mesh.userData.peak = p;
+  mesh.userData.gravity = gravity;
+}
 
 function createBlobSlot(c, s, p, name, data){
+  var cubeLoader = new THREE.CubeTextureLoader();
+    cubeLoader.setPath('/assets/media/cube/');
+    window.textureCube = cubeLoader.load([
+      'px.png', 'nx.png',
+    	'py.png', 'ny.png',
+    	'pz.png', 'nz.png'
+    ]);
   var geo = new THREE.SphereGeometry(.3, s*4, s*4);
-  var mat  = new THREE.MeshStandardMaterial({
+  var mat  = new THREE.MeshBasicMaterial({
     // shininess: 100,
     // specular: 0xffffff,
     transparent: true,
+    // envMap: textureCube,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
     // alpha: true,
@@ -259,7 +277,7 @@ function createBlobSlot(c, s, p, name, data){
     // clearCoat: 0.7,
     // reflectivity: 1,
     metalness: 0,
-    roughness: 0.8,
+    roughness: 0.3,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -269,25 +287,12 @@ function createBlobSlot(c, s, p, name, data){
 
   var bmesh = new THREE.Mesh(geo, mat);
 
-  var gravity = 0.3;
-  gravity = gravity + (p*0.01);
-  p = 0.8 + (p*0.09);
+
   animate_vertices(bmesh, p, gravity);
-  var scale = 0.1 + (s*0.01);
-  bmesh.scale.set(scale, scale, scale);
 
-  var distance = 0;
-  var range = 1;
-
-  // var x = Math.random() * range + distance;
-  // var y = Math.random() * range + distance;
-  // var z = Math.random() * range + distance;
-  // bmesh.position.set(x,y,z);
+  setBlobProprties(bmesh, s, p);
 
   bmesh.name = name;
-  bmesh.userData.scale = scale;
-  bmesh.userData.peak = p;
-  bmesh.userData.gravity = gravity;
   bmesh.userData.years = data.years;
   bmesh.userData.slots = data.slots;
 
@@ -535,7 +540,6 @@ $(document).ready(function(){
 		e.stopImmediatePropagation();
 	});
 
-
 });
 
 
@@ -670,6 +674,7 @@ function init() {
   // document.addEventListener('mousedown', onDocumentMouseDown, false);
   document.addEventListener( 'mousemove', onMouseMove, false );
   renderer3D.domElement.addEventListener("mousedown", onDocumentMouseDown, true);
+
 }
 
 
@@ -685,27 +690,49 @@ function clickedBlob (intersects){
         meshArray[i].material.opacity = 1.0;
       }
     }
-
-    var amount = Math.round(((data_highlights.data[blob.name].quantity / data_highlights.total)*100) * 10) / 10;
-    $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
-    $('#results-info-second').text("[Interesting data goes here]");
-    if (blob.name == "work") {
-        $('#results-info-first').html("<div class='work-color'>"+amount+"% of those surveyed said they would switch workplace every "+data_highlights.data[blob.name].change+" years.</div>");
+    if (filter) {
+      var active_filter = $('#filter-select').val().toLowerCase();
+      var groupObject = data_highlights[active_filter];
+      var amount = Math.round(((groupObject.highlights[blob.name].quantity / groupObject.entries)*100) * 10) / 10;
+      if (blob.name == "work") {
+          $('#results-info-second').html("<div class='work-color'><p>"+amount+"% of those surveyed said they would switch workplace every "+groupObject.highlights[blob.name].change+" years.</p></div>");
+      }
+      if (blob.name == "learn") {
+          $('#results-info-second').html("<div class='learn-color'><p>"+amount+"% of those surveyed said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+groupObject.highlights[blob.name].answer+".</span></p></div>");
+      }
+      if (blob.name == "rest") {
+          $('#results-info-second').html('<div class="rest-color"><p class="">('+amount+'%) of those surveyed said:</p><p>"'+groupObject.highlights[blob.name].answer+'."</p></div>');
+      }
+      $('#results-info-second').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
-    if (blob.name == "learn") {
-        $('#results-info-first').html("<div class='learn-color'>"+amount+"% of those surveyed said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+data_highlights.data[blob.name].answer+".</span></div>");
+    else {
+      var amount = Math.round(((data_highlights.data[blob.name].quantity / data_highlights.total)*100) * 10) / 10;
+      // $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
+      $('#results-info-second').text("[Interesting data goes here]");
+      if (blob.name == "work") {
+          $('#results-info-first').html("<div class='work-color'>"+amount+"% of those surveyed said they would switch workplace every "+data_highlights.data[blob.name].change+" years.</div>");
+      }
+      if (blob.name == "learn") {
+          $('#results-info-first').html("<div class='learn-color'>"+amount+"% of those surveyed said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+data_highlights.data[blob.name].answer+".</span></div>");
+      }
+      if (blob.name == "rest") {
+          $('#results-info-first').html('<div class="rest-color">('+amount+'%) of those surveyed said:</p><p>"'+data_highlights.data[blob.name].answer+'."</div>');
+      }
+      $('#results-info-second').html("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
-    if (blob.name == "rest") {
-        $('#results-info-first').html('<div class="rest-color">('+amount+'%) of those surveyed said:</p><p>"'+data_highlights.data[blob.name].answer+'."</div>');
-    }
-    $('#results-info-second').html("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
   }
   else {
     for (var i = 0; i < meshArray.length; i++) {
         meshArray[i].material.opacity = 1.0;
     }
-    $('#results-info-first').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
-    $('#results-info-second').text("");
+    if (filter) {
+      $('#results-info-second').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
+    }
+
+    else {
+      $('#results-info-first').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
+      $('#results-info-second').text("");
+    }
   }
 
 

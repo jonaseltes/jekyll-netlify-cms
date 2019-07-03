@@ -24,7 +24,11 @@
       <div id="footer" class="footer-wrapper position-relative bg-secondary">
         {%- include footer.html -%}
       </div>
-
+      <template>
+        {%- for template in layout.templates -%}
+          {%- include template.html -%}
+        {%- endfor -%}
+      </div>
     </div>
     <script>
       {% if jekyll.environment == "development" %}
