@@ -18,7 +18,7 @@
             <div class="form-group col-12 mb-6">
           {% endif %}
             <div class="mb-2">
-              {{item.label}}{%- if item.required -%}*{%- endif -%}:
+              {{item.label}}{%- if item.required -%}*{%- endif -%}
             </div>
             {%- if item.type == 'text' -%}
               <input class="form-control" type="text" value="" name="{{item.name}}" {%- if item.required -%}required{%- endif -%}/>
