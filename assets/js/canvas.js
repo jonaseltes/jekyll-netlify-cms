@@ -678,9 +678,13 @@ function init() {
 }
 
 
+
+
+
 function clickedBlob (intersects){
   if (intersects.length > 0) {
     var blob = intersects[0].object;
+    // clickedBlob = blob;
     console.log("clicked blob: " ,blob);
     for (var i = 0; i < meshArray.length; i++) {
       if (meshArray[i].name != blob.name) {
@@ -724,6 +728,7 @@ function clickedBlob (intersects){
     }
   }
   else {
+    clickedBlob = null;
     for (var i = 0; i < meshArray.length; i++) {
         meshArray[i].material.opacity = 1.0;
     }
@@ -749,7 +754,7 @@ function onDocumentMouseDown(event) {
 
   raycaster.setFromCamera( mouse, camera );
   // calculate objects intersecting the picking ray
-  var intersects = raycaster.intersectObjects( labWrapper.children, true );
+  window.intersects = raycaster.intersectObjects( labWrapper.children, true );
   clickedBlob(intersects);
 
 }
