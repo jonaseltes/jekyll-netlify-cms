@@ -647,6 +647,7 @@ function getResults(all){
         console.log("results after filtering: " ,results);
         console.log("results length after filtering: " ,results.length);
 
+
         {% capture my_include %}{% include /lab/filter.html %}{% endcapture %}
         $("#results-info-first").html('{{ my_include | strip_newlines }}');
         var ageArray = [];
@@ -678,10 +679,13 @@ function getResults(all){
             var avarage = data_highlights[group].data.avarage.data[labWrapper.children[i].name];
             var s = avarage.years;
             var p = avarage.slots;
-            setBlobProprties(labWrapper.children[i], s, p);
-            labWrapper.children[i].userData.years = avarage.years;
-            labWrapper.children[i].userData.slots = avarage.slots;
-            labWrapper.children[i].material.opacity = 1.0;
+            if (all) {
+              setBlobProprties(labWrapper.children[i], s, p);
+              labWrapper.children[i].userData.years = avarage.years;
+              labWrapper.children[i].userData.slots = avarage.slots;
+            }
+
+            // labWrapper.children[i].material.opacity = 1.0;
           }
           if (typeof intersects !== "undefined") {
             clickedBlob(intersects);
