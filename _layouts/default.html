@@ -6,7 +6,7 @@
   <body>
     <div id="page-wrapper" class="wrapper h-100">
 
-      <div class="header-wrapper w-100 fixed-top bg-none">
+      <div class="header-wrapper w-100 fixed-top {% if page.url != "/lab/" %}{% else %}{% endif %} bg-none">
         {%- include header.html -%}
       </div>
 
