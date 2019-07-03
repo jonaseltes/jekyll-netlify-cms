@@ -732,7 +732,7 @@ function clickedBlob (intersects){
         meshArray[i].material.opacity = 1.0;
     }
     if (filter) {
-      $('#results-info-second').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
+      $('#results-info-second').text("Click one of the blobs to explore insights and trends within each category:");
     }
 
     else {
