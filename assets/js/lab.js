@@ -691,7 +691,9 @@ function getResults(all){
               setBlobProprties(labWrapper.children[i], s, p);
               labWrapper.children[i].userData.years = avarage.years;
               labWrapper.children[i].userData.slots = avarage.slots;
+              labWrapper.children[i].material.opacity = 1.0;
             }
+            $('#results-info-second').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");          
           });
         }
 
