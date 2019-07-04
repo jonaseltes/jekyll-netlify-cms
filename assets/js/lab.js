@@ -186,6 +186,75 @@ function newArrayContainer (length) {
   return arrayContainer;
 }
 
+
+function newCategoriesContainer(){
+  var answersObject = {
+    answers: {
+      learn: {
+        "Never": {},
+        "A few times": {},
+        "On a regular basis": {},
+        "As often as possible": {}
+      },
+      work: {
+        "Every year": {},
+        "Every 2 years": {},
+        "Every 3 years": {},
+        "Every 4 years": {},
+        "Every 5 years": {},
+        "Every 7 years": {},
+        "Every 10 years": {},
+        "Every 15 years": {},
+        "I'd stay more than 15 years in one place": {},
+        "I'd stay at one workplace as long as possible": {}
+      },
+      rest: {
+        "After reaching a certain age I leave my job/stop working, and remain retired": {},
+        "After reaching a certain age I leave my formal employment, but continue working in other ways at my own pace (monetizing hobbies, gig jobs, start something new etc)": {},
+        "I take my share of retirement years and spread them out, taking breaks at regular intervals through life, even if it means I continue working late into life": {},
+        "I split my share of retirement years in two and have a significant break in the middle of life, even if it means I continue working until a later age": {},
+        "I want to work forever. Can I donate my retirement years to someone else?": {}
+      }
+    }
+  }
+
+  for (var i in answersObject.answers){
+    var category = answersObject.answers[i];
+    for (var j in category) {
+      var answer = category[j];
+      answer.quantity = 0;
+      answer.percentage = 0;
+    }
+  }
+  return answersObject;
+}
+
+function newAnswersContainer(){
+
+}
+
+
+function sortByCategories (answers){
+  var answersObject = newCategoriesContainer();
+  // console.log("answesObject: " ,answesObject);
+  for (var i = 0; i < answers.length; i++) {
+    var answer = answers[i];
+    answersObject.answers.learn[answer[0]].quantity ++;
+    answersObject.answers.work[answer[2]].quantity ++;
+    answersObject.answers.rest[answer[4]].quantity ++;
+  }
+
+  for (var i in answersObject.answers){
+    var category = answersObject.answers[i];
+    for (var j in category) {
+      var answer = category[j];
+      answer.percentage = answer.quantity/answers.length;
+    }
+  }
+
+  return answersObject;
+}
+
 function getHighlightsAge(results){
   console.log("getHighlightsAge from results: " ,results);
 
@@ -212,9 +281,7 @@ function getHighlightsAge(results){
       ageObject[age].data.sorted = newArrayContainer(results[0].length);
       // console.log("ageObject[age]: " ,ageObject[age]);
     }
-    else {
-      // console.log("Age " +age+ " already exists: " ,ageObject[age]);
-    }
+
     // LOOP THRUGH RESULT AND ADD EACH COLUMN TO THE SORTED ARRAY WITH THE GIVEN AGE
     ageObject[age].data.raw.push(result);
     for (var j = 0; j < result.length; j++) {
@@ -229,11 +296,27 @@ function getHighlightsAge(results){
     // GET HIGHLIGHTS FROM AGE GROUP
     var highlights = getHighlightFromArray(ageObject[item].data.sorted);
     ageObject[item].highlights = highlights;
+    ageObject[item].data.categories = sortByCategories(ageObject[item].data.raw);
+    for (var category in highlights) {
+      highlights[category].percentage = highlights[category].quantity / ageObject[item].entries;
+    }
   }
   return ageObject;
   // console.log("ageObject: " ,ageObject);
 }
 
+function sortCategoriesByAge(categories, ageObject) {
+
+  for (var category in categories) {
+    for (var answer in categories[category]) {
+      categories[category][answer].ages = {};
+      for (var ageGroup in ageObject) {
+        var ageAnswer = ageObject[ageGroup].data.categories.answers[category][answer];
+        categories[category][answer].ages[ageGroup] = ageAnswer;
+      }
+    }
+  }
+}
 
 function getHighlights(results){
   console.log("getHighlights from results: " ,results);
@@ -245,22 +328,6 @@ function getHighlights(results){
     arrayContainer[i] = [];
   }
 
-  //OBJECT TO STORE THE HIGHLIGHTS
-  // data_highlights = {
-  //   total: results.length,
-  //   data: {
-  //     work: {
-  //
-  //     },
-  //     learn: {
-  //
-  //     },
-  //     rest: {
-  //
-  //     }
-  //   }
-  // }
-
   // LOOP THORUGH ALL RESULTS AND SORT COLUMNS INTO NEW ARRAYS
   for (var i = 0; i < results.length; i++) {
     var result = results[i]
@@ -268,105 +335,6 @@ function getHighlights(results){
     for (var j = 0; j < result.length; j++) {
       arrayContainer[j].push(result[j]);
     }
-    // LOOP THORUGH SORTED ARRAY TO GET MOST COMMON ANSWERS
-    /*for (var j = 0; j < arrayContainer.length; j++) {
-      var arr1 = arrayContainer[j];
-      var mf = 1;
-      var m = 0;
-      var item;
-      //LOOP TO EXTRACT MOST COMMON DATA
-      for (var k=0; k<arr1.length; k++){
-        for (var l=k; l<arr1.length; l++)
-        {
-                if (arr1[k] == arr1[l])
-                 m++;
-                if (mf<m)
-                {
-                  mf=m;
-                  item = arr1[k];
-                }
-        }
-        m=0;
-      }
-
-      // FORMAT DATA FOR VISUALISATION
-      switch (j) {
-        case 0:
-          var slots = 0;
-          switch (item) {
-            case "Never":
-              break;
-            case "A few times":
-              slots = 3;
-              break;
-            case "On a regular basis":
-              slots = 6;
-              break;
-            case "As often as possible":
-              slots = 9;
-              break;
-          }
-          data_highlights.data.learn.answer = item;
-          data_highlights.data.learn.change = slots;
-          data_highlights.data.learn.quantity = mf;
-          break;
-        case 2:
-          var slots = 1;
-          switch (item) {
-            case "Every year":
-              slots = 1;
-              break;
-            case "Every 2 years":
-              slots = 2;
-              break;
-            case "Every 3 years":
-              slots = 3;
-              break;
-            case "Every 4 years":
-              slots = 4;
-              break;
-            case "Every 5 years":
-              slots = 5;
-              break;
-            case "Every 7 years":
-              slots = 7;
-              break;
-            case "Every 10 years":
-              slots = 10;
-              break;
-            case "Every 15 years":
-              slots = 15;
-              break;
-            case "I'd stay more than 15 years in one place":
-              slots = 20;
-              break;
-            case "I'd stay at one workplace as long as possible":
-              slots = 0;
-              break;
-          }
-          data_highlights.data.work.answer = item;
-          data_highlights.data.work.change = slots;
-          data_highlights.data.work.quantity = mf;
-          break;
-        case 4:
-          switch (item) {
-            case "After reaching a certain age I leave my job/stop working, and remain retired":
-              break;
-            case "After reaching a certain age I leave my formal employment, but continue working in other ways at my own pace (monetizing hobbies, gig jobs, start something new etc)":
-              // SOME FUNCTIONALLY TO SHOW BLEND OF WORK AND RETIREMNT
-              break;
-            case "I take my share of retirement years and spread them out, taking breaks at regular intervals through life, even if it means I continue working late into life":
-              break;
-            case "I split my share of retirement years in two and have a significant break in the middle of life, even if it means I continue working until a later age":
-              break;
-            case "I want to work forever. Can I donate my retirement years to someone else?":
-              break;
-          }
-          data_highlights.data.rest.answer = item;
-          data_highlights.data.rest.quantity = mf;
-          break;
-      }
-    }*/
 
   }
   var highlights = {}
@@ -374,8 +342,8 @@ function getHighlights(results){
     raw: results,
     sorted: arrayContainer
   }
+  highlights.data.categories = sortByCategories(highlights.data.raw);
   highlights.highlights = getHighlightFromArray(arrayContainer);
-
   highlights.entries = results.length;
   return highlights;
   // console.log("highlights unfiltered: " ,highlights);
@@ -420,6 +388,94 @@ function getAvarage (results) {
   // console.log("avarge: " ,avarage);
   return avarage;
   // loadLabVisuals(avarage, startRender);
+}
+
+
+function getLowest (){
+
+}
+
+function getGreatest (categories, ages) {
+  var greatest = {
+    learn: {
+    },
+    work: {},
+    rest: {}
+  }
+
+  for (var i in greatest) {
+    greatest[i].max = {}
+    greatest[i].min = {}
+  }
+
+  console.log("greatest before adding data: " ,greatest);
+
+  for (var i in ages) {
+    var ageGroup = ages[i];
+    if (ageGroup.entries > 1) {
+
+      var ageCategories = ageGroup.highlights;
+      for (var j in ageCategories) {
+        var category = ageCategories[j];
+
+        if (jQuery.isEmptyObject(greatest[j].max)) {
+          // greatest[j].max = category;
+          greatest[j].max.age = i;
+          greatest[j].max.percentage = category.percentage;
+          greatest[j].max.answer = category.answer;
+          greatest[j].max.quantity = category.quantity;
+          greatest[j].max.entries = ageGroup.entries;
+          greatest[j].max.change = category.change;
+        }
+
+        else {
+          if (category.percentage > greatest[j].max.percentage) {
+            // greatest[j].max = category;
+            greatest[j].max.age = i;
+            greatest[j].max.percentage = category.percentage;
+            greatest[j].max.answer = category.answer;
+            greatest[j].max.quantity = category.quantity;
+            greatest[j].max.entries = ageGroup.entries;
+            greatest[j].max.change = category.change;
+          }
+        }
+
+      }
+    }
+  }
+
+  for (var h in greatest) {
+    var category = greatest[h];
+    var maxAnswer = category.max.answer;
+    console.log("setting min for category: " ,category);
+    for (var age in categories[h][maxAnswer].ages) {
+      var ageGroup = categories[h][maxAnswer].ages[age];
+
+      if (ages[age].entries > 1) {
+
+          if (jQuery.isEmptyObject(category.min)) {
+            greatest[h].min.age = age;
+            greatest[h].min.percentage = ageGroup.percentage;
+            greatest[h].min.quantity = ageGroup.quantity;
+            greatest[h].min.entries = ages[age].entries;
+          }
+
+          else {
+            if (ageGroup.percentage < greatest[h].min.percentage) {
+              greatest[h].min.age = age;
+              greatest[h].min.percentage = ageGroup.percentage;
+              greatest[h].min.quantity = ageGroup.quantity;
+            }
+          }
+
+
+      }
+    }
+
+  }
+
+
+  return greatest;
 }
 
 
@@ -630,12 +686,14 @@ function getResults(all){
         });
         console.log("filtered: ",filtered);
 
-        var highlights_unfiltered = getHighlights(filtered);
+        var highlights_all = getHighlights(filtered);
         var highlights_age = getHighlightsAge(filtered);
-        highlights_age.all = highlights_unfiltered;
-        console.log("highlights_unfiltered: ",highlights_unfiltered);
-        console.log("highlights_age: ",highlights_age);
-        data_highlights = highlights_age;
+        sortCategoriesByAge(highlights_all.data.categories.answers, highlights_age);
+        highlights_all.greatest = getGreatest(highlights_all.data.categories.answers, highlights_age);
+        data_highlights = {
+          ages: highlights_age,
+          all: highlights_all
+        }
         console.log("data_highlights: " ,data_highlights);
 
 
@@ -647,50 +705,54 @@ function getResults(all){
         console.log("results after filtering: " ,results);
         console.log("results length after filtering: " ,results.length);
 
+        data_highlights.all.data.parsed = results;
+        data_highlights.all.data.avarage = getAvarage(results);
 
-        {% capture my_include %}{% include /lab/filter.html %}{% endcapture %}
-        $("#results-info-first").html('{{ my_include | strip_newlines }}');
         var ageArray = [];
-        for (var item in data_highlights){
+        for (var item in data_highlights.ages){
           if (item != "all") {
             ageArray.push(item)
           }
-          data_highlights[item].data.parsed = [];
-          for (var i = 0; i < data_highlights[item].data.raw.length; i++) {
-            var result = parseResult(data_highlights[item].data.raw[i]);
-            data_highlights[item].data.parsed.push(result);
+          data_highlights.ages[item].data.parsed = [];
+          for (var i = 0; i < data_highlights.ages[item].data.raw.length; i++) {
+            var result = parseResult(data_highlights.ages[item].data.raw[i]);
+            data_highlights.ages[item].data.parsed.push(result);
           }
-          data_highlights[item].data.avarage = getAvarage(data_highlights[item].data.parsed);
+          data_highlights.ages[item].data.avarage = getAvarage(data_highlights.ages[item].data.parsed);
         }
+
         ageArray.sort();
         console.log("ageArray: " ,ageArray);
-        $("#filter-select").append('<option class="text-uppercase">'+ capitalizeFirstLetter("all")+'</option>');
-        for (var i = 0; i < ageArray.length; i++) {
-          $("#filter-select").append('<option class="text-uppercase">'+ capitalizeFirstLetter(ageArray[i])+'</option>');
-        }
-        // $("filter-select")
 
 
-        $('#filter-select').change(function(){
-          console.log("labWrapper.children: " ,labWrapper.children);
-          var group = $(this).val().toLowerCase();
-          console.log("Changed group: " ,group);
-          for (var i = 0; i < labWrapper.children.length; i++) {
-            var avarage = data_highlights[group].data.avarage.data[labWrapper.children[i].name];
-            var s = avarage.years;
-            var p = avarage.slots;
-            if (all) {
-              setBlobProprties(labWrapper.children[i], s, p);
-              labWrapper.children[i].userData.years = avarage.years;
-              labWrapper.children[i].userData.slots = avarage.slots;
-            }
 
-            // labWrapper.children[i].material.opacity = 1.0;
-          }
-          if (typeof intersects !== "undefined") {
-            clickedBlob(intersects);
-          }
-        });
+
+        // {% capture my_include %}{% include /lab/filter.html %}{% endcapture %}
+        // $("#results-info-first").html('{{ my_include | strip_newlines }}');
+        // $("#filter-select").append('<option class="text-uppercase">'+ capitalizeFirstLetter("all")+'</option>');
+        // for (var i = 0; i < ageArray.length; i++) {
+        //   $("#filter-select").append('<option class="text-uppercase">'+ capitalizeFirstLetter(ageArray[i])+'</option>');
+        // }
+        //
+        // $('#filter-select').change(function(){
+        //   console.log("labWrapper.children: " ,labWrapper.children);
+        //   var group = $(this).val().toLowerCase();
+        //   console.log("Changed group: " ,group);
+        //   for (var i = 0; i < labWrapper.children.length; i++) {
+        //     var avarage = data_highlights[group].data.avarage.data[labWrapper.children[i].name];
+        //     var s = avarage.years;
+        //     var p = avarage.slots;
+        //     if (all) {
+        //       setBlobProprties(labWrapper.children[i], s, p);
+        //       labWrapper.children[i].userData.years = avarage.years;
+        //       labWrapper.children[i].userData.slots = avarage.slots;
+        //     }
+        //
+        //   }
+        //   if (typeof intersects !== "undefined") {
+        //     clickedBlob(intersects);
+        //   }
+        // });
 
         if (all) {
           filter = true;

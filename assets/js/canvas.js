@@ -545,7 +545,7 @@ function loadScene() {
   // scene.add( ambLight );
 
   var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
-  directionalLight.position.set( .7, .8, .8 );
+  directionalLight.position.set(-15, 0, -5 );
   // scene.add(directionalLight);
 
   var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.9 );
@@ -651,17 +651,23 @@ function clickedBlob (intersects){
     }
 
     // if (filter) {
-      var active_filter = $('#filter-select').val().toLowerCase();
-      var groupObject = data_highlights[active_filter];
-      var amount = Math.round(((groupObject.highlights[blob.name].quantity / groupObject.entries)*100) * 10) / 10;
+      // var active_filter = $('#filter-select').val().toLowerCase();
+      // var groupObject = data_highlights[active_filter];
+      var category = blob.name;
+      var max = data_highlights.all.greatest[blob.name].max;
+      var min = data_highlights.all.greatest[blob.name].min;
+
+      var amountMax = Math.round(((max.percentage)*100) * 10) / 10;
+      var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
+
       if (blob.name == "work") {
-          $('#results-info-second').html("<div class='work-color'><p>"+amount+"% of those surveyed said they would switch workplace every "+groupObject.highlights[blob.name].change+" years.</p></div>");
+          $('#results-info-second').html("<div class='work-color'><p>"+amountMin+"% of those in age group "+min.age+" said they would switch workplace every "+max.change+" years, compared to "+amountMax+" of those in age group "+max.age+".</p></div>");
       }
       if (blob.name == "learn") {
-          $('#results-info-second').html("<div class='learn-color'><p>"+amount+"% of those surveyed said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+groupObject.highlights[blob.name].answer+".</span></p></div>");
+          $('#results-info-second').html("<div class='learn-color'><p>"+amountMin+"% of those surveyed in age group "+min.age+" said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+max.answer+", compared to "+amountMax+" of thos in age group "+max.age+".</span></p></div>");
       }
       if (blob.name == "rest") {
-          $('#results-info-second').html('<div class="rest-color"><p class="">'+amount+'% of those surveyed said:</p><p>"'+groupObject.highlights[blob.name].answer+'."</p></div>');
+          $('#results-info-second').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+min.age+' said "'+max.answer+'", compared to '+amountMax+' of thos in age group '+max.age+'.</p></div>');
       }
       $('#results-info-second').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     // }
