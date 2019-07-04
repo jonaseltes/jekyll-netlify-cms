@@ -577,6 +577,7 @@ function parseResult (result) {
   var journey = newJourney({
     prefilled: true
   });
+  journey.age = result[6];
   for (var i = 0; i < result.length; i++) {
     var string = result[i];
     switch (i) {
@@ -769,7 +770,13 @@ function getResults(all){
         else {
           filter = false;
           var latestResult = results[results.length - 1];
-          initiLabMode("lab", latestResult, loadLabVisuals);
+          data_highlights.user = {
+            data: {}
+          };
+          data_highlights.user.data.parsed = latestResult;
+          data_highlights.user.data.raw = filtered[results.length - 1];
+          data_highlights.user.age = filtered[results.length - 1][6];
+          initiLabMode("lab", data_highlights.user.data.parsed, loadLabVisuals);
           // $("#results-info-first").text("");
           $("#results-info-second").html("<div><p>Thank you for contributing to our research!</p><p>Click one of the blobs to explore how your ideal future of work compares to the rest of the results:</p>");
         }

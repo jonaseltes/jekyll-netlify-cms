@@ -650,7 +650,7 @@ function clickedBlob (intersects){
       }
     }
 
-    // if (filter) {
+    if (filter) {
       // var active_filter = $('#filter-select').val().toLowerCase();
       // var groupObject = data_highlights[active_filter];
       var category = blob.name;
@@ -670,23 +670,29 @@ function clickedBlob (intersects){
           $('#results-info-second').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+min.age+' said "'+max.answer+'", compared to '+amountMax+' of thos in age group '+max.age+'.</p></div>');
       }
       $('#results-info-second').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
-    // }
-    /*else {
-      var groupObject = data_highlights.all;
-      var amount = Math.round(((groupObject.highlights[blob.name].quantity / groupObject.entries)*100) * 10) / 10;
-      // $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
-      $('#results-info-second').text("[Interesting data goes here]");
+    }
+    else {
+      var category = blob.name;
+      var userObject = data_highlights.user;
+      var highlight = data_highlights.ages[userObject.age].highlights[category];
+
+      // var max = data_highlights.all.greatest[category].max;
+      // var min = data_highlights.user.data.parsed[category];
+      var highlightAmount = Math.round(((highlight.percentage)*100) * 10) / 10;
+      // var amountMax = Math.round(((max.percentage)*100) * 10) / 10;
+      // var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
+
       if (blob.name == "work") {
-          $('#results-info-first').html("<div class='work-color'>"+amount+"% of those surveyed said they would switch workplace every "+groupObject.highlights[blob.name].change+" years.</div>");
+          $('#results-info-second').html("<div class='work-color'><p>"+highlightAmount+"% of those in the same age group ("+userObject.age+") as you said they would switch workplace every "+highlight.change+" years.</p></div>");
       }
       if (blob.name == "learn") {
-          $('#results-info-first').html("<div class='learn-color'>"+amount+"% of those surveyed said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+groupObject.highlights[blob.name].answer+".</span></div>");
+          $('#results-info-second').html("<div class='learn-color'><p>"+highlightAmount+"% of those in the same age group ("+userObject.age+") as you said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+highlight.answer+".</span></p></div>");
       }
       if (blob.name == "rest") {
-          $('#results-info-first').html('<div class="rest-color">('+amount+'%) of those surveyed said:</p><p>"'+groupObject.highlights[blob.name].answer+'."</div>');
+          $('#results-info-second').html('<div class="rest-color"><p class="">'+highlightAmount+'% of those in the same age group ('+userObject.age+') as you said "'+highlight.answer+'".</p></div>');
       }
-      $('#results-info-second').html("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
-    }*/
+      $('#results-info-second').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
+    }
   }
   else {
     for (var i = 0; i < meshArray.length; i++) {
