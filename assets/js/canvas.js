@@ -17,7 +17,7 @@ if (animation_mode == "lab") {
 var blobColors = {
   learn: 0x70FF6B,
   work: 0x6c5ba5,
-  rest: 0xFF5757
+  rest: 0xff3c26
 }
 
 
@@ -71,7 +71,10 @@ function createBlob(c) {
     // alpha: true,
     opacity: 1,
     metalness: 0,
-    roughness: 0.1,
+    roughness: 0.4,
+    emissive: c,
+    emissiveIntensity: 0.5,
+    fog: false,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -159,6 +162,8 @@ function loadBlobs(callback){
     	'pz.png', 'nz.png'
     ]);
 
+    textureCube.format = THREE.RGBFormat;
+
   var blobGeometry   = new THREE.SphereGeometry(1, 50, 50);
   var material = new THREE.MeshStandardMaterial({
     // shininess: 100,
@@ -187,18 +192,20 @@ function loadBlobs(callback){
     // envMap: textureCube,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
-    clearCoat: 0.4,
+    clearCoat: 0.5,
     // alpha: true,
     opacity: 1,
-    reflectivity: 1,
-    metalness: 0,
-    roughness: 0.9,
+    // reflectivity: 1,
+    metalness: .1,
+    roughness: 0.7,
     fog: false,
+    emissive: 0x3f2a85,
+    emissiveIntensity: 0.8,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
     // color: 0x694dcb
-    color: 0x7d69bf // 6c5ba5
+    color: 0x6c5ba5 // 6c5ba5
   });
 
   // material.envMap = textureCube;
@@ -539,9 +546,23 @@ function loadScene() {
   directionalLight.position.set(-10, 0, -5 );
   // scene.add(directionalLight);
 
-  var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.9 );
+  var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 1.2 );
   directionalLight2.position.set( 7, 0, 5 );
   scene.add(directionalLight2);
+
+  var spotLight = new THREE.SpotLight( 0xffffff );
+  spotLight.position.set( 100, 0, 100 );
+
+  spotLight.castShadow = true;
+
+  spotLight.shadow.mapSize.width = 1024;
+  spotLight.shadow.mapSize.height = 1024;
+
+  spotLight.shadow.camera.near = 500;
+  spotLight.shadow.camera.far = 4000;
+  spotLight.shadow.camera.fov = 30;
+
+  // scene.add( spotLight );
 
   var rectLight = new THREE.RectAreaLight( 0xffffff, 3.5,  20, 20 );
   rectLight.position.set( -15, 0, -5 );
