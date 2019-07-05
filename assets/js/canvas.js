@@ -70,8 +70,8 @@ function createBlob(c) {
     // side: THREE.DoubleSide,
     // alpha: true,
     opacity: 1,
-    metalness: 0.1,
-    roughness: 0.3,
+    metalness: 0.4,
+    roughness: 0.8,
     emissive: c,
     emissiveIntensity: 0.7,
     // fog: false,
@@ -82,24 +82,6 @@ function createBlob(c) {
     color: c
   });
 
-  var material = new THREE.MeshPhysicalMaterial({
-    // shininess: 100,
-    // specular: 0xffffff,
-    transparent: true,
-    // envMap: textureCube,
-    // shading: THREE.FlatShading,
-    // side: THREE.DoubleSide,
-    clearCoat: 0.4,
-    opacity: 0.9,
-    reflectivity: 1,
-    metalness: 0,
-    roughness: 0.8,
-    // emissive: 0xffffff,
-    // color: 0xffffff
-    // color: 0x4e4279
-    // color: 0x694dcb
-    color: c
-  });
 
   var bmesh = new THREE.Mesh(geo, mat);
   animate_vertices(bmesh, 0.9, 0.5);
@@ -285,10 +267,10 @@ function createBlobSlot(c, s, p, name, data){
     // clearCoat: 0.7,
     // reflectivity: 1,
     opacity: 1,
-    metalness: 0.1,
-    roughness: 0.4,
+    metalness: 0.5,
+    roughness: 1,
     emissive: c,
-    emissiveIntensity: 0.6,
+    emissiveIntensity: 0.8,
     fog: false,
     // emissive: 0xffffff,
     // color: 0xffffff
