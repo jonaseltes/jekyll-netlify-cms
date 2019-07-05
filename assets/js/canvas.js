@@ -661,13 +661,13 @@ function clickedBlob (intersects){
       var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
 
       if (blob.name == "work") {
-          $('#results-info-second').html("<div class='work-color'><p>"+amountMin+"% of those in age group "+min.age+" said they would switch workplace every "+max.change+" years, compared to "+amountMax+" of those in age group "+max.age+".</p></div>");
+          $('#results-info-second').html("<div class='work-color'><p>"+amountMin+"% of those in age group "+min.age+" said they would switch workplace every "+max.change+" years, compared to "+amountMax+"% of those in age group "+max.age+".</p></div>");
       }
       if (blob.name == "learn") {
-          $('#results-info-second').html("<div class='learn-color'><p>"+amountMin+"% of those surveyed in age group "+min.age+" said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+max.answer+", compared to "+amountMax+" of thos in age group "+max.age+".</span></p></div>");
+          $('#results-info-second').html("<div class='learn-color'><p>"+amountMin+"% of those surveyed in age group "+min.age+" said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+max.answer+", compared to "+amountMax+"% of thos in age group "+max.age+".</span></p></div>");
       }
       if (blob.name == "rest") {
-          $('#results-info-second').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+min.age+' said "'+max.answer+'", compared to '+amountMax+' of thos in age group '+max.age+'.</p></div>');
+          $('#results-info-second').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+min.age+' said "'+max.answer+'", compared to '+amountMax+'% of thos in age group '+max.age+'.</p></div>');
       }
       $('#results-info-second').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
