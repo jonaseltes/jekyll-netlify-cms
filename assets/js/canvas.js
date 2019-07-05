@@ -15,7 +15,7 @@ if (animation_mode == "lab") {
 }
 
 var blobColors = {
-  learn: 0x70FF6B,
+  learn: 0x4dff5b,
   work: 0x6c5ba5,
   rest: 0xff3c26
 }
@@ -192,15 +192,15 @@ function loadBlobs(callback){
     // envMap: textureCube,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
-    clearCoat: 0.5,
+    clearCoat: 0.1,
     // alpha: true,
     opacity: 1,
     // reflectivity: 1,
-    metalness: .1,
+    metalness: .3,
     roughness: 0.7,
     fog: false,
     emissive: 0x3f2a85,
-    emissiveIntensity: 0.8,
+    emissiveIntensity: 0.6,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -563,6 +563,9 @@ function loadScene() {
   spotLight.shadow.camera.fov = 30;
 
   // scene.add( spotLight );
+
+  var hemlight = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+  scene.add( hemlight );
 
   var rectLight = new THREE.RectAreaLight( 0xffffff, 3.5,  20, 20 );
   rectLight.position.set( -15, 0, -5 );
