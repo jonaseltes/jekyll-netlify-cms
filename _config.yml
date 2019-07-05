@@ -17,7 +17,7 @@ title: The Swedish Work Lab
 email: contact@swedishworklab.com
 description: Will you help us shape the future of work?
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://www.swedishworklab.com/" # the base hostname & protocol for your site, e.g. http://example.com
 
 
 # If you want to link only specific pages in your header, uncomment
