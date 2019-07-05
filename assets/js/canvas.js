@@ -271,6 +271,7 @@ function createBlobSlot(c, s, p, name, data){
     roughness: 0.8,
     emissive: c,
     emissiveIntensity: 0.7,
+    fog: false,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
