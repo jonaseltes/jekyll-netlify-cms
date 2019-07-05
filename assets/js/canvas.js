@@ -73,7 +73,7 @@ function createBlob(c) {
     metalness: 0.1,
     roughness: 0.4,
     emissive: c,
-    emissiveIntensity: 0.5,
+    emissiveIntensity: 0.6,
     fog: false,
     // emissive: 0xffffff,
     // color: 0xffffff
@@ -200,7 +200,7 @@ function loadBlobs(callback){
     roughness: 0.7,
     fog: false,
     emissive: 0x3f2a85,
-    emissiveIntensity: 0.6,
+    emissiveIntensity: 0.7,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -546,9 +546,17 @@ function loadScene() {
   directionalLight.position.set(-10, 0, -5 );
   // scene.add(directionalLight);
 
-  var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 1.2 );
+  var directionalLight2 = new THREE.DirectionalLight( 0xffffff, .7 );
   directionalLight2.position.set( 7, 0, 5 );
   scene.add(directionalLight2);
+
+  var rectLight = new THREE.RectAreaLight( 0xffffff, 3.0,  20, 20 );
+  rectLight.position.set( -15, 0, -5 );
+  rectLight.lookAt( 0, 0, 0 );
+  scene.add( rectLight );
+
+  var hemlight = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+  scene.add( hemlight );
 
   var spotLight = new THREE.SpotLight( 0xffffff );
   spotLight.position.set( 100, 0, 100 );
@@ -564,13 +572,7 @@ function loadScene() {
 
   // scene.add( spotLight );
 
-  var hemlight = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-  scene.add( hemlight );
 
-  var rectLight = new THREE.RectAreaLight( 0xffffff, 3.5,  20, 20 );
-  rectLight.position.set( -15, 0, -5 );
-  rectLight.lookAt( 0, 0, 0 );
-  scene.add( rectLight );
 
   var light = new THREE.PointLight( 0xffffff, 1, 900 );
   var light2 = new THREE.PointLight( 0xffffff, 1, 900 );
