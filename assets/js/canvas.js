@@ -518,7 +518,7 @@ function loadScene() {
 	// controls.enableDamping = true;
 	// controls.dampingFactor = 1.0;
 	// controls.enableZoom = true;
-  scene.fog = new THREE.Fog( 0xbabaab, -1, 6.2);
+  scene.fog = new THREE.Fog( 0xbabaab, -1, 8);
 	var isoRadius = 140;
 
 	verticies = [];
