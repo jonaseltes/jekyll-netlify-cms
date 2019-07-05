@@ -64,12 +64,12 @@ function animate_vertices(mesh, pk, grav){
 
 function createBlob(c) {
   var geo = new THREE.SphereGeometry(.3, 60, 60);
-  var mat  = new THREE.MeshBasicMaterial({
-    transparent: true,
+  var mat  = new THREE.MeshStandardMaterial({
+    // transparent: true,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
     // alpha: true,
-    opacity: 0.8,
+    opacity: 1,
     metalness: 0,
     roughness: 0.1,
     // emissive: 0xffffff,
@@ -100,9 +100,9 @@ function createBlob(c) {
 
   var bmesh = new THREE.Mesh(geo, mat);
   animate_vertices(bmesh, 0.9, 0.5);
-  var s = Math.random() * .5 + .3;
+  var s = Math.random() * .2 + .3;
   bmesh.scale.set(s, s, s);
-  var distance = .3 + (s/2);
+  var distance = .25 + (s/2);
   var range = 1;
 
   var x = Math.random() * range + distance;
@@ -160,7 +160,7 @@ function loadBlobs(callback){
     ]);
 
   var blobGeometry   = new THREE.SphereGeometry(1, 50, 50);
-  var material = new THREE.MeshBasicMaterial({
+  var material = new THREE.MeshStandardMaterial({
     // shininess: 100,
     // specular: 0xffffff,
     // transparent: true,
@@ -193,6 +193,7 @@ function loadBlobs(callback){
     reflectivity: 1,
     metalness: 0,
     roughness: 0.9,
+    fog: false,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -246,7 +247,7 @@ function loadBlobs(callback){
 }
 
 function setBlobProprties(mesh, s, p){
-  var scale = 0.1 + (s*0.01);
+  var scale = 0.2 + (s*0.01);
   mesh.scale.set(scale, scale, scale);
   var gravity = 0.3;
   gravity = gravity + (p*0.01);
@@ -265,7 +266,7 @@ function createBlobSlot(c, s, p, name, data){
     	'pz.png', 'nz.png'
     ]);
   var geo = new THREE.SphereGeometry(.3, s*4, s*4);
-  var mat  = new THREE.MeshBasicMaterial({
+  var mat  = new THREE.MeshStandardMaterial({
     // shininess: 100,
     // specular: 0xffffff,
     transparent: true,
@@ -276,8 +277,9 @@ function createBlobSlot(c, s, p, name, data){
     // opacity: 0.8,
     // clearCoat: 0.7,
     // reflectivity: 1,
+    fog: false,
     metalness: 0,
-    roughness: 0.3,
+    roughness: 0.9,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -516,7 +518,7 @@ function loadScene() {
 	// controls.enableDamping = true;
 	// controls.dampingFactor = 1.0;
 	// controls.enableZoom = true;
-  // scene.fog = new THREE.Fog( 0x999999, 3, 5.5);
+  scene.fog = new THREE.Fog( 0xbabaab, 0, 6);
 	var isoRadius = 140;
 
 	verticies = [];
@@ -534,15 +536,15 @@ function loadScene() {
   // scene.add( ambLight );
 
   var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
-  directionalLight.position.set(-15, 0, -5 );
+  directionalLight.position.set(-10, 0, -5 );
   // scene.add(directionalLight);
 
   var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.9 );
-  directionalLight2.position.set( -15, 0, -5 );
+  directionalLight2.position.set( 7, 0, 5 );
   scene.add(directionalLight2);
 
   var rectLight = new THREE.RectAreaLight( 0xffffff, 3.5,  20, 20 );
-  rectLight.position.set( 15, 0, 5 );
+  rectLight.position.set( -15, 0, -5 );
   rectLight.lookAt( 0, 0, 0 );
   scene.add( rectLight );
 
@@ -778,8 +780,9 @@ function animate() {
     blobsWrapper.rotation.y += .0009;
     for (var i = 0; i < blobsWrapper.children.length; i++) {
       var thisObject = blobsWrapper.children[i].children[0];
-      thisObject.rotation.y += 0.01;
-      thisObject.rotation.x += 0.009;
+      animate_vertices(thisObject, 0.9, 0.5);
+      // thisObject.rotation.y += 0.01;
+      // thisObject.rotation.x += 0.009;
     }
 
     blobMesh.rotation.y = time * .1;
