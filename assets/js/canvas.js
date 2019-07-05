@@ -15,7 +15,7 @@ if (animation_mode == "lab") {
 }
 
 var blobColors = {
-  learn: 0x4dff5b,
+  learn: 0x14e05f,
   work: 0x6c5ba5,
   rest: 0xff3c26
 }
@@ -71,10 +71,10 @@ function createBlob(c) {
     // alpha: true,
     opacity: 1,
     metalness: 0.1,
-    roughness: 0.4,
+    roughness: 0.3,
     emissive: c,
-    emissiveIntensity: 0.6,
-    fog: false,
+    emissiveIntensity: 0.7,
+    // fog: false,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -284,9 +284,12 @@ function createBlobSlot(c, s, p, name, data){
     // opacity: 0.8,
     // clearCoat: 0.7,
     // reflectivity: 1,
+    opacity: 1,
+    metalness: 0.1,
+    roughness: 0.4,
+    emissive: c,
+    emissiveIntensity: 0.6,
     fog: false,
-    metalness: 0,
-    roughness: 0.9,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -525,7 +528,7 @@ function loadScene() {
 	// controls.enableDamping = true;
 	// controls.dampingFactor = 1.0;
 	// controls.enableZoom = true;
-  scene.fog = new THREE.Fog( 0xbabaab, -2, 8.5);
+  scene.fog = new THREE.Fog( 0xbabaab, 3, 6.5);
 	var isoRadius = 140;
 
 	verticies = [];
