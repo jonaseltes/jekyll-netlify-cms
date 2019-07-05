@@ -102,7 +102,7 @@ function createBlob(c) {
   animate_vertices(bmesh, 0.9, 0.5);
   var s = Math.random() * .2 + .3;
   bmesh.scale.set(s, s, s);
-  var distance = .25 + (s/2);
+  var distance = .3 + (s/4);
   var range = 1;
 
   var x = Math.random() * range + distance;
@@ -189,7 +189,7 @@ function loadBlobs(callback){
     // side: THREE.DoubleSide,
     clearCoat: 0.4,
     // alpha: true,
-    opacity: 0.9,
+    opacity: 1,
     reflectivity: 1,
     metalness: 0,
     roughness: 0.9,
@@ -198,7 +198,7 @@ function loadBlobs(callback){
     // color: 0xffffff
     // color: 0x4e4279
     // color: 0x694dcb
-    color: 0x6c5ba5
+    color: 0x7d69bf // 6c5ba5
   });
 
   // material.envMap = textureCube;
@@ -518,7 +518,7 @@ function loadScene() {
 	// controls.enableDamping = true;
 	// controls.dampingFactor = 1.0;
 	// controls.enableZoom = true;
-  scene.fog = new THREE.Fog( 0xbabaab, 0, 6);
+  scene.fog = new THREE.Fog( 0xbabaab, -1, 6.2);
 	var isoRadius = 140;
 
 	verticies = [];
@@ -581,7 +581,7 @@ function init() {
 
 	canvas3D = document.getElementById('canvas3D');
 	renderer3D = new THREE.WebGLRenderer( { canvas: canvas3D, antialias: true, clearColor: 0x000000, clearAlpha: 0, alpha: true, preserveDrawingBuffer: false, autoClear: true });
-  // scene.background = new THREE.Color( 0xefefef );
+  scene.background = new THREE.Color( 0xbabaab );
 	renderer3D.setPixelRatio(window.devicePixelRatio);
 	renderer3D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 
