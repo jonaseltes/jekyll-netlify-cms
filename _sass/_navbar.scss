@@ -2,6 +2,7 @@
   @include media-breakpoint-down(xs) {
     background-color: $light-beige;
   }
+  z-index: 10;
   -webkit-transition: background-color 300ms linear;
   -ms-transition: background-color 300ms linear;
   transition: background-color 300ms linear;

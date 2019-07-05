@@ -35,11 +35,11 @@ inputs:
       type: text
     - label: Job Title
       name: role
-      required: true
+      required: false
       type: text
     - label: Company
       name: company
-      required: true
+      required: false
       type: text
     - label: Email
       name: email

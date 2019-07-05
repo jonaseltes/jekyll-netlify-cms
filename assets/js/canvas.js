@@ -65,11 +65,11 @@ function animate_vertices(mesh, pk, grav){
 function createBlob(c) {
   var geo = new THREE.SphereGeometry(.3, 60, 60);
   var mat  = new THREE.MeshStandardMaterial({
-    transparent: true,
+    // transparent: true,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
     // alpha: true,
-    opacity: 0.8,
+    opacity: 1,
     metalness: 0,
     roughness: 0.1,
     // emissive: 0xffffff,
@@ -100,9 +100,9 @@ function createBlob(c) {
 
   var bmesh = new THREE.Mesh(geo, mat);
   animate_vertices(bmesh, 0.9, 0.5);
-  var s = Math.random() * .5 + .3;
+  var s = Math.random() * .2 + .3;
   bmesh.scale.set(s, s, s);
-  var distance = .3 + (s/2);
+  var distance = .25 + (s/2);
   var range = 1;
 
   var x = Math.random() * range + distance;
@@ -160,7 +160,7 @@ function loadBlobs(callback){
     ]);
 
   var blobGeometry   = new THREE.SphereGeometry(1, 50, 50);
-  var material = new THREE.MeshBasicMaterial({
+  var material = new THREE.MeshStandardMaterial({
     // shininess: 100,
     // specular: 0xffffff,
     // transparent: true,
@@ -193,6 +193,7 @@ function loadBlobs(callback){
     reflectivity: 1,
     metalness: 0,
     roughness: 0.9,
+    fog: false,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -245,21 +246,40 @@ function loadBlobs(callback){
   callback();
 }
 
+function setBlobProprties(mesh, s, p){
+  var scale = 0.2 + (s*0.01);
+  mesh.scale.set(scale, scale, scale);
+  var gravity = 0.3;
+  gravity = gravity + (p*0.01);
+  p = 0.8 + (p*0.09);
+  mesh.userData.scale = scale;
+  mesh.userData.peak = p;
+  mesh.userData.gravity = gravity;
+}
 
 function createBlobSlot(c, s, p, name, data){
+  var cubeLoader = new THREE.CubeTextureLoader();
+    cubeLoader.setPath('/assets/media/cube/');
+    window.textureCube = cubeLoader.load([
+      'px.png', 'nx.png',
+    	'py.png', 'ny.png',
+    	'pz.png', 'nz.png'
+    ]);
   var geo = new THREE.SphereGeometry(.3, s*4, s*4);
   var mat  = new THREE.MeshStandardMaterial({
     // shininess: 100,
     // specular: 0xffffff,
     transparent: true,
+    // envMap: textureCube,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
     // alpha: true,
     // opacity: 0.8,
     // clearCoat: 0.7,
     // reflectivity: 1,
+    fog: false,
     metalness: 0,
-    roughness: 0.8,
+    roughness: 0.9,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -269,25 +289,12 @@ function createBlobSlot(c, s, p, name, data){
 
   var bmesh = new THREE.Mesh(geo, mat);
 
-  var gravity = 0.3;
-  gravity = gravity + (p*0.01);
-  p = 0.8 + (p*0.09);
+
   animate_vertices(bmesh, p, gravity);
-  var scale = 0.1 + (s*0.01);
-  bmesh.scale.set(scale, scale, scale);
 
-  var distance = 0;
-  var range = 1;
-
-  // var x = Math.random() * range + distance;
-  // var y = Math.random() * range + distance;
-  // var z = Math.random() * range + distance;
-  // bmesh.position.set(x,y,z);
+  setBlobProprties(bmesh, s, p);
 
   bmesh.name = name;
-  bmesh.userData.scale = scale;
-  bmesh.userData.peak = p;
-  bmesh.userData.gravity = gravity;
   bmesh.userData.years = data.years;
   bmesh.userData.slots = data.slots;
 
@@ -343,44 +350,6 @@ function fitView() {
   camera.position.z = Math.abs( (totalWidth/2 + .6) / Math.sin( fov / 2 ) / camera.aspect );
 }
 
-function fitCameraToObject( camera, object, offset ) {
-
-  offset = offset || 1.5;
-
-  const boundingBox = new THREE.Box3();
-
-  boundingBox.setFromObject( object );
-
-  const center = boundingBox.getCenter( new THREE.Vector3() );
-  const size = boundingBox.getSize( new THREE.Vector3() );
-
-  const startDistance = center.distanceTo(camera.position);
-  // here we must check if the screen is horizontal or vertical, because camera.fov is
-  // based on the vertical direction.
-  const endDistance = camera.aspect > 1 ?
-  					((size.y/2)+offset) / Math.abs(Math.tan(camera.fov/2)) :
-  					((size.y/2)+offset) / Math.abs(Math.tan(camera.fov/2)) / camera.aspect ;
-
-  camera.position.z = camera.position.y * endDistance / startDistance;
-  // camera.position.set(
-  // 	camera.position.x * endDistance / startDistance,
-  // 	camera.position.y * endDistance / startDistance,
-  // 	camera.position.z * endDistance / startDistance,
-  // 	);
-  // camera.lookAt(center);
-}
-
-
-function array_move(arr, old_index, new_index) {
-    if (new_index >= arr.length) {
-        var k = new_index - arr.length + 1;
-        while (k--) {
-            arr.push(undefined);
-        }
-    }
-    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-    return arr; // for testing
-};
 
 
 function makeTimeLine(dataArray){
@@ -535,7 +504,6 @@ $(document).ready(function(){
 		e.stopImmediatePropagation();
 	});
 
-
 });
 
 
@@ -546,16 +514,11 @@ function loadScene() {
 	raycaster = new THREE.Raycaster();
 	worldVector = new THREE.Vector3();
 
-
-  // camera.layers.set( 1 );
-	//camera.position.y = cameraOffsetY;
-	//camera.lookAt(0, 0, 0);
-
 	// controls = new THREE.TrackballControls(camera, renderer3D.domElement);
 	// controls.enableDamping = true;
 	// controls.dampingFactor = 1.0;
 	// controls.enableZoom = true;
-  // scene.fog = new THREE.Fog( 0x999999, 3, 5.5);
+  scene.fog = new THREE.Fog( 0xbabaab, 0, 6);
 	var isoRadius = 140;
 
 	verticies = [];
@@ -573,15 +536,15 @@ function loadScene() {
   // scene.add( ambLight );
 
   var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
-  directionalLight.position.set( .7, .8, .8 );
+  directionalLight.position.set(-10, 0, -5 );
   // scene.add(directionalLight);
 
   var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.9 );
-  directionalLight2.position.set( -15, 0, -5 );
+  directionalLight2.position.set( 7, 0, 5 );
   scene.add(directionalLight2);
 
   var rectLight = new THREE.RectAreaLight( 0xffffff, 3.5,  20, 20 );
-  rectLight.position.set( 15, 0, 5 );
+  rectLight.position.set( -15, 0, -5 );
   rectLight.lookAt( 0, 0, 0 );
   scene.add( rectLight );
 
@@ -608,12 +571,6 @@ function init() {
 	});
 
 
-	// $('body').click(function(){
-	// 	console.log("clicked body!");
-	// });
-
-
-
 	scene = new THREE.Scene();
 
   canvas2D = document.getElementById('canvas2D');
@@ -631,9 +588,6 @@ function init() {
   camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
 	camera.position.z = 4;
 
-
-	// var container = document.getElementById('container');
-	// container.appendChild( renderer3D.domElement);
 
   loadScene();
 
@@ -653,7 +607,6 @@ function init() {
 
   if (animation_mode == "lab") {
     console.log("starting lab mode!");
-    // console.log("latest result: " ,latestResult);
   }
 
 
@@ -661,21 +614,20 @@ function init() {
   // animate();
 
 
-
-	var PI2 = Math.PI * 2;
-
 	clock = new THREE.Clock();
 
   window.addEventListener( 'resize', onWindowResize, false );
   // document.addEventListener('mousedown', onDocumentMouseDown, false);
   document.addEventListener( 'mousemove', onMouseMove, false );
   renderer3D.domElement.addEventListener("mousedown", onDocumentMouseDown, true);
+
 }
 
 
 function clickedBlob (intersects){
   if (intersects.length > 0) {
     var blob = intersects[0].object;
+    // clickedBlob = blob;
     console.log("clicked blob: " ,blob);
     for (var i = 0; i < meshArray.length; i++) {
       if (meshArray[i].name != blob.name) {
@@ -686,26 +638,62 @@ function clickedBlob (intersects){
       }
     }
 
-    var amount = Math.round(((data_highlights.data[blob.name].quantity / data_highlights.total)*100) * 10) / 10;
-    $('#results-info-first').text("Clicked on " +capitalizeFirstLetter(blob.name)+".");
-    $('#results-info-second').text("[Interesting data goes here]");
-    if (blob.name == "work") {
-        $('#results-info-first').html("<div class='work-color'>"+amount+"% of those surveyed said they would switch workplace every "+data_highlights.data[blob.name].change+" years.</div>");
+    if (filter) {
+      // var active_filter = $('#filter-select').val().toLowerCase();
+      // var groupObject = data_highlights[active_filter];
+      var category = blob.name;
+      var max = data_highlights.all.greatest[blob.name].max;
+      var min = data_highlights.all.greatest[blob.name].min;
+
+      var amountMax = Math.round(((max.percentage)*100) * 10) / 10;
+      var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
+
+      if (blob.name == "work") {
+          $('#results-info-first').html("<div class='work-color'><p>"+amountMin+"% of those in age group "+min.age+" said they would switch workplace every "+max.change+" years, compared to "+amountMax+"% of those in age group "+max.age+".</p></div>");
+      }
+      if (blob.name == "learn") {
+          $('#results-info-first').html("<div class='learn-color'><p>"+amountMin+"% of those surveyed in age group "+min.age+" said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+max.answer+", compared to "+amountMax+"% of those in age group "+max.age+".</span></p></div>");
+      }
+      if (blob.name == "rest") {
+          $('#results-info-first').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+min.age+' said "'+max.answer+'", compared to '+amountMax+'% of those in age group '+max.age+'.</p></div>');
+      }
+      $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
-    if (blob.name == "learn") {
-        $('#results-info-first').html("<div class='learn-color'>"+amount+"% of those surveyed said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+data_highlights.data[blob.name].answer+".</span></div>");
+    else {
+      var category = blob.name;
+      var userObject = data_highlights.user;
+      var highlight = data_highlights.ages[userObject.age].highlights[category];
+
+      // var max = data_highlights.all.greatest[category].max;
+      // var min = data_highlights.user.data.parsed[category];
+      var highlightAmount = Math.round(((highlight.percentage)*100) * 10) / 10;
+      // var amountMax = Math.round(((max.percentage)*100) * 10) / 10;
+      // var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
+
+      if (blob.name == "work") {
+          $('#results-info-first').html("<div class='work-color'><p>"+highlightAmount+"% of those in the same age group ("+userObject.age+") as you said they would switch workplace every "+highlight.change+" years.</p></div>");
+      }
+      if (blob.name == "learn") {
+          $('#results-info-first').html("<div class='learn-color'><p>"+highlightAmount+"% of those in the same age group ("+userObject.age+") as you said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+highlight.answer+".</span></p></div>");
+      }
+      if (blob.name == "rest") {
+          $('#results-info-first').html('<div class="rest-color"><p class="">'+highlightAmount+'% of those in the same age group ('+userObject.age+') as you said "'+highlight.answer+'".</p></div>');
+      }
+      $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
-    if (blob.name == "rest") {
-        $('#results-info-first').html('<div class="rest-color">('+amount+'%) of those surveyed said:</p><p>"'+data_highlights.data[blob.name].answer+'."</div>');
-    }
-    $('#results-info-second').html("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
   }
   else {
     for (var i = 0; i < meshArray.length; i++) {
         meshArray[i].material.opacity = 1.0;
     }
-    $('#results-info-first').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
-    $('#results-info-second').text("");
+    if (filter) {
+      $('#results-info-first').text("Click one of the blobs to explore insights and trends within each category:");
+    }
+
+    else {
+      $('#results-info-first').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
+      // $('#results-info-second').text("");
+    }
   }
 
 
@@ -720,7 +708,7 @@ function onDocumentMouseDown(event) {
 
   raycaster.setFromCamera( mouse, camera );
   // calculate objects intersecting the picking ray
-  var intersects = raycaster.intersectObjects( labWrapper.children, true );
+  window.intersects = raycaster.intersectObjects( labWrapper.children, true );
   clickedBlob(intersects);
 
 }
@@ -736,14 +724,7 @@ function to3Dcoord (x, y) {
 
 function onMouseMove( event ) {
 
-	// calculate mouse position in normalized device coordinates
-	// (-1 to +1) for both components
-	// mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	// mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-  // console.log("mouse: " ,mouse);
 }
-
-
 
 
 function toScreenXY(position, camera, canvas) {
@@ -788,10 +769,6 @@ const visibleWidthAtZDepth = ( depth, camera ) => {
 };
 
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 
 function animate() {
   if (!renderOn) return;
@@ -803,8 +780,9 @@ function animate() {
     blobsWrapper.rotation.y += .0009;
     for (var i = 0; i < blobsWrapper.children.length; i++) {
       var thisObject = blobsWrapper.children[i].children[0];
-      thisObject.rotation.y += 0.01;
-      thisObject.rotation.x += 0.009;
+      animate_vertices(thisObject, 0.9, 0.5);
+      // thisObject.rotation.y += 0.01;
+      // thisObject.rotation.x += 0.009;
     }
 
     blobMesh.rotation.y = time * .1;

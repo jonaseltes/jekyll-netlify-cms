@@ -1,13 +1,13 @@
 <div class="container-fluid pointer-e-all">
 
-  <div class='row pt-4 pb-2 text-sm'>
+  <div class='row py-6 text-sm'>
 
     <div class='col-sm col-md col-lg-4 col-xl-2 mb-5 mb-sm-0'>
         <div class=''>
           <div class=''>
-            About TRR
+            <a href="/about">About TRR {% if page.url == "/about/" %}{% else %}{% endif%}</a>
           </div>
-          <div class=''>
+          <div class='d-none'>
             Press Kit
           </div>
         </div>
@@ -20,7 +20,7 @@
           Unsatiated curiosity or unanswered questions?
         </div>
         <div class="">
-          <p class="">Drop us a line at contact@swedishworklab.com and we will come to the rescue!</p>
+          <p class="">Drop us a line at <a href="mailto:contact@swedishworklab.com" target="_blank">contact@swedishworklab.com</a> and we will come to the rescue!</p>
         </div>
       </div>
     </div>

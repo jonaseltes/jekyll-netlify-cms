@@ -6,7 +6,7 @@
   <body>
     <div id="page-wrapper" class="wrapper h-100">
 
-      <div class="header-wrapper w-100 fixed-top bg-none">
+      <div class="header-wrapper w-100 fixed-top {% if page.url != "/lab/" %}{% else %}{% endif %} bg-none">
         {%- include header.html -%}
       </div>
 
@@ -24,7 +24,11 @@
       <div id="footer" class="footer-wrapper position-relative bg-secondary">
         {%- include footer.html -%}
       </div>
-
+      <template>
+        {%- for template in layout.templates -%}
+          {%- include template.html -%}
+        {%- endfor -%}
+      </div>
     </div>
     <script>
       {% if jekyll.environment == "development" %}
