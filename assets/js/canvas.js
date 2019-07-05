@@ -261,7 +261,7 @@ function createBlobSlot(c, s, p, name, data){
     transparent: true,
     // envMap: textureCube,
     // shading: THREE.FlatShading,
-    side: THREE.DoubleSide,
+    // side: THREE.DoubleSide,
     // alpha: true,
     // opacity: 0.8,
     // clearCoat: 0.7,
