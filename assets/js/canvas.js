@@ -102,7 +102,7 @@ function createBlob(c) {
   animate_vertices(bmesh, 0.9, 0.5);
   var s = Math.random() * .2 + .3;
   bmesh.scale.set(s, s, s);
-  var distance = .25 + (s/2);
+  var distance = .28 + (s/3);
   var range = 1;
 
   var x = Math.random() * range + distance;
@@ -518,7 +518,7 @@ function loadScene() {
 	// controls.enableDamping = true;
 	// controls.dampingFactor = 1.0;
 	// controls.enableZoom = true;
-  scene.fog = new THREE.Fog( 0xbabaab, 0, 6);
+  scene.fog = new THREE.Fog( 0xbabaab, -1, 6.2);
 	var isoRadius = 140;
 
 	verticies = [];
