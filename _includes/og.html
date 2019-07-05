@@ -17,7 +17,9 @@
   <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
   <meta content="{{ site.url }}/about/" property="article:author">
 {% endif %}
-  <meta content="{{ site.url }}/assets/media/og.png" property="og:image">
+  <meta property="og:image" content="{{ site.url }}/assets/media/og.png">
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="628" />
 {% if page.categories %}
   {% for category in page.categories limit:1 %}
   <meta content="{{ category }}" property="article:section">
