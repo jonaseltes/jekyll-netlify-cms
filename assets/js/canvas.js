@@ -349,17 +349,6 @@ function fitView() {
 }
 
 
-function array_move(arr, old_index, new_index) {
-    if (new_index >= arr.length) {
-        var k = new_index - arr.length + 1;
-        while (k--) {
-            arr.push(undefined);
-        }
-    }
-    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-    return arr; // for testing
-};
-
 
 function makeTimeLine(dataArray){
   window.totalWidth = 0;
@@ -633,9 +622,6 @@ function init() {
 }
 
 
-
-
-
 function clickedBlob (intersects){
   if (intersects.length > 0) {
     var blob = intersects[0].object;
@@ -661,15 +647,15 @@ function clickedBlob (intersects){
       var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
 
       if (blob.name == "work") {
-          $('#results-info-second').html("<div class='work-color'><p>"+amountMin+"% of those in age group "+min.age+" said they would switch workplace every "+max.change+" years, compared to "+amountMax+"% of those in age group "+max.age+".</p></div>");
+          $('#results-info-first').html("<div class='work-color'><p>"+amountMin+"% of those in age group "+min.age+" said they would switch workplace every "+max.change+" years, compared to "+amountMax+"% of those in age group "+max.age+".</p></div>");
       }
       if (blob.name == "learn") {
-          $('#results-info-second').html("<div class='learn-color'><p>"+amountMin+"% of those surveyed in age group "+min.age+" said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+max.answer+", compared to "+amountMax+"% of those in age group "+max.age+".</span></p></div>");
+          $('#results-info-first').html("<div class='learn-color'><p>"+amountMin+"% of those surveyed in age group "+min.age+" said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+max.answer+", compared to "+amountMax+"% of those in age group "+max.age+".</span></p></div>");
       }
       if (blob.name == "rest") {
-          $('#results-info-second').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+min.age+' said "'+max.answer+'", compared to '+amountMax+'% of those in age group '+max.age+'.</p></div>');
+          $('#results-info-first').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+min.age+' said "'+max.answer+'", compared to '+amountMax+'% of those in age group '+max.age+'.</p></div>');
       }
-      $('#results-info-second').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
+      $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
     else {
       var category = blob.name;
@@ -683,15 +669,15 @@ function clickedBlob (intersects){
       // var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
 
       if (blob.name == "work") {
-          $('#results-info-second').html("<div class='work-color'><p>"+highlightAmount+"% of those in the same age group ("+userObject.age+") as you said they would switch workplace every "+highlight.change+" years.</p></div>");
+          $('#results-info-first').html("<div class='work-color'><p>"+highlightAmount+"% of those in the same age group ("+userObject.age+") as you said they would switch workplace every "+highlight.change+" years.</p></div>");
       }
       if (blob.name == "learn") {
-          $('#results-info-second').html("<div class='learn-color'><p>"+highlightAmount+"% of those in the same age group ("+userObject.age+") as you said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+highlight.answer+".</span></p></div>");
+          $('#results-info-first').html("<div class='learn-color'><p>"+highlightAmount+"% of those in the same age group ("+userObject.age+") as you said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+highlight.answer+".</span></p></div>");
       }
       if (blob.name == "rest") {
-          $('#results-info-second').html('<div class="rest-color"><p class="">'+highlightAmount+'% of those in the same age group ('+userObject.age+') as you said "'+highlight.answer+'".</p></div>');
+          $('#results-info-first').html('<div class="rest-color"><p class="">'+highlightAmount+'% of those in the same age group ('+userObject.age+') as you said "'+highlight.answer+'".</p></div>');
       }
-      $('#results-info-second').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
+      $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
   }
   else {
@@ -699,11 +685,11 @@ function clickedBlob (intersects){
         meshArray[i].material.opacity = 1.0;
     }
     if (filter) {
-      $('#results-info-second').text("Click one of the blobs to explore insights and trends within each category:");
+      $('#results-info-first').text("Click one of the blobs to explore insights and trends within each category:");
     }
 
     else {
-      $('#results-info-second').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
+      $('#results-info-first').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
       // $('#results-info-second').text("");
     }
   }
@@ -737,8 +723,6 @@ function to3Dcoord (x, y) {
 function onMouseMove( event ) {
 
 }
-
-
 
 
 function toScreenXY(position, camera, canvas) {
@@ -782,10 +766,6 @@ const visibleWidthAtZDepth = ( depth, camera ) => {
   return height * camera.aspect;
 };
 
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
 
 
 function animate() {

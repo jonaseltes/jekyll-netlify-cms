@@ -763,7 +763,7 @@ function getResults(all){
           //   }
           // }
 
-          $("#results-info-second").text("Click one of the blobs to explore insights and trends within each category:");
+          $("#results-info-first").text("Click one of the blobs to explore insights and trends within each category:");
           initiLabMode("lab", data_highlights.all.data.avarage, loadLabVisuals);
         }
 
@@ -778,7 +778,7 @@ function getResults(all){
           data_highlights.user.age = filtered[results.length - 1][6];
           initiLabMode("lab", data_highlights.user.data.parsed, loadLabVisuals);
           // $("#results-info-first").text("");
-          $("#results-info-second").html("<div><p>Thank you for contributing to our research!</p><p>Click one of the blobs to explore how your ideal future of work compares to the rest of the results:</p>");
+          $("#results-info-first").html("<div><p>Thank you for contributing to our research!</p><p>Click one of the blobs to explore how your ideal future of work compares to the rest of the results:</p>");
         }
 
       },
