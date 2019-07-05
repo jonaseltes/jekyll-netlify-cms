@@ -114,6 +114,7 @@ input[type=file]::-webkit-file-upload-button, [type="file"], [type="image"] {
 [type="submit"]:hover, button:hover {
   background-color: $white !important;
   color: $black !important;
+  cursor: pointer !important;
 }
 
 %noshadow {
