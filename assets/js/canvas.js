@@ -239,7 +239,7 @@ function setBlobProprties(mesh, s, p){
   var scale = 0.2 + (s*0.01);
   mesh.scale.set(scale, scale, scale);
   var gravity = 0.3;
-  gravity = gravity + (p*0.01);
+  gravity = gravity + (p*0.001);
   p = 0.8 + (p*0.09);
   mesh.userData.scale = scale;
   mesh.userData.peak = p;
@@ -261,17 +261,16 @@ function createBlobSlot(c, s, p, name, data){
     transparent: true,
     // envMap: textureCube,
     // shading: THREE.FlatShading,
-    // side: THREE.DoubleSide,
+    side: THREE.DoubleSide,
     // alpha: true,
     // opacity: 0.8,
     // clearCoat: 0.7,
     // reflectivity: 1,
     opacity: 1,
-    metalness: 0.5,
-    roughness: 1,
+    metalness: 0.4,
+    roughness: 0.8,
     emissive: c,
-    emissiveIntensity: 0.8,
-    fog: false,
+    emissiveIntensity: 0.7,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
