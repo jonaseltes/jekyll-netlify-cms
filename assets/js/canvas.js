@@ -15,9 +15,9 @@ if (animation_mode == "lab") {
 }
 
 var blobColors = {
-  learn: 0x70FF6B,
+  learn: 0x14e05f,
   work: 0x6c5ba5,
-  rest: 0xFF5757
+  rest: 0xff3c26
 }
 
 
@@ -63,15 +63,18 @@ function animate_vertices(mesh, pk, grav){
 
 
 function createBlob(c) {
-  var geo = new THREE.SphereGeometry(.3, 60, 60);
+  var geo = new THREE.SphereGeometry(.3, 50, 50);
   var mat  = new THREE.MeshStandardMaterial({
     // transparent: true,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
     // alpha: true,
     opacity: 1,
-    metalness: 0,
-    roughness: 0.1,
+    metalness: 0.4,
+    roughness: 0.8,
+    emissive: c,
+    emissiveIntensity: 0.7,
+    // fog: false,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -79,30 +82,12 @@ function createBlob(c) {
     color: c
   });
 
-  var material = new THREE.MeshPhysicalMaterial({
-    // shininess: 100,
-    // specular: 0xffffff,
-    transparent: true,
-    // envMap: textureCube,
-    // shading: THREE.FlatShading,
-    // side: THREE.DoubleSide,
-    clearCoat: 0.4,
-    opacity: 0.9,
-    reflectivity: 1,
-    metalness: 0,
-    roughness: 0.8,
-    // emissive: 0xffffff,
-    // color: 0xffffff
-    // color: 0x4e4279
-    // color: 0x694dcb
-    color: c
-  });
 
   var bmesh = new THREE.Mesh(geo, mat);
   animate_vertices(bmesh, 0.9, 0.5);
   var s = Math.random() * .2 + .3;
   bmesh.scale.set(s, s, s);
-  var distance = .3 + (s/4);
+  var distance = .38 + (s/6);
   var range = 1;
 
   var x = Math.random() * range + distance;
@@ -159,6 +144,8 @@ function loadBlobs(callback){
     	'pz.png', 'nz.png'
     ]);
 
+    textureCube.format = THREE.RGBFormat;
+
   var blobGeometry   = new THREE.SphereGeometry(1, 50, 50);
   var material = new THREE.MeshStandardMaterial({
     // shininess: 100,
@@ -187,18 +174,20 @@ function loadBlobs(callback){
     // envMap: textureCube,
     // shading: THREE.FlatShading,
     // side: THREE.DoubleSide,
-    clearCoat: 0.4,
+    clearCoat: 0.1,
     // alpha: true,
     opacity: 1,
-    reflectivity: 1,
-    metalness: 0,
-    roughness: 0.9,
+    // reflectivity: 1,
+    metalness: .3,
+    roughness: 0.7,
     fog: false,
+    emissive: 0x3f2a85,
+    emissiveIntensity: 0.7,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
     // color: 0x694dcb
-    color: 0x7d69bf // 6c5ba5
+    color: 0x6c5ba5 // 6c5ba5
   });
 
   // material.envMap = textureCube;
@@ -250,7 +239,7 @@ function setBlobProprties(mesh, s, p){
   var scale = 0.2 + (s*0.01);
   mesh.scale.set(scale, scale, scale);
   var gravity = 0.3;
-  gravity = gravity + (p*0.01);
+  gravity = gravity + (p*0.001);
   p = 0.8 + (p*0.09);
   mesh.userData.scale = scale;
   mesh.userData.peak = p;
@@ -277,9 +266,12 @@ function createBlobSlot(c, s, p, name, data){
     // opacity: 0.8,
     // clearCoat: 0.7,
     // reflectivity: 1,
+    opacity: 1,
+    metalness: 0.4,
+    roughness: 0.8,
+    emissive: c,
+    emissiveIntensity: 0.7,
     fog: false,
-    metalness: 0,
-    roughness: 0.9,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
@@ -518,7 +510,7 @@ function loadScene() {
 	// controls.enableDamping = true;
 	// controls.dampingFactor = 1.0;
 	// controls.enableZoom = true;
-  scene.fog = new THREE.Fog( 0xbabaab, -1, 8);
+  scene.fog = new THREE.Fog( 0xbabaab, 3, 6.5);
 	var isoRadius = 140;
 
 	verticies = [];
@@ -539,14 +531,33 @@ function loadScene() {
   directionalLight.position.set(-10, 0, -5 );
   // scene.add(directionalLight);
 
-  var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.9 );
+  var directionalLight2 = new THREE.DirectionalLight( 0xffffff, .7 );
   directionalLight2.position.set( 7, 0, 5 );
   scene.add(directionalLight2);
 
-  var rectLight = new THREE.RectAreaLight( 0xffffff, 3.5,  20, 20 );
+  var rectLight = new THREE.RectAreaLight( 0xffffff, 3.0,  20, 20 );
   rectLight.position.set( -15, 0, -5 );
   rectLight.lookAt( 0, 0, 0 );
   scene.add( rectLight );
+
+  var hemlight = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+  scene.add( hemlight );
+
+  var spotLight = new THREE.SpotLight( 0xffffff );
+  spotLight.position.set( 100, 0, 100 );
+
+  spotLight.castShadow = true;
+
+  spotLight.shadow.mapSize.width = 1024;
+  spotLight.shadow.mapSize.height = 1024;
+
+  spotLight.shadow.camera.near = 500;
+  spotLight.shadow.camera.far = 4000;
+  spotLight.shadow.camera.fov = 30;
+
+  // scene.add( spotLight );
+
+
 
   var light = new THREE.PointLight( 0xffffff, 1, 900 );
   var light2 = new THREE.PointLight( 0xffffff, 1, 900 );
