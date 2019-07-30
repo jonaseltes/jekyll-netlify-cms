@@ -704,13 +704,13 @@ function clickedBlob (intersects){
       // var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
 
       if (blob.name == "work") {
-          $('#results-info-first').html("<div class='work-color'><p>"+highlightAmount+"% of those in the same age group ("+userObject.age+") as you said they would switch workplace every "+highlight.change+" years.</p></div>");
+          $('#results-info-first').html("<div class='work-color'><p>"+highlightAmount+"% of those in the same age group as you ("+userObject.age+") said they would switch workplace every "+highlight.change+" years.</p></div>");
       }
       if (blob.name == "learn") {
-          $('#results-info-first').html("<div class='learn-color'><p>"+highlightAmount+"% of those in the same age group ("+userObject.age+") as you said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+highlight.answer+".</span></p></div>");
+          $('#results-info-first').html("<div class='learn-color'><p>"+highlightAmount+"% of those in the same age group as you ("+userObject.age+") said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+highlight.answer+".</span></p></div>");
       }
       if (blob.name == "rest") {
-          $('#results-info-first').html('<div class="rest-color"><p class="">'+highlightAmount+'% of those in the same age group ('+userObject.age+') as you said "'+highlight.answer+'".</p></div>');
+          $('#results-info-first').html('<div class="rest-color"><p class="">'+highlightAmount+'% of those in the same age group as you ('+userObject.age+') said "'+highlight.answer+'".</p></div>');
       }
       $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
