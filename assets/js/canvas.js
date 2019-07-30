@@ -181,13 +181,13 @@ function loadBlobs(callback){
     metalness: .3,
     roughness: 0.7,
     fog: false,
-    emissive: 0x3f2a85,
+    emissive: 0x3f2a85, //0x3f2a85
     emissiveIntensity: 0.7,
     // emissive: 0xffffff,
     // color: 0xffffff
     // color: 0x4e4279
     // color: 0x694dcb
-    color: 0x6c5ba5 // 6c5ba5
+    color: blobColors.work // 6c5ba5
   });
 
   // material.envMap = textureCube;
@@ -592,7 +592,7 @@ function init() {
 
 	canvas3D = document.getElementById('canvas3D');
 	renderer3D = new THREE.WebGLRenderer( { canvas: canvas3D, antialias: true, clearColor: 0x000000, clearAlpha: 0, alpha: true, preserveDrawingBuffer: false, autoClear: true });
-  scene.background = new THREE.Color( 0xbabaab );
+  // scene.background = new THREE.Color( 0xbabaab );
 	renderer3D.setPixelRatio(window.devicePixelRatio);
 	renderer3D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 
@@ -653,23 +653,45 @@ function clickedBlob (intersects){
       // var active_filter = $('#filter-select').val().toLowerCase();
       // var groupObject = data_highlights[active_filter];
       var category = blob.name;
-      var max = data_highlights.all.greatest[blob.name].max;
-      var min = data_highlights.all.greatest[blob.name].min;
+      // var data1 =
+
+      var age1 = Math.floor(Math.random()*Object.keys(data_highlights.ages).length);
+      var age2 = Math.floor(Math.random()*Object.keys(data_highlights.ages).length);
+
+
+      while (age2 == age1) {
+        age2 = Math.floor(Math.random()*Object.keys(data_highlights.ages).length);
+      }
+
+      age1 = Object.keys(data_highlights.ages)[age1];
+      age2 = Object.keys(data_highlights.ages)[age2];
+
+      console.log("age1: " ,age1);
+      console.log("age2: " ,age2);
+
+
+      // COMPARING MOST EXTREME
+      // var max = data_highlights.all.greatest[blob.name].max;
+      // var min = data_highlights.all.greatest[blob.name].min;
+
+      var max = data_highlights.ages[age1].highlights[blob.name];
+      var min = data_highlights.ages[age2].data.categories.answers[blob.name][max.answer];
 
       var amountMax = Math.round(((max.percentage)*100) * 10) / 10;
       var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
 
       if (blob.name == "work") {
-          $('#results-info-first').html("<div class='work-color'><p>"+amountMin+"% of those in age group "+min.age+" said they would switch workplace every "+max.change+" years, compared to "+amountMax+"% of those in age group "+max.age+".</p></div>");
+          $('#results-info-first').html("<div class='work-color'><p>"+amountMin+"% of those in age group "+age1+" said they would switch workplace every "+max.change+" years, compared to "+amountMax+"% of those in age group "+age2+".</p></div>");
       }
       if (blob.name == "learn") {
-          $('#results-info-first').html("<div class='learn-color'><p>"+amountMin+"% of those surveyed in age group "+min.age+" said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+max.answer+", compared to "+amountMax+"% of those in age group "+max.age+".</span></p></div>");
+          $('#results-info-first').html("<div class='learn-color'><p>"+amountMin+"% of those surveyed in age group "+age1+" said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+max.answer+", compared to "+amountMax+"% of those in age group "+age2+".</span></p></div>");
       }
       if (blob.name == "rest") {
-          $('#results-info-first').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+min.age+' said "'+max.answer+'", compared to '+amountMax+'% of those in age group '+max.age+'.</p></div>');
+          $('#results-info-first').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+age1+' said "'+max.answer+'", compared to '+amountMax+'% of those in age group '+age2+'.</p></div>');
       }
       $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
+
     else {
       var category = blob.name;
       var userObject = data_highlights.user;
@@ -829,8 +851,8 @@ function animate() {
     // labWrapper.rotation.y += .0009;
     for (var i = 0; i < labWrapper.children.length; i++) {
       var thisObject = labWrapper.children[i];
-      thisObject.rotation.y += 0.005;
-      thisObject.rotation.x += 0.009;
+      // thisObject.rotation.y += 0.005;
+      // thisObject.rotation.x += 0.009;
 
       var v =  new THREE.Vector3();
       v.setFromMatrixPosition( thisObject.matrixWorld );
