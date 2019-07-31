@@ -10,25 +10,12 @@ console.log("index.js");
 $( document ).ready(function() {
 
   $("#aboutCollapse").on("hide.bs.collapse", function(){
-    $("#aboutCollapseButton").html('Read more +');
-    // $("#aboutCollapseButton").hide();
-    $("#about-intro").toggleClass("text-md");
+    // $("#about-intro").toggleClass("text-md");
   });
   $("#aboutCollapse").on("show.bs.collapse", function(){
-    $("#aboutCollapseButton").html('Read less –');
-    $("#about-intro").toggleClass("text-md");
+    // $("#about-intro").toggleClass("text-md");
   });
 
-  $("#hackathonCollapse").on("hide.bs.collapse", function(){
-    $("#hackathonCollapseButton").html('Read more +');
-    // $("#aboutCollapseButton").hide();
-  });
-  $("#hackathonCollapse").on("show.bs.collapse", function(){
-    $("#hackathonCollapseButton").html('Read less –');
-  });
-
-  var par = $(".collapse-paragraphs").parent();
-  $(".collapse-paragraphs").children(":first").detach().prependTo(par);
 
 
   // var c = 0;

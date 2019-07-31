@@ -62,7 +62,7 @@ function animate_vertices(mesh, pk, grav){
 }
 
 
-function createBlob(c) {
+function createBlob(c, l) {
   var geo = new THREE.SphereGeometry(.3, 50, 50);
   var mat  = new THREE.MeshStandardMaterial({
     // transparent: true,
@@ -84,6 +84,7 @@ function createBlob(c) {
 
 
   var bmesh = new THREE.Mesh(geo, mat);
+  bmesh.name = l;
   animate_vertices(bmesh, 0.9, 0.5);
   var s = Math.random() * .2 + .3;
   bmesh.scale.set(s, s, s);
@@ -208,6 +209,7 @@ function loadBlobs(callback){
   } );
   // window.blobMesh = new THREE.Mesh(blobGeometry, lineMat);
   window.blobMesh = new THREE.Mesh(blobGeometry, bmaterial);
+  blobMesh.name = "work"
   // window.pointsMesh = new THREE.Points(blobGeometry, pmat);
   // material.emissiveMap = textureLoader.load('{{site.image_path}}/trr-emissive.jpg');
   var s = 0.8;
@@ -222,10 +224,13 @@ function loadBlobs(callback){
 	textureCube.minFilter = THREE.LinearFilter;
 
   var colors = [blobColors.learn, blobColors.rest, blobColors.work];
+  var labels = ["learn", "rest", "work"];
   var c;
+  var l;
   for (var i = 0; i < 2; i++) {
     c = colors[i];
-    createBlob(c);
+    l = labels[i];
+    createBlob(c, l);
   }
 
   // console.log("mesh: " ,mesh);
@@ -589,7 +594,6 @@ function init() {
   renderer2D.setPixelRatio(window.devicePixelRatio);
   renderer2D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 
-
 	canvas3D = document.getElementById('canvas3D');
 	renderer3D = new THREE.WebGLRenderer( { canvas: canvas3D, antialias: true, clearColor: 0x000000, clearAlpha: 0, alpha: true, preserveDrawingBuffer: false, autoClear: true });
   // scene.background = new THREE.Color( 0xbabaab );
@@ -780,31 +784,19 @@ function toScreenCoords (v){
   v.x = (v.x * widthHalf) + widthHalf;
   v.y = - (v.y * heightHalf) + heightHalf;
   v.z = 0;
+  console.log("v after normalization: ",v);
   return v;
 }
-
-const visibleHeightAtZDepth = ( depth, camera ) => {
-  // compensate for cameras not positioned at z=0
-  const cameraOffset = camera.position.z;
-  if ( depth < cameraOffset ) depth -= cameraOffset;
-  else depth += cameraOffset;
-
-  // vertical fov in radians
-  const vFOV = camera.fov * Math.PI / 180;
-
-  // Math.abs to ensure the result is always positive
-  return 2 * Math.tan( vFOV / 2 ) * Math.abs( depth );
-};
-
-const visibleWidthAtZDepth = ( depth, camera ) => {
-  const height = visibleHeightAtZDepth( depth, camera );
-  return height * camera.aspect;
-};
 
 
 
 function animate() {
   if (!renderOn) return;
+  
+  ctx2d = renderer2D.domElement.getContext('2d');
+  ctx2d.clearRect (0, 0, window.innerWidth*window.devicePixelRatio, window.innerHeight*devicePixelRatio);
+  ctx2d.fillStyle = "#ffffff";
+
 
   if (animation_mode == "blobs") {
     animate_vertices(blobMesh, 1, 0.3);
@@ -821,10 +813,55 @@ function animate() {
     blobMesh.rotation.y = time * .1;
     blobMesh.rotation.z = time * .03;
 
-
     blobMesh.position.x = noise.perlin2(time, time/4000) * 0.5;
     blobMesh.position.y = noise.perlin2(time+1000, time/4000) * 0.5;
     blobMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
+
+    scene.traverse(function(element){
+      if (element.type == "Mesh") {
+        var thisObject = element;
+        var direction =  new THREE.Vector3();
+        direction.setFromMatrixPosition( thisObject.matrixWorld );
+        // var direction = thisObject.position.clone();
+        var startPoint = camera.position.clone();
+        var directionVector = direction.sub( startPoint );
+        raycaster.set( startPoint, directionVector.normalize() );
+        var intersects = raycaster.intersectObjects( scene.children, true);
+        if (intersects.length > 0) {
+          // console.log(intersects[0].object.name);
+          if (intersects[0].object.name == thisObject.name) {
+            var v =  new THREE.Vector3();
+            v.setFromMatrixPosition( thisObject.matrixWorld );
+            // var r = dataVertices[i].radius;
+            var c =  toScreenXY(v, camera, renderer3D.domElement);
+            if (thisObject.name !== null){
+              var name = thisObject.name.toUpperCase();
+
+              var fontSize = 12 * window.devicePixelRatio;
+              if (window.innerWidth < 700) {
+                fontSize = 9 * window.devicePixelRatio;
+              }
+              ctx2d.font = +fontSize+ 'pt Roboto Mono';
+              ctx2d.textAlign = 'center';
+
+              if (window.innerWidth < 700) {
+                ctx2d.fillText(name, c.x, c.y);
+                // ctx2d.fillText(capitalizeFirstLetter(years), c.x, canvas2D.height-(75 * window.devicePixelRatio));
+                // ctx2d.fillText(capitalizeFirstLetter(slots), c.x, canvas2D.height-(60 * window.devicePixelRatio));
+              }
+              else {
+                ctx2d.fillText(name, c.x, c.y);
+                // ctx2d.fillText(capitalizeFirstLetter(years), c.x, canvas2D.height-(75 * window.devicePixelRatio));
+                // ctx2d.fillText(capitalizeFirstLetter(slots), c.x, canvas2D.height-(50 * window.devicePixelRatio));
+              }
+              // ctx2d.fillText(projects[i].description, c.x + (10 * window.devicePixelRatio), c.y + (10*devicePixelRatio));
+            }
+          }
+        }
+      }
+    });
+
+
   }
 
   else if (animation_mode == "lab") {
@@ -833,19 +870,6 @@ function animate() {
         animate_vertices(meshArray[i], meshArray[i].userData.peak, meshArray[i].userData.gravity);
       }
     }
-
-
-    ctx2d = renderer2D.domElement.getContext('2d');
-    ctx2d.clearRect (0, 0, window.innerWidth*window.devicePixelRatio, window.innerHeight*devicePixelRatio);
-    ctx2d.fillStyle = "#ffffff";
-    var fontSize = 14 * window.devicePixelRatio;
-    if (window.innerWidth < 700) {
-      fontSize = 10 * window.devicePixelRatio;
-    }
-
-    ctx2d.font = +fontSize+ 'pt Open Sans';
-    ctx2d.textAlign = 'center';
-
 
     // labWrapper.rotation.x += .002;
     // labWrapper.rotation.y += .0009;
@@ -859,6 +883,13 @@ function animate() {
       // var r = dataVertices[i].radius;
       var c =  toScreenXY(v, camera, renderer3D.domElement);
       if (thisObject.name !== null){
+        var fontSize = 14 * window.devicePixelRatio;
+        if (window.innerWidth < 700) {
+          fontSize = 10 * window.devicePixelRatio;
+        }
+        ctx2d.font = +fontSize+ 'pt Open Sans';
+        ctx2d.textAlign = 'center';
+
         ctx2d.beginPath();
         ctx2d.moveTo(c.x, c.y + (20 * window.devicePixelRatio));
         ctx2d.lineTo(c.x, canvas2D.height-(120 * window.devicePixelRatio));

@@ -1,12 +1,11 @@
-<div class="collapse" id="aboutCollapse">
-  <div class="">
-    <p class="">
-      Our 21st century work lives are constantly evolving. They’re shaped by technological breakthroughs, new economic models, and evolving educational formats. Legislation catches up to ideas and re-frames how businesses can be run. There’s an increased expectancy on companies’ moral compass, and matters of ethics and sustainability may determine both where individuals choose to work as well as where customers choose to take their business. It’s up to us to shape the future we want to work in.
-    </p>
+<div class="collapse-wrapper">
+  <div class="" text-size="{{ include.text-size}}">
+    <div class="collapse-paragraphs collapse" id="">
+      <!-- {{site.data.application-form.introduction.description | markdownify}} -->
+      {{ include.content | markdownify }}
+    </div>
   </div>
-</div>
-<div class="">
-  <a class="" data-toggle="collapse" href="#aboutCollapse" role="button" aria-expanded="false" aria-controls="aboutCollapse">
-    <span id="aboutCollapseButton" class="text-sm font-weight-semi-bold roboto-mono">Read more +</span>
+  <a class="collapse-toggle" data-toggle="collapse" href="" role="button" aria-expanded="false" aria-controls="">
+    <span id="" class="collapse-button text-sm font-weight-semi-bold roboto-mono">Read more +</span>
   </a>
 </div>
