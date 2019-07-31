@@ -2,7 +2,12 @@ site:
   assets:
     trr-logos:
       white: /assets/media/uploads/trr_logo_vit.svg
-  footer: '****'
+  footer: >-
+    Unsatiated curiosity or unanswered questions?
+
+
+    Drop us a line at <mailto:contact@swedishworklab.com> and we will come to
+    the rescue!
   tagline: >-
     An initiative to collectively shape the future of work by
     [**TRR**](https://www.trr.se/) & [**Another
