@@ -1,4 +1,11 @@
+[context.production]
+  command = "sed -i \"s/branch: staging/branch: ${CMS_BRANCH}/g\" admin/config.yml && JEKYLL_ENV=production jekyll build"
+
+[context.production.environment]
+  CMS_BRANCH = "master"
+
+
 [context.staging]
-  command = "sed -i \"s/branch: master/branch: ${CMS_BRANCH}/g\" admin/config.yml && jekyll build"
+  command = "sed -i \"s/branch: staging/branch: ${CMS_BRANCH}/g\" admin/config.yml && jekyll build"
 [context.staging.environment]
   CMS_BRANCH = "staging"
