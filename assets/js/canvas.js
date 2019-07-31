@@ -194,7 +194,7 @@ function loadBlobs(callback){
   // material.envMap = textureCube;
 
   var pmat = new THREE.PointsMaterial( {
-    size: .05,
+    size: .02,
     map: createCanvasMaterial(256),
     // transparent: true,
     color: 0xffffff
@@ -209,12 +209,12 @@ function loadBlobs(callback){
   } );
   // window.blobMesh = new THREE.Mesh(blobGeometry, lineMat);
   window.blobMesh = new THREE.Mesh(blobGeometry, bmaterial);
+  // window.blobMesh = new THREE.Points(blobGeometry, pmat);
   blobMesh.name = "work"
-  // window.pointsMesh = new THREE.Points(blobGeometry, pmat);
   // material.emissiveMap = textureLoader.load('{{site.image_path}}/trr-emissive.jpg');
   var s = 0.8;
   blobMesh.scale.set(s, s, s);
-  material.needsUpdate = true;
+  // material.needsUpdate = true;
 
   scene.add(blobMesh);
   // blobMesh.visible = false;
@@ -792,7 +792,7 @@ function toScreenCoords (v){
 
 function animate() {
   if (!renderOn) return;
-  
+
   ctx2d = renderer2D.domElement.getContext('2d');
   ctx2d.clearRect (0, 0, window.innerWidth*window.devicePixelRatio, window.innerHeight*devicePixelRatio);
   ctx2d.fillStyle = "#ffffff";
@@ -887,7 +887,7 @@ function animate() {
         if (window.innerWidth < 700) {
           fontSize = 10 * window.devicePixelRatio;
         }
-        ctx2d.font = +fontSize+ 'pt Open Sans';
+        ctx2d.font = +fontSize+ 'pt Roboto Mono';
         ctx2d.textAlign = 'center';
 
         ctx2d.beginPath();
