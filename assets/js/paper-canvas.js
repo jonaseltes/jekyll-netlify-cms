@@ -1,15 +1,6 @@
 ---
 ---
-// // Create a Paper.js Path to draw a line into it:
-// var path = new Path();
-// // Give the stroke a color
-// path.strokeColor = 'black';
-// var start = new Point(100, 100);
-// // Move to start and draw a line from there
-// path.moveTo(start);
-// // Note the plus operator on Point objects.
-// // PaperScript does that for us, and much more!
-// path.lineTo(start + [ 100, -50 ]);
+
 
 var logo;
 var logoInnerPath;
@@ -23,10 +14,12 @@ var char;
 
 function canvasResize() {
   if (typeof logo !== "undefined" && typeof logoOuterPath !== "undefined") {
-    logo.position = view.center;
-
+    // logo.position = view.center;
     var ratio =  view.size.height / logo.bounds.height;
     logo.scale(ratio);
+    logo.bounds.x = 0;
+    logo.bounds.y = 0;
+    console.log("logo.bounds: " ,logo.bounds);
     oCenter.x = logoOuterPath.bounds.x + (logoOuterPath.bounds.width/2);
     oCenter.y = logoOuterPath.bounds.y + (logoOuterPath.bounds.height/2);
     // oRatio = logoOuterPath.bounds.width / view.size.width;
