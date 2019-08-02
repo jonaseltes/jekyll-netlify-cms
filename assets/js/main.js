@@ -56,9 +56,22 @@ $( document ).ready(function() {
       $(par).toggleClass(textClass);
       $(button).html('Read less –');
     });
-
   });
 
+  resize();
+
+});
+
+function resize(){
+  var logoSize = document.getElementById("logo").getBoundingClientRect();
+  var paperCanvas = document.getElementById('paperCanvas');
+  paperCanvas.width = logoSize.width / window.devicePixelRatio;
+  paperCanvas.height = logoSize.height / window.devicePixelRatio;
+  // console.log("logoSize: " ,logoSize);
+}
+
+$(window).on('resize', function(){
+  // resize();
 });
 
 init();

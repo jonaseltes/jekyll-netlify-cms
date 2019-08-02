@@ -41,12 +41,6 @@ function getPlaneGeometry() {
 
 
 
-
-
-function map_range(value, low1, high1, low2, high2) {
-    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
-}
-
 function animate_vertices(mesh, pk, grav){
   // k = (noise.perlin2(time/100, time)) * 2 + 2.2;
   time = performance.now() * 0.0004;
@@ -55,7 +49,7 @@ function animate_vertices(mesh, pk, grav){
   // k = (mouse.x + 1) * 2;
   for (var i = 0; i < mesh.geometry.vertices.length; i++) {
       var p = mesh.geometry.vertices[i];
-      p.normalize().multiplyScalar(1 + grav * noise.perlin3(p.x * peak + time, p.y * pk, p.z * pk));
+      p.normalize().multiplyScalar(1 + grav * noise.perlin3(p.x * pk + time, p.y * pk, p.z * pk));
   }
   mesh.geometry.computeVertexNormals();
   mesh.geometry.verticesNeedUpdate = true; //must be set or vertices will not update

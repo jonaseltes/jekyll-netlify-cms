@@ -34,3 +34,12 @@
     // border-width: 5.6rem map-get($spacers, 6);
   }
 }
+
+#paperCanvas {
+  top: 0px;
+}
+
+canvas[resize] {
+  width: 100%;
+  height: 100%;
+}

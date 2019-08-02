@@ -74,45 +74,21 @@ collections: # A list of collections the CMS should be able to edit
                     name: 'trr-logos'
                     widget: 'object'
                     fields:
-                      - label: 'White'
-                        name: 'white'
-                        widget: 'image'
-                        allow_multiple: false
-                        required: false
-                      - label: 'Black'
-                        name: 'black'
-                        widget: 'image'
-                        allow_multiple: false
-                        required: false
+                      - {label: 'White', name: 'white', widget: 'image', allow_multiple: false, required: false}
+                      - {label: 'Black', name: 'black', widget: 'image', allow_multiple: false, required: false}
           - label: 'Intro'
             name: 'intro'
             widget: 'object'
             fields:
-              - label: 'Headline'
-                name: 'headline'
-                widget: 'string'
-              - label: 'Introduction'
-                name: 'abstract'
-                widget: 'markdown'
-                hint: 'A description for the landing page'
-                buttons:
-                  - "italic"
-                  - "link"
+              - {label: "Headline", name: "headline", widget: "string"}
+              - {label: 'Introduction', name: 'abstract', widget: 'markdown', hint: 'A description for the landing page', buttons: ["italic", "link"]}
           - label: 'TRR'
             name: "trr"
             widget: "object"
             hint: "Content related to TRR"
             fields:
-              - label: "About TRR"
-                name: "about"
-                widget: "markdown"
-                buttons:
-                  - "italic"
-                  - "bold"
-                  - "link"
-              - label: "Website"
-                name: 'url'
-                widget: 'string'
+              - {label: "About TRR", name: "about", widget: "markdown", buttons: ["italic", "bold", "link"]}
+              - {label: "Website", name: 'url', widget: 'string'}
       - label: 'Event info'
         name: 'info'
         file: '_data/info.yml'
@@ -129,24 +105,12 @@ collections: # A list of collections the CMS should be able to edit
                 name: 'venue'
                 widget: 'object'
                 fields:
-                  - label: "Name"
-                    name: "name"
-                    widget: 'string'
-                  - label: "URL"
-                    name: "url"
-                    widget: 'string'
-              - label: 'Street address'
-                name: 'street_address'
-                widget: 'string'
-              - label: 'Postal code'
-                name: 'postal_code'
-                widget: 'string'
-              - label: "City"
-                name: "city"
-                widget: "string"
-              - label: "Country"
-                name: "country"
-                widget: "string"
+                  - {label: "Name", name: "name", widget: 'string'}
+                  - {label: "URL", name: "url", widget: 'string'}
+              - {label: 'Street address', name: 'street_address', widget: 'string'}
+              - {label: 'Postal code', name: 'postal_code', widget: 'string'}
+              - {label: "City", name: "city", widget: "string"}
+              - {label: "Country", name: "country", widget: "string"}
           - label: 'Images'
             name: "images"
             widget: "list"

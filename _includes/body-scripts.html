@@ -8,6 +8,7 @@
 {%- for script in site.body_scripts -%}
   <script src="{{script}}" type="text/javascript"></script>
 {%- endfor -%}
+<script type="text/paperscript" src="/{{site.js_path}}/paper-canvas.js" canvas="paperCanvas"></script>
 <!-- <script>
   function init (){
     console.log("init!");
