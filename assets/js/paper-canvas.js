@@ -94,12 +94,13 @@ function onFrame(event) {
 
   if (animate) {
     for (var i = 0; i < logoOuterPath.segments.length; i++) {
+      // oCenter.x = logoOuterPath.bounds.x + (logoOuterPath.bounds.width/2);
       var outerSegment = logoOuterPath.segments[i];
 
       var vectorOuter = oCenter - outerSegment.point;
       var vectorOuterNormalized = vectorOuter.normalize(oScale/2 - (strokeW/2));
 
-      var factor = map_range(noise.perlin2(i*(event.time+seed)*0.08, (event.time+seed) * 0.7), -1, 1, 0.5, 5);
+      var factor = map_range(noise.perlin2(i*(event.time+seed)*0.01, (event.time+seed) * 0.7), -1, 1, 0.5, 5);
       // factor = 1;
       if (i == 15) {
           // outerSegment.point.selected = true;
