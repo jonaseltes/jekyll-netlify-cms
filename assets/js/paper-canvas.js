@@ -24,7 +24,7 @@ var char;
 function canvasResize() {
   if (typeof logo !== "undefined" && typeof logoOuterPath !== "undefined") {
     logo.position = view.center;
-    
+
     var ratio =  view.size.height / logo.bounds.height;
     logo.scale(ratio);
     oCenter.x = logoOuterPath.bounds.x + (logoOuterPath.bounds.width/2);
@@ -95,6 +95,8 @@ function onResize(event) {
 	canvasResize();
 }
 
+var seed = Math.random()*1000;
+
 function onFrame(event) {
 
   if (animate) {
@@ -103,8 +105,8 @@ function onFrame(event) {
 
       var vectorOuter = oCenter - outerSegment.point;
       var vectorOuterNormalized = vectorOuter.normalize(oScale/2 - (strokeW/2));
-      var sinSeed = event.count + (i + i % 10) * 100;
-      var factor = map_range(noise.perlin2(i*event.time*0.08, event.time * 0.7), -1, 1, 1, 3);
+
+      var factor = map_range(noise.perlin2(i*(event.time+seed)*0.08, (event.time+seed) * 0.7), -1, 1, 0.5, 5);
       // factor = 1;
       if (i == 15) {
           // outerSegment.point.selected = true;
@@ -114,6 +116,7 @@ function onFrame(event) {
       logoOuterPath.position.x = logo.children[8].bounds.x + logo.children[8].bounds.width + logoOuterPath.bounds.width/2 + strokeW/4;
       logo.children[9].bounds.x = logoOuterPath.bounds.x + logoOuterPath.bounds.width + strokeW;
       logo.children[10].bounds.x = logo.children[9].bounds.x + logo.children[9].bounds.width + strokeW/2;
+      outerSegment.smooth({type: 'catmull-rom'});
       // view.pause();
     }
     logoOuterPath.smooth({ type: 'continuous' });
