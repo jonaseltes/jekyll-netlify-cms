@@ -11,11 +11,15 @@
 
           <div class="col-4 col-sm-6 col-xl-8 text-left">
             {% if page.url != "/" %}
-              <a href="{{ "/" | relative_url }}"><img height="70" src="{{site.logo.three.white}}" alt=""></a>
+              <a href="{{ "/" | relative_url }}"><img height="70" src="{{site.logo.three.white}}" class="invisible" alt=""></a>
+              <canvas id="paperCanvas" class="position-absolute" height="70" resize="true"></canvas>
             {% else %}
               <div class="d-block d-sm-none text-md text-capitalize font-weight-semi-bold">
                 <!-- Swedish<br /><span class="work">work</span><br />lab -->
-                <a href="{{ "/" | relative_url }}"><img height="70" src="{{site.logo.three.white}}" alt=""></a>
+                <a href="{{ "/" | relative_url }}">
+                  <canvas id="paperCanvasHeader" class="position-absolute" height="70" resize="true"></canvas>
+                  <img class="invisible" height="70" src="{{site.logo.three.white}}" alt="">
+                </a>
               </div>
             {% endif %}
 

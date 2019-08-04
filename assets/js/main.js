@@ -7,9 +7,22 @@ console.log("main.js");
 console.log("jekyll.environment:" ,{{jekyll.environment | jsonify}});
 
 function init() {
+  console.log("main.js init");
   $("#footer").detach().appendTo('.page-content-container').fadeIn();
 
+  // var paperCanvas = document.getElementById("paperCanvas");
+  // var logoImg = document.getElementById("logo");
+  // console.log("paperCanvas: " ,paperCanvas);
+  // console.log("logoImg: " ,logoImg);
+  // console.log("$(paperCanvas).width(): " ,$(paperCanvas).width());
+  // console.log("$(paperCanvas).height(): " ,$(paperCanvas).width());
+  // paperCanvas.width  = $(paperCanvas).width() * window.devicePixelRatio;
+  // paperCanvas.height  = $(paperCanvas).height() * window.devicePixelRatio;
+  // paperCanvas.style.width = ''+$(paperCanvas).width()+'px';
+  // paperCanvas.style.height = ''+$(paperCanvas).height()+'px';
 }
+
+
 
 $(window).scroll(function() {
 // 100 = The point you would like to fade the nav in.
@@ -25,13 +38,13 @@ $(window).scroll(function() {
 
 $( document ).ready(function() {
   console.log("main.js ready!");
+
   $('.page-content-container').fadeIn();
   $('.navbar-toggler').click(function(){
     if ($(window).scrollTop() < 100){
       $('.header-wrapper').toggleClass('bg-none');
     }
   });
-
 
   $(".collapse-wrapper").each(function(index){
     var collapse_id = 'collapse_' +index;
@@ -58,15 +71,29 @@ $( document ).ready(function() {
     });
   });
 
-  resize();
+
+  var paperCanvas = document.getElementById("paperCanvas");
+  var logoImg = document.getElementById("logo");
+  console.log("paperCanvas: " ,paperCanvas);
+  console.log("logoImg: " ,logoImg);
+  console.log("logoImg width: " ,$(logoImg).width());
+  console.log("logoImg height: " ,$(logoImg).height());
+  console.log("$(paperCanvas).width(): " ,$(paperCanvas).width());
+  console.log("$(paperCanvas).height(): " ,$(paperCanvas).width());
+  paperCanvas.width  = $(logoImg).width() * window.devicePixelRatio;
+  paperCanvas.height  = $(logoImg).height() * window.devicePixelRatio;
+  // paperCanvas.style.width = ''+$(logoImg).width()+'px';
+  // paperCanvas.style.height = ''+$(logoImg).height()+'px';
+
+  // resize();
 
 });
 
 function resize(){
-  var logoSize = document.getElementById("logo").getBoundingClientRect();
-  var paperCanvas = document.getElementById('paperCanvas');
-  paperCanvas.width = logoSize.width / window.devicePixelRatio;
-  paperCanvas.height = logoSize.height / window.devicePixelRatio;
+  // var logoSize = document.getElementById("logo").getBoundingClientRect();
+  // var paperCanvas = document.getElementById('paperCanvas');
+  // paperCanvas.width = logoSize.width;
+  // paperCanvas.height = logoSize.height;
   // console.log("logoSize: " ,logoSize);
 }
 
