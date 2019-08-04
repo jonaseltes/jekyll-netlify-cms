@@ -9,12 +9,18 @@ console.log("index.js");
 
 $( document ).ready(function() {
 
-  $("#aboutCollapse").on("hide.bs.collapse", function(){
-    // $("#about-intro").toggleClass("text-md");
-  });
-  $("#aboutCollapse").on("show.bs.collapse", function(){
-    // $("#about-intro").toggleClass("text-md");
-  });
+  var paperCanvas = document.getElementById("paperCanvas");
+  var logoImg = document.getElementById("logo");
+  console.log("paperCanvas: " ,paperCanvas);
+  console.log("logoImg: " ,logoImg);
+  console.log("logoImg width: " ,$(logoImg).width());
+  console.log("logoImg height: " ,$(logoImg).height());
+  console.log("$(paperCanvas).width(): " ,$(paperCanvas).width());
+  console.log("$(paperCanvas).height(): " ,$(paperCanvas).width());
+  paperCanvas.width  = $(logoImg).width() * window.devicePixelRatio;
+  paperCanvas.height  = $(logoImg).height() * window.devicePixelRatio;
+  // paperCanvas.style.width = ''+$(logoImg).width()+'px';
+  // paperCanvas.style.height = ''+$(logoImg).height()+'px';
 
 
 
