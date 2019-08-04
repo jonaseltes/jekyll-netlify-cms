@@ -23,10 +23,10 @@ function canvasResize() {
     oCenter.x = logoOuterPath.bounds.x + (logoOuterPath.bounds.width/2);
     oCenter.y = logoOuterPath.bounds.y + (logoOuterPath.bounds.height/2);
     if (!hasResized) {
-      oRatio = logoOuterPath.bounds.width / view.size.width;
+      oRatio = logoOuterPath.bounds.height / view.size.height;
       hasResized = true;
     }
-    oScale = oRatio * view.element.width;
+    oScale = oRatio * view.element.height;
     // console.log(view.element.id, ": oScale: " ,oScale);
     strokeW = oScale / 7;
     if (strokeW < 3) {
