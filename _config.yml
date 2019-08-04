@@ -60,6 +60,7 @@ body_scripts:
   - /assets/js/jquery.min.js
   - /assets/js/jquery-color.min.js
   - /assets/js/utils.js
+  - /assets/js/perlin.js
   - //cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js
   - //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js
   - /assets/js/paper-full.min.js
@@ -74,7 +75,6 @@ animation_scripts:
   - /assets/js/OrbitControls.js
   - /assets/js/TrackballControls.js
   - /assets/js/OBJLoader.js
-  - /assets/js/perlin.js
   - /assets/js/ammo.js
   - /assets/js/lab-canvas.js
   - /assets/js/blobs-canvas.js

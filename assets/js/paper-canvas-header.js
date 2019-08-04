@@ -26,7 +26,7 @@ function canvasResize() {
       oRatio = logoOuterPath.bounds.width / view.size.width;
       hasResized = true;
     }
-    oScale = oRatio * view.element.height;
+    oScale = oRatio * view.element.width;
     // console.log(view.element.id, ": oScale: " ,oScale);
     strokeW = oScale / 7;
     if (strokeW < 3) {

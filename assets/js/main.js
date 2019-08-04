@@ -72,18 +72,10 @@ $( document ).ready(function() {
   });
 
 
-  
-
-  // resize();
-
 });
 
 function resize(){
-  // var logoSize = document.getElementById("logo").getBoundingClientRect();
-  // var paperCanvas = document.getElementById('paperCanvas');
-  // paperCanvas.width = logoSize.width;
-  // paperCanvas.height = logoSize.height;
-  // console.log("logoSize: " ,logoSize);
+
 }
 
 $(window).on('resize', function(){
