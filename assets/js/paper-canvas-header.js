@@ -98,7 +98,7 @@ function onFrame(event) {
       var outerSegment = logoOuterPath.segments[i];
 
       var vectorOuter = oCenter - outerSegment.point;
-      var vectorOuterNormalized = vectorOuter.normalize(oScale/4);
+      var vectorOuterNormalized = vectorOuter.normalize(oScale/5);
 
       var factor = map_range(noise.perlin2(i*(event.time+seed)*0.009, (event.time+seed) * 0.7), -1, 1, 0.5, 4);
 
