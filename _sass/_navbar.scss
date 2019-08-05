@@ -11,6 +11,7 @@
 //Navbar
 ‰bar {
   font-size: $font-size-sm;
+  font-family: 'Roboto Mono', monospace;
   // text-transform: uppercase;
   // height: 5.5rem;
   @include media-breakpoint-down(md) {
@@ -31,7 +32,6 @@
 .main-nav {
   @extend ‰bar;
   padding-top: $navbar-padding-edge !important;
-  font-family: 'Roboto Mono', monospace;
   // display: none;
 }
 

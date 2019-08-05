@@ -75,7 +75,6 @@ animation_scripts:
   - /assets/js/OrbitControls.js
   - /assets/js/TrackballControls.js
   - /assets/js/OBJLoader.js
-  - /assets/js/ammo.js
   - /assets/js/lab-canvas.js
   - /assets/js/blobs-canvas.js
   - /assets/js/canvas.js
