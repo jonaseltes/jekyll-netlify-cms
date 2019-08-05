@@ -53,6 +53,7 @@ function initCanvas(){
       var charIndex = 14;
       // item.children[0].remove();
       char = logo.children[14];
+      // char.fullySelected = true;
       // logo.children[8].selected = true;
       // logo.children[9].selected = true;
       // logo.children[10].selected = true;
@@ -131,6 +132,7 @@ function onResize(event) {
 // onResize(view);
 
 var seed = Math.random()*1000;
+console.log("seed: " ,seed);
 
 function onFrame(event) {
 
@@ -143,18 +145,18 @@ function onFrame(event) {
       var outerSegment = logoOuterPath.segments[i];
 
       var vectorOuter = oCenter - outerSegment.point;
-      var vectorOuterNormalized = vectorOuter.normalize(oScale/8);
-
-      var factor = map_range(noise.perlin2(i*(event.time+seed)*0.009, (event.time+seed) * 0.7), -1, 1, 0.4, 6);
+      var vectorOuterNormalized = vectorOuter.normalize(oScale/7);
+      var speed = 0.5;
+      var peak = 0.2;
+      var factor = map_range(noise.perlin2(i*peak+(event.time+seed)*speed, i*peak+(event.time+seed) * speed), -1, 1, 0.4, 4);
 
       outerSegment.point = oCenter - (vectorOuterNormalized * factor);
-      outerSegment.smooth({type: 'catmull-rom'});
+      // outerSegment.smooth({type: 'continuous'});
       // view.pause();
     }
     logoOuterPath.position.x = logo.children[8].bounds.x + logo.children[8].bounds.width + logoOuterPath.bounds.width/2 + strokeW/4;
     logo.children[9].bounds.x = logoOuterPath.bounds.x + logoOuterPath.bounds.width + strokeW;
     logo.children[10].bounds.x = logo.children[9].bounds.x + logo.children[9].bounds.width + strokeW/2;
     logoOuterPath.smooth({ type: 'continuous' });
-    // logoInnerPath.smooth({ type: 'continuous' });
   }
 }
