@@ -2,7 +2,12 @@ site:
   assets:
     trr-logos:
       white: /assets/media/uploads/trr_logo_vit.svg
-  footer: '****'
+  footer: >-
+    Unsatiated curiosity or unanswered questions?
+
+
+    Drop us a line at <mailto:contact@swedishworklab.com> and we will come to
+    the rescue!
   tagline: >-
     An initiative to collectively shape the future of work by
     [**TRR**](https://www.trr.se/) & [**Another
@@ -10,20 +15,20 @@ site:
   title: The Swedish Work Lab
 intro:
   abstract: >-
+    The Swedish Work Lab is a platform to explore what the rapid pace of change
+    in society mean(s) for employees and employers in both the near and distant
+    future. What does tomorrow’s work life actually look like? What previously
+    unknown challenges may we be facing? What or who is required for our work
+    lives to thrive?
+
+
     Our 21st century work lives are constantly evolving. They’re shaped by
     technological breakthroughs, new economic models, and evolving educational
     formats. Legislation catches up to ideas and re-frames how businesses can be
     run. There’s an increased expectancy on companies’ moral compass, and
     matters of ethics and sustainability may determine both where individuals
     choose to work as well as where customers choose to take their business.
-
-
-
-
-    The Swedish Work Lab is a platform to explore what all these parameters mean
-    for employees and employers in both the near and distant future. What does
-    tomorrow’s work life actually look like? What previously unknown challenges
-    may we be facing? And what or who is required for our work lives to thrive?
+    It’s up to us to shape the future we want to work in.
   headline: Will you help us shape the future of work?
 trr:
   about: >-

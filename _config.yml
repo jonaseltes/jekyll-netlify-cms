@@ -25,6 +25,17 @@ url: "https://www.swedishworklab.com" # the base hostname & protocol for your si
 #header_pages:
 # - about.html
 
+collections:
+  pagesCollection:
+    output: true
+    permalink: /:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "pagesCollection"
+    values:
+      layout: "page"
 
 # Site variables
 image_path: assets/media
@@ -41,14 +52,18 @@ logo:
   three:
     white: /assets/media/SWL-LOGO-3-LOWER-WHITE.svg
     black: /assets/media/SWL-LOGO-3-LOWER-BLACK.svg
+    black_animation: /assets/media/SWL-LOGO-3-LOWER-BLACK-ANIMATION.svg
+    white_animation: /assets/media/SWL-LOGO-3-LOWER-WHITE-ANIMATION.svg
 
 # Scripts
 body_scripts:
   - /assets/js/jquery.min.js
   - /assets/js/jquery-color.min.js
   - /assets/js/utils.js
+  - /assets/js/perlin.js
   - //cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js
   - //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js
+  - /assets/js/paper-full.min.js
   - /assets/js/barba.min.js
   - /assets/js/main.js
 
@@ -60,8 +75,6 @@ animation_scripts:
   - /assets/js/OrbitControls.js
   - /assets/js/TrackballControls.js
   - /assets/js/OBJLoader.js
-  - /assets/js/perlin.js
-  - /assets/js/ammo.js
   - /assets/js/lab-canvas.js
   - /assets/js/blobs-canvas.js
   - /assets/js/canvas.js

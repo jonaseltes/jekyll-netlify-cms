@@ -1,6 +1,7 @@
 //footer
-footer {
+#footer {
   @extend ‰bar;
+  font-size: $font-size-xs !important;
   padding-bottom: $navbar-padding-edge !important;
 }
 

@@ -3,6 +3,8 @@ layout: default
 scripts:
   body:
     cdn:
+      - //unpkg.com/weakmap-polyfill/weakmap-polyfill.min.js
+      - //unpkg.com/formdata-polyfill
     assets:
       - form.js
       - hackathon.js
@@ -48,7 +50,7 @@ footer: light
       <div class="col-md-4 offset-xl-0 col-xl-4">
         <div class="row">
           <div class="col">
-            <div class="text-md">
+            <div class="text-sm roboto-mono">
               <p>{{ site.data.info.time | date: '%B %-dth, %Y' }} <br>
                 <a href="{{site.data.info.location.venue.url}}">{{site.data.info.location.venue.name}}</a>, {{site.data.info.location.city}}</p>
             </div>
@@ -60,8 +62,8 @@ footer: light
       <div class="col-lg-8 col-xl-8 offset-md">
         <div class="row mt-8">
           <div class="col-12 text-md">
-            <div class="text-md mb-8">
-              Apply to join the hackathon:
+            <div class="text-md mb-4">
+              {{site.data.application-form.headline}}
             </div>
             {%- include form.html -%}
           </div>

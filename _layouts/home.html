@@ -40,7 +40,9 @@ footer: light
           <div class="display-0 text-capitalize font-weight-semi-bold d-none">
             Swedish<br /><span class="work">work</span><br />lab
           </div>
-          <img width="100%" src="{{site.logo.three.white}}" alt="">
+          <script type="text/paperscript" src="/{{site.js_path}}/paper-canvas.js" canvas="paperCanvas"></script>
+          <canvas id="paperCanvas" class="" resize="true"></canvas>
+          <img id="logo" class="invisible position-absolute" width="100%" src="{{site.logo.three.white_animation}}" alt="">
         </div>
         <div class="d-none d-sm-block col-sm">
 
@@ -52,25 +54,15 @@ footer: light
               <span class="text-uppercase d-none">Loading...</span>
             </div> -->
 
-            <div id="about-container" class="text-sm align-self-start">
+            <div id="about-container" class="text-md align-self-start">
               <div id="landing-text" class="pointer-e-all w-100 mb-8">
                 <div id="landing-title" class="text-md w-75">
                     Will you help us shape the future of <span class="work">work</span>?
                 </div>
               </div>
-              <p class="text-md" id="about-intro">The Swedish Work Lab is a platform to explore what the rapid pace of change in society mean(s) for employees and employers in both the near and distant future. What does tomorrow’s work life actually look like? What previously unknown challenges may we be facing? What or who is required for our work lives to thrive?</p>
-              <div class="collapse" id="aboutCollapse">
-                <div class="">
-                  <p class="">
-                    Our 21st century work lives are constantly evolving. They’re shaped by technological breakthroughs, new economic models, and evolving educational formats. Legislation catches up to ideas and re-frames how businesses can be run. There’s an increased expectancy on companies’ moral compass, and matters of ethics and sustainability may determine both where individuals choose to work as well as where customers choose to take their business. It’s up to us to shape the future we want to work in.
-                  </p>
-                </div>
-              </div>
-              <div class="">
-                <a class="" data-toggle="collapse" href="#aboutCollapse" role="button" aria-expanded="false" aria-controls="aboutCollapse">
-                  <span id="aboutCollapseButton" class="text-sm font-weight-semi-bold roboto-mono">Read more +</span>
-                </a>
-              </div>
+
+              {%- include collapse.html content=site.data.content.intro.abstract text-size="text-sm" -%}
+
             </div>
             <div class="display-3 mb-8 mt-auto bounce  helvetica">
               ↓
@@ -82,20 +74,6 @@ footer: light
   </div>
 
 
-
-    <!-- scroll column -->
-  <div class="container-fluid">
-
-      <div class="row h-100 border-white section-wrapper d-none">
-
-        <div class="col d-flex text-left">
-          <div class="m-auto">
-            {{site.data.content.intro.abstract | markdownify}}
-          </div>
-        </div>
-      </div>
-
-  </div>
 
 
   <div class="container-fluid bg-secondary">
@@ -115,16 +93,7 @@ footer: light
 
           <div class="col-lg-8 col-xl-6 text-left text-lg mb-8">
             {{site.data.application-form.introduction.headline | markdownify}}
-            <div class="">
-              <div class="collapse-paragraphs collapse" id="hackathonCollapse">
-                {{site.data.application-form.introduction.description | markdownify}}
-              </div>
-              <div class="">
-                <a class="" data-toggle="collapse" href="#hackathonCollapse" role="button" aria-expanded="false" aria-controls="hackathonCollapse">
-                  <span id="hackathonCollapseButton" class="text-sm font-weight-semi-bold roboto-mono">Read more +</span>
-                </a>
-              </div>
-            </div>
+            {%- include collapse.html content=site.data.application-form.introduction.description text-size="text-md" -%}
           </div>
 
           <div class="col-lg-4 offset-lg-0  col-xl-4 offset-xl-2">
@@ -142,41 +111,11 @@ footer: light
             </div>
           </div>
 
-          <div class="col d-none">
-            <div class="">
-              {{site.data.info.text | markdownify}}
-            </div>
-          </div>
 
 
     </div>
 
   </div>
-
-
-
-
-
-
-
-  <div class="container-fluid d-none">
-    <div class="row">
-      <div class="col">
-        <div class="border-top w-100 border-white divider-v">
-        </div>
-        <div class="row section-wrapper">
-          <div class="col-md-6 mb-5">
-            <div class="">
-              {{site.data.content.trr.about | markdownify}}
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
 
 
 </div>
