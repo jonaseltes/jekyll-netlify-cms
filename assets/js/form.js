@@ -70,7 +70,7 @@ $(function() {
   console.log("form: " ,form);
   var url = "https://script.google.com/macros/s/AKfycbxiwmQg7mCBecU2IKhaN3bDHs2PaD70-zP19hMZyqnhiWl3cw/exec";
   {% if jekyll.environment == "development" %}
-    url = "https://script.google.com/macros/s/AKfycbwXvhNxU0PEUwSqfuyiWHFQYEO_gvjNIZELalBjkHtIYYa_zFuG/exec";
+    // url = "https://script.google.com/macros/s/AKfycbwXvhNxU0PEUwSqfuyiWHFQYEO_gvjNIZELalBjkHtIYYa_zFuG/exec";
   {% endif %}
   console.log("url: " ,url);
 
