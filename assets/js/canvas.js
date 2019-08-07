@@ -822,6 +822,7 @@ function animate() {
         raycaster.set( startPoint, directionVector.normalize() );
         var intersects = raycaster.intersectObjects( scene.children, true);
         if (intersects.length > 0) {
+          ctx2d.fillStyle = "rgba(255, 255, 255,  0.8)";
           // console.log(intersects[0].object.name);
           if (intersects[0].object.name == thisObject.name) {
             var v =  new THREE.Vector3();
