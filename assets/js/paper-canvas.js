@@ -31,12 +31,13 @@ function canvasResize() {
       oRatio = logoOuterPath.bounds.width / view.size.width;
       hasResized = true;
     }
-    oScale = oRatio * view.element.height;
+    oScale = oRatio * view.size.height;
     // console.log(view.element.id, ": oScale: " ,oScale);
-    strokeW = oScale / 7;
+    strokeW = oScale / 4.5;
     if (strokeW < 3) {
       strokeW = 3;
     }
+    strokeW = strokeW;
     char.strokeWidth = strokeW;
   }
 }
@@ -69,8 +70,8 @@ function initCanvas(){
       oCenter.x = logoOuterPath.bounds.x + (logoOuterPath.bounds.width/2);
       oCenter.y = logoOuterPath.bounds.y + (logoOuterPath.bounds.height/2);
       console.log("oCenter: " ,oCenter);
-      oRatio = logoOuterPath.bounds.height / view.element.height;
-      oScale = oRatio * view.element.height;
+      oRatio = logoOuterPath.bounds.height / view.size.height;
+      oScale = oRatio * view.size.height;
       console.log("view.element.height: " ,view.element.height);
       console.log("oRatio: " ,oRatio);
       console.log("logoOuterPath.bounds.width: " ,logoOuterPath.bounds.width);
@@ -145,7 +146,7 @@ function onFrame(event) {
       var outerSegment = logoOuterPath.segments[i];
 
       var vectorOuter = oCenter - outerSegment.point;
-      var vectorOuterNormalized = vectorOuter.normalize(oScale/7);
+      var vectorOuterNormalized = vectorOuter.normalize(oScale/4);
       var speed = 0.5;
       var peak = 0.2;
       var factor = map_range(noise.perlin2(i*peak+(event.time+seed)*speed, i*peak+(event.time+seed) * speed), -1, 1, 0.4, 4);
