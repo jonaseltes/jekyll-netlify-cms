@@ -2,11 +2,11 @@
   <div class="mb-4 d-none">
     {{site.data.application-form.headline}}
   </div>
-  <div class="text-xs mb-4">
-    {{site.data.application-form.disclaimer | markdownify}}
-  </div>
 
   <div id="application-form-wrapper" class="text-left container-fluid px-0">
+    <div class="text-xs mb-4">
+      {{site.data.application-form.disclaimer | markdownify}}
+    </div>
     {% assign form = site.data.application-form %}
     <form class="row px-0" id="{{form.form-id}}" action="{{form.url}}" method="post" enctype="multipart/form-data">
 

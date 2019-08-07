@@ -70,7 +70,7 @@ $(function() {
   console.log("form: " ,form);
   var url = "https://script.google.com/macros/s/AKfycbxiwmQg7mCBecU2IKhaN3bDHs2PaD70-zP19hMZyqnhiWl3cw/exec";
   {% if jekyll.environment == "development" %}
-    // url = "https://script.google.com/macros/s/AKfycbwXvhNxU0PEUwSqfuyiWHFQYEO_gvjNIZELalBjkHtIYYa_zFuG/exec";
+    url = "https://script.google.com/macros/s/AKfycbwXvhNxU0PEUwSqfuyiWHFQYEO_gvjNIZELalBjkHtIYYa_zFuG/exec";
   {% endif %}
   console.log("url: " ,url);
 
@@ -110,19 +110,28 @@ $(function() {
           // crossDomain: true,
           data: JSON.stringify(object),
           // contentType: "application/json; charset=utf-8",
-          success: function (msg)
+          success: function (response)
                   {
-                    console.log("succes: " ,msg)
-                    $('#application-form-wrapper').fadeOut(500, function(){
-                      $('#application-form-wrapper').html('<p">'+confirmation+'</p>').fadeIn(500);
-                    });
+                    console.log("Form response: " ,response)
+                    if (response.result == "succes") {
+                      $('#application-form-wrapper').fadeOut(500, function(){
+                        $('#application-form-wrapper').html('<p">'+confirmation+'</p>').fadeIn(500);
+                      });
+                    }
+                    else {
+                      $('#application-form-wrapper').html('<p>Oops, something went wrong. Please try using a different web browser (preferably Google Chrome) or send us an email at <a href="mailto:contact@swedishworklab.com">contact@swedishworklab.com</a>.</p>').fadeIn(500);
+                      $("#form-error").html("<p>Oops, something went wrong. Please try using a different web browser (preferably Google Chrome) or send us an email at <a href='mailto:contact@swedishworklab.com'>contact@swedishworklab.com</a>.</p>");
+                    }
+
                   },
           error: function (err) {
             console.log(err.responseText);
             $("#form-error").html("<p>Oops, something went wrong. Please try submitting the form again and if the message does not dissapear please try another web browser (preferably Google Chrome) or send us an email.</p>");
           }
       }).done(function (data, textStatus, xhr) {
-          console.log(xhr.getResponseHeader('Link'));
+          // console.log(xhr.getResponseHeader('Link'));
+          console.log("data: " ,data);
+          console.log("textStatus: " ,textStatus);
           console.log("xhr: " ,xhr);
       });
     }
