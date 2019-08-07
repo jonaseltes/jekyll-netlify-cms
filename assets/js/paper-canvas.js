@@ -33,7 +33,7 @@ function canvasResize() {
     }
     oScale = oRatio * view.size.height;
     // console.log(view.element.id, ": oScale: " ,oScale);
-    strokeW = oScale / 4.5;
+    strokeW = oScale / 4;
     if (strokeW < 3) {
       strokeW = 3;
     }
