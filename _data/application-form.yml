@@ -51,7 +51,7 @@ inputs:
       type: text
     - label: Profile Picture
       name: image
-      required: false
+      required: true
       type: file
     - label: >-
         Tell us a little about yourself and why you would like to be a part of
