@@ -7,6 +7,20 @@ backend:
 media_folder: "assets/media/uploads" # Folder where user uploaded files should go
 
 collections: # A list of collections the CMS should be able to edit
+  - name: "customPages" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Custom Pages (Test)" # Used in the UI, ie.: "New Post"
+    folder: "_pagesCollection" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    description: "Collection for pages created through the CMS"
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+      - label: "Content"
+        name: "content"
+        widget: "list"
+        fields:
+          - { label: Item Heading, name: itemHeader, widget: string }
+          - { label: Item Content, name: itemText, widget: markdown }
   - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Posts (Not in use)" # Used in the UI, ie.: "New Post"
     folder: "_posts" # The path to the folder where the documents are stored
@@ -179,7 +193,7 @@ collections: # A list of collections the CMS should be able to edit
                   - label: "Field name property"
                     name: "name"
                     widget: "string"
-                    hint: "Used to identify the specific filed in the code."
+                    hint: "Used to identify the specific field in the code."
                   - label: "Type"
                     name: "type"
                     widget: "select"
