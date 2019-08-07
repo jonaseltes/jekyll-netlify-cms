@@ -26,12 +26,13 @@ function canvasResize() {
       oRatio = logoOuterPath.bounds.height / view.size.height;
       hasResized = true;
     }
-    oScale = oRatio * view.element.height;
+    oScale = oRatio * view.size.height;
     // console.log(view.element.id, ": oScale: " ,oScale);
-    strokeW = oScale / 7;
+    strokeW = oScale / 4;
     if (strokeW < 3) {
       strokeW = 3;
     }
+    strokeW = strokeW;
     char.strokeWidth = strokeW;
   }
 }
@@ -60,11 +61,11 @@ project.importSVG("{{site.logo.three.white_animation}}", {
     oCenter.x = logoOuterPath.bounds.x + (logoOuterPath.bounds.width/2);
     oCenter.y = logoOuterPath.bounds.y + (logoOuterPath.bounds.height/2);
     console.log("oCenter: " ,oCenter);
-    oRatio = logoOuterPath.bounds.height / view.element.height;
+    oRatio = logoOuterPath.bounds.height / view.size.height;
     oScale = oRatio * view.element.height;
-    console.log("view.element.height: " ,view.element.height);
+    console.log("view.element.height: " ,view.size.height);
     console.log("oRatio: " ,oRatio);
-    console.log("logoOuterPath.bounds.width: " ,logoOuterPath.bounds.width);
+    console.log("logoOuterPath.bounds.height: " ,logoOuterPath.bounds.height);
     // logoOuterPath.selected = true;
     // logo.children[14].selected = true;
     console.log("logoOuterPath.segments[0].point: " ,logoOuterPath.segments[0].point);
@@ -98,7 +99,7 @@ function onFrame(event) {
       var outerSegment = logoOuterPath.segments[i];
 
       var vectorOuter = oCenter - outerSegment.point;
-      var vectorOuterNormalized = vectorOuter.normalize(oScale/5);
+      var vectorOuterNormalized = vectorOuter.normalize(oScale/4);
 
       var factor = map_range(noise.perlin2(i*(event.time+seed)*0.009, (event.time+seed) * 0.7), -1, 1, 0.5, 4);
 
