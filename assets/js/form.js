@@ -113,7 +113,7 @@ $(function() {
           success: function (response)
                   {
                     console.log("Form response: " ,response)
-                    if (response.result == "succes") {
+                    if (response.result == "success") {
                       $('#application-form-wrapper').fadeOut(500, function(){
                         $('#application-form-wrapper').html('<p">'+confirmation+'</p>').fadeIn(500);
                       });
