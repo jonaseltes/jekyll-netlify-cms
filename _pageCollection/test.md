@@ -2,7 +2,7 @@
 title: test
 layout: page
 parentURL: test
-permalink: test
+url: test
 page_content:
   rows:
     - row:
