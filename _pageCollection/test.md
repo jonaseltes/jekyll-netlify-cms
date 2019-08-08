@@ -1,7 +1,8 @@
 ---
 title: test
 layout: page
-permalink: asd
+parent: asd
+permalink: test
 page_content:
   rows:
     - row:
