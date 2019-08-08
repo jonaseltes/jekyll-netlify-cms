@@ -1,6 +1,7 @@
 ---
 title: test
 layout: page
+permalink: test
 page_content:
   rows:
     - row:
@@ -12,3 +13,4 @@ page_content:
             fontSize: text-xl
             type: contentColumn
 ---
+
