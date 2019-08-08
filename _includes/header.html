@@ -10,25 +10,18 @@
       <nav class="navbar navbar-dark navbar-expand-sm main-nav row align-items-start">
 
           <div class="col-4 col-sm-6 col-xl-8 text-left">
-            {% if page.url != "/" %}
-              <a href="{{ "/" | relative_url }}">
-                <canvas id="paperCanvasHeader" class="position-absolute" height="70" resize="true"></canvas>
-                <img height="70" src="{{site.logo.three.white}}" class="invisible" alt="">
-              </a>
-            {% else %}
-              <div class="d-block d-sm-none text-md text-capitalize font-weight-semi-bold">
+            {% if page.url == "/" %}
+            <div class="d-block d-sm-none text-md text-capitalize font-weight-semi-bold">
+            {% endif %}
                 <!-- Swedish<br /><span class="work">work</span><br />lab -->
                 <a href="{{ "/" | relative_url }}">
                   <canvas id="paperCanvasHeader" class="position-absolute" height="70" resize="true"></canvas>
                   <img class="invisible" height="70" src="{{site.logo.three.white}}" alt="">
                 </a>
-              </div>
+            {% if page.url == "/" %}
+            </div>
             {% endif %}
-
-
           </div>
-
-
 
 
             <button class="navbar-toggler collapsed flex-column align-items-end text-right col-8" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +41,14 @@
                     {%- if my_page.title -%}
                       {%- if my_page.url != "/about/" and my_page.url != "/canvas/"  -%}
                         <div class="col-sm offset-0 offset-sm-0 text-left text-sm-left">
-                          <a class="nav-item nav-link {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }} {% if my_page.url == page.url %}←{% else %}→{% endif%}</a>
+                          <div class="dropdown">
+                            <a class="nav-item nav-link {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }} {% if my_page.url == page.url %}←{% else %}→{% endif%}</a>
+                            <div class="dropdown-content">
+                              <a href="#">Link 1</a>
+                              <a href="#">Link 2</a>
+                              <a href="#">Link 3</a>
+                            </div>
+                          </div>
                         </div>
                       {%- endif -%}
                     {%- endif -%}

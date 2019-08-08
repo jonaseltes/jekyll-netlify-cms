@@ -26,14 +26,14 @@ url: "https://www.swedishworklab.com" # the base hostname & protocol for your si
 # - about.html
 
 collections:
-  pagesCollection:
+  hackathon:
     output: true
-    permalink: /:name/
+    permalink: /:collection/:name/
 
 defaults:
   - scope:
       path: ""
-      type: "pagesCollection"
+      type: "hackathon"
     values:
       layout: "page"
 

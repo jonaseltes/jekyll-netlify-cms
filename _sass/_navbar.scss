@@ -85,6 +85,10 @@
   }
 }
 
+.nav-link:hover {
+  text-decoration: underline;
+}
+
 
 // TOGGLER ICON
 
@@ -127,3 +131,16 @@
 .navbar-toggler.collapsed .bottom-bar {
   transform: rotate(0);
 }
+
+
+// DROPDOWN
+
+.dropdown-content {
+  display: none;
+}
+
+.dropdown-content a {
+  display: block;
+}
+
+.dropdown:hover > .dropdown-content {display: block;}

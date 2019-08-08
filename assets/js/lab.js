@@ -599,8 +599,8 @@ function parseResult (result) {
         }
         journey.data.learn.years += slots * slot_years;
         journey.data.learn.slots += slots;
-        journey.data.work.years -= (slots * slot_years) / 2;
-        journey.data.rest.years -= (slots * slot_years) / 2;
+        journey.data.work.years -= slots;
+        journey.data.rest.years -= slots;
         break;
       case 2:
         var divisor;
@@ -636,7 +636,7 @@ function parseResult (result) {
             divisor = journey.data.work.years;
             break;
         }
-        journey.data.work.slots = journey.data.work.years / divisor;
+        journey.data.work.slots = Math.round(journey.data.work.years / divisor);
         break;
       case 4:
         switch (string) {
@@ -646,10 +646,10 @@ function parseResult (result) {
             // SOME FUNCTIONALLY TO SHOW BLEND OF WORK AND RETIREMNT
             break;
           case "I take my share of retirement years and spread them out, taking breaks at regular intervals through life, even if it means I continue working late into life":
-            journey.data.rest.slots += 4;
+            journey.data.rest.slots = 4;
             break;
           case "I split my share of retirement years in two and have a significant break in the middle of life, even if it means I continue working until a later age":
-            journey.data.rest.slots += 2;
+            journey.data.rest.slots = 2;
             break;
           case "I want to work forever. Can I donate my retirement years to someone else?":
             journey.data.rest.slots = 0;

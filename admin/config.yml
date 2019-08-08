@@ -7,20 +7,43 @@ backend:
 media_folder: "assets/media/uploads" # Folder where user uploaded files should go
 
 collections: # A list of collections the CMS should be able to edit
-  - name: "customPages" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Custom Pages (Test)" # Used in the UI, ie.: "New Post"
-    folder: "_pagesCollection" # The path to the folder where the documents are stored
+  - name: "hackathonPages" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Hackathon Pages (Test)" # Used in the UI, ie.: "New Post"
+    folder: "_hackathon" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     description: "Collection for pages created through the CMS"
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string", tagname: "h1"}
       - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
-      - label: "Content"
-        name: "content"
-        widget: "list"
+      - label: "Page Content" #Content wrapper
+        name: "page_content"
+        widget: "object"
         fields:
-          - { label: Item Heading, name: itemHeader, widget: string }
-          - { label: Item Content, name: itemText, widget: markdown }
+          - label: "Rows" #Rows wrapper
+            name: "rows"
+            widget: list
+            fields:
+              - {label: Row, name: row, widget: object, fields: [
+                  {label: Columns, name: columns, widget: list, types: [
+                    {label: Column, name: contentColumn, widget: object, fields: [ #Column for content wrapper
+                      {label: Content, name: content, widget: markdown},
+                      {label: Font size, name: fontSize, widget: select, options: [
+                        {label: "XS", value: "text-xs"},
+                        {label: "S", value: "text-sm"},
+                        {label: "M", value: "text-md"},
+                        {label: "L", value: "text-lg"},
+                        {label: "XL", value: "text-xl"}
+                      ]}
+                    ]}
+                  ]}
+                ]}
+                # - {label: "Column for rows", name: rowColumn, widget: object, fields: [ #Column for rows wrapper
+                #     {label: Row, name: row, widget: list, fields: [ #Rows within column wrapper
+                #       {label: Columns, name: column, widget: list, types: [
+                #         {label: Content, name: content, widget: markdown}
+                #       ]} #Row within column wrapper
+                #     ]}
+                #   ]}
   - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Posts (Not in use)" # Used in the UI, ie.: "New Post"
     folder: "_posts" # The path to the folder where the documents are stored
@@ -52,6 +75,22 @@ collections: # A list of collections the CMS should be able to edit
     label: 'Content'
     description: "Collection for editing different types of content."
     files:
+      - label: 'Menu'
+        name: 'menu'
+        file: '_data/menu.yml'
+        fields:
+          - label: Top-level items,
+            name: items
+            widget: object
+            fields:
+              - {label: Test, name: test, widget: text}
+              # {label: Page title, name: page-title, widget: text},
+              # {label: Sub-menu, name: sub-menus, widget: list, types: [{
+              #   {label: "Sub-menu-item", name: "sub-item", widget: object, fields: [
+              #     {label: Test, name: test, widget: text},
+              #     {label: Page title, name: page-title, widget: text, description: "Needs to match the title of the given page."}
+              #   ]}
+              # }]}
       - label: 'Content'
         name: 'content'
         file: '_data/content.yml'
