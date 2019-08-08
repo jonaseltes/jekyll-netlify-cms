@@ -12,4 +12,3 @@ page_content:
             fontSize: text-xl
             type: contentColumn
 ---
-

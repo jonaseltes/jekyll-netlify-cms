@@ -5,16 +5,17 @@ backend:
 # publish_mode: editorial_workflow
 
 media_folder: "assets/media/uploads" # Folder where user uploaded files should go
+logo_url: /assets/media/SWL-LOGO-3-LOWER-BLACK.svg
 
 collections: # A list of collections the CMS should be able to edit
-  - name: "hackathonPages" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Hackathon Pages (Test)" # Used in the UI, ie.: "New Post"
-    folder: "_hackathon" # The path to the folder where the documents are stored
+  - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Pages (Test)" # Used in the UI, ie.: "New Post"
+    folder: "_pageCollection" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
-    description: "Collection for pages created through the CMS"
+    description: "Collection for pages"
     fields: # The fields each document in this collection have
-      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
-      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Layout", name: "layout", widget: string, default: "page", hint: "Do not edit this."}
       - label: "Page Content" #Content wrapper
         name: "page_content"
         widget: "object"
@@ -58,19 +59,6 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Categories", name: "categories", widget: "string", required: false}
     meta: # Meta data fields. Just like fields, but without any preview element
       - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD hh:mm:ss"}
-  - name: 'pages'
-    label: 'Pages (Not in use)'
-    description: "Collection for the future possibility of having different pages (currently not used)"
-    editor:
-      preview: false
-    files:
-      - label: 'About Page'
-        name: 'about'
-        file: 'about.md'
-        fields:
-          - { label: 'Title', name: 'title', widget: 'hidden', default: 'about' }
-          - { label: 'Layout', name: 'title', widget: 'hidden', default: 'about' }
-          - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'content'
     label: 'Content'
     description: "Collection for editing different types of content."
@@ -79,18 +67,18 @@ collections: # A list of collections the CMS should be able to edit
         name: 'menu'
         file: '_data/menu.yml'
         fields:
-          - label: Top-level items,
+          - label: Top-level items
             name: items
-            widget: object
+            widget: list
             fields:
-              - {label: Test, name: test, widget: text}
-              # {label: Page title, name: page-title, widget: text},
-              # {label: Sub-menu, name: sub-menus, widget: list, types: [{
-              #   {label: "Sub-menu-item", name: "sub-item", widget: object, fields: [
-              #     {label: Test, name: test, widget: text},
-              #     {label: Page title, name: page-title, widget: text, description: "Needs to match the title of the given page."}
-              #   ]}
-              # }]}
+              - {label: Label, name: label, widget: string}
+              - {label: Target page, name: target, widget: string, hint: "Page that it should link to."}
+              - {label: Sub-menu, name: sub-menus, widget: list, types: [{
+                  {label: "Sub-menu-item", name: "sub-item", widget: object, fields: [
+                    {label: Label, name: label, widget: string},
+                    {label: Page title, name: page-title, widget: string, description: "Needs to match the title of the given page."}
+                  ]}
+                }]}
       - label: 'Content'
         name: 'content'
         file: '_data/content.yml'
