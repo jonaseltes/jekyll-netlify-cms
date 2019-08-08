@@ -1,7 +1,7 @@
 ---
 title: test
 layout: page
-parent: test
+parentURL: test
 permalink: test
 page_content:
   rows:
