@@ -2,6 +2,6 @@
 title: Test 2
 layout: page
 parentURL: test
-permalink: /hackathon/
+permalink: /hackathon/test-2/
 ---
 
