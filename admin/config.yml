@@ -10,9 +10,10 @@ logo_url: /assets/media/SWL-LOGO-3-LOWER-BLACK.svg
 collections: # A list of collections the CMS should be able to edit
   - label: CMS settings
     name: cms
+    create: true
     folder: "_data/cms-variables"
     fields:
-      - {label: "Title", name: title, widget: hidden, default: "Cms variables"}
+      - {label: "Title", name: title, widget: string, default: "Variables"}
       - {label: "Font sizes", name: "fontSizes", widget: list, fields: [
           {label: "Label", name: fontLabel, widget: string},
           {label: "Class Name", name: value, widget: string}

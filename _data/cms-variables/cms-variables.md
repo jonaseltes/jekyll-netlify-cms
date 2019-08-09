@@ -1,7 +1,6 @@
 ---
-title: Cms variables
+title: Variables
 fontSizes:
   - fontLabel: XS
     value: text-xs
 ---
-
