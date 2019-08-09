@@ -8,6 +8,17 @@ media_folder: "assets/media/uploads" # Folder where user uploaded files should g
 logo_url: /assets/media/SWL-LOGO-3-LOWER-BLACK.svg
 
 collections: # A list of collections the CMS should be able to edit
+  - label: CMS settings
+    name: cms
+    files:
+      - label: CMS Variables
+        name: variables
+        file: "_data/cms-variables.yml"
+        fields:
+          - {label: "Font sizes", name: "fontSizes", widget: list, fields: [
+            {label: "Label", name: label, widget: string},
+            {label: "Class Name", name: value, widget: string}
+          ]}
   - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Pages (Test)" # Used in the UI, ie.: "New Post"
     folder: "_pageCollection" # The path to the folder where the documents are stored
@@ -16,6 +27,8 @@ collections: # A list of collections the CMS should be able to edit
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Layout", name: "layout", widget: string, default: "page", hint: "Do not edit this."}
+      - {label: "Parent page", name: parentURL, widget: relation, required: false, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "url"}
+      - {label: "URL", name: "permalink", widget: string, default: "/name-of-this-page-here/", hint: "URL of the page, should start and finish with a '/' and should not contain any blank spaces, e.g. '/name-of-this-page/', or '/hackathon/name-of-this-page/'. The URL needs to be unique for each page so please make sure it's not already in use by any other page."}
       - label: "Page Content" #Content wrapper
         name: "page_content"
         widget: "object"
@@ -27,13 +40,27 @@ collections: # A list of collections the CMS should be able to edit
               - {label: Row, name: row, widget: object, fields: [
                   {label: Columns, name: columns, widget: list, types: [
                     {label: Column, name: contentColumn, widget: object, fields: [ #Column for content wrapper
-                      {label: Content, name: content, widget: markdown},
-                      {label: Font size, name: fontSize, widget: select, options: [
+                      {label: Column Font size, name: column-fontSize, widget: select, hint: "Font size for the column.", options: [
                         {label: "XS", value: "text-xs"},
                         {label: "S", value: "text-sm"},
                         {label: "M", value: "text-md"},
                         {label: "L", value: "text-lg"},
                         {label: "XL", value: "text-xl"}
+                      ]},
+                      {label: Content, name: content-list, widget: list, types: [
+                        {label: Text / Image, name: markdown-object, widget: object, fields: [
+                          {label: Content, name: markdown, widget: markdown},
+                          {label: Content Font size, name: column-fontSize, widget: select, hint: "Font size for the content. This will override the column font size.", options: [
+                            {label: "XS", value: "text-xs"},
+                            {label: "S", value: "text-sm"},
+                            {label: "M", value: "text-md"},
+                            {label: "L", value: "text-lg"},
+                            {label: "XL", value: "text-xl"}
+                          ]}
+                        ]},
+                        # {label: Image, name: image, widget: image, allow_multiple: false},
+                        {label: File, name: file, widget: file, allow_multiple: false},
+                        {label: Embed, name: embed, widget: text, hint: "Paste embed code."}
                       ]}
                     ]}
                   ]}
