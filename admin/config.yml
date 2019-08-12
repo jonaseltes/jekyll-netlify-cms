@@ -39,11 +39,17 @@ collections: # A list of collections the CMS should be able to edit
               - {label: Row, name: row, widget: object, fields: [
                   {label: Columns, name: columns, widget: list, types: [
                     {label: Column, name: contentColumn, widget: object, fields: [ #Column for content wrapper
-                      {label: Column Font size, name: column-fontSize, widget: relation, collection: cms, searchFields: ["fontLabel"], displayFields: ["fontLabel"], valueField: "value", hint: "Font size for the column." },
+                      {label: Column Font size, name: column-fontSize, required: false, widget: select, hint: "Font size for the column.", options: [
+                        {label: "XS", value: "text-xs"},
+                        {label: "S", value: "text-sm"},
+                        {label: "M", value: "text-md"},
+                        {label: "L", value: "text-lg"},
+                        {label: "XL", value: "text-xl"}
+                      ]},
                       {label: Content, name: content-list, widget: list, types: [
                         {label: Text / Image, name: markdown-object, widget: object, fields: [
                           {label: Content, name: markdown, widget: markdown},
-                          {label: Content Font size, name: column-fontSize, widget: select, hint: "Font size for the content. This will override the column font size.", options: [
+                          {label: Content Font size, name: content-fontSize, widget: select, hint: "Font size for the content. This will override the column font size.", options: [
                             {label: "XS", value: "text-xs"},
                             {label: "S", value: "text-sm"},
                             {label: "M", value: "text-md"},
