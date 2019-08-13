@@ -3,8 +3,8 @@ items:
     sub-menu:
       - label: Test 2.1
         type: item
-        url: /hackathon/test-2/
-    url: /hackathon/test-2/
+        url: /hackathon-test/
+    url: /hackathon-test/
   - label: Test 3
     sub-menu:
       - label: Test 3.1
