@@ -122,8 +122,8 @@ collections: # A list of collections the CMS should be able to edit
         {label: Top-level items, name: items, widget: list, fields: [
           {label: Label, name: label, widget: string},
           {<<: *pages, label: "Target page", name: url, valueField: "permalink"},
-          {label: Sub-menu, name: sub-menus, widget: list, types: [
-            {label: "Sub-menu-item", name: "sub-item", widget: object, fields: [
+          {label: Sub-menu, name: sub-menu, widget: list, types: [
+            {label: "Sub-menu-item", name: "item", widget: object, fields: [
               {label: Label, name: label, widget: string, hint: "The actual label displayed in the menu."},
               {<<: *pages, label: "Target page", name: url, valueField: "permalink"},
             ]}
