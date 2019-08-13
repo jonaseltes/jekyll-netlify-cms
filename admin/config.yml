@@ -52,6 +52,13 @@ variables:
       ]}
   pages: &pages
     - {label: "Page", name: page, widget: relation, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "title"}
+  participant: &participant
+    - {label: First Name, name: firstname}
+    - {label: Last Name, name: lastname}
+    - {label: Title, name: title}
+    - {label: Organsiation, name: organisaiton, optional: true, hint: (Optional)}
+    - {label: Bio, name: bio, widget: markdown}
+    - {label: Photo, name: photo, widget: image, allow_multiple: false}
 
 collections: # A list of collections the CMS should be able to edit
   - label: CMS settings
@@ -71,6 +78,17 @@ collections: # A list of collections the CMS should be able to edit
     fields:
       - {label: "Title", name: title, widget: string}
       - {label: "URL", name: "url", widget: string}
+  - label: Data
+    name: cms-data
+    files:
+      - label: Participants
+        name: participants
+        file: _data/cms-data/participants.yml
+        fields: [
+          {label: Participants, name: participants, widget: list, fields: [
+            {<<: *participant}
+          ]}
+        ]
   - label: Participants
     name: participants
     identifier_field: lastname
@@ -78,12 +96,7 @@ collections: # A list of collections the CMS should be able to edit
     folder: "_data/participants"
     slug: "{{firstname}}_{{lastname}}"
     fields: [
-      {label: First Name, name: firstname},
-      {label: Last Name, name: lastname},
-      {label: Title, name: title},
-      {label: Organsiation, name: organisaiton, optional: true, hint: (Optional)},
-      {label: Bio, name: bio, widget: markdown},
-      {label: Photo, name: photo, widget: image, allow_multiple: false}
+      {<<: *participant}
     ]
   - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Pages (Test)" # Used in the UI, ie.: "New Post"
