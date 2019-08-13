@@ -45,6 +45,8 @@ variables:
         {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."},
         {<<: *contentList, label: "Content"}
       ]}
+  pages: &pages
+    - {label: "Page", name: page, widget: relation, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "title"}
 
 collections: # A list of collections the CMS should be able to edit
   - label: CMS settings
@@ -119,11 +121,11 @@ collections: # A list of collections the CMS should be able to edit
       {label: 'Menu', name: 'menu', file: '_data/menu.yml', fields: [
         {label: Top-level items, name: items, widget: list, fields: [
           {label: Label, name: label, widget: string},
-          {label: Target page, name: target, widget: string, hint: "Page that it should link to."},
+          {<<: *pages, label: "Target page", name: url, valueField: "permalink"},
           {label: Sub-menu, name: sub-menus, widget: list, types: [
             {label: "Sub-menu-item", name: "sub-item", widget: object, fields: [
-              {label: Label, name: label, widget: string},
-              {label: Page title, name: page-title, widget: string, description: "Needs to match the title of the given page."}
+              {label: Label, name: label, widget: string, hint: "The actual label displayed in the menu."},
+              {<<: *pages, label: "Target page", name: url, valueField: "permalink"},
             ]}
           ]}
         ]}
