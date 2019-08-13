@@ -7,6 +7,45 @@ backend:
 media_folder: "assets/media/uploads" # Folder where user uploaded files should go
 logo_url: /assets/media/SWL-LOGO-3-LOWER-BLACK.svg
 
+# Variables
+variables:
+  fontSizes: &fontSizes
+    - {label: Font size, name: fontSize, required: false, widget: select, hint: "(Optional) Font size.", options: [
+        {label: "XS", value: "text-xs"},{label: "S", value: "text-sm"},{label: "M", value: "text-md"},{label: "L", value: "text-lg"},{label: "XL", value: "text-xl"}
+      ]}
+  fonts: &fonts
+    - {label: "Font", name: font, widget: select, default: "open-sans", options: [
+      { label: "Open Sans", value: "open-sans" },
+      { label: "Roboto Mono", value: "roboto-mono" }
+    ]}
+  file: &file
+    - {label: File, name: fileObject, widget: object, fields: [
+        {label: File, name: file, widget: file, allow_multiple: false}
+      ]}
+  embed: &embed
+    - {label: Embed, name: embedObject, widget: object, fields: [
+        {label: Embed, name: embed, widget: string, hint: "Paste embed code."}
+      ]}
+  image: &image
+    - {label: Image, name: imageObject, widget: object, fields: [
+        {label: Image, name: image, widget: image, multiple: false}
+      ]}
+  text: &text
+    - {label: Text, name: textObject, widget: object, fields: [
+        {label: Content, name: markdown, widget: markdown},
+        {<<: *fonts},
+        {<<: *fontSizes}
+      ]}
+  contentList: &contentList
+    - {label: Content, name: content-list, widget: list, types: [
+        {<<: *file}, {<<: *embed}, {<<: *image}, {<<: *text}
+      ]}
+  column: &column
+    - {label: Column, name: col, widget: object, fields: [
+        {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."},
+        {<<: *contentList, label: "Content"}
+      ]}
+
 collections: # A list of collections the CMS should be able to edit
   - label: CMS settings
     name: cms
@@ -18,6 +57,13 @@ collections: # A list of collections the CMS should be able to edit
           {label: "Label", name: fontLabel, widget: string},
           {label: "Class Name", name: value, widget: string}
         ]}
+  - label: Fonts
+    name: fonts
+    create: true
+    folder: "_data/fonts"
+    fields:
+      - {label: "Title", name: title, widget: string}
+      - {label: "URL", name: "url", widget: string}
   - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Pages (Test)" # Used in the UI, ie.: "New Post"
     folder: "_pageCollection" # The path to the folder where the documents are stored
@@ -26,51 +72,32 @@ collections: # A list of collections the CMS should be able to edit
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Layout", name: "layout", widget: string, default: "page", hint: "Do not edit this."}
-      - {label: "Parent page", name: parentURL, widget: relation, required: false, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "url"}
+      # - {label: "Menu", name: menu, widget: select, required: false, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "url"}
       - {label: "URL", name: "permalink", widget: string, default: "/name-of-this-page-here/", hint: "URL of the page, should start and finish with a '/' and should not contain any blank spaces, e.g. '/name-of-this-page/', or '/hackathon/name-of-this-page/'. The URL needs to be unique for each page so please make sure it's not already in use by any other page."}
       - label: "Page Content" #Content wrapper
         name: "page_content"
         widget: "object"
         fields:
-          - label: "Rows" #Rows wrapper
+          - label: "Sections" #Rows wrapper
             name: "rows"
             widget: list
-            fields:
-              - {label: Row, name: row, widget: object, fields: [
-                  {label: Columns, name: columns, widget: list, types: [
-                    {label: Column, name: contentColumn, widget: object, fields: [ #Column for content wrapper
-                      {label: Column Font size, name: column-fontSize, required: false, widget: select, hint: "Font size for the column.", options: [
-                        {label: "XS", value: "text-xs"},
-                        {label: "S", value: "text-sm"},
-                        {label: "M", value: "text-md"},
-                        {label: "L", value: "text-lg"},
-                        {label: "XL", value: "text-xl"}
-                      ]},
-                      {label: Content, name: content-list, widget: list, types: [
-                        {label: Text / Image, name: markdown-object, widget: object, fields: [
-                          {label: Content, name: markdown, widget: markdown},
-                          {label: Content Font size, name: content-fontSize, widget: select, hint: "Font size for the content. This will override the column font size.", options: [
-                            {label: "XS", value: "text-xs"},
-                            {label: "S", value: "text-sm"},
-                            {label: "M", value: "text-md"},
-                            {label: "L", value: "text-lg"},
-                            {label: "XL", value: "text-xl"}
-                          ]}
-                        ]},
-                        # {label: Image, name: image, widget: image, allow_multiple: false},
-                        {label: File, name: file, widget: file, allow_multiple: false},
-                        {label: Embed, name: embed, widget: text, hint: "Paste embed code."}
-                      ]}
-                    ]}
+            fields: [
+              {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
+              {label: Content, name: content, widget: list, types: [
+                {label: 1 Column, name: cols1, widget: object, fields: [ #Column for content wrapper
+                  {<<: *column, label: "Column"}
+                ]},
+                {label: 2 Columns, name: cols2, widget: object, fields: [ #Column for content wrapper
+                  {<<: *column, label: "Left Column"},
+                  {<<: *column, label: "Right Column"}
+                ]},
+                {label: 3 Columns, name: cols3, widget: object, hint: "If more than 3 columns are added they will just appear below the pewvious ones in a logical order.", fields: [ #Column for content wrapper
+                  {label: Columns, name: cols, widget: list, fields: [
+                    {<<: *column, label: "Column"}
                   ]}
                 ]}
-                # - {label: "Column for rows", name: rowColumn, widget: object, fields: [ #Column for rows wrapper
-                #     {label: Row, name: row, widget: list, fields: [ #Rows within column wrapper
-                #       {label: Columns, name: column, widget: list, types: [
-                #         {label: Content, name: content, widget: markdown}
-                #       ]} #Row within column wrapper
-                #     ]}
-                #   ]}
+              ]}
+            ]
   - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Posts (Not in use)" # Used in the UI, ie.: "New Post"
     folder: "_posts" # The path to the folder where the documents are stored
@@ -85,26 +112,27 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Categories", name: "categories", widget: "string", required: false}
     meta: # Meta data fields. Just like fields, but without any preview element
       - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD hh:mm:ss"}
+  - label: 'Menu & Footer'
+    name: header-footer
+    description: "Collection for editing the Site menu and footer."
+    files: [
+      {label: 'Menu', name: 'menu', file: '_data/menu.yml', fields: [
+        {label: Top-level items, name: items, widget: list, fields: [
+          {label: Label, name: label, widget: string},
+          {label: Target page, name: target, widget: string, hint: "Page that it should link to."},
+          {label: Sub-menu, name: sub-menus, widget: list, types: [
+            {label: "Sub-menu-item", name: "sub-item", widget: object, fields: [
+              {label: Label, name: label, widget: string},
+              {label: Page title, name: page-title, widget: string, description: "Needs to match the title of the given page."}
+            ]}
+          ]}
+        ]}
+      ]}
+    ]
   - name: 'content'
     label: 'Content'
     description: "Collection for editing different types of content."
     files:
-      - label: 'Menu'
-        name: 'menu'
-        file: '_data/menu.yml'
-        fields:
-          - label: Top-level items
-            name: items
-            widget: list
-            fields:
-              - {label: Label, name: label, widget: string}
-              - {label: Target page, name: target, widget: string, hint: "Page that it should link to."}
-              - {label: Sub-menu, name: sub-menus, widget: list, types: [{
-                  {label: "Sub-menu-item", name: "sub-item", widget: object, fields: [
-                    {label: Label, name: label, widget: string},
-                    {label: Page title, name: page-title, widget: string, description: "Needs to match the title of the given page."}
-                  ]}
-                }]}
       - label: 'Content'
         name: 'content'
         file: '_data/content.yml'
