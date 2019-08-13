@@ -45,6 +45,11 @@ variables:
         {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."},
         {<<: *contentList, label: "Content"}
       ]}
+  paddng: &padding
+    - {label: Padding, name: padding, widget: object, fields: [
+        {label: Padding Top, name: padding-top, widget: select, default: "0", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]},
+        {label: Padding Bottom, name: padding-bottom, widget: select, default: "0", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]}
+      ]}
   pages: &pages
     - {label: "Page", name: page, widget: relation, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "title"}
 
@@ -66,6 +71,24 @@ collections: # A list of collections the CMS should be able to edit
     fields:
       - {label: "Title", name: title, widget: string}
       - {label: "URL", name: "url", widget: string}
+  - label: Data
+    name: cms-data
+    files:
+      - label: "Participants"
+        name: "participants"
+        file: "_data/participants.yml"
+        fields: [
+          {label: Participants, name: participants, widget: list, fields: [
+            {label: First Name, name: firstname},
+            {label: Last Name, name: lastname},
+            {label: Title, name: title},
+            {label: Bio, name: bio, widget: markdown},
+            {label: Photo, name: photo, widget: image, allow_multiple: false}
+          ]}
+        ]
+    fields:
+      - {label: "Title", name: title, widget: string}
+      - {label: "Content", name: "url", widget: string}
   - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Pages (Test)" # Used in the UI, ie.: "New Post"
     folder: "_pageCollection" # The path to the folder where the documents are stored
@@ -85,7 +108,8 @@ collections: # A list of collections the CMS should be able to edit
             widget: list
             fields: [
               {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-              {label: Content, name: content, widget: list, types: [
+              {<<: *padding },
+              {label: Columns, name: columns, widget: list, types: [
                 {label: 1 Column, name: cols1, widget: object, fields: [ #Column for content wrapper
                   {<<: *column, label: "Column"}
                 ]},
