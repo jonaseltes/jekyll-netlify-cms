@@ -1,7 +1,6 @@
 ---
-names:
-  firstname: Test
-  lastname: Test
+firstname: Joe
+lastname: Coppard
 title: Intern intern
 bio: >-
   Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit
