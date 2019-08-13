@@ -1,3 +1,15 @@
 items:
-  - label: Hackathon
-    target: /hackathon/
+  - label: Test 2
+    sub-menus:
+      - label: Test 2.1
+        target: /hackathon/test-2/
+        type: sub-item
+        url: /hackathon/test-2/
+    url: /hackathon/test-2/
+  - label: Test 3
+    sub-menus:
+      - label: Test 3.1
+        target: /hackathon/test-2/
+        type: sub-item
+        url: /hackathon/test-2/
+    url: /hackathon/test-2/
