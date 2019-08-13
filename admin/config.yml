@@ -73,7 +73,7 @@ collections: # A list of collections the CMS should be able to edit
     description: "Collection for pages"
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Layout", name: "layout", widget: string, default: "page", hint: "Do not edit this."}
+      - {label: "Layout", name: "layout", widget: string, default: "page", hint: "Do not edit this without consulting Another Tomorrow."}
       # - {label: "Menu", name: menu, widget: select, required: false, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "url"}
       - {label: "URL", name: "permalink", widget: string, default: "/name-of-this-page-here/", hint: "URL of the page, should start and finish with a '/' and should not contain any blank spaces, e.g. '/name-of-this-page/', or '/hackathon/name-of-this-page/'. The URL needs to be unique for each page so please make sure it's not already in use by any other page."}
       - label: "Page Content" #Content wrapper
