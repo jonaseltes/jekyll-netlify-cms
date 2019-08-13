@@ -1,6 +1,6 @@
 ---
 title: The Hackathon
-layout: apply
+layout: hackathon
 permalink: /hackathon-test/
 ---
 
