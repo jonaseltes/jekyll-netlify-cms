@@ -1,6 +1,7 @@
 ---
 firstname: Joe
 lastname: Coppard
+fullname: Joe Coppard
 title: Intern intern
 bio: >-
   Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit
