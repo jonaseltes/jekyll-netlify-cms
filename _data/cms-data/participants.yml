@@ -5,6 +5,7 @@ participants:
       lacinia quam venenatis vestibulum. Donec ullamcorper nulla non metus
       auctor fringilla.
     firstname: Jonas
+    fullname: Jonas Eltes
     lastname: Eltes
     photo: /assets/media/uploads/andres_colmenares-andres@internetagemedia.com.png
     title: Intern
@@ -14,6 +15,7 @@ participants:
       magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a
       pharetra augue. Sed posuere consectetur est at lobortis.
     firstname: Joe
+    fullname: Joe Coppard
     lastname: Coppard
     organisaiton: Another Yesterday
     photo: /assets/media/uploads/anna_berggren-anna.berggren@trr.se.jpg
@@ -27,6 +29,7 @@ participants:
       venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at
       lobortis.
     firstname: Karin
+    fullname: Karin Wåhlberg
     lastname: Wåhlberg
     organisaiton: Another Yesterday
     photo: /assets/media/uploads/andreas_wessberg-andreas.wessberg@trr.se.jpg
