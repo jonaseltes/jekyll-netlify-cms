@@ -11,6 +11,7 @@ page_content:
                   - participant: Joe Coppard
                     type: participantObject
           type: cols3
+      id: participants
       padding:
         padding-bottom: '0'
         padding-top: '0'
