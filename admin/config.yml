@@ -9,6 +9,27 @@ logo_url: /assets/media/SWL-LOGO-3-LOWER-BLACK.svg
 
 # Variables
 variables:
+  participantObjectInput: &participantObjectInput
+    - {label: Participant, name: participant, widget: object, fields: [
+        {label: First Name, name: firstname},
+        {label: Last Name, name: lastname},
+        {label: Title, name: title},
+        {label: Organsiation, name: organisaiton, optional: true, hint: (Optional)},
+        {label: Bio, name: bio, widget: markdown},
+        {label: Photo, name: photo, widget: image, allow_multiple: false}
+      ]}
+  participantsFieldsInput: &participantsFieldsInput
+    fields: [
+      {label: First Name, name: firstname},
+      {label: Last Name, name: lastname},
+      {label: Full Name, name: fullname, hint: "First Name + Last Name, yes this is very repeating and seemingly redundant but sadly required due to limitations of the CMS."},
+      {label: Title, name: title},
+      {label: Organsiation, name: organisaiton, required: false},
+      {label: Bio, name: bio, widget: markdown},
+      {label: Photo, name: photo, widget: image, allow_multiple: false}
+    ]
+  participant: &participant
+    - {label: "Participant", name: participant, widget: relation, collection: participants, searchFields: ["fullname"], displayFields: ["fullname"], valueField: "fullname"}
   fontSizes: &fontSizes
     - {label: Font size, name: fontSize, required: false, widget: select, hint: "(Optional) Font size.", options: [
         {label: "XS", value: "text-xs"},{label: "S", value: "text-sm"},{label: "M", value: "text-md"},{label: "L", value: "text-lg"},{label: "XL", value: "text-xl"}
@@ -38,7 +59,7 @@ variables:
       ]}
   contentList: &contentList
     - {label: Content, name: content-list, widget: list, types: [
-        {<<: *file}, {<<: *embed}, {<<: *image}, {<<: *text}
+        {<<: *file}, {<<: *embed}, {<<: *image}, {<<: *text}, {<<: *participant}
       ]}
   column: &column
     - {label: Column, name: col, widget: object, fields: [
@@ -52,24 +73,7 @@ variables:
       ]}
   pages: &pages
     - {label: "Page", name: page, widget: relation, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "title"}
-  participant: &participant
-    - {label: Participant, name: participant, widget: object, fields: [
-        {label: First Name, name: firstname},
-        {label: Last Name, name: lastname},
-        {label: Title, name: title},
-        {label: Organsiation, name: organisaiton, optional: true, hint: (Optional)},
-        {label: Bio, name: bio, widget: markdown},
-        {label: Photo, name: photo, widget: image, allow_multiple: false}
-      ]}
-  participants: &participants
-    fields: [
-      {label: First Name, name: firstname},
-      {label: Last Name, name: lastname},
-      {label: Title, name: title},
-      {label: Organsiation, name: organisaiton, required: false},
-      {label: Bio, name: bio, widget: markdown},
-      {label: Photo, name: photo, widget: image, allow_multiple: false}
-    ]
+
 
 
 collections: # A list of collections the CMS should be able to edit
@@ -97,15 +101,15 @@ collections: # A list of collections the CMS should be able to edit
         name: participants
         file: _data/cms-data/participants.yml
         fields: [
-          {label: Participants, name: participants, widget: list, <<: *participants }
+          {label: Participants, identifier_field: fullname, name: participants, widget: list, <<: *participantsFieldsInput }
         ]
   - label: Participants
     name: participants
-    identifier_field: lastname
+    identifier_field: fullname
     create: true
     folder: "_data/participants"
     slug: "{{firstname}}_{{lastname}}"
-    <<: *participants
+    <<: *participantsFieldsInput
   - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Pages (Test)" # Used in the UI, ie.: "New Post"
     folder: "_pageCollection" # The path to the folder where the documents are stored
