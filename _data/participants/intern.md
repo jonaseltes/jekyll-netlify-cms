@@ -9,6 +9,6 @@ bio: >-
   at lobortis. Vestibulum id ligula porta felis euismod semper. Integer posuere
   erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur
   est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.
-photo: /assets/media/uploads/bliquebynobissmall.jpg
+photo: /assets/media/uploads/andres_colmenares-andres@internetagemedia.com.png
 ---
 
