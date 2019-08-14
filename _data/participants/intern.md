@@ -1,6 +1,7 @@
 ---
 firstname: Jonas
 lastname: Eltes
+fullname: Jonas Eltes
 title: intern
 bio: >-
   Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas sed
