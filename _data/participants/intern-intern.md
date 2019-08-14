@@ -9,6 +9,6 @@ bio: >-
   sit amet non magna. Donec id elit non mi porta gravida at eget metus. Aenean
   lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra
   augue. Donec id elit non mi porta gravida at eget metus.
-photo: /assets/media/uploads/artboard.png
+photo: /assets/media/uploads/andreas_wessberg-andreas.wessberg@trr.se.jpg
 ---
 
