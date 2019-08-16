@@ -36,22 +36,28 @@
 
               <div class="collapse navbar-collapse col col-sm-6 col-md-6 col-xl-4 text-right text-sm-left" id="navbarNavDropdown">
                 <div class="navbar-nav row flex-column flex-sm-row pt-3 pt-sm-0">
-                  {% for item in site.data.menu.items %}
-                    <div class="col-sm offset-0 offset-sm-0 text-left text-sm-left">
-                      <div class="dropdown">
-                        <a class="nav-item nav-link {% if item.url == page.url %}active{% endif %}" href="{{ item.url | relative_url }}">{{ item.label | escape }} {% if item.url == page.url %}←{% else %}→{% endif%}</a>
-                        {% if item.sub-menu %}
-                          <div class="dropdown-content">
-                            {% for subitem in item.sub-menu %}
-                              <a href="{{ subitem.url | relative_url }}">{{subitem.label}}</a>
-                            {% endfor %}
+                  {%- for path in page_paths -%}
+                    {%- assign my_page = site.pages | where: "path", path | first -%}
+                    {%- if my_page.title -%}
+                      {%- if my_page.url != "/about/" and my_page.url != "/canvas/"  -%}
+                        <div class="col-sm offset-0 offset-sm-0 text-left text-sm-left">
+                          <div class="dropdown">
+                            <a class="nav-item nav-link {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }} {% if my_page.url == page.url %}←{% else %}→{% endif%}</a>
+                            <div class="dropdown-content">
+                              <a href="#">Link 1</a>
+                              <a href="#">Link 2</a>
+                              <a href="#">Link 3</a>
+                            </div>
                           </div>
-                        {% endif %}
-                      </div>
-                    </div>
-                  {% endfor %}
+                        </div>
+                      {%- endif -%}
+                    {%- endif -%}
+                  {% endfor -%}
                 </div>
               </div>
+
+
+
 
       </nav>
 

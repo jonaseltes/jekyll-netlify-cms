@@ -15,13 +15,13 @@
           {%- include header.html -%}
         </div>
         <!-- <main class="page-content" aria-label="Content"> -->
-        <div id="content-container" class="content-container flex-grow-1">
+        <div id="content-container" class="content-container flex-grow-1 text-lg">
             {{ content }}
         </div>
 
       </div>
 
-      <div id="footer" class="footer-wrapper position-relative bg-secondary">
+      <div id="footer" class="footer-wrapper position-relative {% if page.url == "/" %}bg-secondary {% endif %}">
         {%- include footer.html -%}
       </div>
       <template>

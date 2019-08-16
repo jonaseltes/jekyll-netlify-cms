@@ -50,6 +50,10 @@ function initCanvas(){
     expandShapes: true,
     onLoad: function (item) {
       logo = item;
+      logo.fillColor = 'white';
+      {% if jekyll.environment == "development" %}
+        logo.fillColor = 'black';
+      {% endif %}
       console.log("logo: " ,logo);
       var charIndex = 14;
       // item.children[0].remove();
@@ -60,9 +64,12 @@ function initCanvas(){
       // logo.children[10].selected = true;
       char.fillColor.alpha = 0;
       char.strokeColor = 'white';
+      {% if jekyll.environment == "development" %}
+        char.strokeColor = 'black';
+      {% endif %}
       char.style = null;
-      logoOuterPath = logo.children[14].children[0];
-      logoInnerPath = logo.children[14].children[1];
+      logoOuterPath = char.children[0];
+      logoInnerPath = char.children[1];
       logoInnerPath.remove();
       logoOuterPath.style = null;
       console.log("logoOuterPath: " ,logoOuterPath);
@@ -93,6 +100,32 @@ console.log("canvas: " ,view.element);
 console.log("paper: " ,paper);
 
 
+function saveCanvas(){
+  console.log("Clicked canvas!");
+  var svgExport = char.exportSVG({ asString: false });
+  var padding = 10;
+  var offsetX = 0 -logoOuterPath.bounds.x + strokeW + padding/2;
+  var offsetY = 0 -logoOuterPath.bounds.y + strokeW/2 + padding/2;
+  svgExport.setAttribute('transform', 'translate('+offsetX+','+offsetY+')');
+  console.log("svgExport: " ,svgExport);
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute('width', logoOuterPath.bounds.width + strokeW + padding);
+  svg.setAttribute('height', logoOuterPath.bounds.height + strokeW + padding);
+  // logoOuterPath.bounds.x = 0;
+  // logoOuterPath.bounds.y = 0;
+  svg.appendChild(svgExport);
+  // console.log("svg: " ,svg);
+  svg = new XMLSerializer().serializeToString(svg);
+  svg = 'data:image/svg+xml;base64,' + btoa(svg);
+  console.log("svg: " ,svg);
+  svg = svg.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+  // window.open(svg);
+  // char.fillColor.alpha = 0;
+  // char.strokeColor = 'black';
+  // char.style = null;
+  saveBase64(svg, 'logo.svg');
+}
+
 
 $( document ).ready(function() {
   console.log("paper.js ready!");
@@ -109,6 +142,11 @@ $( document ).ready(function() {
     initCanvas();
     init = true;
   }
+  $("#paperCanvas").click(function(){
+    {% if jekyll.environment == "development" %}
+      saveCanvas();
+    {% endif %}
+  });
   documentReady = true;
 });
 
@@ -134,6 +172,12 @@ function onResize(event) {
 
 var seed = Math.random()*1000;
 console.log("seed: " ,seed);
+
+// function onMouseDown(event) {
+// 	console.log('You pressed the mouse!');
+// }
+
+
 
 function onFrame(event) {
 

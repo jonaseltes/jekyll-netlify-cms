@@ -1,0 +1,7 @@
+items:
+  - label: The Hackathon
+    sub-menu: []
+    url: /hackathon/
+  - label: The Lab
+    sub-menu: []
+    url: /lab/

@@ -1,0 +1,36 @@
+participants:
+  - bio: >-
+      Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna
+      mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem
+      lacinia quam venenatis vestibulum. Donec ullamcorper nulla non metus
+      auctor fringilla.
+    firstname: Jonas
+    fullname: Jonas Eltes
+    lastname: Eltes
+    photo: /assets/media/uploads/andres_colmenares-andres@internetagemedia.com.png
+    title: Intern
+  - bio: >-
+      Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+      Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus
+      magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a
+      pharetra augue. Sed posuere consectetur est at lobortis.
+    firstname: Joe
+    fullname: Joe Coppard
+    lastname: Coppard
+    organisaiton: Another Yesterday
+    photo: /assets/media/uploads/anna_berggren-anna.berggren@trr.se.jpg
+    title: Intern Intern
+  - bio: >-
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia
+      bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet
+      fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+      venenatis vestibulum. Cum sociis natoque penatibus et magnis dis
+      parturient montes, nascetur ridiculus mus. Integer posuere erat a ante
+      venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at
+      lobortis.
+    firstname: Karin
+    fullname: Karin Wåhlberg
+    lastname: Wåhlberg
+    organisaiton: Another Yesterday
+    photo: /assets/media/uploads/andreas_wessberg-andreas.wessberg@trr.se.jpg
+    title: CEO

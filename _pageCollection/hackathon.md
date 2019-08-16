@@ -1,5 +1,5 @@
 ---
-layout: hackathon
 title: The Hackathon
+layout: hackathon
 permalink: /hackathon/
 ---

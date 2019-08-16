@@ -26,16 +26,16 @@ url: "https://www.swedishworklab.com" # the base hostname & protocol for your si
 # - about.html
 
 collections:
-  pagesCollection:
+  pageCollection:
     output: true
     permalink: /:name/
 
-defaults:
-  - scope:
-      path: ""
-      type: "pagesCollection"
-    values:
-      layout: "page"
+# defaults:
+#   - scope:
+#       path: ""
+#       type: "hackathon"
+#     values:
+#       layout: "page"
 
 # Site variables
 image_path: assets/media
@@ -115,7 +115,9 @@ jekyll-minifier:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
+exclude:
+  - hackathon.md
+  - lab.md
 #   - Gemfile
 #   - Gemfile.lock
 #   - node_modules
