@@ -10,6 +10,33 @@ $(function() {
   }
 });
 
+var saveBlob = (function () {
+    var a = document.createElement("a");
+    document.body.appendChild(a);
+    a.style = "display: none";
+    return function (blob, fileName) {
+        var url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(url);
+    };
+}());
+
+var saveBase64 = (function () {
+    var a = document.createElement("a");
+    document.body.appendChild(a);
+    a.style = "display: none";
+    return function (string, filename) {
+        a.href = string;
+        a.download = filename;
+        a.click();
+        // window.URL.revokeObjectURL(url);
+    };
+}());
+
+
+
 function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }

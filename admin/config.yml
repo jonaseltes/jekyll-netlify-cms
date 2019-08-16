@@ -30,6 +30,22 @@ variables:
     ]
   participant: &participant
     - {label: "Participant", name: participant, widget: relation, collection: participants, searchFields: ["fullname"], displayFields: ["fullname"], valueField: "fullname"}
+  participantObject: &participantObject
+    - {label: Participant, name: participantObject, widget: object, fields: [
+        {<<: *participant }
+      ]}
+  allParticpantsObject: &allParticpantsObject
+    - {label: All Participants, name: allParticpantsObject, widget: object, fields: [
+        {label: Display Options, name: info, widget: select, multiple: true, options: [
+            { label: "Images", value: "image" },
+            { label: "First Name", value: "firstname" },
+            { label: "Last Name", value: "lastname" },
+            { label: "Title", value: "title" },
+            { label: "Bio", value: "bio" }
+        ]},
+      ]}
+  IDinput: &IDinput
+    - {label: ID, name: id, required: false, hint: "ID of the element which can be used for anchor-linking."}
   fontSizes: &fontSizes
     - {label: Font size, name: fontSize, required: false, widget: select, hint: "(Optional) Font size.", options: [
         {label: "XS", value: "text-xs"},{label: "S", value: "text-sm"},{label: "M", value: "text-md"},{label: "L", value: "text-lg"},{label: "XL", value: "text-xl"}
@@ -59,20 +75,77 @@ variables:
       ]}
   contentList: &contentList
     - {label: Content, name: content-list, widget: list, types: [
-        {<<: *file}, {<<: *embed}, {<<: *image}, {<<: *text}, {<<: *participant}
-      ]}
-  column: &column
-    - {label: Column, name: col, widget: object, fields: [
-        {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."},
-        {<<: *contentList, label: "Content"}
+        {<<: *file}, {<<: *embed}, {<<: *image}, {<<: *text}, {<<: *participantObject}, {<<: *allParticpantsObject}
       ]}
   paddng: &padding
     - {label: Padding, name: padding, widget: object, fields: [
         {label: Padding Top, name: padding-top, widget: select, default: "0", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]},
         {label: Padding Bottom, name: padding-bottom, widget: select, default: "0", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]}
       ]}
+  divSettings: &divSettings
+    - {<<: *IDinput}
+    - {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."}
+    - {<<: *padding }
   pages: &pages
     - {label: "Page", name: page, widget: relation, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "title"}
+  columnList: &columnList
+    - {label: Columns, name: columns, widget: list, fields: [
+        {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."},
+        {<<: *contentList, label: "Content"}
+      ]}
+  columnCustomList: &columnCustomList
+    - {label: Columns, name: columns, widget: list, fields: [
+        {label: Size, name: size, widget: select, hint: 'Each section can hold a total of 12 columns. So A column of size "6/12" fills up half the section width. Row size "auto" means it will share remaining space of the section with the rest of the rows automatically. So if a section has two columns with size "auto" they will each fill up half of the section (6/12).', options: [
+          { label: "auto", value: "col" },
+          { label: "3/12", value: "col-3" },
+          { label: "4/12", value: "col-4" },
+          { label: "6/12", value: "col-3" }
+        ]},
+        {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."},
+        {<<: *contentList, label: "Content"}
+      ]}
+  columnObject: &columnObject
+    - {label: Column, name: col, widget: object, fields: [
+        {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."},
+        {<<: *contentList, label: "Content"}
+      ]}
+  columns_1_section: &columns_1_section
+    - {label: No columns, name: col, widget: object, fields: [
+        {<<: *IDinput},
+        {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
+        {<<: *padding },
+        {<<: *contentList, label: "Content"}
+      ]}
+  columns_2_section: &columns_2_section
+    - {label: 2 Columns, name: col, widget: object, fields: [
+        {<<: *IDinput},
+        {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
+        {<<: *padding },
+        {<<: *columnObject, label: "Left Column"}, {<<: *columnObject, label: "Right Column"}
+      ]}
+  columns_3_section: &columns_3_section
+    - {label: 3 Columns, name: cols, widget: object, fields: [
+        {<<: *IDinput},
+        {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
+        {<<: *padding },
+        {<<: *columnList}
+      ]}
+  columns_custom_section: &columns_custom_section
+    - {label: Custom Columns (Not recommended), name: cols, widget: object, fields: [
+        {<<: *IDinput},
+        {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
+        {<<: *padding },
+        {<<: *columnCustomList}
+      ]}
+  section: &section
+    types: [
+      {<<: *columns_1_section},
+      {<<: *columns_2_section},
+      {<<: *columns_3_section},
+      {<<: *columns_custom_section}
+    ]
+
+ # <<: [*divSettings, *columns_1_section] # Syntax for merging arrays
 
 
 
@@ -127,24 +200,7 @@ collections: # A list of collections the CMS should be able to edit
           - label: "Sections" #Rows wrapper
             name: "rows"
             widget: list
-            fields: [
-              {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-              {<<: *padding },
-              {label: Columns, name: columns, widget: list, types: [
-                {label: 1 Column, name: cols1, widget: object, fields: [ #Column for content wrapper
-                  {<<: *column, label: "Column"}
-                ]},
-                {label: 2 Columns, name: cols2, widget: object, fields: [ #Column for content wrapper
-                  {<<: *column, label: "Left Column"},
-                  {<<: *column, label: "Right Column"}
-                ]},
-                {label: 3 Columns, name: cols3, widget: object, hint: "If more than 3 columns are added they will just appear below the pewvious ones in a logical order.", fields: [ #Column for content wrapper
-                  {label: Columns, name: cols, widget: list, fields: [
-                    {<<: *column, label: "Column"}
-                  ]}
-                ]}
-              ]}
-            ]
+            <<: *section
   - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Posts (Not in use)" # Used in the UI, ie.: "New Post"
     folder: "_posts" # The path to the folder where the documents are stored
