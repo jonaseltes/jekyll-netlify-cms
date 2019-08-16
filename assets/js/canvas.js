@@ -687,7 +687,7 @@ function clickedBlob (intersects){
       if (blob.name == "rest") {
           $('#results-info-first').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+age1+' said "'+max.answer+'", compared to '+amountMax+'% of those in age group '+age2+'.</p></div>');
       }
-      $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
+      // $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
 
     else {
@@ -710,7 +710,7 @@ function clickedBlob (intersects){
       if (blob.name == "rest") {
           $('#results-info-first').html('<div class="rest-color"><p class="">'+highlightAmount+'% of those in the same age group as you ('+userObject.age+') said "'+highlight.answer+'".</p></div>');
       }
-      $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
+      // $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
     }
   }
   else {

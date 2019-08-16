@@ -1,5 +1,5 @@
 ---
 layout: lab
 title: The Lab
-permalink: /lab-test/
+permalink: /lab/
 ---
