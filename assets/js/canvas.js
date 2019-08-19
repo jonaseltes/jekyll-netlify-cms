@@ -634,100 +634,114 @@ function init() {
 
 
 function clickedBlob (intersects){
-  if (intersects.length > 0) {
-    var blob = intersects[0].object;
-    // clickedBlob = blob;
-    console.log("clicked blob: " ,blob);
-    for (var i = 0; i < meshArray.length; i++) {
-      if (meshArray[i].name != blob.name) {
-        meshArray[i].material.opacity = 0.5;
+
+  if (animation_mode == "lab") {
+    if (intersects.length > 0) {
+      var blob = intersects[0].object;
+      // clickedBlob = blob;
+      console.log("clicked blob: " ,blob);
+      for (var i = 0; i < meshArray.length; i++) {
+        if (meshArray[i].name != blob.name) {
+          meshArray[i].material.opacity = 0.5;
+        }
+        else {
+          meshArray[i].material.opacity = 1.0;
+        }
       }
+
+      if (filter) {
+        // var active_filter = $('#filter-select').val().toLowerCase();
+        // var groupObject = data_highlights[active_filter];
+        var category = blob.name;
+        // var data1 =
+
+        var age1 = Math.floor(Math.random()*Object.keys(data_highlights.ages).length);
+        var age2 = Math.floor(Math.random()*Object.keys(data_highlights.ages).length);
+
+
+        while (age2 == age1) {
+          age2 = Math.floor(Math.random()*Object.keys(data_highlights.ages).length);
+        }
+
+        age1 = Object.keys(data_highlights.ages)[age1];
+        age2 = Object.keys(data_highlights.ages)[age2];
+
+        console.log("age1: " ,age1);
+        console.log("age2: " ,age2);
+
+
+        // COMPARING MOST EXTREME
+        // var max = data_highlights.all.greatest[blob.name].max;
+        // var min = data_highlights.all.greatest[blob.name].min;
+
+        var max = data_highlights.ages[age1].highlights[blob.name];
+        var min = data_highlights.ages[age2].data.categories.answers[blob.name][max.answer];
+
+        var amountMax = Math.round(((max.percentage)*100) * 10) / 10;
+        var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
+
+        if (blob.name == "work") {
+            $('#results-info-first').html("<div class='work-color'><p>"+amountMin+"% of those in age group "+age1+" said they would switch workplace every "+max.change+" years, compared to "+amountMax+"% of those in age group "+age2+".</p></div>");
+        }
+        if (blob.name == "learn") {
+            $('#results-info-first').html("<div class='learn-color'><p>"+amountMin+"% of those surveyed in age group "+age1+" said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+max.answer+", compared to "+amountMax+"% of those in age group "+age2+".</span></p></div>");
+        }
+        if (blob.name == "rest") {
+            $('#results-info-first').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+age1+' said "'+max.answer+'", compared to '+amountMax+'% of those in age group '+age2+'.</p></div>');
+        }
+        // $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
+      }
+
       else {
-        meshArray[i].material.opacity = 1.0;
+        var category = blob.name;
+        var userObject = data_highlights.user;
+        var highlight = data_highlights.ages[userObject.age].highlights[category];
+
+        // var max = data_highlights.all.greatest[category].max;
+        // var min = data_highlights.user.data.parsed[category];
+        var highlightAmount = Math.round(((highlight.percentage)*100) * 10) / 10;
+        // var amountMax = Math.round(((max.percentage)*100) * 10) / 10;
+        // var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
+
+        if (blob.name == "work") {
+            $('#results-info-first').html("<div class='work-color'><p>"+highlightAmount+"% of those in the same age group as you ("+userObject.age+") said they would switch workplace every "+highlight.change+" years.</p></div>");
+        }
+        if (blob.name == "learn") {
+            $('#results-info-first').html("<div class='learn-color'><p>"+highlightAmount+"% of those in the same age group as you ("+userObject.age+") said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+highlight.answer+".</span></p></div>");
+        }
+        if (blob.name == "rest") {
+            $('#results-info-first').html('<div class="rest-color"><p class="">'+highlightAmount+'% of those in the same age group as you ('+userObject.age+') said "'+highlight.answer+'".</p></div>');
+        }
+        // $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
       }
     }
-
-    if (filter) {
-      // var active_filter = $('#filter-select').val().toLowerCase();
-      // var groupObject = data_highlights[active_filter];
-      var category = blob.name;
-      // var data1 =
-
-      var age1 = Math.floor(Math.random()*Object.keys(data_highlights.ages).length);
-      var age2 = Math.floor(Math.random()*Object.keys(data_highlights.ages).length);
-
-
-      while (age2 == age1) {
-        age2 = Math.floor(Math.random()*Object.keys(data_highlights.ages).length);
-      }
-
-      age1 = Object.keys(data_highlights.ages)[age1];
-      age2 = Object.keys(data_highlights.ages)[age2];
-
-      console.log("age1: " ,age1);
-      console.log("age2: " ,age2);
-
-
-      // COMPARING MOST EXTREME
-      // var max = data_highlights.all.greatest[blob.name].max;
-      // var min = data_highlights.all.greatest[blob.name].min;
-
-      var max = data_highlights.ages[age1].highlights[blob.name];
-      var min = data_highlights.ages[age2].data.categories.answers[blob.name][max.answer];
-
-      var amountMax = Math.round(((max.percentage)*100) * 10) / 10;
-      var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
-
-      if (blob.name == "work") {
-          $('#results-info-first').html("<div class='work-color'><p>"+amountMin+"% of those in age group "+age1+" said they would switch workplace every "+max.change+" years, compared to "+amountMax+"% of those in age group "+age2+".</p></div>");
-      }
-      if (blob.name == "learn") {
-          $('#results-info-first').html("<div class='learn-color'><p>"+amountMin+"% of those surveyed in age group "+age1+" said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+max.answer+", compared to "+amountMax+"% of those in age group "+age2+".</span></p></div>");
-      }
-      if (blob.name == "rest") {
-          $('#results-info-first').html('<div class="rest-color"><p class="">'+amountMin+'% of those surveyed in age group '+age1+' said "'+max.answer+'", compared to '+amountMax+'% of those in age group '+age2+'.</p></div>');
-      }
-      // $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
-    }
-
     else {
-      var category = blob.name;
-      var userObject = data_highlights.user;
-      var highlight = data_highlights.ages[userObject.age].highlights[category];
-
-      // var max = data_highlights.all.greatest[category].max;
-      // var min = data_highlights.user.data.parsed[category];
-      var highlightAmount = Math.round(((highlight.percentage)*100) * 10) / 10;
-      // var amountMax = Math.round(((max.percentage)*100) * 10) / 10;
-      // var amountMin = Math.round(((min.percentage)*100) * 10) / 10;
-
-      if (blob.name == "work") {
-          $('#results-info-first').html("<div class='work-color'><p>"+highlightAmount+"% of those in the same age group as you ("+userObject.age+") said they would switch workplace every "+highlight.change+" years.</p></div>");
+      for (var i = 0; i < meshArray.length; i++) {
+          meshArray[i].material.opacity = 1.0;
       }
-      if (blob.name == "learn") {
-          $('#results-info-first').html("<div class='learn-color'><p>"+highlightAmount+"% of those in the same age group as you ("+userObject.age+") said they would pause working and have education be their primary occupation <span class='text-lowercase'>"+highlight.answer+".</span></p></div>");
+      if (filter) {
+        $('#results-info-first').text("Click one of the blobs to explore insights and trends within each category:");
       }
-      if (blob.name == "rest") {
-          $('#results-info-first').html('<div class="rest-color"><p class="">'+highlightAmount+'% of those in the same age group as you ('+userObject.age+') said "'+highlight.answer+'".</p></div>');
-      }
-      // $('#results-info-first').append("<p>How does that change the future of work?<br><a class='no-underline' href='/hackathon'>Join the hackathon to find out →</a></p>");
-    }
-  }
-  else {
-    for (var i = 0; i < meshArray.length; i++) {
-        meshArray[i].material.opacity = 1.0;
-    }
-    if (filter) {
-      $('#results-info-first').text("Click one of the blobs to explore insights and trends within each category:");
-    }
 
-    else {
-      $('#results-info-first').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
-      // $('#results-info-second').text("");
+      else {
+        $('#results-info-first').text("Click one of the blobs to explore how your ideal future of work compares to the rest of the results:");
+        // $('#results-info-second').text("");
+      }
     }
   }
 
-
+  if (animation_mode == "blobs") {
+    if (intersects.length > 0) {
+      var blob = intersects[0].object;
+      // clickedBlob = blob;
+      console.log("clicked blob: " ,blob);
+      {% if jekyll.environment == "development" %}
+        var exporter = new THREE.STLExporter();
+        var result = exporter.parse( blob, { binary: true } );
+        saveArrayBuffer( result, 'blob.stl' );
+      {% endif %}
+    }
+  }
 }
 
 
@@ -739,9 +753,15 @@ function onDocumentMouseDown(event) {
 
   raycaster.setFromCamera( mouse, camera );
   // calculate objects intersecting the picking ray
-  window.intersects = raycaster.intersectObjects( labWrapper.children, true );
-  clickedBlob(intersects);
+  if (animation_mode == "lab") {
+    window.intersects = raycaster.intersectObjects( labWrapper.children, true );
+  }
 
+  else if (animation_mode == "blobs") {
+    window.intersects = raycaster.intersectObjects( scene.children, true );
+  }
+
+  clickedBlob(intersects);
 }
 
 function to3Dcoord (x, y) {

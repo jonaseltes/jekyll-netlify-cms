@@ -37,6 +37,13 @@ var saveBase64 = (function () {
 
 
 
+function saveArrayBuffer( buffer, filename ) {
+
+	saveBlob( new Blob( [ buffer ], { type: 'application/octet-stream' } ), filename );
+
+}
+
+
 function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
