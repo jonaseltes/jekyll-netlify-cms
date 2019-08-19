@@ -65,25 +65,25 @@ variables:
       { label: "Roboto Mono", value: "roboto-mono" }
     ]}
   file: &file
-    - {label: File, name: fileObject, widget: object, fields: [
+    - {label: File, name: file, widget: object, fields: [
         {label: File, name: file, widget: file, allow_multiple: false}
       ]}
   embed: &embed
-    - {label: Embed, name: embedObject, widget: object, fields: [
+    - {label: Embed, name: embed, widget: object, fields: [
         {label: Embed, name: embed, widget: string, hint: "Paste embed code."}
       ]}
   image: &image
-    - {label: Image, name: imageObject, widget: object, fields: [
+    - {label: Image, name: image, widget: object, fields: [
         {label: Image, name: image, widget: image, multiple: false}
       ]}
   text: &text
-    - {label: Text, name: textObject, widget: object, fields: [
+    - {label: Text, name: text, widget: object, fields: [
         {label: Content, name: markdown, widget: markdown},
         {<<: *fonts},
         {<<: *fontSizes}
       ]}
   contentList: &contentList
-    - {label: Content, name: content-list, widget: list, types: [
+    - {label: Content, name: content, widget: list, types: [
         {<<: *file}, {<<: *embed}, {<<: *image}, {<<: *text}, {<<: *participantObject}, {<<: *allParticpantsObject}
       ]}
   paddng: &padding
