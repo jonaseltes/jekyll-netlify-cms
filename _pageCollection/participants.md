@@ -10,6 +10,7 @@ page_content:
             - lastname
             - image
             - title
+            - bio
           type: allParticpantsObject
       padding:
         padding-bottom: '0'
