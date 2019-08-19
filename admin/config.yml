@@ -29,20 +29,29 @@ variables:
       {label: Photo, name: photo, widget: image, allow_multiple: false}
     ]
   participant: &participant
-    - {label: "Participant", name: participant, widget: relation, collection: participants, searchFields: ["fullname"], displayFields: ["fullname"], valueField: "fullname"}
+    - {label: "Participant(s)", name: participant, widget: relation, collection: participants, searchFields: ["fullname"], displayFields: ["fullname"], valueField: "fullname", multiple: true}
+  participantOptions: &participantOptions
+    - {label: Info, name: info, widget: select, multiple: true, options: [
+        { label: "Image", value: "image" },
+        { label: "First Name", value: "firstname" },
+        { label: "Last Name", value: "lastname" },
+        { label: "Title", value: "title" },
+        { label: "Bio", value: "bio" }
+      ]}
   participantObject: &participantObject
-    - {label: Participant, name: participantObject, widget: object, fields: [
-        {<<: *participant }
+    - {label: Participant(s), name: participantObject, widget: object, fields: [
+        {<<: *participant },
+        {<<: *participantOptions }
       ]}
   allParticpantsObject: &allParticpantsObject
     - {label: All Participants, name: allParticpantsObject, widget: object, fields: [
-        {label: Display Options, name: info, widget: select, multiple: true, options: [
-            { label: "Images", value: "image" },
+        {label: Info, name: info, widget: select, multiple: true, options: [
+            { label: "Image", value: "image" },
             { label: "First Name", value: "firstname" },
             { label: "Last Name", value: "lastname" },
             { label: "Title", value: "title" },
             { label: "Bio", value: "bio" }
-        ]},
+        ]}
       ]}
   IDinput: &IDinput
     - {label: ID, name: id, required: false, hint: "ID of the element which can be used for anchor-linking."}
