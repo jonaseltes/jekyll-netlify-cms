@@ -7,6 +7,9 @@ page_content:
     - content-list:
         - info:
             - firstname
+            - lastname
+            - image
+            - title
           type: allParticpantsObject
       padding:
         padding-bottom: '0'
