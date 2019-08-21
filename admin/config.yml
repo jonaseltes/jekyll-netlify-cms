@@ -31,7 +31,7 @@ variables:
   participant: &participant
     - {label: "Participant(s)", name: participant, widget: relation, collection: participants, searchFields: ["fullname"], displayFields: ["fullname"], valueField: "fullname", multiple: true}
   participantOptions: &participantOptions
-    - {label: Info, name: info, widget: select, multiple: true, options: [
+    - {label: Info, name: info, widget: select, multiple: true, default:[image, firstname, lastname, title, bio], options: [
         { label: "Image", value: "image" },
         { label: "First Name", value: "firstname" },
         { label: "Last Name", value: "lastname" },
@@ -45,13 +45,7 @@ variables:
       ]}
   allParticpantsObject: &allParticpantsObject
     - {label: All Participants, name: allParticpantsObject, widget: object, fields: [
-        {label: Info, name: info, widget: select, multiple: true, options: [
-            { label: "Image", value: "image" },
-            { label: "First Name", value: "firstname" },
-            { label: "Last Name", value: "lastname" },
-            { label: "Title", value: "title" },
-            { label: "Bio", value: "bio" }
-        ]}
+        {<<: *participantOptions }
       ]}
   IDinput: &IDinput
     - {label: ID, name: id, required: false, hint: "ID of the element which can be used for anchor-linking."}
