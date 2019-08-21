@@ -4,19 +4,11 @@ layout: page
 permalink: /hackathon/participants/
 page_content:
   rows:
-    - content-list:
-        - font: open-sans
-          markdown: Test.
-          type: textObject
-      padding:
-        padding-bottom: '0'
-        padding-top: '0'
-      type: col
-    - content-list:
+    - content:
         - info:
+            - image
             - firstname
             - lastname
-            - image
             - title
             - bio
           type: allParticpantsObject
