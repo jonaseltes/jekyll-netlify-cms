@@ -37,5 +37,18 @@ page_content:
         padding-bottom: '2'
         padding-top: '0'
       type: cols2+1
+    - content:
+        - columnsSelect: '3'
+          info:
+            - image
+            - firstname
+            - lastname
+            - title
+            - bio
+          type: allParticpantsObject
+      padding:
+        padding-bottom: '2'
+        padding-top: '0'
+      type: cols1
 ---
 
