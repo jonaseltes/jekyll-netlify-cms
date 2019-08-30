@@ -26,7 +26,7 @@ page_content:
             padding-bottom: '2'
             padding-top: '0'
           type: text
-      fontSize: text-lg
+      fontSize: text-xl
       padding:
         padding-bottom: '2'
         padding-top: '0'
