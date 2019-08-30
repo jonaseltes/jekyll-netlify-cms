@@ -254,6 +254,12 @@ collections: # A list of collections the CMS should be able to edit
             ]}
           ]}
         ]}
+      ]},
+      {label: 'Footer', name: 'footer', file: '_data/footer.yml', fields: [
+        {label: Links, name: links, widget: list, fields: [
+          {label: Label, name: label, widget: string},
+          {<<: *pages, label: "Target page", name: url, valueField: "permalink"}
+        ]}
       ]}
     ]
   - name: 'content'
