@@ -125,7 +125,7 @@ variables:
         {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."}
       ]}
   columns_1_section: &columns_1_section
-    - {label: 1 column (1/1), name: cols1, widget: object, fields: [
+    - {label: Full width (1/1), name: cols1, widget: object, fields: [
         {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
         {<<: *padding },
@@ -203,6 +203,7 @@ collections: # A list of collections the CMS should be able to edit
     name: participants
     identifier_field: fullname
     create: true
+    extension: yml
     folder: "_data/participants"
     slug: "{{firstname}}_{{lastname}}"
     <<: *participantsFieldsInput

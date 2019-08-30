@@ -34,7 +34,7 @@ page_content:
               padding-top: '0'
             type: text
       padding:
-        padding-bottom: '2'
+        padding-bottom: '8'
         padding-top: '0'
       type: cols2+1
     - columns:
@@ -89,8 +89,7 @@ page_content:
             - bio
           type: allParticpantsObject
       padding:
-        padding-bottom: '2'
+        padding-bottom: '4'
         padding-top: '0'
       type: cols1
 ---
-

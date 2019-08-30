@@ -6,7 +6,7 @@ layout: default
   <div class="container-fluid h-inherit d-table pb-sm-8">
 
     {% for row in page.page_content.rows %}
-      <div class="row h-100">
+      <div class="row h-100 pb-{{row.padding.padding-bottom}}">
 
         {% case row.type %}
 
