@@ -1,7 +1,7 @@
 ---
-title: About
+title: About TRR
 layout: page
-permalink: /about/
+permalink: /about-trr/
 page_content:
   rows:
     - content:
