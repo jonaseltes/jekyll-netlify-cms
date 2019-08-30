@@ -11,16 +11,20 @@
         </div>
 
       {% when 'firstname' %}
-
+        <div class="">
+          {{participant[1].firstname}}
 
       {% when 'lastname' %}
-
+          {{participant[1].lastname}}
+        </div>
 
       {% when 'title' %}
-
+        <div class="">
+          {{participant[1].title}}
+        </div>
 
       {% when 'bio' %}
-
+          {{participant[1].bio | markdown}}
 
       {% else %}
         not found
