@@ -1,14 +1,10 @@
----
 firstname: Joe
 lastname: Coppard
 fullname: Joe Coppard
 title: Intern intern
+organisaiton: Another Yesterday
 bio: >-
-  Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit
-  amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit
-  sit amet non magna. Donec id elit non mi porta gravida at eget metus. Aenean
-  lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra
-  augue. Donec id elit non mi porta gravida at eget metus.
+  Vestibulum id ligula porta felis euismod semper. Curabitur blandit tempus
+  porttitor. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae
+  elit libero, a pharetra augue.
 photo: /assets/media/uploads/andreas_wessberg-andreas.wessberg@trr.se.jpg
----
-
