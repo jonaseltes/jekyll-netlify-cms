@@ -119,6 +119,7 @@ jekyll-minifier:
 exclude:
   - hackathon.md
   - lab.md
+  - about.md
 #   - Gemfile
 #   - Gemfile.lock
 #   - node_modules
