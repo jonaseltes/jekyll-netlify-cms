@@ -9,6 +9,55 @@ logo_url: /assets/media/SWL-LOGO-3-LOWER-BLACK.svg
 
 # Variables
 variables:
+  IDinput: &IDinput
+    - {label: ID, name: id, required: false, hint: "ID of the element which can be used for anchor-linking."}
+  paddng: &padding
+    - {label: Padding, name: padding, widget: object, fields: [
+        {label: Padding Top, name: padding-top, widget: select, default: "0", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]},
+        {label: Padding Bottom, name: padding-bottom, widget: select, default: "2", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]}
+      ]}
+  fontSizes: &fontSizes
+    - {label: Font size, name: fontSize, required: false, widget: select, hint: "(Optional) Font size.", options: [
+        {label: "XS", value: "text-xs"},{label: "S", value: "text-sm"},{label: "M", value: "text-md"},{label: "L", value: "text-lg"},{label: "XL", value: "text-xl"}
+      ]}
+  fonts: &fonts
+    - {label: "Font", name: font, widget: select, default: "open-sans", options: [
+      { label: "Open Sans", value: "open-sans" },
+      { label: "Roboto Mono", value: "roboto-mono" }
+    ]}
+  divSettings: &divSettings
+    - {<<: *IDinput}
+    - {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."}
+    - {<<: *padding }
+  file: &file
+    - {label: File, name: file, widget: object, fields: [
+        {<<: *padding},
+        {label: File, name: file, widget: file, allow_multiple: false}
+      ]}
+  embed: &embed
+    - {label: Embed, name: embed, widget: object, fields: [
+        {<<: *padding},
+        {label: Embed, name: embed, widget: string, hint: "Paste embed code."}
+      ]}
+  image: &image
+    - {label: Image, name: image, widget: object, fields: [
+        {<<: *padding},
+        {label: Image, name: image, widget: image, multiple: false}
+      ]}
+  text: &text
+    - {label: Text, name: text, widget: object, fields: [
+        {<<: *padding},
+        {label: Content, name: markdown, widget: markdown},
+        {<<: *fonts},
+        {<<: *fontSizes}
+      ]}
+  columnsSelect: &columnsSelect
+    - {label: Number of columns, name: columnsSelect, required: true, widget: select, default: "1", options: [
+        {label: "1", value: "1"},
+        {label: "2", value: "2"},
+        {label: "3", value: "3"},
+        {label: "4", value: "4"}
+      ]}
   participantObjectInput: &participantObjectInput
     - {label: Participant, name: participant, widget: object, fields: [
         {label: First Name, name: firstname},
@@ -45,50 +94,13 @@ variables:
       ]}
   allParticpantsObject: &allParticpantsObject
     - {label: All Participants, name: allParticpantsObject, widget: object, fields: [
-        {<<: *participantOptions }
-      ]}
-  IDinput: &IDinput
-    - {label: ID, name: id, required: false, hint: "ID of the element which can be used for anchor-linking."}
-  fontSizes: &fontSizes
-    - {label: Font size, name: fontSize, required: false, widget: select, hint: "(Optional) Font size.", options: [
-        {label: "XS", value: "text-xs"},{label: "S", value: "text-sm"},{label: "M", value: "text-md"},{label: "L", value: "text-lg"},{label: "XL", value: "text-xl"}
-      ]}
-  fonts: &fonts
-    - {label: "Font", name: font, widget: select, default: "open-sans", options: [
-      { label: "Open Sans", value: "open-sans" },
-      { label: "Roboto Mono", value: "roboto-mono" }
-    ]}
-  file: &file
-    - {label: File, name: file, widget: object, fields: [
-        {label: File, name: file, widget: file, allow_multiple: false}
-      ]}
-  embed: &embed
-    - {label: Embed, name: embed, widget: object, fields: [
-        {label: Embed, name: embed, widget: string, hint: "Paste embed code."}
-      ]}
-  image: &image
-    - {label: Image, name: image, widget: object, fields: [
-        {label: Image, name: image, widget: image, multiple: false}
-      ]}
-  text: &text
-    - {label: Text, name: text, widget: object, fields: [
-        {label: Content, name: markdown, widget: markdown},
-        {<<: *fonts},
-        {<<: *fontSizes}
+        {<<: *participantOptions },
+        {<<: *columnsSelect }
       ]}
   contentList: &contentList
     - {label: Content, name: content, widget: list, types: [
         {<<: *file}, {<<: *embed}, {<<: *image}, {<<: *text}, {<<: *participantObject}, {<<: *allParticpantsObject}
       ]}
-  paddng: &padding
-    - {label: Padding, name: padding, widget: object, fields: [
-        {label: Padding Top, name: padding-top, widget: select, default: "0", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]},
-        {label: Padding Bottom, name: padding-bottom, widget: select, default: "0", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]}
-      ]}
-  divSettings: &divSettings
-    - {<<: *IDinput}
-    - {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."}
-    - {<<: *padding }
   pages: &pages
     - {label: "Page", name: page, widget: relation, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "title"}
   columnList: &columnList
@@ -109,32 +121,40 @@ variables:
       ]}
   columnObject: &columnObject
     - {label: Column, name: col, widget: object, fields: [
-        {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."},
-        {<<: *contentList, label: "Content"}
+        {<<: *contentList, label: "Content"},
+        {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."}
       ]}
   columns_1_section: &columns_1_section
-    - {label: No columns, name: col, widget: object, fields: [
+    - {label: 1 column (1/1), name: cols1, widget: object, fields: [
         {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
         {<<: *padding },
         {<<: *contentList, label: "Content"}
       ]}
-  columns_2_section: &columns_2_section
-    - {label: 2 Columns, name: col, widget: object, fields: [
+  columns_2+1_section: &columns_2+1_section
+    - {label: 2 Columns (2/3 + 1/3), name: cols2+1, widget: object, fields: [
         {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
         {<<: *padding },
-        {<<: *columnObject, label: "Left Column"}, {<<: *columnObject, label: "Right Column"}
+        {<<: *columnObject, label: "Left (wide) column", name: "col-8"},
+        {<<: *columnObject, label: "Right (narrow) column", name: "col-4"}
+      ]}
+  columns_2_section: &columns_2_section
+    - {label: 2 Columns (1/2 + 1/2), name: cols2, widget: object, fields: [
+        {<<: *IDinput},
+        {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
+        {<<: *padding },
+        {<<: *columnList, hint: "You can add unlimited number of columns, each row holds 2 columns before breaking into a new row"}
       ]}
   columns_3_section: &columns_3_section
-    - {label: 3 Columns, name: cols, widget: object, fields: [
+    - {label: 3 Columns (1/3 + 1/3 + 1/3), name: cols3, widget: object, fields: [
         {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
         {<<: *padding },
-        {<<: *columnList}
+        {<<: *columnList, hint: "You can add unlimited number of columns, each row holds 3 columns before breaking into a new row"}
       ]}
   columns_custom_section: &columns_custom_section
-    - {label: Custom Columns (Not recommended), name: cols, widget: object, fields: [
+    - {label: Custom Columns (Beta), name: cols, widget: object, fields: [
         {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
         {<<: *padding },
@@ -143,12 +163,12 @@ variables:
   section: &section
     types: [
       {<<: *columns_1_section},
+      {<<: *columns_2+1_section},
       {<<: *columns_2_section},
       {<<: *columns_3_section},
       {<<: *columns_custom_section}
     ]
 
- # <<: [*divSettings, *columns_1_section] # Syntax for merging arrays
 
 
 

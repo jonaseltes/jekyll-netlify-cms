@@ -1,0 +1,51 @@
+<div class="" text-size="{{ include.text-size}}">
+
+  {% for content in include.content %}
+
+    {% case content.type %}
+
+      {% when 'text' %}
+         {{content.markdown}}
+
+      {% when 'image' %}
+        Image.
+
+      {% when 'allParticpantsObject' %}
+        Participants
+        <div class="row">
+
+          {% for participant in site.data.participants %}
+
+            {% case content.columnsSelect %}
+
+              {% when '1' %}
+                <div class="col-12">
+
+              {% when '2' %}
+                <div class="col-6">
+
+              {% when '3' %}
+                <div class="col-4">
+
+              {% when '4' %}
+                <div class="col-3">
+
+              {% else %}
+                not found
+
+            {% endcase %}
+
+            {%- include participant.html content=participant info=content.info -%}
+
+            </div>
+
+          {% endfor %}
+        </div>
+
+      {% else %}
+         Unreqcognised content: {{content.type}}
+
+    {% endcase %}
+
+  {% endfor %}
+</div>
