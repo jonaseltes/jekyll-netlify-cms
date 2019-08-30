@@ -5,7 +5,8 @@ permalink: /hackathon/participants/
 page_content:
   rows:
     - content:
-        - info:
+        - columnsSelect: '2'
+          info:
             - image
             - firstname
             - lastname
@@ -15,6 +16,6 @@ page_content:
       padding:
         padding-bottom: '0'
         padding-top: '0'
-      type: col
+      type: cols1
 ---
 
