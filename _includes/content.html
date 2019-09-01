@@ -5,10 +5,10 @@
     {% case content.type %}
 
       {% when 'text' %}
-         {{content.markdown}}
+         {{content.markdown | markdownify}}
 
       {% when 'image' %}
-        Image.
+        <img src="{{content.image}}" alt="" width="100%">
 
       {% when 'allParticpantsObject' %}
         Participants

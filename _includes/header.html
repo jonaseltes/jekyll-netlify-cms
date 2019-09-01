@@ -39,7 +39,7 @@
                   {% for item in site.data.menu.items %}
                     <div class="col-sm offset-0 offset-sm-0 text-left text-sm-left">
                       <div class="dropdown">
-                        <a class="nav-item nav-link {% if item.url == page.url %}active{% endif %}" href="{{ item.url | relative_url }}">{{ item.label | escape }} {% if item.url == page.url %}←{% else %}→{% endif%}</a>
+                        <a class="nav-item nav-link {% if item.url == page.url or item.url == page.dir %}active{% endif %}" href="{{ item.url | relative_url }}">{{ item.label | escape }} {% if item.url == page.url %}←{% else %}→{% endif%}</a>
                         {% if item.sub-menu %}
                           <div class="dropdown-content">
                             {% for subitem in item.sub-menu %}

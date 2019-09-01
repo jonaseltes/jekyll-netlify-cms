@@ -4,19 +4,18 @@
 
     <div class='col-sm col-md col-lg-4 col-xl-2 mb-5 mb-sm-0'>
         <div class=''>
-          <div class=''>
-            <a href="/about">About TRR {% if page.url == "/about/" %}{% else %}{% endif%}</a>
-          </div>
-          <div class='d-none'>
-            Press Kit
-          </div>
+          {% for item in site.data.footer.links %}
+            <div class=''>
+              <a href="{{item.url}}">{{item.label}}</a>
+            </div>
+          {% endfor %}
         </div>
     </div>
 
 
     <div class="col-sm col-md-6 col-lg-4 mb-3 mb-sm-0">
       <div class='contact'>
-        {{site.data.content.site.footer | markdownify}}
+        {{site.data.footer.info | markdownify}}
       </div>
     </div>
 

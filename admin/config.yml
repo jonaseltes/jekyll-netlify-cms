@@ -26,27 +26,27 @@ variables:
       { label: "Roboto Mono", value: "roboto-mono" }
     ]}
   divSettings: &divSettings
-    - {<<: *IDinput}
+    # - {<<: *IDinput}
     - {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."}
-    - {<<: *padding }
+    # - {<<: *padding }
   file: &file
     - {label: File, name: file, widget: object, fields: [
-        {<<: *padding},
+        # {<<: *padding},
         {label: File, name: file, widget: file, allow_multiple: false}
       ]}
   embed: &embed
     - {label: Embed, name: embed, widget: object, fields: [
-        {<<: *padding},
+        # {<<: *padding},
         {label: Embed, name: embed, widget: string, hint: "Paste embed code."}
       ]}
   image: &image
     - {label: Image, name: image, widget: object, fields: [
-        {<<: *padding},
+        # {<<: *padding},
         {label: Image, name: image, widget: image, multiple: false}
       ]}
   text: &text
     - {label: Text, name: text, widget: object, fields: [
-        {<<: *padding},
+        # {<<: *padding},
         {label: Content, name: markdown, widget: markdown},
         {<<: *fonts},
         {<<: *fontSizes}
@@ -63,7 +63,7 @@ variables:
         {label: First Name, name: firstname},
         {label: Last Name, name: lastname},
         {label: Title, name: title},
-        {label: Organsiation, name: organisaiton, optional: true, hint: (Optional)},
+        {label: Organisation, name: organisation, optional: true, hint: (Optional)},
         {label: Bio, name: bio, widget: markdown},
         {label: Photo, name: photo, widget: image, allow_multiple: false}
       ]}
@@ -73,18 +73,17 @@ variables:
       {label: Last Name, name: lastname},
       {label: Full Name, name: fullname, hint: "First Name + Last Name, yes this is very repeating and seemingly redundant but sadly required due to limitations of the CMS."},
       {label: Title, name: title},
-      {label: Organsiation, name: organisaiton, required: false},
+      {label: Organisation, name: organisation, required: false},
       {label: Bio, name: bio, widget: markdown},
       {label: Photo, name: photo, widget: image, allow_multiple: false}
     ]
   participant: &participant
     - {label: "Participant(s)", name: participant, widget: relation, collection: participants, searchFields: ["fullname"], displayFields: ["fullname"], valueField: "fullname", multiple: true}
   participantOptions: &participantOptions
-    - {label: Info, name: info, widget: select, multiple: true, default:[image, firstname, lastname, title, bio], options: [
+    - {label: Info, name: info, widget: select, multiple: true, default:[image, title, organisation, bio], options: [
         { label: "Image", value: "image" },
-        { label: "First Name", value: "firstname" },
-        { label: "Last Name", value: "lastname" },
         { label: "Title", value: "title" },
+        { label: "Organisation", value: "organisation" },
         { label: "Bio", value: "bio" }
       ]}
   participantObject: &participantObject
@@ -126,38 +125,38 @@ variables:
       ]}
   columns_1_section: &columns_1_section
     - {label: Full width (1/1), name: cols1, widget: object, fields: [
-        {<<: *IDinput},
+        # {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-        {<<: *padding },
+        # {<<: *padding },
         {<<: *contentList, label: "Content"}
       ]}
   columns_2+1_section: &columns_2+1_section
     - {label: 2 Columns (2/3 + 1/3), name: cols2+1, widget: object, fields: [
-        {<<: *IDinput},
+        # {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-        {<<: *padding },
+        # {<<: *padding },
         {<<: *columnObject, label: "Left (wide) column", name: "col-8"},
         {<<: *columnObject, label: "Right (narrow) column", name: "col-4"}
       ]}
   columns_2_section: &columns_2_section
     - {label: 2 Columns (1/2 + 1/2), name: cols2, widget: object, fields: [
-        {<<: *IDinput},
+        # {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-        {<<: *padding },
+        # {<<: *padding },
         {<<: *columnList, hint: "You can add unlimited number of columns, each row holds 2 columns before breaking into a new row"}
       ]}
   columns_3_section: &columns_3_section
     - {label: 3 Columns (1/3 + 1/3 + 1/3), name: cols3, widget: object, fields: [
-        {<<: *IDinput},
+        # {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-        {<<: *padding },
+        # {<<: *padding },
         {<<: *columnList, hint: "You can add unlimited number of columns, each row holds 3 columns before breaking into a new row"}
       ]}
   columns_custom_section: &columns_custom_section
     - {label: Custom Columns (Beta), name: cols, widget: object, fields: [
-        {<<: *IDinput},
+        # {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-        {<<: *padding },
+        # {<<: *padding },
         {<<: *columnCustomList}
       ]}
   section: &section
@@ -214,7 +213,7 @@ collections: # A list of collections the CMS should be able to edit
     description: "Collection for pages"
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Layout", name: "layout", widget: string, default: "page", hint: "Do not edit this without consulting Another Tomorrow."}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "page", hint: "Do not edit this without consulting Another Tomorrow."}
       # - {label: "Menu", name: menu, widget: select, required: false, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "url"}
       - {label: "URL", name: "permalink", widget: string, default: "/name-of-this-page-here/", hint: "URL of the page, should start and finish with a '/' and should not contain any blank spaces, e.g. '/name-of-this-page/', or '/hackathon/name-of-this-page/'. The URL needs to be unique for each page so please make sure it's not already in use by any other page."}
       - label: "Page Content" #Content wrapper
@@ -259,7 +258,8 @@ collections: # A list of collections the CMS should be able to edit
         {label: Links, name: links, widget: list, fields: [
           {label: Label, name: label, widget: string},
           {<<: *pages, label: "Target page", name: url, valueField: "permalink"}
-        ]}
+        ]},
+        {label: Info, name: info, widget: markdown, buttons: ["italic", "link", "bold"]}
       ]}
     ]
   - name: 'content'

@@ -23,8 +23,13 @@
           {{participant[1].title}}
         </div>
 
+      {% when 'organisation' %}
+        <div class="">
+          {{participant[1].organisaiton}}
+        </div>
+
       {% when 'bio' %}
-          {{participant[1].bio | markdown}}
+          {{participant[1].bio | markdownify}}
 
       {% else %}
         not found
