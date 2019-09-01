@@ -84,8 +84,8 @@ page_content:
           info:
             - image
             - title
-            - bio
             - organisation
+            - bio
           type: allParticpantsObject
       padding:
         padding-bottom: '4'
