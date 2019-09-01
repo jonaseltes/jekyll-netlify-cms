@@ -87,6 +87,7 @@ page_content:
             - organisation
             - bio
           type: allParticpantsObject
+      fontSize: text-sm
       padding:
         padding-bottom: '4'
         padding-top: '0'
