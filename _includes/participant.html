@@ -2,9 +2,7 @@
   {% assign participant = include.content %}
   {% for info in include.info %}
 
-
     {% case info %}
-
       {% when 'image' %}
         <div class="">
           <img src="{{participant[1].photo}}" width="100%" alt="">
@@ -25,7 +23,7 @@
 
       {% when 'organisation' %}
         <div class="">
-          {{participant[1].organisaiton}}
+          {{participant[1].organisation}}
         </div>
 
       {% when 'bio' %}
