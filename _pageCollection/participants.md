@@ -83,13 +83,13 @@ page_content:
         - columnsSelect: '3'
           info:
             - image
-            - firstname
-            - lastname
             - title
             - bio
+            - organisation
           type: allParticpantsObject
       padding:
         padding-bottom: '4'
         padding-top: '0'
       type: cols1
 ---
+
