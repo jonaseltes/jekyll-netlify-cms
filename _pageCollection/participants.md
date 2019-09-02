@@ -80,7 +80,7 @@ page_content:
         padding-top: '0'
       type: cols3
     - content:
-        - columnsSelect: '3'
+        - columnsSelect: '4'
           info:
             - image
             - title
