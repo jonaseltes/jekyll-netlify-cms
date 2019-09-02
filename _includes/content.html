@@ -10,11 +10,16 @@
       {% when 'image' %}
         <img src="{{content.image}}" alt="" width="100%">
 
+      {% when 'participantObject' %}
+        {%- assign participantslug = content.participant[0] | slugify -%}
+        {%- assign participant = site.data.participants[participantslug] -%}
+        {%- include participant.html content=participant info=content.info -%}
+
       {% when 'allParticpantsObject' %}
 
         <div class="row">
 
-          {% for participant in site.data.participants %}
+          {% for item in site.data.participants %}
 
             {% case content.columnsSelect %}
 
@@ -37,6 +42,8 @@
                 not found
 
             {% endcase %}
+
+            {%- assign participant = item[1] -%}
 
             {%- include participant.html content=participant info=content.info -%}
 

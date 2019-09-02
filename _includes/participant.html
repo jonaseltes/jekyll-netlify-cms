@@ -4,7 +4,7 @@
 
     {% if include.info contains 'image' %}
       <div class="circle-container mb-3">
-        <img src="{{participant[1].photo}}" class="circle" width="" alt="">
+        <img src="{{participant.photo}}" class="circle" width="" alt="">
       </div>
     {% endif %}
 
@@ -12,20 +12,20 @@
 
 
     <div class="pb-1 font-weight-bold">
-      {{participant[1].firstname}} {{participant[1].lastname}}
+      {{participant.firstname}} {{participant.lastname}}
     </div>
 
     <div class="row pb-5 roboto-mono">
 
       {% if include.info contains 'title' %}
         <div class="col-lg">
-          {{participant[1].title}}
+          {{participant.title}}
         </div>
       {% endif %}
 
       {% if include.info contains 'organisation' %}
         <div class="col-lg">
-          {{participant[1].organisation}}
+          {{participant.organisation}}
         </div>
       {% endif %}
 
@@ -34,7 +34,7 @@
   {% for info in include.info %}
     {% if info == 'bio' %}
     <div class="">
-      {{participant[1].bio | markdownify}}
+      {{participant.bio | markdownify}}
     </div>
     {% endif %}
   {% endfor %}

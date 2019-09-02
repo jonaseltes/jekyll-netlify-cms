@@ -188,7 +188,7 @@ collections: # A list of collections the CMS should be able to edit
     create: true
     extension: yml
     folder: "_data/participants"
-    slug: "{{firstname}}_{{lastname}}"
+    slug: "{{firstname}}-{{lastname}}"
     <<: *participantsFieldsInput
   - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Pages (WIP)" # Used in the UI, ie.: "New Post"
