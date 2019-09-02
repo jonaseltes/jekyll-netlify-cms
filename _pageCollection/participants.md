@@ -8,12 +8,11 @@ page_content:
         content:
           - font: open-sans
             markdown: >-
+              Some text in right column:
+
               Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur
               blandit tempus porttitor. Praesent commodo cursus magna, vel
-              scelerisque nisl consectetur et. Praesent commodo cursus magna,
-              vel scelerisque nisl consectetur et. Nulla vitae elit libero, a
-              pharetra augue. Maecenas faucibus mollis interdum. Cras mattis
-              consectetur purus sit amet fermentum.
+              scelerisque nisl consectetur et.
             padding:
               padding-bottom: '2'
               padding-top: '0'
