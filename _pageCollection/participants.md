@@ -48,17 +48,20 @@ page_content:
               type: text
         - content:
             - font: open-sans
-              markdown: >-
-                Maecenas sed diam eget risus varius blandit sit amet non magna.
-                Aenean lacinia bibendum nulla sed consectetur. Integer posuere
-                erat a ante venenatis dapibus posuere velit aliquet. Fusce
-                dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                nibh, ut fermentum massa justo sit amet risus. Donec sed odio
-                dui.
+              markdown: 'Preview of one participant:'
               padding:
                 padding-bottom: '2'
                 padding-top: '0'
               type: text
+            - info:
+                - firstname
+                - image
+                - title
+                - organisation
+                - bio
+              participant:
+                - Jonas Eltes
+              type: participantObject
         - content:
             - font: open-sans
               markdown: >-
