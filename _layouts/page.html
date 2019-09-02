@@ -10,6 +10,11 @@ layout: default
 
         {% case row.type %}
 
+          {% when 'cols1' %}
+            <div class="col {% if row.fontSize %}{{ row.fontSize }}{% else %}text-md{%- endif -%}">
+              {%- include content.html content=row.content -%}
+            </div>
+
           {% when 'cols2+1' %}
             <div class="col-md-8 {% if row.col-8.fontSize %}{{ row.col-8.fontSize }}{% else %}text-md{%- endif -%}">
               {%- include content.html content=row.col-8.content -%}
@@ -33,10 +38,6 @@ layout: default
               </div>
             {% endfor %}
 
-          {% when 'cols1' %}
-            <div class="col {% if row.fontSize %}{{ row.fontSize }}{% else %}text-md{%- endif -%}">
-              {%- include content.html content=row.content -%}
-            </div>
 
           {% else %}
              None of the above
