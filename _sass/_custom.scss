@@ -515,3 +515,25 @@ strong {
   background: rgba($white, 0.4);
   z-index: -1;
 }
+
+.circle-container {
+  position: relative;
+  width: 100%;
+  // border-radius: 50%;
+  padding-bottom: 100%;
+  background-color: #000;
+  overflow: hidden;
+  margin: auto;
+}
+
+img.circle {
+  position: absolute;
+  left: 0;
+  height: 0;
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  // display: block;
+}

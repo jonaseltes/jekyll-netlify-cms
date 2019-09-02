@@ -56,7 +56,8 @@ variables:
         {label: "1", value: "1"},
         {label: "2", value: "2"},
         {label: "3", value: "3"},
-        {label: "4", value: "4"}
+        {label: "4", value: "4"},
+        {label: "6", value: "6"}
       ]}
   participantObjectInput: &participantObjectInput
     - {label: Participant, name: participant, widget: object, fields: [
@@ -80,7 +81,7 @@ variables:
   participant: &participant
     - {label: "Participant(s)", name: participant, widget: relation, collection: participants, searchFields: ["fullname"], displayFields: ["fullname"], valueField: "fullname", multiple: true}
   participantOptions: &participantOptions
-    - {label: Info, name: info, widget: select, multiple: true, default:[image, title, organisation, bio], options: [
+    - {label: Info, name: info, widget: select, multiple: true, default: [firstname, image, title, organisation, bio], options: [
         { label: "Image", value: "image" },
         { label: "Title", value: "title" },
         { label: "Organisation", value: "organisation" },
@@ -172,32 +173,15 @@ variables:
 
 
 collections: # A list of collections the CMS should be able to edit
-  - label: CMS settings
-    name: cms
-    create: true
-    folder: "_data/cms-variables"
-    fields:
-      - {label: "Title", name: title, widget: string, default: "Variables"}
-      - {label: "Font sizes", name: "fontSizes", widget: list, fields: [
-          {label: "Label", name: fontLabel, widget: string},
-          {label: "Class Name", name: value, widget: string}
-        ]}
-  - label: Fonts
-    name: fonts
-    create: true
-    folder: "_data/fonts"
-    fields:
-      - {label: "Title", name: title, widget: string}
-      - {label: "URL", name: "url", widget: string}
-  - label: Data
-    name: cms-data
-    files:
-      - label: Participants
-        name: participants
-        file: _data/cms-data/participants.yml
-        fields: [
-          {label: Participants, identifier_field: fullname, name: participants, widget: list, <<: *participantsFieldsInput }
-        ]
+  # - label: Data
+  #   name: cms-data
+  #   files:
+  #     - label: Participants
+  #       name: participants
+  #       file: _data/cms-data/participants.yml
+  #       fields: [
+  #         {label: Participants, identifier_field: fullname, name: participants, widget: list, <<: *participantsFieldsInput }
+  #       ]
   - label: Participants
     name: participants
     identifier_field: fullname
@@ -207,7 +191,7 @@ collections: # A list of collections the CMS should be able to edit
     slug: "{{firstname}}_{{lastname}}"
     <<: *participantsFieldsInput
   - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Pages (Test)" # Used in the UI, ie.: "New Post"
+    label: "Pages (WIP)" # Used in the UI, ie.: "New Post"
     folder: "_pageCollection" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     description: "Collection for pages"
