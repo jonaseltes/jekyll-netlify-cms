@@ -88,6 +88,9 @@ page_content:
             - organisation
             - bio
           type: allParticpantsObject
+        - font: open-sans
+          markdown: 'Preview of all participants:'
+          type: text
       fontSize: text-xs
       padding:
         padding-bottom: '4'
