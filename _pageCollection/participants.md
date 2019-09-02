@@ -15,6 +15,8 @@ page_content:
         fontSize: text-lg
       col-8:
         content:
+          - image: /assets/media/uploads/artboard.png
+            type: image
           - font: open-sans
             markdown: >-
               Some text in left column:
@@ -97,3 +99,4 @@ page_content:
         padding-top: '0'
       type: cols1
 ---
+
