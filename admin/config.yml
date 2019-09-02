@@ -250,6 +250,15 @@ collections: # A list of collections the CMS should be able to edit
     name: default_pages
     description: "Collection for default pages not created through CMS."
     files:
+      - label: "Landing"
+        name: index
+        file: '_data/default-pages/index.yml'
+        fields: [
+          {label: Introduction, name: introduction, widget: markdown, buttons: [
+            bold, italic, link
+          ]},
+          {label: Headline, name: headline, widget: text}
+        ]
       - label: "Hackathon"
         name: 'hackathon'
         file: '_data/default-pages/hackathon.yml'
