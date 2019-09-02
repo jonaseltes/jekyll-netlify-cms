@@ -1,7 +1,7 @@
 ---
 title: Scenarios
 layout: page
-permalink: /hackathon-test/scenarios/
+permalink: /hackathon/scenarios/
 page_content:
   rows: []
 ---
