@@ -7,7 +7,7 @@ page_content:
     - col-4:
         content:
           - font: open-sans
-            markdown: This is page made entirely in from within the CMS.
+            markdown: This is page made entirely in the CMS.
             padding:
               padding-bottom: '2'
               padding-top: '0'
@@ -78,7 +78,7 @@ page_content:
         padding-top: '0'
       type: cols3
     - content:
-        - columnsSelect: '3'
+        - columnsSelect: '4'
           info:
             - image
             - title
@@ -91,4 +91,3 @@ page_content:
         padding-top: '0'
       type: cols1
 ---
-

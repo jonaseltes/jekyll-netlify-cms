@@ -11,11 +11,11 @@ layout: default
         {% case row.type %}
 
           {% when 'cols2+1' %}
-            <div class="col-md-8 {% if column.fontSize %}{{ column.fontSize }}{% else %}text-md{%- endif -%}">
+            <div class="col-md-8 {% if row.col-8.fontSize %}{{ row.col-8.fontSize }}{% else %}text-md{%- endif -%}">
               {%- include content.html content=row.col-8.content -%}
             </div>
 
-            <div class="col-md-4 {% if column.fontSize %}{{ column.fontSize }}{% else %}text-md{%- endif -%}">
+            <div class="col-md-4 {% if row.col-4.fontSize %}{{ row.col-4.fontSize }}{% else %}text-md{%- endif -%}">
               {%- include content.html content=row.col-4.content -%}
             </div>
 
