@@ -7,16 +7,12 @@ page_content:
     - col-4:
         content:
           - font: open-sans
-            markdown: >-
-              Some text in right column:
-
-              Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur
-              blandit tempus porttitor. Praesent commodo cursus magna, vel
-              scelerisque nisl consectetur et.
+            markdown: This is page made entirely in from within the CMS.
             padding:
               padding-bottom: '2'
               padding-top: '0'
             type: text
+        fontSize: text-lg
       col-8:
         content:
           - font: open-sans
