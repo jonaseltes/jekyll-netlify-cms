@@ -22,6 +22,8 @@ page_content:
         content:
           - font: open-sans
             markdown: >-
+              Some text in left column:
+
               Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
               nibh, ut fermentum massa justo sit amet risus. Morbi leo risus,
               porta ac consectetur ac, vestibulum at eros. Nullam quis risus
@@ -33,6 +35,7 @@ page_content:
               padding-bottom: '2'
               padding-top: '0'
             type: text
+        fontSize: text-lg
       padding:
         padding-bottom: '8'
         padding-top: '0'
@@ -93,3 +96,4 @@ page_content:
         padding-top: '0'
       type: cols1
 ---
+
