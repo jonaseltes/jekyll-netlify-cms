@@ -30,7 +30,7 @@ page_content:
               padding-bottom: '2'
               padding-top: '0'
             type: text
-          - image: /assets/media/uploads/artboard.png
+          - image: /assets/media/uploads/photowall-mockup-cutout-program.jpg
             type: image
         fontSize: text-lg
       padding:
