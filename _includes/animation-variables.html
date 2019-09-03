@@ -9,8 +9,14 @@
     animation_mode = "blobs";
   {% endif %}
 
-  {% if page.url == "/projection/" %}
+  {% if page.url == "/projections/1/" %}
     projection_mode = true;
+    blob_labels = {{page.blob_labels | jsonify}};
+  {% endif %}
+
+  {% if page.url == "/projections/2/" %}
+    projection_mode = true;
+    blob_labels = {{page.blob_labels | jsonify}};
   {% endif %}
 
 </script>

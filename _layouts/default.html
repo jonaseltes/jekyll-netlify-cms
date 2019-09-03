@@ -5,13 +5,14 @@
 
   <body>
     <div id="page-wrapper" class="wrapper h-100">
-      {% if page.url != "/projection/" %}
+      {% if page.url != "/projections/1/" and page.url != "/projections/2/" %}
         <div class="header-wrapper w-100 fixed-top bg-none">
           {%- include header.html -%}
         </div>
       {% endif %}
 
       <div id="content-wrapper" class="content-wrapper d-flex flex-column w-100 h-100">
+        
         <div class="header-wrapper w-100 invisible {% if page.url != "/lab/" %}mb-6 mb-md-8{% endif %}">
           {%- include header.html -%}
         </div>
@@ -22,9 +23,11 @@
 
       </div>
 
-      <div id="footer" class="footer-wrapper position-relative {% if page.url == "/" %}bg-secondary {% endif %}">
-        {%- include footer.html -%}
-      </div>
+      {% if page.url != "/projections/1/" and page.url != "/projections/2/" %}
+        <div id="footer" class="footer-wrapper position-relative {% if page.url == "/" %}bg-secondary {% endif %}">
+          {%- include footer.html -%}
+        </div>
+      {% endif %}
       <template>
         {%- for template in layout.templates -%}
           {%- include template.html -%}

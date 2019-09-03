@@ -835,7 +835,7 @@ function animate() {
     blobMesh.position.z = noise.perlin2(time+2000, time/4000) * 0.4;
 
     scene.traverse(function(element){
-      if (element.type == "Mesh") {
+      if (element.type == "Mesh" && blob_labels) {
         var thisObject = element;
         var direction =  new THREE.Vector3();
         direction.setFromMatrixPosition( thisObject.matrixWorld );

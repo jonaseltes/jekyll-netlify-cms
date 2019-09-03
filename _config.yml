@@ -29,6 +29,10 @@ collections:
   pageCollection:
     output: true
     permalink: /:name/
+  projections:
+    output: true
+    permalink: /:collection/:name/
+
 
 # defaults:
 #   - scope:
