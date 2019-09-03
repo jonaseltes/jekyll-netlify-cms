@@ -1,7 +1,7 @@
 $( document ).ready(function() {
   const phrases = [
-    'work',
-    'work'
+    'Work',
+    'Work'
   ]
 
   const els = document.querySelectorAll('.work');
