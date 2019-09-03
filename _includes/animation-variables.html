@@ -2,9 +2,15 @@
   var animation_mode;
   var filter;
   var data_highlights = {};
+  var projection_mode = false;
   {% if page.url != "/lab/" %}
     animation_mode = "blobs";
   {% else %}
     animation_mode = "blobs";
   {% endif %}
+
+  {% if page.url == "/canvas/" %}
+    projection_mode = true;
+  {% endif %}
+
 </script>

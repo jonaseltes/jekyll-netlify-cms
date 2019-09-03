@@ -216,9 +216,12 @@ function loadBlobs(callback){
 
   console.log("scene: " ,scene.children);
 	textureCube.minFilter = THREE.LinearFilter;
-
+  console.log("page url: " ,{{page.url | jsonify}});
   var colors = [blobColors.learn, blobColors.rest, blobColors.work];
   var labels = ["learn", "rest", "work"];
+  if (projection_mode) {
+    labels = ["swedish", "lab", "work"];
+  }
   var c;
   var l;
   for (var i = 0; i < 2; i++) {
