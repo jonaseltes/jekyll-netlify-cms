@@ -6,8 +6,8 @@ page_content:
   rows:
     - columns:
         - content:
-            - file: /assets/media/uploads/anothertomorrow_swedishworklab_97.jpg
-              type: file
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_97.jpg
+              type: image
         - content:
             - font: open-sans
               markdown: >-
