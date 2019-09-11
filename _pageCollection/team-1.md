@@ -1,7 +1,7 @@
 ---
 title: Team 1
 layout: page
-permalink: /team-1/
+permalink: /hackathon/team-1/
 page_content:
   rows:
     - columns:
