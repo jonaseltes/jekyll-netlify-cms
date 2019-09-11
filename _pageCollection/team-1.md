@@ -14,17 +14,17 @@ page_content:
                 # Team 1: Meaningful midlife reskilling
 
 
-                * Anna Hagensgård
+                * ## Anna Hagensgård
 
-                * Henrik Friman
+                * ## Henrik Friman
 
-                * Annika Gillispie
+                * ## Annika Gillispie
 
-                * Kristian Ohlson Gonzales
+                * ## Kristian Ohlson Gonzales
 
 
-                It’s 2025. The labour market has seen some major changes in the
-                past couple of years, with some professions more or less
+                ## It’s 2025. The labour market has seen some major changes in
+                the past couple of years, with some professions more or less
                 disappearing altogether and formerly non-existing ones emerging.
                 Careers are more fragmented and skills become outdated faster
                 than ever before. If there ever was one, there is no longer the
@@ -32,7 +32,7 @@ page_content:
                 much about where you will find yourself some 40 years later.
 
 
-                To many, this is not news. Years of talk of things like
+                ## To many, this is not news. Years of talk of things like
                 automation even before it was actually widely implemented, has
                 infused a sense of acceptance. 80%, when asked, say they want to
                 re-educate themselves at some point in their career, and switch
@@ -42,7 +42,7 @@ page_content:
                 forecasted to triple within the next few years. 
 
 
-                The options for re-educating oneself, however, are not always
+                ## The options for re-educating oneself, however, are not always
                 compatible with this desire, and the public education system has
                 not reinvented itself at the same pace as the labour market.
                 It’s mostly optimised for 19-year olds fresh out of high school
@@ -50,12 +50,12 @@ page_content:
                 threshold to many mid-lifers  evaluating their options.
 
 
-                Team brief:
+                ## Team brief:
 
 
-                What demands does this particular starting point place on how we
-                educate people, and how might we help this group pivot in their
-                careers?
+                ## What demands does this particular starting point place on how
+                we educate people, and how might we help this group pivot in
+                their careers?
               type: text
       type: cols2
 ---
