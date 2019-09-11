@@ -8,21 +8,8 @@ page_content:
         - content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_97.jpg
               type: image
-        - content:
             - font: open-sans
               markdown: >-
-                # Team 1: Meaningful midlife reskilling
-
-
-                * ## Anna Hagensgård
-
-                * ## Henrik Friman
-
-                * ## Annika Gillispie
-
-                * ## Kristian Ohlson Gonzales
-
-
                 ## It’s 2025. The labour market has seen some major changes in
                 the past couple of years, with some professions more or less
                 disappearing altogether and formerly non-existing ones emerging.
@@ -48,6 +35,20 @@ page_content:
                 It’s mostly optimised for 19-year olds fresh out of high school
                 with an unused CSN (student aid) quota, providing significant
                 threshold to many mid-lifers  evaluating their options.
+              type: text
+        - content:
+            - font: open-sans
+              markdown: >-
+                # Team 1: Meaningful midlife reskilling
+
+
+                * ## Anna Hagensgård
+
+                * ## Henrik Friman
+
+                * ## Annika Gillispie
+
+                * ## Kristian Ohlson Gonzales
 
 
                 ## Team brief:
