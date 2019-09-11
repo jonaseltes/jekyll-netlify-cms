@@ -10,6 +10,8 @@ page_content:
               type: image
             - font: open-sans
               markdown: >-
+                <br>
+
                 ## It’s 2025. The labour market has seen some major changes in
                 the past couple of years, with some professions more or less
                 disappearing altogether and formerly non-existing ones emerging.
