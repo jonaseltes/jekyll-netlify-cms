@@ -11,7 +11,7 @@ page_content:
         - content:
             - font: open-sans
               markdown: >-
-                ## Team 1: Meaningful midlife reskilling
+                # Team 1: Meaningful midlife reskilling
 
 
                 * Anna Hagensgård
@@ -23,8 +23,8 @@ page_content:
                 * Kristian Ohlson Gonzales
 
 
-                **It’s 2025.** The labour market has seen some major changes in
-                the past couple of years, with some professions more or less
+                It’s 2025. The labour market has seen some major changes in the
+                past couple of years, with some professions more or less
                 disappearing altogether and formerly non-existing ones emerging.
                 Careers are more fragmented and skills become outdated faster
                 than ever before. If there ever was one, there is no longer the
@@ -50,7 +50,7 @@ page_content:
                 threshold to many mid-lifers  evaluating their options.
 
 
-                **Team brief:**
+                Team brief:
 
 
                 What demands does this particular starting point place on how we
