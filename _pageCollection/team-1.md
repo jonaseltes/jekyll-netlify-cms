@@ -11,7 +11,7 @@ page_content:
         - content:
             - font: open-sans
               markdown: >-
-                ## Team 1
+                ## Team 1: Meaningful midlife reskilling
 
 
                 * Anna Hagensgård
