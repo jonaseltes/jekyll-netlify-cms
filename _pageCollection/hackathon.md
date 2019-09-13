@@ -1,5 +1,5 @@
 ---
-title: The Hackathon
+title: The Hackathon New
 layout: hackathon
 permalink: /hackathon/hackathonwip
 page_content:
