@@ -1,7 +1,7 @@
 ---
 title: The Hackathon
 layout: hackathon
-permalink: /hackathon/hackathonwip
+permalink: /hackathon/
 page_content:
   rows:
     - columns:
