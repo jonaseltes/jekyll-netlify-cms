@@ -1,7 +1,7 @@
 ---
 title: The Hackathon
 layout: hackathon
-permalink: /hackathon/
+permalink: /hackathon/hackathonwip
 page_content:
   rows:
     - columns:
@@ -51,6 +51,29 @@ page_content:
               markdown: 'Team 3: Name Name Name Name'
               type: text
             - image: /assets/media/uploads/winners.jpg
+              type: image
+      type: cols3
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_25.jpg
+              type: image
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_40.jpg
+              type: image
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_97.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_20.jpg
+              type: image
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_74.jpg
+              type: image
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_150.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_11.jpg
+              type: image
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_82.jpg
+              type: image
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_164.jpg
               type: image
       type: cols3
 ---
