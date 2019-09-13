@@ -32,6 +32,7 @@ page_content:
                 and “Recruiter sims”! Check out their journey throughout the day
                 below.
               type: text
+      fontSize: text-sm
       type: cols2
     - columns:
         - content:
@@ -53,6 +54,11 @@ page_content:
             - image: /assets/media/uploads/winners.jpg
               type: image
       type: cols3
+    - content:
+        - font: open-sans
+          markdown: '**A glimpse from the day**'
+          type: text
+      type: cols1
     - columns:
         - content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_25.jpg
