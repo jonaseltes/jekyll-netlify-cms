@@ -30,6 +30,14 @@ page_content:
                 we educate people, and how might we help this group pivot in
                 their careers?
               type: text
+            - embed: >-
+                <iframe src="https://player.vimeo.com/video/204531768"
+                width="640" height="360" frameborder="0" allow="autoplay;
+                fullscreen" allowfullscreen></iframe> <p><a
+                href="https://vimeo.com/204531768">LOST IN COMPUTATION</a> from
+                <a href="https://vimeo.com/fabrica">Fabrica</a> on <a
+                href="https://vimeo.com">Vimeo</a>.</p>
+              type: embed
       type: cols2
 ---
 
