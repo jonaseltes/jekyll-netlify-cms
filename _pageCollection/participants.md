@@ -56,8 +56,6 @@ page_content:
                 padding-top: '0'
               type: text
             - info:
-                - firstname
-                - image
                 - title
                 - organisation
                 - bio
