@@ -125,6 +125,9 @@ function startRender(){
     $(canvas2D).fadeIn();
     $("#landing-title, #svg-container").fadeIn(500, function(){
       $("#credits").delay(200).fadeIn(500);
+      if (projection_mode) {
+        capturer.start();
+      }
     });
   });
 }
@@ -571,6 +574,16 @@ function loadScene() {
   // scene.add( light );
   // scene.add( light2 );
   // objectWrapper.add( light3 );
+
+  if (projection_mode) {
+    window.capturer = new CCapture( {
+    	framerate: 60,
+    	verbose: true,
+      timeLimit: 20,
+      format: 'png'
+    } );
+  }
+
 }
 
 
@@ -593,7 +606,7 @@ function init() {
 
 	canvas3D = document.getElementById('canvas3D');
 	renderer3D = new THREE.WebGLRenderer( { canvas: canvas3D, antialias: true, clearColor: 0x000000, clearAlpha: 0, alpha: true, preserveDrawingBuffer: false, autoClear: true });
-  // scene.background = new THREE.Color( 0xbabaab );
+  scene.background = new THREE.Color( 0xabab96 );
 	renderer3D.setPixelRatio(window.devicePixelRatio);
 	renderer3D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 
@@ -957,14 +970,15 @@ function animate() {
   {% endif %}
   requestAnimationFrame( animate );
   // console.log("time: " ,time);
-
   //camera.lookAt( scene.position );
   //TWEEN.update();
   // controls.update();
   renderer3D.clear();
   //renderer3D.render( bgScene, camera );
   renderer3D.render( scene, camera );
-
+  if (projection_mode) {
+    capturer.capture( paperCanvas );
+  }
 }
 
 

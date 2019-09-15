@@ -6,7 +6,7 @@ layout: default
   <div class="container-fluid h-inherit d-table pb-sm-8">
 
     {% for row in page.page_content.rows %}
-      <div class="row h-100 pb-{{row.padding.padding-bottom}}">
+      <div class="row h-100 {% if forloop.last == false %} mb-6 {% endif %}">
 
         {% case row.type %}
 
@@ -16,7 +16,7 @@ layout: default
             </div>
 
           {% when 'cols2+1' %}
-            <div class="col-md-8 {% if row.col-8.fontSize %}{{ row.col-8.fontSize }}{% else %}text-md{%- endif -%}">
+            <div class="col-md-8 mb-4 {% if row.col-8.fontSize %}{{ row.col-8.fontSize }}{% else %}text-md{%- endif -%}">
               {%- include content.html content=row.col-8.content -%}
             </div>
 
@@ -26,14 +26,14 @@ layout: default
 
           {% when 'cols2' %}
             {% for column in row.columns %}
-              <div class="col-6 {% if column.fontSize %}{{ column.fontSize }}{% else %}text-md{%- endif -%}">
+              <div class="col-lg-6 {% if forloop.last == false %} mb-4 {% endif %}  {% if column.fontSize %}{{ column.fontSize }}{% else %}text-md{%- endif -%}">
                 {%- include content.html content=column.content -%}
               </div>
             {% endfor %}
 
           {% when 'cols3' %}
             {% for column in row.columns %}
-              <div class="col-md-4 {% if column.fontSize %}{{ column.fontSize }}{% else %}text-md{%- endif -%}">
+              <div class="col-md-4 {% if forloop.last == false %} mb-4 {% endif %} {% if column.fontSize %}{{ column.fontSize }}{% else %}text-md{%- endif -%}">
                 {%- include content.html content=column.content -%}
               </div>
             {% endfor %}

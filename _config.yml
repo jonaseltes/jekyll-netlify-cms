@@ -76,6 +76,7 @@ animation_scripts:
   - /assets/js/three.min.js
   - /assets/js/Projector.js
   - /assets/js/CanvasRenderer.js
+  - /assets/js/CCapture.all.min.js
   # - /assets/js/STLExporter.js
   - /assets/js/OrbitControls.js
   - /assets/js/TrackballControls.js

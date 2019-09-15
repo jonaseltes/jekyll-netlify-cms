@@ -3,6 +3,7 @@
   var filter;
   var data_highlights = {};
   var projection_mode = false;
+  blob_labels = true;
   {% if page.url != "/lab/" %}
     animation_mode = "blobs";
   {% else %}
@@ -15,6 +16,11 @@
   {% endif %}
 
   {% if page.url == "/projections/2/" %}
+    projection_mode = true;
+    blob_labels = {{page.blob_labels | jsonify}};
+  {% endif %}
+
+  {% if page.url == "/projections/3/" %}
     projection_mode = true;
     blob_labels = {{page.blob_labels | jsonify}};
   {% endif %}

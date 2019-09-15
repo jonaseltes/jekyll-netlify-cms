@@ -1,7 +1,7 @@
-<div class="" text-size="{{ include.text-size}}">
+<div class="">
 
   {% for content in include.content %}
-
+    <div class="content">
     {% case content.type %}
 
       {% when 'text' %}
@@ -56,6 +56,6 @@
          Unreqcognised content: {{content.type}}
 
     {% endcase %}
-
+    </div>
   {% endfor %}
 </div>

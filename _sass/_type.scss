@@ -1,0 +1,67 @@
+.text-xs {
+  font-size: $font-size-xs !important;
+  letter-spacing: 0px !important;
+}
+
+.text-sm {
+  letter-spacing: 0px !important;
+  @include media-breakpoint-up(xs) {
+    font-size: $font-size-xs !important;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-sm !important;
+  }
+}
+
+.text-md {
+  letter-spacing: 0px !important;
+  @include media-breakpoint-up(xs) {
+    font-size: $font-size-sm !important;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-md !important;
+  }
+}
+
+.text-lg {
+
+  @include media-breakpoint-up(xs) {
+    font-size: $font-size-md !important;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-lg !important;
+  }
+}
+
+.text-xl {
+  font-size: $font-size-xl !important;
+  @include media-breakpoint-down(md) {
+    font-size: $font-size-lg !important;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: $font-size-md !important;
+  }
+}
+
+// .text-sm > p {
+//   margin-bottom: map-get($spacers, 3) !important;
+// }
+//
+// .text-md > p {
+//   margin-bottom: map-get($spacers, 4) !important;
+// }
+//
+// .text-lg > p {
+//   margin-bottom: map-get($spacers, 5) !important;
+// }
+
+p:not(:last-child) {
+  margin-bottom: 1.3em;
+}
+
+strong {
+  font-weight: normal !important;
+}
