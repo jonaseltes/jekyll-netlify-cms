@@ -4,6 +4,9 @@
     <div class="content">
     {% case content.type %}
 
+      {% when 'embed' %}
+         {{content.embed | markdownify}}
+
       {% when 'text' %}
          {{content.markdown | markdownify}}
 
