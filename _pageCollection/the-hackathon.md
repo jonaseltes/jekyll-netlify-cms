@@ -31,9 +31,9 @@ page_content:
                 Human Enabling, Game Changing, and Doable they were. 
 
 
-                The winning teams (drumroll please) were teams three, six, and
-                ten, winning with their ideas: “Future-proof index”, “Swop-in”,
-                and “Recruiter sims”! 
+                The prize was taken home by (drumroll please) teams three, six,
+                and ten, winning with their ideas: “Future-proof index”,
+                “Swop-in”, and “Recruiter sims”! 
 
 
                 Check out their process throughout the day and hear them talk
