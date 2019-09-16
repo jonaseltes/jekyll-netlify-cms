@@ -6,14 +6,15 @@ page_content:
   rows:
     - columns:
         - content:
+            - font: open-sans
+              markdown: '# **The First Swedish Work Lab Hackathon**'
+              type: text
             - image: /assets/media/uploads/winners.jpg
               type: image
+          fontSize: text-lg
         - content:
             - font: open-sans
               markdown: >-
-                # **The First Swedish Work Lab Hackathon**
-
-
                 On September 5th 2019 we gathered perspectives from multiple
                 disciplines together for a one day hackathon, to explore and
                 solve challenges facing the future workplace. We had bright
