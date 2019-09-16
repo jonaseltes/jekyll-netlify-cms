@@ -7,7 +7,7 @@ page_content:
     - columns:
         - content:
             - font: open-sans
-              markdown: '# **The First Swedish Work Lab Hackatho**'
+              markdown: '# **The First Swedish Work Lab Hackathon**'
               type: text
             - embed: >-
                 <div style="padding:56.25% 0 0 0;position:relative;"><iframe
