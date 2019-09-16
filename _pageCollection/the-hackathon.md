@@ -11,7 +11,7 @@ page_content:
         - content:
             - font: open-sans
               markdown: >-
-                # **Swedish Work Lab's First Hackathon**
+                # **The First Swedish Work Lab Hackathon**
 
 
                 On September 5th 2019 we gathered perspectives from multiple
@@ -38,6 +38,7 @@ page_content:
                 Check out their process throughout the day and hear them talk
                 about their solutions below:
               type: text
+          fontSize: text-xs
       fontSize: text-sm
       type: cols2
     - columns:
