@@ -62,6 +62,7 @@ page_content:
                 src="https://player.vimeo.com/api/player.js"></script>
               type: embed
             - font: roboto-mono
+              fontSize: text-xs
               markdown: >-
                 Klaus Olsen, Malcolm Larri, Annika Waernér, Pernilla Tellefors,
                 Johan Sandgren
@@ -79,6 +80,7 @@ page_content:
                 src="https://player.vimeo.com/api/player.js"></script>
               type: embed
             - font: roboto-mono
+              fontSize: text-xs
               markdown: >-
                 Charlotta Kronblad, Erik Fors-Andrée, Sofie Arvidsson, Carolina
                 Sevä
@@ -96,6 +98,7 @@ page_content:
                 src="https://player.vimeo.com/api/player.js"></script>
               type: embed
             - font: roboto-mono
+              fontSize: text-xs
               markdown: 'Olle Lundin, Anki Holmberg, Andreas Wessberg, Johan Zetterström'
               type: text
       fontSize: text-xs
