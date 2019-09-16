@@ -32,8 +32,11 @@ page_content:
 
                 The winning teams (drumroll please) were teams three, six, and
                 ten, winning with their ideas: “Future-proof index”, “Swop-in”,
-                and “Recruiter sims”! Check out their journey throughout the day
-                below.
+                and “Recruiter sims”! 
+
+
+                Check out their process throughout the day and hear them talk
+                about their solutions below:
               type: text
       fontSize: text-sm
       type: cols2
