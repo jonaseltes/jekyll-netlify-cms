@@ -56,7 +56,7 @@ page_content:
       type: cols3
     - content:
         - font: open-sans
-          markdown: '**A glimpse from the day**'
+          markdown: '# **A glimpse from the day**'
           type: text
       type: cols1
     - columns:
