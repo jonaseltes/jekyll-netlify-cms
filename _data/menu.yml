@@ -1,12 +1,6 @@
 items:
   - label: The Hackathon
-    sub-menu:
-      - label: Participants
-        type: item
-        url: /hackathon/participants/
-      - label: Team 1
-        type: item
-        url: /hackathon/team-1/
+    sub-menu: []
     url: /hackathon/
   - label: The Lab
     sub-menu: []
