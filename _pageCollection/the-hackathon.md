@@ -10,7 +10,10 @@ page_content:
               type: image
         - content:
             - font: open-sans
-              markdown: >
+              markdown: >-
+                # Swedish Work Lab's First Hackathon
+
+
                 On September 5th 2019 we gathered perspectives from multiple
                 disciplines together for a one day hackathon, to explore and
                 solve challenges facing the future workplace. We had bright
@@ -56,8 +59,9 @@ page_content:
       type: cols3
     - content:
         - font: open-sans
-          markdown: '# **A glimpse from the day**'
+          markdown: '# **A glimpse from the day...**'
           type: text
+      fontSize: text-md
       type: cols1
     - columns:
         - content:
