@@ -11,7 +11,7 @@ page_content:
         - content:
             - font: open-sans
               markdown: >-
-                # Swedish Work Lab's First Hackathon
+                # **Swedish Work Lab's First Hackathon**
 
 
                 On September 5th 2019 we gathered perspectives from multiple
