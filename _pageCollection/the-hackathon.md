@@ -40,7 +40,7 @@ page_content:
                 about their solutions below:
               type: text
           fontSize: text-sm
-      fontSize: text-sm
+      fontSize: null
       type: cols2
     - columns:
         - content:
@@ -79,7 +79,7 @@ page_content:
         - font: open-sans
           markdown: '# **A glimpse from the day...**'
           type: text
-      fontSize: text-lg
+      fontSize: text-xl
       type: cols1
     - columns:
         - content:
