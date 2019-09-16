@@ -1,0 +1,42 @@
+<div class="pb-5 text-xs">
+  {% assign participant = include.content %}
+
+
+    {% if include.info contains 'image' %}
+      <div class="circle-container mb-3">
+        <img src="{{participant.photo}}" class="circle" width="" alt="">
+      </div>
+    {% endif %}
+
+
+
+
+    <div class="pb-1 font-weight-bold">
+      {{participant.firstname}} {{participant.lastname}}
+    </div>
+
+    <div class="row pb-5 roboto-mono">
+
+      {% if include.info contains 'title' %}
+        <div class="col-lg">
+          {{participant.title}}
+        </div>
+      {% endif %}
+
+      {% if include.info contains 'organisation' %}
+        <div class="col-lg">
+          {{participant.organisation}}
+        </div>
+      {% endif %}
+
+  </div>
+
+  {% for info in include.info %}
+    {% if info == 'bio' %}
+    <div class="">
+      {{participant.bio | markdownify}}
+    </div>
+    {% endif %}
+  {% endfor %}
+
+</div>

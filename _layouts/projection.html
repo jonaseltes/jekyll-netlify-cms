@@ -1,0 +1,50 @@
+---
+layout: default
+scripts:
+  animation: true
+  body:
+    assets:
+      - scramble.js
+      - projections.js
+      - STLExporter.js
+---
+{%- include canvas.html -%}
+
+
+{% if page.blob_labels == false %}
+  <div id="projection-overlay" class="h-100 w-100 page-content-container position-absolute">
+
+    <div class="container-fluid d-table h-inherit">
+
+        <div class="row min-h-100 flex-column flex-sm-row">
+
+          <div class="d-none d-sm-block col-sm-3 offset-sm-1 offset-xl-2 align-self-center flex-shrink-1 mb-4 mb-sm-8">
+
+            <script type="text/paperscript" src="/{{site.js_path}}/paper-canvas.js" canvas="paperCanvas"></script>
+            <canvas id="paperCanvas" class="" resize="true"></canvas>
+            <img id="logo" class="invisible position-absolute" width="100%" src="{{site.logo.three.white_animation}}" alt="">
+          </div>
+          <div class="d-none d-sm-block col-sm">
+
+          </div>
+
+          <div class="d-block col-10 col-sm-6 col-xl-4 align-self-center">
+
+              <div id="" class="text-md">
+                <div id="landing-text" class="pointer-e-all w-100 mb-8">
+                  <div id="landing-title" class="text-md w-75 roboto-mono">
+                      #Swedish<span class="work">Work</span>Lab
+                  </div>
+                </div>
+
+              </div>
+
+          </div>
+
+        </div>
+
+    </div>
+
+  </div>
+
+{% endif %}

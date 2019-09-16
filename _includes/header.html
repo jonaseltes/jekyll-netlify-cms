@@ -39,11 +39,30 @@
                   {% for item in site.data.menu.items %}
                     <div class="col-sm offset-0 offset-sm-0 text-left text-sm-left">
                       <div class="dropdown">
-                        <a class="nav-item nav-link {% if item.url == page.url %}active{% endif %}" href="{{ item.url | relative_url }}">{{ item.label | escape }} {% if item.url == page.url %}←{% else %}→{% endif%}</a>
+
+                        <a class="nav-item nav-link {% for subitem in item.sub-menu %}{% if item.url == page.url or subitem.url == page.url %}{% endif %}{% endfor %}" href="{{ item.url | relative_url }}">
+                          {{ item.label | escape }}
+                          {% if item.url == page.url %}
+                            ←
+                            {% elsif item.sub-menu.size > 0 %}
+                              {% for subitem in item.sub-menu %}
+                                {% if subitem.url == page.url %}
+                                  ←
+                                  {% break %}
+                                {% endif%}
+                                {% if forloop.last == true %}
+                                  →
+                                {% endif %}
+                              {% endfor %}
+                            {% else %}
+                              →
+                          {% endif %}
+                        </a>
+
                         {% if item.sub-menu %}
                           <div class="dropdown-content">
                             {% for subitem in item.sub-menu %}
-                              <a href="{{ subitem.url | relative_url }}">{{subitem.label}}</a>
+                              <a class="{% if subitem.url == page.url %}active{% else %}{% endif %}" href="{{ subitem.url | relative_url }}">{{subitem.label}}</a>
                             {% endfor %}
                           </div>
                         {% endif %}

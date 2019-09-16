@@ -6,6 +6,6 @@
 
 
 [context.staging]
-  command = "sed -i \"s/branch: staging/branch: ${CMS_BRANCH}/g\" admin/config.yml && jekyll build"
+  command = "sed -i \"s/branch: staging/branch: ${CMS_BRANCH}/g\" admin/config.yml && jekyll build --incremental"
 [context.staging.environment]
   CMS_BRANCH = "staging"

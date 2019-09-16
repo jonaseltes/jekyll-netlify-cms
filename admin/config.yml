@@ -2,50 +2,20 @@ backend:
   name: git-gateway
   branch: staging # Branch to update (master by default)
 
-# publish_mode: editorial_workflow
+publish_mode: editorial_workflow
 
 media_folder: "assets/media/uploads" # Folder where user uploaded files should go
 logo_url: /assets/media/SWL-LOGO-3-LOWER-BLACK.svg
 
 # Variables
 variables:
-  participantObjectInput: &participantObjectInput
-    - {label: Participant, name: participant, widget: object, fields: [
-        {label: First Name, name: firstname},
-        {label: Last Name, name: lastname},
-        {label: Title, name: title},
-        {label: Organsiation, name: organisaiton, optional: true, hint: (Optional)},
-        {label: Bio, name: bio, widget: markdown},
-        {label: Photo, name: photo, widget: image, allow_multiple: false}
-      ]}
-  participantsFieldsInput: &participantsFieldsInput
-    fields: [
-      {label: First Name, name: firstname},
-      {label: Last Name, name: lastname},
-      {label: Full Name, name: fullname, hint: "First Name + Last Name, yes this is very repeating and seemingly redundant but sadly required due to limitations of the CMS."},
-      {label: Title, name: title},
-      {label: Organsiation, name: organisaiton, required: false},
-      {label: Bio, name: bio, widget: markdown},
-      {label: Photo, name: photo, widget: image, allow_multiple: false}
-    ]
-  participant: &participant
-    - {label: "Participant", name: participant, widget: relation, collection: participants, searchFields: ["fullname"], displayFields: ["fullname"], valueField: "fullname"}
-  participantObject: &participantObject
-    - {label: Participant, name: participantObject, widget: object, fields: [
-        {<<: *participant }
-      ]}
-  allParticpantsObject: &allParticpantsObject
-    - {label: All Participants, name: allParticpantsObject, widget: object, fields: [
-        {label: Display Options, name: info, widget: select, multiple: true, options: [
-            { label: "Images", value: "image" },
-            { label: "First Name", value: "firstname" },
-            { label: "Last Name", value: "lastname" },
-            { label: "Title", value: "title" },
-            { label: "Bio", value: "bio" }
-        ]},
-      ]}
   IDinput: &IDinput
     - {label: ID, name: id, required: false, hint: "ID of the element which can be used for anchor-linking."}
+  paddng: &padding
+    - {label: Padding, name: padding, widget: object, fields: [
+        {label: Padding Top, name: padding-top, widget: select, default: "0", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]},
+        {label: Padding Bottom, name: padding-bottom, widget: select, default: "2", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]}
+      ]}
   fontSizes: &fontSizes
     - {label: Font size, name: fontSize, required: false, widget: select, hint: "(Optional) Font size.", options: [
         {label: "XS", value: "text-xs"},{label: "S", value: "text-sm"},{label: "M", value: "text-md"},{label: "L", value: "text-lg"},{label: "XL", value: "text-xl"}
@@ -55,37 +25,82 @@ variables:
       { label: "Open Sans", value: "open-sans" },
       { label: "Roboto Mono", value: "roboto-mono" }
     ]}
+  divSettings: &divSettings
+    # - {<<: *IDinput}
+    - {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."}
+    # - {<<: *padding }
   file: &file
-    - {label: File, name: fileObject, widget: object, fields: [
+    - {label: File, name: file, widget: object, fields: [
+        # {<<: *padding},
         {label: File, name: file, widget: file, allow_multiple: false}
       ]}
   embed: &embed
-    - {label: Embed, name: embedObject, widget: object, fields: [
-        {label: Embed, name: embed, widget: string, hint: "Paste embed code."}
+    - {label: Embed, name: embed, widget: object, fields: [
+        # {<<: *padding},
+        {label: Embed, name: embed, widget: text, hint: "Paste embed code."}
       ]}
   image: &image
-    - {label: Image, name: imageObject, widget: object, fields: [
+    - {label: Image, name: image, widget: object, fields: [
+        # {<<: *padding},
         {label: Image, name: image, widget: image, multiple: false}
       ]}
   text: &text
-    - {label: Text, name: textObject, widget: object, fields: [
+    - {label: Text, name: text, widget: object, fields: [
+        # {<<: *padding},
         {label: Content, name: markdown, widget: markdown},
         {<<: *fonts},
         {<<: *fontSizes}
       ]}
+  columnsSelect: &columnsSelect
+    - {label: Number of columns, name: columnsSelect, required: true, widget: select, default: "1", options: [
+        {label: "1", value: "1"},
+        {label: "2", value: "2"},
+        {label: "3", value: "3"},
+        {label: "4", value: "4"},
+        {label: "6", value: "6"}
+      ]}
+  participantObjectInput: &participantObjectInput
+    - {label: Participant, name: participant, widget: object, fields: [
+        {label: First Name, name: firstname},
+        {label: Last Name, name: lastname},
+        {label: Title, name: title},
+        {label: Organisation, name: organisation, optional: true, hint: (Optional)},
+        {label: Bio, name: bio, widget: markdown},
+        {label: Photo, name: photo, widget: image, allow_multiple: false}
+      ]}
+  participantsFieldsInput: &participantsFieldsInput
+    fields: [
+      {label: First Name, name: firstname},
+      {label: Last Name, name: lastname},
+      {label: Full Name, name: fullname, hint: "First Name + Last Name, yes this is very repeating and seemingly redundant but sadly required due to limitations of the CMS."},
+      {label: Title, name: title},
+      {label: Organisation, name: organisation, required: false},
+      {label: Bio, name: bio, widget: markdown},
+      {label: Photo, name: photo, widget: image, allow_multiple: false}
+    ]
+  participant: &participant
+    - {label: "Participant(s)", name: participant, widget: relation, collection: participants, searchFields: ["fullname"], displayFields: ["fullname"], valueField: "fullname", multiple: true}
+  participantOptions: &participantOptions
+    - {label: Info, name: info, widget: select, multiple: true, default: [firstname, image, title, organisation, bio], options: [
+        { label: "Image", value: "image" },
+        { label: "Title", value: "title" },
+        { label: "Organisation", value: "organisation" },
+        { label: "Bio", value: "bio" }
+      ]}
+  participantObject: &participantObject
+    - {label: Participant(s), name: participantObject, widget: object, fields: [
+        {<<: *participant },
+        {<<: *participantOptions }
+      ]}
+  allParticpantsObject: &allParticpantsObject
+    - {label: All Participants, name: allParticpantsObject, widget: object, fields: [
+        {<<: *participantOptions },
+        {<<: *columnsSelect }
+      ]}
   contentList: &contentList
-    - {label: Content, name: content-list, widget: list, types: [
+    - {label: Content, name: content, widget: list, types: [
         {<<: *file}, {<<: *embed}, {<<: *image}, {<<: *text}, {<<: *participantObject}, {<<: *allParticpantsObject}
       ]}
-  paddng: &padding
-    - {label: Padding, name: padding, widget: object, fields: [
-        {label: Padding Top, name: padding-top, widget: select, default: "0", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]},
-        {label: Padding Bottom, name: padding-bottom, widget: select, default: "0", options: ["0", "1", "2", "3", "4", "5", "6", "7", "8"]}
-      ]}
-  divSettings: &divSettings
-    - {<<: *IDinput}
-    - {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."}
-    - {<<: *padding }
   pages: &pages
     - {label: "Page", name: page, widget: relation, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "title"}
   columnList: &columnList
@@ -106,91 +121,83 @@ variables:
       ]}
   columnObject: &columnObject
     - {label: Column, name: col, widget: object, fields: [
-        {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."},
-        {<<: *contentList, label: "Content"}
+        {<<: *contentList, label: "Content"},
+        {<<: *fontSizes, hint: "(Optional) Use this to set a font-size for all the content of the column, this will override the section font-size."}
       ]}
   columns_1_section: &columns_1_section
-    - {label: No columns, name: col, widget: object, fields: [
-        {<<: *IDinput},
+    - {label: Full width (1/1), name: cols1, widget: object, fields: [
+        # {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-        {<<: *padding },
+        # {<<: *padding },
         {<<: *contentList, label: "Content"}
       ]}
-  columns_2_section: &columns_2_section
-    - {label: 2 Columns, name: col, widget: object, fields: [
-        {<<: *IDinput},
+  columns_2+1_section: &columns_2+1_section
+    - {label: 2 Columns (2/3 + 1/3), name: cols2+1, widget: object, fields: [
+        # {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-        {<<: *padding },
-        {<<: *columnObject, label: "Left Column"}, {<<: *columnObject, label: "Right Column"}
+        # {<<: *padding },
+        {<<: *columnObject, label: "Left (wide) column", name: "col-8"},
+        {<<: *columnObject, label: "Right (narrow) column", name: "col-4"}
+      ]}
+  columns_2_section: &columns_2_section
+    - {label: 2 Columns (1/2 + 1/2), name: cols2, widget: object, fields: [
+        # {<<: *IDinput},
+        {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
+        # {<<: *padding },
+        {<<: *columnList, hint: "You can add unlimited number of columns, each row holds 2 columns before breaking into a new row"}
       ]}
   columns_3_section: &columns_3_section
-    - {label: 3 Columns, name: cols, widget: object, fields: [
-        {<<: *IDinput},
+    - {label: 3 Columns (1/3 + 1/3 + 1/3), name: cols3, widget: object, fields: [
+        # {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-        {<<: *padding },
-        {<<: *columnList}
+        # {<<: *padding },
+        {<<: *columnList, hint: "You can add unlimited number of columns, each row holds 3 columns before breaking into a new row"}
       ]}
   columns_custom_section: &columns_custom_section
-    - {label: Custom Columns (Not recommended), name: cols, widget: object, fields: [
-        {<<: *IDinput},
+    - {label: Custom Columns (Beta), name: cols, widget: object, fields: [
+        # {<<: *IDinput},
         {<<: *fontSizes, hint: "(Optional) Use this to set a specific font-size for all the content of this section."},
-        {<<: *padding },
+        # {<<: *padding },
         {<<: *columnCustomList}
       ]}
   section: &section
     types: [
       {<<: *columns_1_section},
+      {<<: *columns_2+1_section},
       {<<: *columns_2_section},
       {<<: *columns_3_section},
       {<<: *columns_custom_section}
     ]
 
- # <<: [*divSettings, *columns_1_section] # Syntax for merging arrays
 
 
 
 collections: # A list of collections the CMS should be able to edit
-  - label: CMS settings
-    name: cms
-    create: true
-    folder: "_data/cms-variables"
-    fields:
-      - {label: "Title", name: title, widget: string, default: "Variables"}
-      - {label: "Font sizes", name: "fontSizes", widget: list, fields: [
-          {label: "Label", name: fontLabel, widget: string},
-          {label: "Class Name", name: value, widget: string}
-        ]}
-  - label: Fonts
-    name: fonts
-    create: true
-    folder: "_data/fonts"
-    fields:
-      - {label: "Title", name: title, widget: string}
-      - {label: "URL", name: "url", widget: string}
-  - label: Data
-    name: cms-data
-    files:
-      - label: Participants
-        name: participants
-        file: _data/cms-data/participants.yml
-        fields: [
-          {label: Participants, identifier_field: fullname, name: participants, widget: list, <<: *participantsFieldsInput }
-        ]
+  # - label: Data
+  #   name: cms-data
+  #   files:
+  #     - label: Participants
+  #       name: participants
+  #       file: _data/cms-data/participants.yml
+  #       fields: [
+  #         {label: Participants, identifier_field: fullname, name: participants, widget: list, <<: *participantsFieldsInput }
+  #       ]
   - label: Participants
     name: participants
     identifier_field: fullname
     create: true
+    extension: yml
     folder: "_data/participants"
-    slug: "{{firstname}}_{{lastname}}"
+    slug: "{{firstname}}-{{lastname}}"
     <<: *participantsFieldsInput
   - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Pages (Test)" # Used in the UI, ie.: "New Post"
+    label: "Pages" # Used in the UI, ie.: "New Post"
     folder: "_pageCollection" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     description: "Collection for pages"
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Layout", name: "layout", widget: string, default: "page", hint: "Do not edit this without consulting Another Tomorrow."}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "page", hint: "Do not edit this without consulting Another Tomorrow."}
       # - {label: "Menu", name: menu, widget: select, required: false, collection: pages, searchFields: ["title"], displayFields: ["title"], valueField: "url"}
       - {label: "URL", name: "permalink", widget: string, default: "/name-of-this-page-here/", hint: "URL of the page, should start and finish with a '/' and should not contain any blank spaces, e.g. '/name-of-this-page/', or '/hackathon/name-of-this-page/'. The URL needs to be unique for each page so please make sure it's not already in use by any other page."}
       - label: "Page Content" #Content wrapper
@@ -230,13 +237,34 @@ collections: # A list of collections the CMS should be able to edit
             ]}
           ]}
         ]}
+      ]},
+      {label: 'Footer', name: 'footer', file: '_data/footer.yml', fields: [
+        {label: Links, name: links, widget: list, fields: [
+          {label: Label, name: label, widget: string},
+          {<<: *pages, label: "Target page", name: url, valueField: "permalink"}
+        ]},
+        {label: Info, name: info, widget: markdown, buttons: ["italic", "link", "bold"]}
       ]}
     ]
+  # - label: 'Default Pages'
+  #   name: default_pages
+  #   description: "Collection for default pages not created through CMS."
+  #   files:
+  #     - label: "Landing"
+  #       name: index
+  #       file: '_data/default-pages/index.yml'
+  #       fields: [
+  #         {label: Introduction, name: introduction, widget: markdown, buttons: [
+  #           bold, italic, link
+  #         ]},
+  #         {label: Headline, name: headline, widget: text}
+  #       ]
+  
   - name: 'content'
-    label: 'Content'
+    label: 'General content'
     description: "Collection for editing different types of content."
     files:
-      - label: 'Content'
+      - label: 'Site settings'
         name: 'content'
         file: '_data/content.yml'
         fields:
@@ -248,157 +276,15 @@ collections: # A list of collections the CMS should be able to edit
                 name: 'title'
                 widget: 'string'
                 hint: 'Main title used across the site.'
-              - label: 'Tag-line'
-                name: 'tagline'
-                widget: 'markdown'
-                hint: 'Short description.'
-                buttons:
-                  - "italic"
-                  - "link"
-                  - "bold"
-              - label: 'Footer'
-                name: 'footer'
-                widget: 'markdown'
-                hint: ''
-                buttons:
-                  - "italic"
-                  - "link"
-                  - "bold"
-              - label: 'Assets'
-                name: 'assets'
-                widget: 'object'
-                fields:
-                  - label: 'TRR Logos'
-                    name: 'trr-logos'
-                    widget: 'object'
-                    fields:
-                      - {label: 'White', name: 'white', widget: 'image', allow_multiple: false, required: false}
-                      - {label: 'Black', name: 'black', widget: 'image', allow_multiple: false, required: false}
-          - label: 'Intro'
-            name: 'intro'
-            widget: 'object'
-            fields:
-              - {label: "Headline", name: "headline", widget: "string"}
-              - {label: 'Introduction', name: 'abstract', widget: 'markdown', hint: 'A description for the landing page', buttons: ["italic", "link"]}
           - label: 'TRR'
             name: "trr"
             widget: "object"
             hint: "Content related to TRR"
             fields:
-              - {label: "About TRR", name: "about", widget: "markdown", buttons: ["italic", "bold", "link"]}
               - {label: "Website", name: 'url', widget: 'string'}
-      - label: 'Event info'
-        name: 'info'
-        file: '_data/info.yml'
-        fields:
-          - label: 'Text'
-            name: 'text'
-            widget: 'markdown'
-            hint: "For short practical info displayed on website."
-          - label: 'Where'
-            name: 'location'
-            widget: 'object'
-            fields:
-              - label: 'Venue'
-                name: 'venue'
+              - label: 'TRR Logos'
+                name: 'trr-logos'
                 widget: 'object'
                 fields:
-                  - {label: "Name", name: "name", widget: 'string'}
-                  - {label: "URL", name: "url", widget: 'string'}
-              - {label: 'Street address', name: 'street_address', widget: 'string'}
-              - {label: 'Postal code', name: 'postal_code', widget: 'string'}
-              - {label: "City", name: "city", widget: "string"}
-              - {label: "Country", name: "country", widget: "string"}
-          - label: 'Images'
-            name: "images"
-            widget: "list"
-            required: false
-            fields:
-              - label: "Image"
-                name: "image"
-                widget: "image"
-                required: false
-          - label: 'When'
-            name: 'time'
-            widget: "datetime"
-          - label: "Contact"
-            name: "contact"
-            widget: 'string'
-      - label: 'Application form'
-        name: 'inputs'
-        file: '_data/application-form.yml'
-        fields:
-          - label: "Headline"
-            name: "headline"
-            widget: "text"
-            hint: "short text showed above the form"
-          - label: "Disclaimer"
-            name: "disclaimer"
-            widget: "markdown"
-            buttons:
-              - "italic"
-              - "link"
-              - "bold"
-          - label: "Introduction"
-            name: 'introduction'
-            widget: "object"
-            fields:
-              - label: "Headline"
-                name: "headline"
-                widget: "text"
-                hint: "A headline for the introduction to form."
-              - label: "Description"
-                name: "description"
-                widget: "markdown"
-                buttons:
-                  - "italic"
-                  - "link"
-                  - "bold"
-                hint: "A description of the form."
-          - label: "Form id"
-            name: "form-id"
-            widget: "hidden"
-            default: "application_form"
-          - label: 'Form url'
-            name: "url"
-            widget: "string"
-            hint: 'Form action URL found in original Google Form source code.'
-          - label: "Inputs"
-            name: "inputs"
-            widget: "object"
-            fields:
-              - label: 'Personal details'
-                name: 'details'
-                widget: 'list'
-                fields:
-                  - label: 'Input Label'
-                    name: 'label'
-                    widget: 'string'
-                  - label: "Field name property"
-                    name: "name"
-                    widget: "string"
-                    hint: "Used to identify the specific field in the code."
-                  - label: "Type"
-                    name: "type"
-                    widget: "select"
-                    hint: "'text' for short text inputs and 'textarea' for longer, File/Image for image."
-                    options:
-                      - { label: "Short text", value: "text" }
-                      - { label: "Long text", value: "textarea" }
-                      - { label: "File/Image", value: "file" }
-                  - label: "Required"
-                    name: "required"
-                    widget: "boolean"
-                    default: true
-          - label: "Terms & Conditions"
-            name: 'terms'
-            widget: "markdown"
-            buttons:
-              - "italic"
-              - "link"
-              - "bold"
-          - label: "Submission message"
-            name: "submission"
-            widget: "text"
-            default: "Thank you!"
-            hint: "Message showed when the user has submitted their form."
+                  - {label: 'White', name: 'white', widget: 'image', allow_multiple: false, required: false}
+                  - {label: 'Black', name: 'black', widget: 'image', allow_multiple: false, required: false}

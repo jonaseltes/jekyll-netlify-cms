@@ -1,0 +1,110 @@
+event:
+  text: >-
+    **When and where?**
+
+
+    September 5th, 2019 at [Blique by
+    Nobis](https://www.bliquebynobis.se/event-konferens), Stockholm
+  location:
+    city: Stockholm
+    country: Sweden
+    postal_code: 113 30
+    street_address: Gävlegatan 18
+    venue:
+      name: "Blique by Nobis"
+      url: 'https://www.bliquebynobis.se/event-konferens'
+  time: 'Thu Sep 5 2019 01:00:00 GMT+0100'
+  contact: contact@swedishworklab.com
+form:
+  headline: 'I want to take part in the hackathon:'
+  disclaimer: >-
+    There are currently some technical difficulties when applying through the
+    Internet Explorer browser on PC. We’re working very hard to fix it, but if you
+    have any trouble submitting your application, please try using another browser
+    such as Google Chrome or send us an [email](mailto:contact@swedishworklab.com) directly.
+  introduction:
+    description: >-
+      On September 5th 2019 we will bring perspectives from multiple disciplines
+      together for a one day hackathon, to explore and solve challenges facing the
+      future workplace. We will bring together bright minds with first-hand
+      experience of facilitating a smooth work life for others with experts from
+      industries and areas either affecting or being affected by the changes we
+      see throughout society.
+
+
+      Half of the participants will be future-work experts from within TRR, and
+      the other half will be thinkers, knowers, and doers from outside of TRR.
+      We’re looking for people with curiosity and ideas about what the future of
+      work could, or should, look like.
+
+
+      The ideas and prototypes will be communicated and shared with the public
+      after the hackathon, and winning ideas will be awarded the opportunity to be
+      part of TRR Labs’ Pilot program.
+    headline: Our first step towards the future...
+  form-id: application_form
+  url: >-
+    //script.google.com/macros/s/AKfycbwXvhNxU0PEUwSqfuyiWHFQYEO_gvjNIZELalBjkHtIYYa_zFuG/exec
+  inputs:
+    details:
+      - label: Full Name
+        name: name
+        required: true
+        type: text
+      - label: Job Title
+        name: role
+        required: false
+        type: text
+      - label: Company
+        name: company
+        required: false
+        type: text
+      - label: Email
+        name: email
+        required: true
+        type: text
+      - label: Phone
+        name: phone
+        required: false
+        type: text
+      - label: Profile Picture
+        name: image
+        required: false
+        type: file
+      - label: >-
+          Tell us a little about yourself and why you would like to be a part of
+          the hackathon (max 600 chars)
+        name: description
+        required: true
+        type: textarea
+      - label: Any food allergies/preferences
+        name: food
+        required: false
+        type: text
+  terms: >-
+    Your personal information will be handled by [TRR](http://www.trr.se) &
+    [Another Tomorrow](http://www.anothertomorrow.io) (facilitating partner for
+    the Swedish Work Lab).
+
+
+    We will not share your contact information with any other parties.
+
+
+    We will contact you only with information regarding the Swedish Work Lab and
+    the hackathon.
+
+
+    By applying you consent to letting us use your name, your submitted image, and
+    the description of you and why you would like to participate in Swedish Work
+    Lab marketing material as well as participant presentations on this site. We
+    will only use it in this way if you are selected to take part in the
+    hackathon.
+
+
+    Beyond this, your personal information will be maintained in accordance with
+    GDPR and TRR’s standard practices. Read more
+    [here](https://www.trr.se/om-trr/behandling-av-personuppgifter/) about how TRR
+    handles personal information (in Swedish).
+  submission: >-
+    Thank you for your application, you will hear back from us as soon as
+    possible!

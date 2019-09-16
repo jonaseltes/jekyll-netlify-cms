@@ -52,7 +52,7 @@ function initCanvas(){
       logo = item;
       logo.fillColor = 'white';
       {% if jekyll.environment == "development" %}
-        logo.fillColor = 'black';
+        logo.fillColor = 'white';
       {% endif %}
       console.log("logo: " ,logo);
       var charIndex = 14;
@@ -65,7 +65,7 @@ function initCanvas(){
       char.fillColor.alpha = 0;
       char.strokeColor = 'white';
       {% if jekyll.environment == "development" %}
-        char.strokeColor = 'black';
+        char.strokeColor = 'white';
       {% endif %}
       char.style = null;
       logoOuterPath = char.children[0];

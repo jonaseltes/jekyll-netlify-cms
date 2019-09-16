@@ -1,0 +1,64 @@
+<div class="">
+
+  {% for content in include.content %}
+    <div class="content {% if content.font %}{{content.font}}{% endif %} {% if content.fontSize %}{{content.fontSize}}{% endif %}">
+    {% case content.type %}
+
+      {% when 'embed' %}
+         {{content.embed | markdownify}}
+
+      {% when 'text' %}
+         {{content.markdown | markdownify}}
+
+      {% when 'image' %}
+        <img src="{{content.image}}" alt="" width="100%">
+
+      {% when 'participantObject' %}
+        {%- assign participantslug = content.participant[0] | slugify -%}
+        {%- assign participant = site.data.participants[participantslug] -%}
+        {%- include participant.html content=participant info=content.info -%}
+
+      {% when 'allParticpantsObject' %}
+
+        <div class="row">
+
+          {% for item in site.data.participants %}
+
+            {% case content.columnsSelect %}
+
+              {% when '1' %}
+                <div class="col-12">
+
+              {% when '2' %}
+                <div class="col-md-6">
+
+              {% when '3' %}
+                <div class="col-sm-6 col-md-4">
+
+              {% when '4' %}
+                <div class="col-sm-6 col-md-3">
+
+              {% when '6' %}
+                <div class="col-md-2">
+
+              {% else %}
+                not found
+
+            {% endcase %}
+
+            {%- assign participant = item[1] -%}
+
+            {%- include participant.html content=participant info=content.info -%}
+
+            </div>
+
+          {% endfor %}
+        </div>
+
+      {% else %}
+         Unreqcognised content: {{content.type}}
+
+    {% endcase %}
+    </div>
+  {% endfor %}
+</div>

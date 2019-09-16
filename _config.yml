@@ -29,6 +29,10 @@ collections:
   pageCollection:
     output: true
     permalink: /:name/
+  projections:
+    output: true
+    permalink: /:collection/:name/
+
 
 # defaults:
 #   - scope:
@@ -72,6 +76,8 @@ animation_scripts:
   - /assets/js/three.min.js
   - /assets/js/Projector.js
   - /assets/js/CanvasRenderer.js
+  - /assets/js/CCapture.all.min.js
+  # - /assets/js/STLExporter.js
   - /assets/js/OrbitControls.js
   - /assets/js/TrackballControls.js
   - /assets/js/OBJLoader.js
@@ -118,6 +124,7 @@ jekyll-minifier:
 exclude:
   - hackathon.md
   - lab.md
+  - about.md
 #   - Gemfile
 #   - Gemfile.lock
 #   - node_modules
