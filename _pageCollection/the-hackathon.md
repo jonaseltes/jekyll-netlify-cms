@@ -46,7 +46,7 @@ page_content:
                 Check out their process throughout the day and hear them talk
                 about their solutions below:
               type: text
-          fontSize: text-sm
+          fontSize: text-md
       fontSize: null
       type: cols2
     - columns:
