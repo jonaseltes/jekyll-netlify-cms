@@ -74,6 +74,7 @@ page_content:
             - font: open-sans
               markdown: 'Olle Lundin, Anki Holmberg, Andreas Wessberg, Johan Zetterström'
               type: text
+      fontSize: text-xs
       type: cols3
     - content:
         - font: open-sans
