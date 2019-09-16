@@ -11,7 +11,7 @@ page_content:
               type: text
             - image: /assets/media/uploads/winners.jpg
               type: image
-          fontSize: text-lg
+          fontSize: text-xl
         - content:
             - font: open-sans
               markdown: >-
