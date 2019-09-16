@@ -7,7 +7,7 @@ page_content:
     - columns:
         - content:
             - font: open-sans
-              markdown: '# **The First Swedish Work Lab Hackathon**'
+              markdown: <h3>The First Swedish Work Lab Hackathon</h3>
               type: text
             - embed: >-
                 <div style="padding:56.25% 0 0 0;position:relative;"><iframe
@@ -46,7 +46,7 @@ page_content:
                 Check out their process throughout the day and hear them talk
                 about their solutions below:
               type: text
-          fontSize: null
+          fontSize: text-md
       fontSize: null
       type: cols2
     - columns:
@@ -106,7 +106,7 @@ page_content:
       type: cols3
     - content:
         - font: open-sans
-          markdown: '# **A glimpse from the day...**'
+          markdown: <h3>A glimpse from the day...</h3>
           type: text
       fontSize: text-xl
       type: cols1
