@@ -92,21 +92,16 @@ footer: light
 
 
           <div class="col-lg-8 col-xl-6 text-left text-lg mb-8">
-            {{site.data.application-form.introduction.headline | markdownify}}
-            {%- include collapse.html content=site.data.application-form.introduction.description text-size="text-md" -%}
+            {% comment %}
+              {%- include collapse.html content=site.data.application-form.introduction.description text-size="text-md" -%}
+            {% endcomment %}
+            {%- include content.html content=site.data.default-pages.index.scroll_section.col-8.content -%}
           </div>
 
           <div class="col-lg-4 offset-lg-0  col-xl-4 offset-xl-2">
             <div class="row">
               <div class="col">
-                <div class="text-lg">
-                  <div class="mb-2 d-none">
-                    <a href="/hackathon" class="">I want to join the hackthon</a> →
-                  </div>
-                  <div class="">
-                    <a href="/lab" class="">Design your own future work journey</a> →
-                  </div>
-                </div>
+                {%- include content.html content=site.data.default-pages.index.scroll_section.col-4.content -%}
               </div>
             </div>
           </div>

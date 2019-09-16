@@ -1,4 +1,3 @@
-headline: Will you help us shape the future of work?
 introduction: >-
   The Swedish Work Lab is a platform to explore what the rapid pace of change in
   society mean(s) for employees and employers in both the near and distant
@@ -14,7 +13,7 @@ introduction: >-
   of ethics and sustainability may determine both where individuals choose to
   work as well as where customers choose to take their business. It’s up to us
   to shape the future we want to work in.
-cols2+1:
+scroll_section:
   col-4:
     content:
       - font: open-sans

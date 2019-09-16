@@ -246,20 +246,20 @@ collections: # A list of collections the CMS should be able to edit
         {label: Info, name: info, widget: markdown, buttons: ["italic", "link", "bold"]}
       ]}
     ]
-  # - label: 'Default Pages'
-  #   name: default_pages
-  #   description: "Collection for default pages not created through CMS."
-  #   files:
-  #     - label: "Landing"
-  #       name: index
-  #       file: '_data/default-pages/index.yml'
-  #       fields: [
-  #         {label: Introduction, name: introduction, widget: markdown, buttons: [
-  #           bold, italic, link
-  #         ]},
-  #         {label: Headline, name: headline, widget: text}
-  #       ]
-  
+  - label: 'Default Pages'
+    name: default_pages
+    description: "Collection for default pages not created through CMS."
+    files:
+      - label: "Landing"
+        name: "index"
+        file: '_data/default-pages/index.yml'
+        fields: [
+          # {label: Headline, name: headline, widget: text},
+          {label: Introduction, name: introduction, widget: markdown, buttons: [
+            bold, italic, link
+          ]},
+          {<<: *columns_2+1_section, label: "Scroll section", name: "scroll_section"}
+        ]
   - name: 'content'
     label: 'General content'
     description: "Collection for editing different types of content."
