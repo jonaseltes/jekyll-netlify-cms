@@ -43,22 +43,35 @@ page_content:
     - columns:
         - content:
             - font: open-sans
-              markdown: 'Team 3: namn namn namn'
+              markdown: Team 3
               type: text
             - image: /assets/media/uploads/winners.jpg
               type: image
+            - font: open-sans
+              markdown: >-
+                Klaus Olsen, Malcolm Larri, Annika Waernér, Pernilla Tellefors,
+                Johan Sandgren
+              type: text
         - content:
             - font: open-sans
-              markdown: 'Team 3: namn namn namn'
+              markdown: Team 6
               type: text
             - image: /assets/media/uploads/winners.jpg
               type: image
+            - font: open-sans
+              markdown: >-
+                Charlotta Kronblad, Erik Fors-Andrée, Sofie Arvidsson, Carolina
+                Sevä
+              type: text
         - content:
             - font: open-sans
-              markdown: 'Team 3: namn namn namn'
+              markdown: Team 10
               type: text
             - image: /assets/media/uploads/winners.jpg
               type: image
+            - font: open-sans
+              markdown: 'Olle Lundin, Anki Holmberg, Andreas Wessberg, Johan Zetterström'
+              type: text
       type: cols3
     - content:
         - font: open-sans
