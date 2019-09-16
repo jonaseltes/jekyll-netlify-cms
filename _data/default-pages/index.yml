@@ -1,6 +1,7 @@
+headline: Will you help us shape the future of work?
 introduction: >-
-  The Swedish Work Lab is a platform to explore what the rapid pace of change
-  in society mean(s) for employees and employers in both the near and distant
+  The Swedish Work Lab is a platform to explore what the rapid pace of change in
+  society mean(s) for employees and employers in both the near and distant
   future. What does tomorrow’s work life actually look like? What previously
   unknown challenges may we be facing? What or who is required for our work
   lives to thrive?
@@ -9,8 +10,43 @@ introduction: >-
   Our 21st century work lives are constantly evolving. They’re shaped by
   technological breakthroughs, new economic models, and evolving educational
   formats. Legislation catches up to ideas and re-frames how businesses can be
-  run. There’s an increased expectancy on companies’ moral compass, and
-  matters of ethics and sustainability may determine both where individuals
-  choose to work as well as where customers choose to take their business.
-  It’s up to us to shape the future we want to work in.
-headline: Will you help us shape the future of work?
+  run. There’s an increased expectancy on companies’ moral compass, and matters
+  of ethics and sustainability may determine both where individuals choose to
+  work as well as where customers choose to take their business. It’s up to us
+  to shape the future we want to work in.
+cols2+1:
+  col-4:
+    content:
+      - font: open-sans
+        markdown: >-
+          [Design your own future work journey
+          →](https://www.swedishworklab.com/lab/)
+        type: text
+    fontSize: text-md
+  col-8:
+    content:
+      - font: open-sans
+        fontSize: null
+        markdown: >-
+          Our first step towards the future…
+
+
+          On September 5th 2019 we will bring perspectives from multiple
+          disciplines together for a one day hackathon, to explore and solve
+          challenges facing the future workplace. We will bring together bright
+          minds with first-hand experience of facilitating a smooth work life
+          for others with experts from industries and areas either affecting or
+          being affected by the changes we see throughout society.
+
+
+          Half of the participants will be future-work experts from within TRR,
+          and the other half will be thinkers, knowers, and doers from outside
+          of TRR. We’re looking for people with curiosity and ideas about what
+          the future of work could, or should, look like.
+
+
+          The ideas and prototypes will be communicated and shared with the
+          public after the hackathon, and winning ideas will be awarded the
+          opportunity to be part of TRR Labs’ Pilot program.
+        type: text
+    fontSize: text-md
