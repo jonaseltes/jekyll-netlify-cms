@@ -79,7 +79,7 @@ page_content:
         - font: open-sans
           markdown: '# **A glimpse from the day...**'
           type: text
-      fontSize: text-md
+      fontSize: text-lg
       type: cols1
     - columns:
         - content:
