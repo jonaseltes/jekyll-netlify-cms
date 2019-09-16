@@ -1,7 +1,7 @@
 <div class="">
 
   {% for content in include.content %}
-    <div class="content">
+    <div class="content {% if content.font %}{{content.font}}{% endif %} {% if content.fontSize %}{{content.fontSize}}{% endif %}">
     {% case content.type %}
 
       {% when 'embed' %}
