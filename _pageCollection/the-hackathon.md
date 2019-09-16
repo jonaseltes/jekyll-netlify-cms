@@ -37,9 +37,10 @@ page_content:
                 Human Enabling, Game Changing, and Doable they were. 
 
 
-                The prize was taken home by (drumroll please) teams three, six,
-                and ten, winning with their ideas: “Future-proof index”,
-                “Swop-in”, and “Recruiter sims”! 
+                The prize of having their ideas piloted by TRR Labs was taken
+                home by (drumroll please) teams three, six, and ten, winning
+                with their concepts: “Future-proof index”, “Swop-in”, and
+                “Recruiter sims”! 
 
 
                 Check out their process throughout the day and hear them talk
