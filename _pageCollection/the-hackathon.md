@@ -7,7 +7,7 @@ page_content:
     - columns:
         - content:
             - font: open-sans
-              markdown: '# **The First Swedish Work Lab Hackathon**'
+              markdown: '# **The First Swedish Work Lab Hackatho**'
               type: text
             - embed: >-
                 <div style="padding:56.25% 0 0 0;position:relative;"><iframe
@@ -61,8 +61,7 @@ page_content:
                 allowfullscreen></iframe></div><script
                 src="https://player.vimeo.com/api/player.js"></script>
               type: embed
-            - font: roboto-mono
-              fontSize: text-xs
+            - font: open-sans
               markdown: >-
                 Klaus Olsen, Malcolm Larri, Annika Waernér, Pernilla Tellefors,
                 Johan Sandgren
@@ -79,8 +78,7 @@ page_content:
                 allowfullscreen></iframe></div><script
                 src="https://player.vimeo.com/api/player.js"></script>
               type: embed
-            - font: roboto-mono
-              fontSize: text-xs
+            - font: open-sans
               markdown: >-
                 Charlotta Kronblad, Erik Fors-Andrée, Sofie Arvidsson, Carolina
                 Sevä
@@ -97,8 +95,7 @@ page_content:
                 allowfullscreen></iframe></div><script
                 src="https://player.vimeo.com/api/player.js"></script>
               type: embed
-            - font: roboto-mono
-              fontSize: text-xs
+            - font: open-sans
               markdown: 'Olle Lundin, Anki Holmberg, Andreas Wessberg, Johan Zetterström'
               type: text
       fontSize: text-xs
