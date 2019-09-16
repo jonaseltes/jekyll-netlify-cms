@@ -606,7 +606,7 @@ function init() {
 
 	canvas3D = document.getElementById('canvas3D');
 	renderer3D = new THREE.WebGLRenderer( { canvas: canvas3D, antialias: true, clearColor: 0x000000, clearAlpha: 0, alpha: true, preserveDrawingBuffer: false, autoClear: true });
-  scene.background = new THREE.Color( 0xabab96 );
+  // scene.background = new THREE.Color( 0xabab96 );
 	renderer3D.setPixelRatio(window.devicePixelRatio);
 	renderer3D.setSize(window.innerWidth / canvasRes, window.innerHeight / canvasRes, false);
 
