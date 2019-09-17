@@ -27,17 +27,16 @@ scroll_section:
       - font: open-sans
         fontSize: null
         markdown: >-
-          On September 5th 2019 we gathered perspectives from multiple
-          disciplines together for a one day hackathon, to explore and solve
-          challenges facing the future workplace. We had bright minds with
-          first-hand experience of facilitating others’ work life as well as
-          experts from industries and areas either affecting or being affected
-          by the changes seen throughout society.
+          On September 5th we gathered perspectives from multiple disciplines
+          together for a one day hackathon, to explore and solve challenges
+          facing the future workplace. The winning ideas were awarded the
+          opportunity to be part of TRR Labs’ Pilot program, and will be
+          explored further during the autumn.
         type: text
       - font: roboto-mono
         fontSize: text-sm
         markdown: >-
-          [Read more about the day and winning teams
+          [Learn more about the day and winning solutions
           →](https://www.swedishworklab.com/hackathon/)
         type: text
     fontSize: text-sm
