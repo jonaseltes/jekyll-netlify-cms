@@ -21,7 +21,7 @@ scroll_section:
           [Design your own future work journey
           →](https://www.swedishworklab.com/lab/)
         type: text
-    fontSize: text-md
+    fontSize: text-sm
   col-8:
     content:
       - font: open-sans
@@ -38,6 +38,6 @@ scroll_section:
         fontSize: text-sm
         markdown: >-
           [Read more about the day and winning teams
-          here](https://www.swedishworklab.com/hackathon/)
+          →](https://www.swedishworklab.com/hackathon/)
         type: text
     fontSize: text-sm
