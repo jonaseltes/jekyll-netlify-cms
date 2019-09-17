@@ -35,9 +35,9 @@ scroll_section:
           by the changes seen throughout society.
         type: text
       - font: roboto-mono
-        fontSize: text-xs
+        fontSize: text-sm
         markdown: >-
           [Read more about the day and winning teams
           here](https://www.swedishworklab.com/hackathon/)
         type: text
-    fontSize: text-md
+    fontSize: text-sm
