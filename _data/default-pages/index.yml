@@ -21,31 +21,23 @@ scroll_section:
           [Design your own future work journey
           →](https://www.swedishworklab.com/lab/)
         type: text
-    fontSize: text-md
+    fontSize: text-sm
   col-8:
     content:
       - font: open-sans
         fontSize: null
         markdown: >-
-          Our first step towards the future…
-
-
-          On September 5th 2019 we will bring perspectives from multiple
+          On September 5th 2019 we gathered perspectives from multiple
           disciplines together for a one day hackathon, to explore and solve
-          challenges facing the future workplace. We will bring together bright
-          minds with first-hand experience of facilitating a smooth work life
-          for others with experts from industries and areas either affecting or
-          being affected by the changes we see throughout society.
-
-
-          Half of the participants will be future-work experts from within TRR,
-          and the other half will be thinkers, knowers, and doers from outside
-          of TRR. We’re looking for people with curiosity and ideas about what
-          the future of work could, or should, look like.
-
-
-          The ideas and prototypes will be communicated and shared with the
-          public after the hackathon, and winning ideas will be awarded the
-          opportunity to be part of TRR Labs’ Pilot program.
+          challenges facing the future workplace. We had bright minds with
+          first-hand experience of facilitating others’ work life as well as
+          experts from industries and areas either affecting or being affected
+          by the changes seen throughout society.
         type: text
-    fontSize: text-md
+      - font: roboto-mono
+        fontSize: text-sm
+        markdown: >-
+          [Read more about the day and winning teams
+          →](https://www.swedishworklab.com/hackathon/)
+        type: text
+    fontSize: text-sm
