@@ -17,6 +17,10 @@ page_content:
                 allowfullscreen></iframe></div><script
                 src="https://player.vimeo.com/api/player.js"></script>
               type: embed
+            - font: roboto-mono
+              fontSize: text-xs
+              markdown: 'Film: Tailor Films'
+              type: text
           fontSize: text-xl
         - content:
             - font: open-sans
@@ -118,6 +122,10 @@ page_content:
               type: image
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_97.jpg
               type: image
+            - font: roboto-mono
+              fontSize: text-xs
+              markdown: 'Photo: Emma Grann'
+              type: text
         - content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_11.jpg
               type: image
