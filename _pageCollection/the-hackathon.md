@@ -17,6 +17,10 @@ page_content:
                 allowfullscreen></iframe></div><script
                 src="https://player.vimeo.com/api/player.js"></script>
               type: embed
+            - font: roboto-mono
+              fontSize: text-xs
+              markdown: Film by Tailor Films
+              type: text
           fontSize: text-xl
         - content:
             - font: open-sans
