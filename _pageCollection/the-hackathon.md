@@ -124,7 +124,7 @@ page_content:
               type: image
             - font: roboto-mono
               fontSize: text-xs
-              markdown: 'Photo: Emma Grann'
+              markdown: 'Photography: Emma Grann'
               type: text
         - content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_11.jpg
