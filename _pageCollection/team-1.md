@@ -88,8 +88,47 @@ page_content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_168.jpg
               type: image
       type: cols3
-    - type: cols2
-    - type: cols3
+    - columns:
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/360270624?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 3:  End of life work opportunities</h3>
+
+
+                **<b>Team: <br></b>**
+
+                Klaus Olsen, Malcolm Larri, Annika Waernér, Pernilla Tellefors,
+                Johan Sandgren
+
+
+                **<b>Brief in short:<br></b>**
+
+                How do we make sure that meaningful and motivating career
+                options are available to those who need to make major changes in
+                the last stretch of their work life?
+              type: text
+      type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_111.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_145.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_231.jpg
+              type: image
+      type: cols3
     - type: cols2
     - type: cols3
     - type: cols2
