@@ -48,8 +48,9 @@ page_content:
     - columns:
         - content:
             - font: open-sans
+              fontSize: text-sm
               markdown: >-
-                <h3>Team 2: Meaningful midlife reskilling</h3>
+                <h3>Team 2: Skill sets of the future</h3>
 
 
                 **<b>Team: <br></b>**
