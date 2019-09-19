@@ -18,17 +18,13 @@ page_content:
                 <h3>Team 1: Meaningful midlife reskilling</h3>
 
 
-                * Anna Hagensgård
+                **Team:** 
 
-                * Henrik Friman
-
-                * Annika Gillispie
-
-                * Kristian Ohlson Gonzales
+                Anna Hagensgård, Henrik Friman, Annika Gillispie, Kristian
+                Ohlson Gonzales
 
 
-                **Team brief:**
-
+                **Brief:**
 
                 What demands does this particular starting point place on how we
                 educate people, and how might we help this group pivot in their
