@@ -1,34 +1,35 @@
 ---
-title: Team 1
+title: Teams
 layout: page
-permalink: /hackathon/team-1/
+permalink: /hackathon/teams/
 page_content:
   rows:
     - columns:
         - content:
-            - image: /assets/media/uploads/anothertomorrow_swedishworklab_97.jpg
-              type: image
+            - embed: <iframe>
+              type: embed
         - content:
             - font: open-sans
+              fontSize: text-sm
               markdown: >-
-                # Team 1: Meaningful midlife reskilling
+                ## Team 1: Meaningful midlife reskilling
 
 
-                * ## Anna Hagensgård
+                * Anna Hagensgård
 
-                * ## Henrik Friman
+                * Henrik Friman
 
-                * ## Annika Gillispie
+                * Annika Gillispie
 
-                * ## Kristian Ohlson Gonzales
-
-
-                ## Team brief:
+                * Kristian Ohlson Gonzales
 
 
-                ## What demands does this particular starting point place on how
-                we educate people, and how might we help this group pivot in
-                their careers?
+                **Team brief:**
+
+
+                What demands does this particular starting point place on how we
+                educate people, and how might we help this group pivot in their
+                careers?
               type: text
             - embed: >-
                 <iframe src="https://player.vimeo.com/video/204531768"
@@ -36,5 +37,6 @@ page_content:
                 fullscreen" allowfullscreen></iframe>
               type: embed
       type: cols2
+    - type: cols3
 ---
 
