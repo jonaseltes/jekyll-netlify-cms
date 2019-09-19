@@ -15,7 +15,7 @@ page_content:
             - font: open-sans
               fontSize: text-sm
               markdown: >-
-                ## Team 1: Meaningful midlife reskilling
+                <h3>Team 1: Meaningful midlife reskilling</h3>
 
 
                 * Anna Hagensgård
