@@ -6,7 +6,10 @@ page_content:
   rows:
     - columns:
         - content:
-            - embed: <iframe>
+            - embed: >-
+                <iframe src="https://player.vimeo.com/video/204531768"
+                width="640" height="360" frameborder="0" allow="autoplay;
+                fullscreen" allowfullscreen></iframe>
               type: embed
         - content:
             - font: open-sans
@@ -31,12 +34,25 @@ page_content:
                 educate people, and how might we help this group pivot in their
                 careers?
               type: text
-            - embed: >-
-                <iframe src="https://player.vimeo.com/video/204531768"
-                width="640" height="360" frameborder="0" allow="autoplay;
-                fullscreen" allowfullscreen></iframe>
-              type: embed
       type: cols2
+    - type: cols3
+    - type: cols2
+    - type: cols3
+    - type: cols2
+    - type: cols3
+    - type: cols2
+    - type: cols3
+    - type: cols2
+    - type: cols3
+    - type: cols2
+    - type: cols3
+    - type: cols2
+    - type: cols3
+    - type: cols2
+    - type: cols3
+    - type: cols2
+    - type: cols3
+    - type: cols2
     - type: cols3
 ---
 
