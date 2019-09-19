@@ -7,9 +7,12 @@ page_content:
     - columns:
         - content:
             - embed: >-
-                <iframe src="https://player.vimeo.com/video/204531768"
-                width="640" height="360" frameborder="0" allow="autoplay;
-                fullscreen" allowfullscreen></iframe>
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059513?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
               type: embed
         - content:
             - font: open-sans
@@ -31,7 +34,17 @@ page_content:
                 careers?
               type: text
       type: cols2
-    - type: cols3
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_36.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_109.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_126.jpg
+              type: image
+      type: cols3
     - type: cols2
     - type: cols3
     - type: cols2
