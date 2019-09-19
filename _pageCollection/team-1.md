@@ -24,7 +24,7 @@ page_content:
                 Ohlson Gonzales
 
 
-                **Brief:**
+                **Brief in short:**
 
                 What demands does this particular starting point place on how we
                 educate people, and how might we help this group pivot in their
