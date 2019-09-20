@@ -212,7 +212,38 @@ page_content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_177.jpg
               type: image
       type: cols3
-    - type: cols2
+    - columns:
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 6: The wake-up call</h3>
+
+
+                **<b>Team: <br></b>**
+
+                Charlotta Kronblad, Erik Fors-Andrée, Sofie Arvidsson, Carolina
+                Sevä
+
+
+                **<b>Brief in short:<br></b>**
+
+                What is a set-up for people in-between jobs that could help them
+                identify a next step in their careers, one that is less about
+                “just” getting a new job or education, and more about finding a
+                meaningful and value-driven context, new ideas, and/or
+                collaborators?
+              type: text
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/360270691?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+      type: cols2
     - type: cols3
     - type: cols2
     - type: cols3
