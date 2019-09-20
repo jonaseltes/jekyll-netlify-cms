@@ -21,6 +21,9 @@ page_content:
               containing the future-scenarios that were given, a PDF is
               available below.
             type: text
+          - file: /assets/media/uploads/scenariosswl2019.pdf
+            title: Briefs
+            type: file
       col-8:
         content:
           - image: /assets/media/uploads/winners.jpg
