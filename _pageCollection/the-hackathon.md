@@ -48,7 +48,8 @@ page_content:
 
 
                 Check out their process throughout the day and hear them talk
-                about their solutions below:
+                about their solutions below. You'll find all the teams
+                [here](https://www.swedishworklab.com/hackathon/teams).
               type: text
           fontSize: text-md
       fontSize: null
