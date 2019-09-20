@@ -4,6 +4,31 @@ layout: page
 permalink: /hackathon/teams/
 page_content:
   rows:
+    - col-4:
+        content:
+          - font: open-sans
+            fontSize: text-sm
+            markdown: >-
+              <h3>Teams & Solutions</h3>
+
+
+              Below you can see the briefs in short, participants, and videos
+              for all 10 teams that took part in the hackathon, as well as
+              images from the day. 
+
+
+              If you would like to read the full versions of the briefs,
+              containing the future-scenarios that were given, a PDF is
+              available below.
+            type: text
+      col-8:
+        content:
+          - image: /assets/media/uploads/winners.jpg
+            type: image
+          - font: open-sans
+            markdown: Part
+            type: text
+      type: cols2+1
     - columns:
         - content:
             - image: /assets/media/uploads/winners.jpg
