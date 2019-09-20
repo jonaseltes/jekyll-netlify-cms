@@ -382,7 +382,37 @@ page_content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_77.jpg
               type: image
       type: cols3
-    - type: cols2
+    - columns:
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 10: Human-centered recruitment in a decentralized
+                market</h3>
+
+
+                **<b>Team: <br></b>**
+
+                Olle Lundin, Anki Holmberg, Andreas Wessberg, Johan Zetterström
+
+
+                **<b>Brief in short:<br></b>**
+
+                How can modern technology be leveraged into a tool that global
+                companies can use to find, network with, and evaluate talent in
+                this glocal world, in a way that makes up for what is lost with
+                the lack of physical presence?
+              type: text
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/360270573?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+      type: cols2
     - type: cols3
 ---
 
