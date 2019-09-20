@@ -4,6 +4,10 @@
     <div class="content {% if content.font %}{{content.font}}{% endif %} {% if content.fontSize %}{{content.fontSize}}{% endif %}">
     {% case content.type %}
 
+      {% when 'file' %}
+        <div class="file">
+          <a href="{{content.file}}">{{content.title}} ↓</a>
+          </div>
       {% when 'embed' %}
          {{content.embed | markdownify}}
 
