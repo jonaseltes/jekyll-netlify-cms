@@ -371,7 +371,17 @@ page_content:
                 sustainable working culture for all?
               type: text
       type: cols2
-    - type: cols3
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_82.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_23.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_77.jpg
+              type: image
+      type: cols3
     - type: cols2
     - type: cols3
 ---
