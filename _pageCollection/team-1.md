@@ -338,7 +338,39 @@ page_content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_136.jpg
               type: image
       type: cols3
-    - type: cols2
+    - columns:
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059126?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 9: Beyond Retirement</h3>
+
+
+                <b>**Team:** <br></b>
+
+
+                Victoria Stoyanova, Pelle Kimvall, Maria Jönsson, Ulrika
+                Karlsson
+
+
+                <b>**Brief in short:**<br></b>
+
+
+                How can retirees’ ambition to continue partaking in society and
+                the labour market be supported in a way that also benefits the
+                younger generation and society’s ambition of a progressive and
+                sustainable working culture for all?
+              type: text
+      type: cols2
     - type: cols3
     - type: cols2
     - type: cols3
