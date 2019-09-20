@@ -6,7 +6,7 @@
 
       {% when 'file' %}
         <div class="file">
-          <a href="{{content.file}}">{{content.title}} ↓</a>
+          <a href="{{content.file}}" target="_blank">{{content.title}} ↓</a>
           </div>
       {% when 'embed' %}
          {{content.embed | markdownify}}
