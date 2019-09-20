@@ -296,7 +296,37 @@ page_content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_180.jpg
               type: image
       type: cols3
-    - type: cols2
+    - columns:
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 8: Loyalty in a fluid labour market</h3>
+
+
+                **<b>Team: <br></b>**
+
+                Julian Reisz, Simone Slaviero, Jesper Olsson, Jonas Terdin,
+                Josefine Brangstrup
+
+
+                **<b>Brief in short:<br></b>**
+
+                What service, platform, function, or organisation could bridge
+                the gap between job providers and job takers, creating a sense
+                of loyalty and commitment between the two, even outside
+                traditional employment agreements?
+              type: text
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059185?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+      type: cols2
     - type: cols3
     - type: cols2
     - type: cols3
