@@ -202,7 +202,7 @@ page_content:
         - content:
             - font: open-sans
               fontSize: text-sm
-              markdown: "<h3>Team 6: The wake-up call</h3>\n\n**<b>Team: <br></b>**\nCharlotta Kronblad, Erik Fors-Andrée, Sofie Arvidsson, Carolina Sevä\n\n\U0001F3C6\n\n**<b>Brief in short:<br></b>**\nWhat is a set-up for people in-between jobs that could help them identify a next step in their careers, one that is less about “just” getting a new job or education, and more about finding a meaningful and value-driven context, new ideas, and/or collaborators?"
+              markdown: "<h3>Team 6: The wake-up call</h3>\n\n\U0001F3C6\n\n**<b>Team: <br></b>**\nCharlotta Kronblad, Erik Fors-Andrée, Sofie Arvidsson, Carolina Sevä\n\n**<b>Brief in short:<br></b>**\nWhat is a set-up for people in-between jobs that could help them identify a next step in their careers, one that is less about “just” getting a new job or education, and more about finding a meaningful and value-driven context, new ideas, and/or collaborators?"
               type: text
         - content:
             - embed: >-
