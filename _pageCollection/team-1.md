@@ -201,7 +201,17 @@ page_content:
                 economy, rather than the risks?
               type: text
       type: cols2
-    - type: cols3
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_53.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_78.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_177.jpg
+              type: image
+      type: cols3
     - type: cols2
     - type: cols3
     - type: cols2
