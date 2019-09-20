@@ -32,7 +32,8 @@ variables:
   file: &file
     - {label: File, name: file, widget: object, fields: [
         # {<<: *padding},
-        {label: File, name: file, widget: file, allow_multiple: false}
+        {label: File, name: file, widget: file, allow_multiple: false},
+        {label: Title, name: title, widget: string, hint: "The text that will displayed which the user has to click to download the file."}
       ]}
   embed: &embed
     - {label: Embed, name: embed, widget: object, fields: [
