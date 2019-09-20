@@ -129,7 +129,36 @@ page_content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_231.jpg
               type: image
       type: cols3
-    - type: cols2
+    - columns:
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 4: Coaching the coacher</h3>
+
+
+                **<b>Team: <br></b>**
+
+                Andres Colmenares, Clea Hovstadius, Carina Brandin Johannesson,
+                Erik Wickbom
+
+
+                **<b>Brief in short:<br></b>**
+
+                What skills and structures are required to keep functions and
+                facilitators themselves up to date, in order to be able to aptly
+                transition large groups of people into brand-new jobs?
+              type: text
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059369?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+      type: cols2
     - type: cols3
     - type: cols2
     - type: cols3
