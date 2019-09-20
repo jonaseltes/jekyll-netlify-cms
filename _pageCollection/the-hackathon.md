@@ -44,11 +44,11 @@ page_content:
                 The prize of having their ideas piloted by TRR Labs was taken
                 home by (drumroll please) teams three, six, and ten, winning
                 with their concepts: “Future-proof index”, “Swop-in”, and
-                “Recruiter sims”! 
+                “Recruiter sims”! Check out their process throughout the day and
+                hear them talk about their solutions below. 
 
 
-                Check out their process throughout the day and hear them talk
-                about their solutions below. You'll find all the teams
+                You'll find all the teams
                 [here](https://www.swedishworklab.com/hackathon/teams).
               type: text
           fontSize: text-md
