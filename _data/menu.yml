@@ -1,6 +1,9 @@
 items:
   - label: The Hackathon
-    sub-menu: []
+    sub-menu:
+      - label: Teams
+        type: item
+        url: /hackathon/teams/
     url: /hackathon/
   - label: The Lab
     sub-menu: []
