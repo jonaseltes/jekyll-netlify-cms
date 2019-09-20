@@ -159,7 +159,17 @@ page_content:
                 src="https://player.vimeo.com/api/player.js"></script>
               type: embed
       type: cols2
-    - type: cols3
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_28.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_117.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_175.jpg
+              type: image
+      type: cols3
     - type: cols2
     - type: cols3
     - type: cols2
