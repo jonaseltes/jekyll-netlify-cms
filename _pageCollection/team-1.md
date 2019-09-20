@@ -129,7 +129,7 @@ page_content:
         - content:
             - font: open-sans
               fontSize: text-sm
-              markdown: "<h3>Team 3:  End of life work opportunities</h3>\n\n**<b>**\U0001F3C6 **Team: <br></b>**\nKlaus Olsen, Malcolm Larri, Annika Waernér, Pernilla Tellefors, Johan Sandgren\n\n**<b>Brief in short:<br></b>**\nHow do we make sure that meaningful and motivating career options are available to those who need to make major changes in the last stretch of their work life?"
+              markdown: "<h3>Team 3:  End of life work opportunities</h3>\n\n\U0001F3C6**<b>Team: <br></b>**\nKlaus Olsen, Malcolm Larri, Annika Waernér, Pernilla Tellefors, Johan Sandgren\n\n**<b>Brief in short:<br></b>**\nHow do we make sure that meaningful and motivating career options are available to those who need to make major changes in the last stretch of their work life?"
               type: text
       type: cols2
     - columns:
@@ -230,7 +230,7 @@ page_content:
         - content:
             - font: open-sans
               fontSize: text-sm
-              markdown: "<h3>Team 6: The wake-up call</h3>\n\n**<b>**\U0001F3C6 **Team: <br></b>**\nCharlotta Kronblad, Erik Fors-Andrée, Sofie Arvidsson, Carolina Sevä\n\n**<b>Brief in short:<br></b>**\nWhat is a set-up for people in-between jobs that could help them identify a next step in their careers, one that is less about “just” getting a new job or education, and more about finding a meaningful and value-driven context, new ideas, and/or collaborators?"
+              markdown: "<h3>Team 6: The wake-up call</h3>\n\n\U0001F3C6**<b>Team: <br></b>**\nCharlotta Kronblad, Erik Fors-Andrée, Sofie Arvidsson, Carolina Sevä\n\n**<b>Brief in short:<br></b>**\nWhat is a set-up for people in-between jobs that could help them identify a next step in their careers, one that is less about “just” getting a new job or education, and more about finding a meaningful and value-driven context, new ideas, and/or collaborators?"
               type: text
         - content:
             - embed: >-
@@ -384,7 +384,7 @@ page_content:
         - content:
             - font: open-sans
               fontSize: text-sm
-              markdown: "<h3>Team 10: Human-centered recruitment in a decentralized market</h3>\n\n**<b>**\U0001F3C6**Team: <br></b>**\nOlle Lundin, Anki Holmberg, Andreas Wessberg, Johan Zetterström\n\n**<b>Brief in short:<br></b>**\nHow can modern technology be leveraged into a tool that global companies can use to find, network with, and evaluate talent in this glocal world, in a way that makes up for what is lost with the lack of physical presence?"
+              markdown: "<h3>Team 10: Human-centered recruitment in a decentralized market</h3>\n\n\U0001F3C6**<b>Team: <br></b>**\nOlle Lundin, Anki Holmberg, Andreas Wessberg, Johan Zetterström\n\n**<b>Brief in short:<br></b>**\nHow can modern technology be leveraged into a tool that global companies can use to find, network with, and evaluate talent in this glocal world, in a way that makes up for what is lost with the lack of physical presence?"
               type: text
         - content:
             - embed: >-
