@@ -285,7 +285,17 @@ page_content:
                 to staff difficult-to-fill roles?
               type: text
       type: cols2
-    - type: cols3
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_35.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_38.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_180.jpg
+              type: image
+      type: cols3
     - type: cols2
     - type: cols3
     - type: cols2
