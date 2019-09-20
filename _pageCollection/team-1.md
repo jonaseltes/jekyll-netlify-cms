@@ -4,31 +4,32 @@ layout: page
 permalink: /hackathon/teams/
 page_content:
   rows:
-    - columns:
-        - content:
-            - image: /assets/media/uploads/winners.jpg
-              type: image
-            - font: roboto-mono
-              fontSize: text-xs
-              markdown: 'Participants from the winning teams. Photography: Emma Grann'
-              type: text
-        - content:
-            - font: open-sans
-              fontSize: text-sm
-              markdown: >-
-                <h3>Teams & Solutions</h3>
+    - col-4:
+        content:
+          - font: open-sans
+            fontSize: text-sm
+            markdown: >-
+              <h3>Teams & Solutions</h3>
 
 
-                Below you can see the briefs in short, participants, and videos
-                for all 10 teams that took part in the hackathon, as well as
-                images from the day. 
+              Below you can see the briefs in short, participants, and videos
+              for all 10 teams that took part in the hackathon, as well as
+              images from the day. 
 
 
-                If you would like to read the full versions of the briefs,
-                containing the future-scenarios that were given, a PDF is
-                available below.
-              type: text
-      type: cols2
+              If you would like to read the full versions of the briefs,
+              containing the future-scenarios that were given, a PDF is
+              available below.
+            type: text
+      col-8:
+        content:
+          - image: /assets/media/uploads/winners.jpg
+            type: image
+          - font: roboto-mono
+            fontSize: text-xs
+            markdown: 'Participants from the winning teams. Photography: Emma Grann'
+            type: text
+      type: cols2+1
     - columns:
         - content:
             - embed: >-
