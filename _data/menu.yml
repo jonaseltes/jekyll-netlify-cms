@@ -8,6 +8,5 @@ items:
   - label: The Lab
     sub-menu: []
     url: /lab/
-# blog:
-#   enabled: true
-#   label: Blog
+  - label: Blog
+    url: /blog/
