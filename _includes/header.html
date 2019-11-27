@@ -69,6 +69,34 @@
                       </div>
                     </div>
                   {% endfor %}
+
+                  {% comment %}
+                    {% if site.data.menu.blog.enabled %}
+                      <div class="col-sm offset-0 offset-sm-0 text-left text-sm-left">
+                        <div class="dropdown">
+                          <a class="nav-item nav-link {% for subitem in item.sub-menu %}{% if item.url == page.url or subitem.url == page.url %}{% endif %}{% endfor %}" href="{{ item.url | relative_url }}">
+                            {{ item.label | escape }}
+                            {% if item.url == page.url %}
+                              ←
+                              {% elsif item.sub-menu.size > 0 %}
+                                {% for subitem in item.sub-menu %}
+                                  {% if subitem.url == page.url %}
+                                    ←
+                                    {% break %}
+                                  {% endif%}
+                                  {% if forloop.last == true %}
+                                    →
+                                  {% endif %}
+                                {% endfor %}
+                              {% else %}
+                                →
+                            {% endif %}
+                          </a>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endcomment %}
+                  
                 </div>
               </div>
 
