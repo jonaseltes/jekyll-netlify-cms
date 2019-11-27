@@ -1,40 +1,412 @@
 ---
-title: Team 1
+title: Teams
 layout: page
-permalink: /hackathon/team-1/
+permalink: /hackathon/teams/
 page_content:
   rows:
+    - col-4:
+        content:
+          - font: open-sans
+            fontSize: text-sm
+            markdown: >-
+              <h3>Teams & Solutions</h3>
+
+
+              Below you can see the briefs in short, participants, and videos
+              for all 10 teams that took part in the hackathon, as well as
+              images from the day. 
+
+
+              If you would like to read the full versions of the briefs,
+              containing the future-scenarios that were given, a PDF is
+              available below.
+            type: text
+          - file: /assets/media/uploads/scenariosswl2019.pdf
+            title: Briefs
+            type: file
+      col-8:
+        content:
+          - image: /assets/media/uploads/winners.jpg
+            type: image
+          - font: roboto-mono
+            fontSize: text-xs
+            markdown: 'Participants from the winning teams. Photography: Emma Grann'
+            type: text
+      type: cols2+1
     - columns:
         - content:
-            - image: /assets/media/uploads/anothertomorrow_swedishworklab_97.jpg
-              type: image
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059513?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
         - content:
             - font: open-sans
+              fontSize: text-sm
               markdown: >-
-                # Team 1: Meaningful midlife reskilling
+                <h3>Team 1: Meaningful midlife reskilling</h3>
 
 
-                * ## Anna Hagensgård
+                **<b>Team: <br></b>**
 
-                * ## Henrik Friman
-
-                * ## Annika Gillispie
-
-                * ## Kristian Ohlson Gonzales
+                Anna Hagensgård, Henrik Friman, Annika Gillispie, Kristian
+                Ohlson Gonzales
 
 
-                ## Team brief:
+                **<b>Brief in short:<br></b>**
 
-
-                ## What demands does this particular starting point place on how
-                we educate people, and how might we help this group pivot in
-                their careers?
+                What demands does this particular starting point place on how we
+                educate people, and how might we help this group pivot in their
+                careers?
               type: text
+      type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_36.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_109.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_126.jpg
+              type: image
+      type: cols3
+    - columns:
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 2: Skill sets of the future</h3>
+
+
+                **<b>Team: <br></b>**
+
+                Eva von Wernstedt, Kristoffer Jarefeldt, Erica Sundberg, Patrik
+                Englund
+
+
+                **<b>Brief in short:<br></b>**
+
+                In a future of soft skills, what skills are crucial, and how do
+                we acquire them? What forums; networks, schools, or communities
+                can promote and enhance these skills and increase the likelihood
+                that humans find meaningful jobs as many tasks and activities
+                are outsourced to robots?
+              type: text
+        - content:
             - embed: >-
-                <iframe src="https://player.vimeo.com/video/204531768"
-                width="640" height="360" frameborder="0" allow="autoplay;
-                fullscreen" allowfullscreen></iframe>
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059452?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
               type: embed
       type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_62.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_130.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_168.jpg
+              type: image
+      type: cols3
+    - columns:
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/360270624?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: "<h3>Team 3:  End of life work opportunities</h3>\n\n\U0001F3C6**<b>Team: <br></b>**\nKlaus Olsen, Malcolm Larri, Annika Waernér, Pernilla Tellefors, Johan Sandgren\n\n**<b>Brief in short:<br></b>**\nHow do we make sure that meaningful and motivating career options are available to those who need to make major changes in the last stretch of their work life?"
+              type: text
+      type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_111.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_145.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_231.jpg
+              type: image
+      type: cols3
+    - columns:
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 4: Coaching the coacher</h3>
+
+
+                **<b>Team: <br></b>**
+
+                Andres Colmenares, Clea Hovstadius, Carina Brandin Johannesson,
+                Erik Wickbom
+
+
+                **<b>Brief in short:<br></b>**
+
+                What skills and structures are required to keep functions and
+                facilitators themselves up to date, in order to be able to aptly
+                transition large groups of people into brand-new jobs?
+              type: text
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059369?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+      type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_28.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_117.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_175.jpg
+              type: image
+      type: cols3
+    - columns:
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059308?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 5: Avoiding the traps of gig jobs</h3>
+
+
+                **<b>Team: <br></b>**
+
+                Carl-Fredrik Jaensson, Karin Bobert, Hans Winzell, Anna Karin
+                Laurenius, Lina Wigren
+
+
+                **<b>Brief in short:<br></b>**
+
+                Is it possible to combine mobility and flexibility with job
+                security? What structures, tools, or functions could tip the
+                scales towards the opportunities and benefits of the gig
+                economy, rather than the risks?
+              type: text
+      type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_53.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_78.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_177.jpg
+              type: image
+      type: cols3
+    - columns:
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: "<h3>Team 6: The wake-up call</h3>\n\n\U0001F3C6**<b>Team: <br></b>**\nCharlotta Kronblad, Erik Fors-Andrée, Sofie Arvidsson, Carolina Sevä\n\n**<b>Brief in short:<br></b>**\nWhat is a set-up for people in-between jobs that could help them identify a next step in their careers, one that is less about “just” getting a new job or education, and more about finding a meaningful and value-driven context, new ideas, and/or collaborators?"
+              type: text
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/360270691?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+      type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_27.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_64.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_139.jpg
+              type: image
+      type: cols3
+    - columns:
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059240?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 7: Future-proofing talent acquisition</h3>
+
+
+                **<b>Team: <br></b>**
+
+                Mindy-Li Nixon, Torbjörn Trägårdh, Jonas Mauritzon, Jonas
+                Kowalski
+
+
+                **<b>Brief in short:<br></b>**
+
+                As companies fear a labour deficit, how can they change how and
+                from where they recruit in order to reach new groups of people
+                to staff difficult-to-fill roles?
+              type: text
+      type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_35.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_38.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_180.jpg
+              type: image
+      type: cols3
+    - columns:
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 8: Loyalty in a fluid labour market</h3>
+
+
+                **<b>Team: <br></b>**
+
+                Julian Reisz, Simone Slaviero, Jesper Olsson, Jonas Terdin,
+                Josefine Brangstrup
+
+
+                **<b>Brief in short:<br></b>**
+
+                What service, platform, function, or organisation could bridge
+                the gap between job providers and job takers, creating a sense
+                of loyalty and commitment between the two, even outside
+                traditional employment agreements?
+              type: text
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059185?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+      type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_104.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_122.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_136.jpg
+              type: image
+      type: cols3
+    - columns:
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/361059126?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: >-
+                <h3>Team 9: Beyond Retirement</h3>
+
+
+                <b>**Team:** <br></b>
+
+
+                Victoria Stoyanova, Pelle Kimvall, Maria Jönsson, Ulrika
+                Karlsson
+
+
+                <b>**Brief in short:**<br></b>
+
+
+                How can retirees’ ambition to continue partaking in society and
+                the labour market be supported in a way that also benefits the
+                younger generation and society’s ambition of a progressive and
+                sustainable working culture for all?
+              type: text
+      type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_82.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_23.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_77.jpg
+              type: image
+      type: cols3
+    - columns:
+        - content:
+            - font: open-sans
+              fontSize: text-sm
+              markdown: "<h3>Team 10: Human-centered recruitment in a decentralized market</h3>\n\n\U0001F3C6**<b>Team: <br></b>**\nOlle Lundin, Anki Holmberg, Andreas Wessberg, Johan Zetterström\n\n**<b>Brief in short:<br></b>**\nHow can modern technology be leveraged into a tool that global companies can use to find, network with, and evaluate talent in this glocal world, in a way that makes up for what is lost with the lack of physical presence?"
+              type: text
+        - content:
+            - embed: >-
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                src="https://player.vimeo.com/video/360270573?color=806EDE&byline=0&portrait=0"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allow="autoplay; fullscreen"
+                allowfullscreen></iframe></div><script
+                src="https://player.vimeo.com/api/player.js"></script>
+              type: embed
+      type: cols2
+    - columns:
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_140.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_160.jpg
+              type: image
+        - content:
+            - image: /assets/media/uploads/anothertomorrow_swedishworklab_228.jpg
+              type: image
+      type: cols3
 ---
 

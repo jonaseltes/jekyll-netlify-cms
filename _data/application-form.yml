@@ -1,9 +1,9 @@
 headline: 'I want to take part in the hackathon:'
 disclaimer: >-
-  There are currently some technical difficulties when applying through the
-  Internet Explorer browser on PC. We’re working very hard to fix it, but if you
-  have any trouble submitting your application, please try using another browser
-  such as Google Chrome or send us an [email](mailto:contact@swedishworklab.com) directly.
+  Since Internet Explorer is being phased out by Microsoft, it may not be fully
+  supported for this site. If you have any trouble submitting your application,
+  please try using another browser such as Microsoft Edge/Google Chrome or send
+  us an [email](mailto:contact@swedishworklab.com) directly.
 introduction:
   description: >-
     On September 5th 2019 we will bring perspectives from multiple disciplines

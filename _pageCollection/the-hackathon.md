@@ -17,6 +17,10 @@ page_content:
                 allowfullscreen></iframe></div><script
                 src="https://player.vimeo.com/api/player.js"></script>
               type: embed
+            - font: roboto-mono
+              fontSize: text-xs
+              markdown: 'Film: Tailor Films'
+              type: text
           fontSize: text-xl
         - content:
             - font: open-sans
@@ -40,11 +44,12 @@ page_content:
                 The prize of having their ideas piloted by TRR Labs was taken
                 home by (drumroll please) teams three, six, and ten, winning
                 with their concepts: “Future-proof index”, “Swop-in”, and
-                “Recruiter sims”! 
+                “Recruiter sims”! Check out their process throughout the day and
+                hear them talk about their solutions below. 
 
 
-                Check out their process throughout the day and hear them talk
-                about their solutions below:
+                You'll find all the teams
+                [here](https://www.swedishworklab.com/hackathon/teams).
               type: text
           fontSize: text-md
       fontSize: null
@@ -118,6 +123,10 @@ page_content:
               type: image
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_97.jpg
               type: image
+            - font: roboto-mono
+              fontSize: text-xs
+              markdown: 'Photography: Emma Grann'
+              type: text
         - content:
             - image: /assets/media/uploads/anothertomorrow_swedishworklab_11.jpg
               type: image
