@@ -240,7 +240,7 @@ collections: # A list of collections the CMS should be able to edit
         ]},
         {label: Blog, name: 'blog', widget: object, fields: [
           {label: Show, name: 'enabled', widget: boolean, default: false},
-          {label: Label, name: 'label', widget: string}
+          {label: Label, name: 'label', widget: string, default: blog}
         ]}
       ]},
       {label: 'Footer', name: 'footer', file: '_data/footer.yml', fields: [
