@@ -10,4 +10,4 @@ items:
     url: /lab/
 blog:
   enabled: false
-  label: Blog
+  label:
