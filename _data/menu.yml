@@ -9,5 +9,5 @@ items:
     sub-menu: []
     url: /lab/
 blog:
-  enabled: false
-  label: test
+  enabled: true
+  label: Blog
