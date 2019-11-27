@@ -8,3 +8,4 @@ items:
   - label: The Lab
     sub-menu: []
     url: /lab/
+blog: true
