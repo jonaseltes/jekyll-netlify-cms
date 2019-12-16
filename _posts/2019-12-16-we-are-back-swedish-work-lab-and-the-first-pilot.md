@@ -35,3 +35,7 @@ After the workshop, the core team got together and made a few decisions in order
 > The ones we are looking for already have jobs, good jobs. We can’t just put out job offers and hope they’ll come to us; we need to establish relations with these people in different contexts. We have to work proactively with searching
 
 One interesting difference we saw between the two behaviours was that the more proactive companies were not only recruiting based on hard skills. Culture enabling skills, a subcategory of soft skills, are required in order to contribute to the company culture it needs to stay competitive on the market.
+
+> The right attitude towards change and the ability to function during change processes is a big part of our requirements in every recruitment. If change makes you unhappy, you can’t be here
+
+\- on crucial factors in recruitment
