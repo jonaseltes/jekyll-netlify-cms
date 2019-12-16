@@ -15,6 +15,8 @@ We quickly found good synergies between the three ideas but decided to proceed w
 
 ![](/assets/media/uploads/img_0896.jpg)
 
+![](/assets/media/uploads/img_0890-1-.jpg)
+
 <h3> Hypothesis </h3>\
 If companies became better at identifying their own skill gaps and map as well as plan their needs for the next two to five years, workers would have the possibility to be more agile in their career and competence planning. If we are able to identify future development paths of companies we can suggest what skills employees should have and how to add them in order to avoid gaps in their employment. We think a tool for future-proofing your career and taking proactive steps for both workers and companies is the missing piece of the puzzle. 
 
@@ -27,3 +29,11 @@ After the workshop, the core team got together and made a few decisions in order
 * We found that companies can be divided into being “more reactive” or “more proactive” in competence planning 
 * More reactive companies tend to have less HR representation in their management, see education more as the employee’s responsibility, react ad-hoc to changes/when a vacancy emerges, and they trust that their brand still attracts new employees rather than putting effort into renewing their recruiting strategy 
 * More proactive companies more often have HR representation in their management teams, help employees continuously educate themselves further (in form of financial support, e-learning, etc.), invest in current employees, plan ahead and recruit for future needs
+
+![](/assets/media/uploads/img_1076.jpg)
+
+```
+The ones we are looking for already have jobs, good jobs. We can’t just put out job offers and hope they’ll come to us; we need to establish relations with these people in different contexts. We have to work proactively with searching
+```
+
+kjh
