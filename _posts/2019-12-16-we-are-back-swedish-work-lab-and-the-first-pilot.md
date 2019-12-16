@@ -39,3 +39,10 @@ One interesting difference we saw between the two behaviours was that the more p
 > The right attitude towards change and the ability to function during change processes is a big part of our requirements in every recruitment. If change makes you unhappy, you can’t be here
 
 \- on crucial factors in recruitment
+
+<h3> So, what exactly are culture enabling skills? </h3> Entrepreneurial spirit, thriving under change, being open to taking on different roles within the company, experimenting on your own within new areas and taking a holistic responsibility for different tasks are just a few examples. Workers need to understand what skills will be required in the next years and make sure they have the opportunity to adapt to these so they aren’t forced into an unwished gap in their employment. 
+
+<h3> Workshop No. 2 </h3> \
+As a next step, our bigger “pilot task-force” was asked to explore where these culture enabling skills could be found and analyse how to use them in order to create a clear and objective nomenclature. We looked at various academic research, future trend forecasts and existing job portals that helped us get a deeper understanding of what we actually were about to pilot and why this was needed. 
+
+With all this information collected and analysed, we have a good base for the first version of our pilot. We will update you more on that after the holidays and wish everyone a merry Christmas and a happy new year. May the blobs be with you!
