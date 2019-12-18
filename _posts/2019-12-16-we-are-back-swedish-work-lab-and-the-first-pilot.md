@@ -2,7 +2,7 @@
 layout: post
 title: 'We are back // Swedish Work Lab and its first pilot '
 ---
-<h3> Since the Swedish Work Lab hackathon in early September, TRR Trygghetsrådet and Another Tomorrow have been working on the three winning ideas _(link to ideas)_, how to proceed with them, what possibilities there might be and most importantly, realised how relevant and needed the first pilot is for our future work lives. Here comes a summary of what we’ve been up to the past months. </h3>
+<h3> Since the Swedish Work Lab hackathon in early September, TRR Trygghetsrådet and Another Tomorrow have been working on the three winning ideas \_(link to ideas)\_, how to proceed with them, what possibilities there might be and most importantly, realised how relevant and needed the first pilot is for our future work lives. Here comes a summary of what we’ve been up to the past months. </h3>
 
 ![](/assets/media/uploads/anothertomorrow_swedishworklab_162.jpg "Remember these people? They are the ones who decided on three ideas to be further developed: Future Five, Swop-In and Recruiter Sims.")
 
@@ -32,7 +32,7 @@ After the workshop, the core team got together and made a few decisions in order
 
 ![](/assets/media/uploads/img_1076.jpg)
 
-> The ones we are looking for already have jobs, good jobs. We can’t just put out job offers and hope they’ll come to us; we need to establish relations with these people in different contexts. We have to work proactively with searching
+> > The ones we are looking for already have jobs, good jobs. We can’t just put out job offers and hope they’ll come to us; we need to establish relations with these people in different contexts. We have to work proactively with searching
 
 One interesting difference we saw between the two behaviours was that the more proactive companies were not only recruiting based on hard skills. Culture enabling skills, a subcategory of soft skills, are required in order to contribute to the company culture it needs to stay competitive on the market.
 
