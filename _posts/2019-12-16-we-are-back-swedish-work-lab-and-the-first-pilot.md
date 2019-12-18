@@ -4,7 +4,7 @@ title: 'We are back // Swedish Work Lab and its first pilot '
 ---
 <h3> Since the Swedish Work Lab hackathon in early September, TRR Trygghetsrådet and Another Tomorrow have been working on the three winning ideas \\_(link to ideas)\\_, how to proceed with them, what possibilities there might be and most importantly, realised how relevant and needed the first pilot is for our future work lives. Here comes a summary of what we’ve been up to the past months. </h3>
 
-![Remember these people? They are the ones who decided on three ideas to be further developed: Future Five, Swop-In and Recruiter Sims.](/assets/media/uploads/anothertomorrow_swedishworklab_162.jpg "Remember these people? They are the ones who decided on three ideas to be further developed: Future Five, Swop-In and Recruiter Sims.")
+![](/assets/media/uploads/anothertomorrow_swedishworklab_162.jpg "Remember these people? They are the ones who decided on three ideas to be further developed: Future Five, Swop-In and Recruiter Sims.")
 
 <h3> What happened after the hackathon? </h3>\
 In the beginning of November, TRR and Another Tomorrow kicked off the pilot process with a "pilot task-force" diving deeper into the three winning ideas during a first workshop. We explored in more detail what they entailed, how close they were to TRR’s core business and focused on what they actually tried to solve. We then put this in relation to the organisation’s future vision and a potential market gap that needed to be filled.
