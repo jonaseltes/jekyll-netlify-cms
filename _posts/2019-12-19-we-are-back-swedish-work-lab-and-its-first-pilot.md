@@ -45,4 +45,4 @@ One interesting difference we saw between the two behaviours was that the more p
 <h3> Workshop No. 2 </h3> 
 As a next step, our bigger “pilot task-force” was asked to explore where these culture enabling skills could be found and analyse how to use them in order to create a clear and objective nomenclature. We looked at various academic research, future trend forecasts and existing job portals that helped us get a deeper understanding of what we actually were about to pilot and why this was needed. 
 
-With all this information collected and analysed, we have a good base for the first version of our pilot. We will update you more on that after the holidays and wish everyone a merry Christmas and a happy new year. May the blobs be with you!
+With all this information collected and analysed, we have a good base for the first version of our pilot. We will update you more on that after the holidays and wish everyone a merry Christmas and a happy new year. May the blobs be with you
