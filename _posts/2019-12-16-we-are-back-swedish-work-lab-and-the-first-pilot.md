@@ -9,7 +9,7 @@ title: 'We are back // Swedish Work Lab and its first pilot '
 <h3> What happened after the hackathon? </h3>
 In the beginning of November, TRR and Another Tomorrow kicked off the pilot process with a "pilot task-force" diving deeper into the three winning ideas during a first workshop. We explored in more detail what they entailed, how close they were to TRR’s core business and focused on what they actually tried to solve. We then put this in relation to the organisation’s future vision and a potential market gap that needed to be filled.
 
-<h4> We quickly found good synergies between the three ideas but decided to proceed with Future Five (or Future Index) as a first step, having the option to add bits and pieces of the other ideas further down the line. The focus would be on maintaining competence and the demand of specific skills in the future to help workers become more proactive in order to avoid unwanted gaps in their careers. </h4>
+We quickly found good synergies between the three ideas but decided to proceed with Future Five (or Future Index) as a first step, having the option to add bits and pieces of the other ideas further down the line. The focus would be on maintaining competence and the demand of specific skills in the future to help workers become more proactive in order to avoid unwanted gaps in their careers.
 
 ![](/assets/media/uploads/img_0894.jpg)
 
