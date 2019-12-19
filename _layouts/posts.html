@@ -1,37 +1,39 @@
 ---
 layout: default
 ---
-<div class="container-fluid">
+<div class="page-content-container min-h-100 w-100 position-absolute d-flex flex-grow-1 flex-column justify-content-between">
+  <div class="container-fluid h-inherit d-table pb-sm-8">
 
-  <div class="row flex-row">
-    {{ content }}
+    <div class="row flex-row">
+      {{ content }}
 
-    {%- if site.posts.size > 0 -%}
-      <!-- <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
-
-
-          {%- for post in site.posts -%}
-          <div class="col-md-4 col-lg-4 pb-7 align-self-end offset-md-{{ forloop.index | minus:1 || modulo:3 || times: 2}}">
-            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-
-            <span class="project-info-title d-block">
-              {{ post.date | date: date_format }}
-            </span>
-
-            <a class="project-info" href="{{ post.url | relative_url }}">
-              {{ post.title | escape }}
-            </a>
-
-            {%- if site.show_excerpts -%}
-              {{ post.excerpt }}
-            {%- endif -%}
-
-          </div>
-          {%- endfor -%}
+      {%- if site.posts.size > 0 -%}
+        <!-- <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
 
 
-      <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p> -->
-    {%- endif -%}
+            {%- for post in site.posts -%}
+            <div class="col-md-4 col-lg-4 pb-7 align-self-end offset-md-{{ forloop.index | minus:1 || modulo:3 || times: 2}}">
+              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 
+              <span class="project-info-title d-block">
+                {{ post.date | date: date_format }}
+              </span>
+
+              <a class="project-info" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+
+              {%- if site.show_excerpts -%}
+                {{ post.excerpt }}
+              {%- endif -%}
+
+            </div>
+            {%- endfor -%}
+
+
+        <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p> -->
+      {%- endif -%}
+
+    </div>
   </div>
 </div>

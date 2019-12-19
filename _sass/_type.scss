@@ -178,6 +178,18 @@ h3 {
   @extend .display-2;
 }
 
+h4 {
+  @extend .display-3;
+}
+
+h5 {
+  @extend .display-4;
+}
+
+h6 {
+  @extend .display-5;
+}
+
 
 p:not(:last-child) {
   margin-bottom: 1.3em;
