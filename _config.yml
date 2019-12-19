@@ -32,6 +32,9 @@ collections:
   projections:
     output: true
     permalink: /:collection/:name/
+  posts:
+    output: true
+    permalink: /blog/:categories/:year/:month/:day/:title/
 
 
 # defaults:
