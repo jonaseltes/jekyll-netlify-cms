@@ -52,6 +52,9 @@ css_path: assets/css
 fonts_path: assets/fonts
 icons_path: assets/icons
 
+# Site settings
+show_excerpts: true
+
 logo:
   two:
     white: /assets/media/SWL-LOGO-LOWER-WHITE.svg
