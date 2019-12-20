@@ -28,7 +28,7 @@ layout: default
                     </div>
 
                     {%- if site.show_excerpts -%}
-                      <div class="col-sm">
+                      <div class="col-sm d-none">
                         <a class="" href="{{ post.url | relative_url }}">
                           {{ post.excerpt | strip_html }} (...) →
                         </a>
