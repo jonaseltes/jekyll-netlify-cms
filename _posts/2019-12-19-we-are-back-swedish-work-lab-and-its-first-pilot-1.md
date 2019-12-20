@@ -1,6 +1,6 @@
 ---
 layout: post
-title: We are back // Swedish Work Lab and its first pilot
+title: We are back // Swedish Work Lab and the first pilot
 categories: test
 ---
 <h5> Since the Swedish Work Lab hackathon in early September, TRR Trygghetsrådet and Another Tomorrow have been working on the three winning ideas, how to proceed with them, what possibilities there might be and most importantly, realised how relevant and needed the first pilot is for our future work lives. Here comes a summary of what we’ve been up to the past months. </h5>
