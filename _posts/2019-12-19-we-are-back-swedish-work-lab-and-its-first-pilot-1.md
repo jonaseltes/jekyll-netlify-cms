@@ -38,14 +38,12 @@ After the workshop, the core team got together and made a few decisions in order
 ![](/assets/media/uploads/workshop2.png)
 
 *"The ones we are looking for already have jobs, good jobs. We can’t just put out job offers and hope they’ll come to us; we need to establish relations with these people in different contexts. We have to work proactively with searching"* 
-
-\- on how to find the competence you’re lacking
+- on how to find the competence you’re lacking
 
 One interesting difference we saw between the two behaviours was that the more proactive companies were not only recruiting based on hard skills. Culture enabling skills, a subcategory of soft skills, are required in order to contribute to the company culture it needs to stay competitive on the market.
 
 *"The right attitude towards change and the ability to function during change processes is a big part of our requirements in every recruitment. If change makes you unhappy, you can’t be here"*
-
-\- on crucial factors in recruitment
+- on crucial factors in recruitment
 
 <h6> So, what exactly are culture enabling skills? </h6> Entrepreneurial spirit, thriving under change, being open to taking on different roles within the company, experimenting on your own within new areas and taking a holistic responsibility for different tasks are just a few examples. Workers need to understand what skills will be required in the next years and make sure they have the opportunity to adapt to these so they aren’t forced into an unwished gap in their employment. 
 
