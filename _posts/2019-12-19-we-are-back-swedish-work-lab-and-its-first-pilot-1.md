@@ -27,7 +27,7 @@ After the workshop, the core team got together and made a few decisions in order
 * More reactive companies tend to have less HR representation in their management, see education more as the employee’s responsibility, react ad-hoc to changes/when a vacancy emerges, and they trust that their brand still attracts new employees rather than putting effort into renewing their recruiting strategy 
 * More proactive companies more often have HR representation in their management teams, help employees continuously educate themselves further (in form of financial support, e-learning, etc.), invest in current employees, plan ahead and recruit for future needs 
 
-![](/assets/media/uploads/img_1076.jpg)
+![](/assets/media/uploads/workshop2.png)
 
 *"The ones we are looking for already have jobs, good jobs. We can’t just put out job offers and hope they’ll come to us; we need to establish relations with these people in different contexts. We have to work proactively with searching"* - on how to find the competence you’re lacking
 
