@@ -31,13 +31,13 @@ Based on some research, trends and TRR’s experience, we decided on taking a cl
 
 ![](/assets/media/uploads/workshop2.png)
 
-<center>*"The ones we are looking for already have jobs, good jobs. We can’t just put out job offers and hope they’ll come to us; we need to establish relations with these people in different contexts. We have to work proactively with searching"*</center>
+<center>\*"The ones we are looking for already have jobs, good jobs. We can’t just put out job offers and hope they’ll come to us; we need to establish relations with these people in different contexts. We have to work proactively with searching"\*</center>
 
 \-on how to find the competence you’re lacking
 
 One interesting difference we saw between the two behaviours was that the more proactive companies were not only recruiting based on hard skills. Culture enabling skills, a subcategory of soft skills, are required in order to contribute to the company culture it needs to stay competitive on the market.
 
-<center>*"The right attitude towards change and the ability to function during change processes is a big part of our requirements in every recruitment. If change makes you unhappy, you can’t be here"*</center>
+<center>\*"The right attitude towards change and the ability to function during change processes is a big part of our requirements in every recruitment. If change makes you unhappy, you can’t be here"\*</center>
 
 \-on crucial factors in recruitment
 
