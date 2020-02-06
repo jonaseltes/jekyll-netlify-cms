@@ -5,7 +5,7 @@ categories: ''
 ---
 After the Christmas break, the Swedish Work Lab team got together to continue prototyping the “Future Index” idea, developed by Team 3 during the hackathon back in September. 
 
-We asked Åsa from TRR and Karin from Another Tomorrow to give us an update on what’s been happening so far, why TRR is doing this and when we can see a first prototype.
+We asked Åsa from TRR and Karin from Another Tomorrow to give us an update on what’s been happening so far, why TRR is doing this, and when we can expect to see a first prototype.
 
 Watch the video below (available in Swedish, with English subtitles).
 
