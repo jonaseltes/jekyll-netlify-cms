@@ -354,20 +354,15 @@ page_content:
                 <h3>Team 9: Beyond Retirement</h3>
 
 
-                <b>**Team:** <br></b>
+                <b>**Team:** <br></b>Victoria Stoyanova, Pelle Kimvall, Maria
+                Jönsson, Ulrika Karlsson
 
 
-                Victoria Stoyanova, Pelle Kimvall, Maria Jönsson, Ulrika
-                Karlsson
-
-
-                <b>**Brief in short:**<br></b>
-
-
-                How can retirees’ ambition to continue partaking in society and
-                the labour market be supported in a way that also benefits the
-                younger generation and society’s ambition of a progressive and
-                sustainable working culture for all?
+                <b>**Brief in short:**<br></b>How can retirees’ ambition to
+                continue partaking in society and the labour market be supported
+                in a way that also benefits the younger generation and society’s
+                ambition of a progressive and sustainable working culture for
+                all?
               type: text
       type: cols2
     - columns:
